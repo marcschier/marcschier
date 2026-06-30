@@ -57,8 +57,6 @@ High-performance, NativeAOT-ready **Conflict-free Replicated Data Types (CRDTs)*
 | [`Crdt.Transport.NanoMsg`](https://www.nuget.org/packages/Crdt.Transport.NanoMsg) | ![v](https://img.shields.io/nuget/v/Crdt.Transport.NanoMsg) | ![dt](https://img.shields.io/nuget/dt/Crdt.Transport.NanoMsg) |
 | [`Crdt.Transport.Pgm`](https://www.nuget.org/packages/Crdt.Transport.Pgm) | ![v](https://img.shields.io/nuget/v/Crdt.Transport.Pgm) | ![dt](https://img.shields.io/nuget/dt/Crdt.Transport.Pgm) |
 
-> 🔗 Depends on [`raft-cs`](https://github.com/marcschier/raft-cs), [`nanomsg-sharp`](https://github.com/marcschier/nanomsg-sharp), [`dtls`](https://github.com/marcschier/dtls), [`pgm`](https://github.com/marcschier/pgm), and [`mqtt-client`](https://github.com/marcschier/mqtt-client).
-
 ### 🔌 [nanomsg-sharp](https://github.com/marcschier/nanomsg-sharp)
 
 A pure, modern .NET implementation of the **nanomsg and NNG Scalability Protocols (SP)** — wire-compatible with both, with a zero-copy `System.IO.Pipelines` data path.
@@ -67,8 +65,6 @@ A pure, modern .NET implementation of the **nanomsg and NNG Scalability Protocol
 |---|---|---|
 | [`NanoMsgSharp`](https://www.nuget.org/packages/NanoMsgSharp) | ![v](https://img.shields.io/nuget/v/NanoMsgSharp) | ![dt](https://img.shields.io/nuget/dt/NanoMsgSharp) |
 | [`NanoMsgSharp.Dtls`](https://www.nuget.org/packages/NanoMsgSharp.Dtls) | ![v](https://img.shields.io/nuget/v/NanoMsgSharp.Dtls) | ![dt](https://img.shields.io/nuget/dt/NanoMsgSharp.Dtls) |
-
-> 🔗 Depends on [`dtls`](https://github.com/marcschier/dtls) (`DtlsSharp`) for the optional DTLS-secured transport.
 
 ### 🗳️ [raft-cs](https://github.com/marcschier/raft-cs)
 
@@ -80,8 +76,6 @@ Pure-managed, NativeAOT-ready **Raft consensus** for .NET (modeled on `tikv/raft
 | [`RaftCs.Transport`](https://www.nuget.org/packages/RaftCs.Transport) | ![v](https://img.shields.io/nuget/v/RaftCs.Transport) | ![dt](https://img.shields.io/nuget/dt/RaftCs.Transport) |
 | [`RaftCs.Transport.NanoMsg`](https://www.nuget.org/packages/RaftCs.Transport.NanoMsg) | ![v](https://img.shields.io/nuget/v/RaftCs.Transport.NanoMsg) | ![dt](https://img.shields.io/nuget/dt/RaftCs.Transport.NanoMsg) |
 | [`RaftCs.Storage.File`](https://www.nuget.org/packages/RaftCs.Storage.File) | ![v](https://img.shields.io/nuget/v/RaftCs.Storage.File) | ![dt](https://img.shields.io/nuget/dt/RaftCs.Storage.File) |
-
-> 🔗 Depends on [`nanomsg-sharp`](https://github.com/marcschier/nanomsg-sharp) (`NanoMsgSharp`) for the SP-based transport.
 
 ### 🗂️ [nfs](https://github.com/marcschier/nfs)
 
@@ -111,11 +105,11 @@ Cross-platform **DTLS 1.0 / 1.2 / 1.3** for .NET using the host OS cryptography 
 
 ---
 
-## 🧭 How it fits together
+## 🧭 Repo dependencies
 
-All cross-repository links are via published NuGet packages (no source coupling):
+All cross-repository links are via published NuGet packages (no source coupling), each repo produces a core nuget without any dependencies to other nugets produced from other repositories. Extension libraries pull in nugets from other repositories to extend the functionality of the core nuget:
 
-| Project | Depends on | Via package(s) |
+| Project | Extensions depend on | Via package(s) |
 |---|---|---|
 | 🧬 **crdt** | raft-cs, nanomsg-sharp, dtls, pgm, mqtt-client | `RaftCs`, `RaftCs.Transport`, `NanoMsgSharp`, `DtlsSharp`, `Pgm`, `Mqtt.Client` |
 | 🗳️ **raft-cs** | nanomsg-sharp | `NanoMsgSharp` (`RaftCs.Transport.NanoMsg`) |
