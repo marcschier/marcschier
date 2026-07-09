@@ -121,8 +121,11 @@ A cross-platform, NativeAOT-ready **.NET 10 OPC Classic** stack — DA, AE, HDA,
 |---|---|---|
 | [`Opc.Classic`](https://www.nuget.org/packages/Opc.Classic) | ![v](https://img.shields.io/nuget/v/Opc.Classic) | ![dt](https://img.shields.io/nuget/dt/Opc.Classic) |
 | [`Opc.Classic.Windows`](https://www.nuget.org/packages/Opc.Classic.Windows) | ![v](https://img.shields.io/nuget/v/Opc.Classic.Windows) | ![dt](https://img.shields.io/nuget/dt/Opc.Classic.Windows) |
+| [`Opc.Classic.Generators`](https://www.nuget.org/packages/Opc.Classic.Generators) | ![v](https://img.shields.io/nuget/v/Opc.Classic.Generators) | ![dt](https://img.shields.io/nuget/dt/Opc.Classic.Generators) |
+| [`Opc.Classic.MigrationAnalyzer`](https://www.nuget.org/packages/Opc.Classic.MigrationAnalyzer) | ![v](https://img.shields.io/nuget/v/Opc.Classic.MigrationAnalyzer) | ![dt](https://img.shields.io/nuget/dt/Opc.Classic.MigrationAnalyzer) |
+| [`Opc.Classic.Mcp`](https://www.nuget.org/packages/Opc.Classic.Mcp) | ![v](https://img.shields.io/nuget/v/Opc.Classic.Mcp) | ![dt](https://img.shields.io/nuget/dt/Opc.Classic.Mcp) |
 
-> ℹ️ `Opc.Classic` is a self-contained SDK meta-package (client + managed server); `Opc.Classic.Windows` adds Windows DCOM server hosting. The Roslyn analyzers (`Opc.Classic.Generators`, `Opc.Classic.MigrationAnalyzer`) and the `Opc.Classic.Mcp` server tool are also on nuget.org; the granular per-spec `Opc.Classic.*` assemblies ship to GitHub Packages.
+> ℹ️ `Opc.Classic` is a self-contained SDK meta-package (client + managed server); `Opc.Classic.Windows` adds Windows DCOM server hosting; `Opc.Classic.Generators` / `Opc.Classic.MigrationAnalyzer` are Roslyn source-generator / migration analyzer packages; `Opc.Classic.Mcp` is an MCP server tool. The granular per-spec `Opc.Classic.*` assemblies ship to GitHub Packages.
 
 ---
 
