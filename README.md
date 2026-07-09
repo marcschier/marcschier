@@ -1,7 +1,7 @@
 <h1 align="center">📚 Open-source .NET libraries &amp; tools</h1>
 
 <p align="center">
-A collection of public, NativeAOT-ready building blocks for modern .NET — secure transport, messaging, scalability protocols, consensus, replication, and file access — plus a couple of Model Context Protocol (MCP) servers.
+A collection of public, NativeAOT-ready building blocks for modern .NET — secure transport, messaging, IoT connectivity, scalability protocols, consensus, replication, and file access — plus a couple of Model Context Protocol (MCP) servers.
 </p>
 
 <p align="center">
@@ -103,6 +103,15 @@ Cross-platform **DTLS 1.0 / 1.2 / 1.3** for .NET using the host OS cryptography 
 |---|---|---|
 | [`DtlsSharp`](https://www.nuget.org/packages/DtlsSharp) | ![v](https://img.shields.io/nuget/v/DtlsSharp) | ![dt](https://img.shields.io/nuget/dt/DtlsSharp) |
 
+### 🛰️ [iothubby](https://github.com/marcschier/iothubby)
+
+High-performance, NativeAOT-ready **Azure IoT Hub &amp; IoT Edge** device/module SDK over MQTT (built on `Mqtt.Client`) — telemetry, cloud-to-device, direct methods, device/module twins, edge module routing, and DPS provisioning.
+
+| Package | Version | Downloads |
+|---|---|---|
+| [`IoTHubby`](https://www.nuget.org/packages/IoTHubby) | ![v](https://img.shields.io/nuget/v/IoTHubby) | ![dt](https://img.shields.io/nuget/dt/IoTHubby) |
+| [`IoTHubby.Edge`](https://www.nuget.org/packages/IoTHubby.Edge) | ![v](https://img.shields.io/nuget/v/IoTHubby.Edge) | ![dt](https://img.shields.io/nuget/dt/IoTHubby.Edge) |
+
 ---
 
 ## 🧭 Repo dependencies
@@ -114,6 +123,7 @@ All cross-repository links are via published NuGet packages (no source coupling)
 | 🧬 **crdt** | raft-cs, nanomsg-sharp, dtls, pgm, mqtt-client | `RaftCs`, `RaftCs.Transport`, `NanoMsgSharp`, `DtlsSharp`, `Pgm`, `Mqtt.Client` |
 | 🗳️ **raft-cs** | nanomsg-sharp | `NanoMsgSharp` (`RaftCs.Transport.NanoMsg`) |
 | 🔌 **nanomsg-sharp** | dtls | `DtlsSharp` (`NanoMsgSharp.Dtls`) |
+| 🛰️ **iothubby** | mqtt-client | `Mqtt.Client` |
 | 📨 **mqtt-client** · 📡 **pgm** · 🔐 **dtls** · 🗂️ **nfs** | — | standalone |
 | 🏭 **opcuakb-mcp** · 🕸️ **netcap-mcp** | — | standalone |
 
@@ -128,6 +138,7 @@ graph TD
     crdt -->|Mqtt.Client| mqtt["📨 mqtt-client"]
     raftcs -->|NanoMsgSharp| nanomsg
     nanomsg -->|DtlsSharp| dtls
+    iothubby["🛰️ iothubby"] -->|Mqtt.Client| mqtt
 
     nfs["🗂️ nfs"]
     opcuakb["🏭 opcuakb-mcp"]
