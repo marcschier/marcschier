@@ -46,12 +46,13 @@ repos:
       - { type: nuget, id: Pgm }
 
   mqtt-client:
-    # Mqtt.Client.Testing is intentionally NOT published to nuget.org.
     packable:
       - { path: src/Mqtt.Client, id: Mqtt.Client }
+      - { path: src/Mqtt.Client.Testing, id: Mqtt.Client.Testing }
     promote: nuget-yml
     wait:
       - { type: nuget, id: Mqtt.Client }
+      - { type: nuget, id: Mqtt.Client.Testing }
 
   nfs:
     # Only the consolidated Nfs umbrella package reaches nuget.org; the granular Nfs.*

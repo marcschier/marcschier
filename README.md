@@ -40,6 +40,7 @@ High-performance, low-allocation **MQTT 3.1.1 + 5.0** client for .NET. Channels-
 | Package | Version | Downloads |
 |---|---|---|
 | [`Mqtt.Client`](https://www.nuget.org/packages/Mqtt.Client) | ![v](https://img.shields.io/nuget/v/Mqtt.Client) | ![dt](https://img.shields.io/nuget/dt/Mqtt.Client) |
+| [`Mqtt.Client.Testing`](https://www.nuget.org/packages/Mqtt.Client.Testing) | ![v](https://img.shields.io/nuget/v/Mqtt.Client.Testing) | ![dt](https://img.shields.io/nuget/dt/Mqtt.Client.Testing) |
 
 ### 🧬 [crdt](https://github.com/marcschier/crdt)
 
