@@ -1,0 +1,59 @@
+# Deterministic release conductor for the autonomous NuGet-update pipeline.
+#
+# This is intentionally a classic (non-agentic) workflow: the agentic work — making source
+# code changes — lives in the gh-aw workflow `nuget-update-repo.md`, which this conductor
+# dispatches. Here we only run deterministic orchestration (conductor.py): walk the repos in
+# README order (leaf -> top), gate releases on publish impact, cut tag-driven releases, trigger
+# the human-gated nuget.org promotion, and wait for each package to be listed before advancing.
+#
+# Requires the repository secret NUGET_UPDATE_TOKEN: a fine-grained PAT or GitHub App token with,
+# across every repo listed in README.md, contents:write, pull-requests:write, issues:write,
+# actions:write (workflow dispatch) and packages:read. The default GITHUB_TOKEN cannot reach the
+# other repositories, so all privileged operations use NUGET_UPDATE_TOKEN via GH_TOKEN.
+name: nuget-update-conductor
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_budget_min:
+        description: "Soft per-run time budget (minutes)"
+        required: false
+        default: "300"
+        type: string
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nuget-update-conductor
+  cancel-in-progress: false
+
+jobs:
+  conduct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+
+      - name: Install Python dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Run conductor
+        env:
+          GH_TOKEN: ${{ secrets.NUGET_UPDATE_TOKEN }}
+          RUN_BUDGET_MIN: ${{ github.event.inputs.run_budget_min || '300' }}
+          GATE_WAIT_MIN: "45"
+        run: python .github/nuget-update/conductor.py

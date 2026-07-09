@@ -1,0 +1,127 @@
+# Per-repo release descriptor for the autonomous NuGet-update workflow.
+#
+# The project LIST and dependency GRAPH are derived from ../../README.md (the source of
+# truth) by parse-readme.py. This file supplies the release *mechanics* that are not in the
+# README: which projects are packable (produce published packages), how the repo promotes a
+# release, and which artifact to wait for before advancing to the next repo.
+#
+# Keys are the repository names (owner is always "marcschier").
+#
+# Fields:
+#   owner            GitHub owner (constant).
+#   packable         Source projects that are packed into published packages. Their transitive
+#                    PackageReference closure defines "publish impact": a dependency update only
+#                    triggers a release if it reaches one of these projects.
+#   promote          How a release reaches its public feed:
+#                      nuget-yml : dispatch the repo's .github/workflows/nuget.yml (workflow_dispatch)
+#                      ci-yml    : publishing happens inside ci.yml on the tag / main push
+#   wait             Artifacts to poll before the pipeline advances to the next repo. Types:
+#                      nuget  : nuget.org registration index for {id} at the new version
+#                      ghcr   : ghcr.io/{owner}/{image} tag
+#                      ghpkg  : GitHub Packages (nuget) {id}
+#   release_env      Deployment environment guarding promotion (for the human-approval gate).
+
+defaults:
+  owner: marcschier
+  base_branch: main
+  release_env: release
+  # Packages that may be referenced by a packable project but do not change the produced
+  # package (build/versioning tools, dev-only analyzers). Bumping only these does not release.
+  non_impacting: [Nerdbank.GitVersioning, Roslynator.Analyzers, Roslynator.Formatting.Analyzers, Microsoft.Testing.Extensions.CodeCoverage, coverlet.collector, coverlet.msbuild]
+
+repos:
+  # ---- Libraries published to nuget.org (promoted via nuget.yml) ----
+  dtls:
+    packable:
+      - { path: src/Dtls, id: DtlsSharp }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: DtlsSharp }
+
+  pgm:
+    packable:
+      - { path: src/Pgm, id: Pgm }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: Pgm }
+
+  mqtt-client:
+    # Mqtt.Client.Testing is intentionally NOT published to nuget.org.
+    packable:
+      - { path: src/Mqtt.Client, id: Mqtt.Client }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: Mqtt.Client }
+
+  nfs:
+    # Only the consolidated Nfs umbrella package reaches nuget.org; the granular Nfs.*
+    # assemblies stay on GitHub Packages.
+    packable:
+      - { path: src/Nfs, id: Nfs }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: Nfs }
+
+  nanomsg-sharp:
+    packable:
+      - { path: src/NanoMsg, id: NanoMsgSharp }
+      - { path: src/NanoMsg.Dtls, id: NanoMsgSharp.Dtls }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: NanoMsgSharp }
+      - { type: nuget, id: NanoMsgSharp.Dtls }
+
+  raft-cs:
+    packable:
+      - { path: src/Raft, id: RaftCs }
+      - { path: src/Raft.Transport, id: RaftCs.Transport }
+      - { path: src/Raft.Transport.NanoMsg, id: RaftCs.Transport.NanoMsg }
+      - { path: src/Raft.Storage.File, id: RaftCs.Storage.File }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: RaftCs }
+
+  crdt:
+    packable:
+      - { path: src/Crdt, id: Crdt }
+      - { path: src/Crdt.Consensus, id: Crdt.Consensus }
+      - { path: src/Crdt.Consensus.Raft, id: Crdt.Consensus.Raft }
+      - { path: src/Crdt.Gc, id: Crdt.Gc }
+      - { path: src/Crdt.Transport, id: Crdt.Transport }
+      - { path: src/Crdt.Transport.Dtls, id: Crdt.Transport.Dtls }
+      - { path: src/Crdt.Transport.Mqtt, id: Crdt.Transport.Mqtt }
+      - { path: src/Crdt.Transport.NanoMsg, id: Crdt.Transport.NanoMsg }
+      - { path: src/Crdt.Transport.Pgm, id: Crdt.Transport.Pgm }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: Crdt }
+
+  # ---- iothubby: Azure IoT Hub / IoT Edge SDK over MQTT (extension depends on mqtt-client) ----
+  iothubby:
+    packable:
+      - { path: src/IoTHubby, id: IoTHubby }
+      - { path: src/IoTHubby.Edge, id: IoTHubby.Edge }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: IoTHubby }
+      - { type: nuget, id: IoTHubby.Edge }
+
+  # ---- MCP servers (no nuget.yml; publish inside ci.yml) ----
+  netcap-mcp:
+    # The Netcap library is published to nuget.org; the Netcap.Mcp tool goes to GitHub Packages.
+    packable:
+      - { path: src/Netcap, id: Netcap }
+      - { path: src/Netcap.Mcp, id: Netcap.Mcp }
+    promote: ci-yml
+    wait:
+      - { type: nuget, id: Netcap }
+      - { type: ghpkg, id: Netcap.Mcp }
+
+  opcuakb-mcp:
+    # Nothing on nuget.org: a GHCR image + a GitHub Packages tool.
+    packable:
+      - { path: src/OpcUaKb.McpServer, id: OpcUaKb.McpServer }
+    promote: ci-yml
+    wait:
+      - { type: ghcr, image: opcua-mcp-server }
+      - { type: ghpkg, id: OpcUaKb.McpServer }
