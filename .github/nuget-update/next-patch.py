@@ -15,6 +15,7 @@ Prints JSON {"current": "...", "next": "X.Y.Z", "tag": "vX.Y.Z", "changed": bool
 from __future__ import annotations
 
 import argparse
+import codecs
 import json
 import re
 import sys
@@ -30,9 +31,13 @@ def parse_semver_core(v: str) -> tuple[int, int, int]:
         return (0, 0, 0)
 
 
-def read_version_field(path: str) -> tuple[dict, str]:
-    data = json.load(open(path, encoding="utf-8"))
-    return data, str(data.get("version", "0.0"))
+def read_version_text(path: str) -> tuple[str, bool, str]:
+    """Return (raw_text_without_bom, had_bom, current_version). BOM-safe."""
+    raw = open(path, "rb").read()
+    had_bom = raw.startswith(codecs.BOM_UTF8)
+    text = raw.decode("utf-8-sig")
+    current = str(json.loads(text).get("version", "0.0"))
+    return text, had_bom, current
 
 
 def compute_next(base: str, latest: str) -> tuple[int, int, int]:
@@ -49,16 +54,21 @@ def main() -> int:
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
 
-    data, current = read_version_field(args.version_json)
+    text, had_bom, current = read_version_text(args.version_json)
     nxt = compute_next(current, args.latest)
     nxt_str = f"{nxt[0]}.{nxt[1]}.{nxt[2]}"
     changed = parse_semver_core(current) != nxt
 
-    if args.write:
-        data["version"] = nxt_str
-        with open(args.version_json, "w", encoding="utf-8") as fh:
-            json.dump(data, fh, indent=2)
-            fh.write("\n")
+    if args.write and changed:
+        # Targeted replacement of just the version value preserves the file's formatting; the
+        # BOM (if any) is re-applied so nbgv/editors see an unchanged encoding.
+        new_text, n = re.subn(r'("version"\s*:\s*")[^"]*(")',
+                              lambda m: m.group(1) + nxt_str + m.group(2), text, count=1)
+        if n != 1:
+            raise SystemExit("ERROR: could not locate the version field in version.json")
+        payload = (codecs.BOM_UTF8 if had_bom else b"") + new_text.encode("utf-8")
+        with open(args.version_json, "wb") as fh:
+            fh.write(payload)
 
     print(json.dumps({"current": current, "next": nxt_str, "tag": f"v{nxt_str}", "changed": changed}))
     return 0
