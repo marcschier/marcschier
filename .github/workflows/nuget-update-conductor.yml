@@ -20,6 +20,11 @@ on:
         required: false
         default: "300"
         type: string
+      only_repo:
+        description: "Process only this repo (blank = full leaf-to-top pipeline)"
+        required: false
+        default: ""
+        type: string
   schedule:
     - cron: "0 6 * * 1"   # Mondays 06:00 UTC
 
@@ -56,4 +61,5 @@ jobs:
           GH_TOKEN: ${{ secrets.NUGET_UPDATE_TOKEN }}
           RUN_BUDGET_MIN: ${{ github.event.inputs.run_budget_min || '300' }}
           GATE_WAIT_MIN: "45"
+          ONLY_REPO: ${{ github.event.inputs.only_repo || '' }}
         run: python .github/nuget-update/conductor.py

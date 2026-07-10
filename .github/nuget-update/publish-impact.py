@@ -27,10 +27,18 @@ DEFAULT_REPOS_YML = os.path.join(HERE, "repos.yml")
 # Packages that may be referenced by a packable project but do NOT contribute to the produced
 # package's content or nuspec dependencies (build/versioning tools and dev-only analyzers).
 # Bumping only these must not trigger a release. Extend via `defaults.non_impacting` in repos.yml.
+#
+# NOTE: pure diagnostic analyzers are non-impacting, but source generators that inject code into
+# the assembly (e.g. PolySharp) ARE impacting and must never be listed here.
 DEFAULT_NON_IMPACTING = {
     "nerdbank.gitversioning",
     "roslynator.analyzers",
     "roslynator.formatting.analyzers",
+    "microsoft.visualstudio.threading.analyzers",
+    "meziantou.analyzer",
+    "idisposableanalyzers",
+    "stylecop.analyzers",
+    "microsoft.codeanalysis.netanalyzers",
     "microsoft.testing.extensions.codecoverage",
     "coverlet.collector",
     "coverlet.msbuild",

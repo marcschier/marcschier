@@ -219,10 +219,18 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
             save_state(state)
             log(f"{repo}: no updates, skipping")
             return "done"
-        gh("workflow", "run", UPDATER_WORKFLOW, "-R", ORCH_REPO, "-f", f"repo={repo}")
-        rstate["phase"] = "awaiting-pr"
-        save_state(state)
-        log(f"{repo}: dispatched updater for {len(updated)} outdated package(s)")
+        # Idempotency: adopt an existing open dependency PR instead of dispatching a duplicate.
+        existing = open_dep_pr(repo)
+        if existing:
+            rstate["pr"] = existing["number"]
+            rstate["phase"] = "awaiting-pr-ci"
+            save_state(state)
+            log(f"{repo}: adopting existing dependency PR #{existing['number']}")
+        else:
+            gh("workflow", "run", UPDATER_WORKFLOW, "-R", ORCH_REPO, "-f", f"repo={repo}")
+            rstate["phase"] = "awaiting-pr"
+            save_state(state)
+            log(f"{repo}: dispatched updater for {len(updated)} outdated package(s)")
 
     # await PR from the updater -------------------------------------------
     if rstate["phase"] == "awaiting-pr":
@@ -243,7 +251,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
         while budget_left() > POLL_SECS:
             c = pr_checks_conclusion(repo, rstate["pr"])
             if c == "success":
-                gh("pr", "merge", str(rstate["pr"]), "-R", f"{OWNER}/{repo}", "--squash", "--admin")
+                gh("pr", "merge", str(rstate["pr"]), "-R", f"{OWNER}/{repo}", "--squash")
                 rstate["phase"] = "publish-impact"
                 save_state(state)
                 break
@@ -363,6 +371,15 @@ def main() -> int:
     if state.get("status") == "halted":
         log("pipeline is halted; resolve the open issue and clear state to resume")
         return 0
+
+    only = os.environ.get("ONLY_REPO", "").strip()
+    if only:
+        if only not in order:
+            log(f"ONLY_REPO='{only}' is not a known repo in {order}")
+            return 1
+        order = [only]
+        log(f"scoped run: processing only '{only}'")
+
     state["status"] = "running"
     save_state(state)
 
@@ -380,9 +397,14 @@ def main() -> int:
             log(f"{repo}: yielded at phase '{result}'; will resume on next trigger")
             return 0  # wait states block the whole pipeline (strict leaf->top ordering)
 
-    state["status"] = "done"
-    save_state(state)
-    log("all repos processed")
+    if not only:
+        state["status"] = "done"
+        save_state(state)
+        log("all repos processed")
+    else:
+        state["status"] = "idle"
+        save_state(state)
+        log(f"scoped run for '{only}' complete")
     return 0
 
 

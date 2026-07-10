@@ -26,8 +26,9 @@ defaults:
   base_branch: main
   release_env: release
   # Packages that may be referenced by a packable project but do not change the produced
-  # package (build/versioning tools, dev-only analyzers). Bumping only these does not release.
-  non_impacting: [Nerdbank.GitVersioning, Roslynator.Analyzers, Roslynator.Formatting.Analyzers, Microsoft.Testing.Extensions.CodeCoverage, coverlet.collector, coverlet.msbuild]
+  # package (build/versioning tools, dev-only diagnostic analyzers). Bumping only these does not
+  # release. Source generators that inject code (e.g. PolySharp) are impacting and NOT listed.
+  non_impacting: [Nerdbank.GitVersioning, Roslynator.Analyzers, Roslynator.Formatting.Analyzers, Microsoft.VisualStudio.Threading.Analyzers, Meziantou.Analyzer, IDisposableAnalyzers, StyleCop.Analyzers, Microsoft.CodeAnalysis.NetAnalyzers, Microsoft.Testing.Extensions.CodeCoverage, coverlet.collector, coverlet.msbuild]
 
 repos:
   # ---- Libraries published to nuget.org (promoted via nuget.yml) ----
