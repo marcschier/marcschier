@@ -11,7 +11,17 @@
     "netcap-mcp": {
       "phase": "done",
       "note": "merged; Netcap.Mcp 1.0.3 published to GitHub Packages via ci.yml"
+    },
+    "nfs": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "BenchmarkDotNet",
+        "Microsoft.CodeAnalysis.CSharp",
+        "Nerdbank.GitVersioning",
+        "Polyfill",
+        "System.IO.Pipelines"
+      ]
     }
   },
-  "updated_at": "2026-07-10T13:50:26Z"
+  "updated_at": "2026-07-10T13:51:05Z"
 }
