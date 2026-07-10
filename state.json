@@ -7,7 +7,7 @@
       "note": "no outdated dependencies"
     },
     "mqtt-client": {
-      "phase": "publish-impact",
+      "phase": "release",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -34,5 +34,5 @@
       "pr": 4
     }
   },
-  "updated_at": "2026-07-10T11:55:22Z"
+  "updated_at": "2026-07-10T11:55:34Z"
 }
