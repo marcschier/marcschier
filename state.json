@@ -1,1 +1,16 @@
-{"status":"running","repos":{"dtls":{"phase":"done","note":"no outdated dependencies"},"mqtt-client":{"phase":"awaiting-tag-ci","pr":4,"tag":"v1.1.2","released_at":"2026-07-10T12:17:00Z"}}}
+{
+  "status": "running",
+  "repos": {
+    "dtls": {
+      "phase": "done",
+      "note": "no outdated dependencies"
+    },
+    "mqtt-client": {
+      "phase": "awaiting-tag-ci",
+      "pr": 4,
+      "tag": "v1.1.2",
+      "released_at": "2026-07-10T12:17:00Z"
+    }
+  },
+  "updated_at": "2026-07-10T12:36:26Z"
+}
