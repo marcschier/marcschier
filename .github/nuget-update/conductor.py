@@ -199,11 +199,14 @@ def run_conclusion(repo: str, run_id: int) -> str:
     return r["conclusion"] or "failure"
 
 
-def latest_ci_run_for_tag(repo: str, tag: str) -> int | None:
+def latest_ci_run_for_tag(repo: str, tag: str, since: str | None = None) -> int | None:
+    """Most recent ci.yml run for the tag, ignoring runs created before `since` (the release
+    time). This avoids concluding from a stale run left over from an earlier release attempt
+    before the fresh run has registered."""
     runs = gh_json("run", "list", "-R", f"{OWNER}/{repo}", "-w", "ci.yml",
-                   "--json", "databaseId,headBranch,event", "-L", "30") or []
-    for r in runs:
-        if r.get("headBranch") == tag:
+                   "--json", "databaseId,headBranch,createdAt", "-L", "40") or []
+    for r in runs:  # gh returns newest first
+        if r.get("headBranch") == tag and (not since or (r.get("createdAt") or "") >= since):
             return r["databaseId"]
     return None
 
@@ -327,12 +330,14 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
         # Create a GitHub Release rather than a bare tag: some repos' publish CI attaches
         # artifacts to the release (gh release upload), and creating a release also creates the
         # tag that triggers tag-based publish jobs — so this works for every repo's style.
+        released_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         existing = gh("release", "view", tag, "-R", f"{OWNER}/{repo}", "--json", "tagName",
                       "--jq", ".tagName", check=False)
         if existing.strip() != tag:
             gh("release", "create", tag, "-R", f"{OWNER}/{repo}", "--target", "main",
                "--title", tag, "--notes", f"Automated dependency-update release {tag}.")
         rstate["tag"] = tag
+        rstate["released_at"] = released_at
         rstate["phase"] = "awaiting-tag-ci"
         save_state(state)
         log(f"{repo}: released {tag}")
@@ -340,7 +345,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
     # await tag CI (tests + publish to GitHub Packages) -------------------
     if rstate["phase"] == "awaiting-tag-ci":
         while budget_left() > POLL_SECS:
-            run_id = latest_ci_run_for_tag(repo, rstate["tag"])
+            run_id = latest_ci_run_for_tag(repo, rstate["tag"], rstate.get("released_at"))
             if run_id:
                 c = run_conclusion(repo, run_id)
                 if c == "success":
@@ -350,6 +355,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
                 if c == "failure":
                     fail(repo, state, "await-tag-ci", f"tag {rstate['tag']} CI failed (run {run_id})")
                     return "failed"
+            # run_id None or pending -> keep waiting for the post-release run to finish
             time.sleep(POLL_SECS)
         else:
             return "awaiting-tag-ci"
