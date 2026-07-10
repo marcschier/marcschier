@@ -46,7 +46,7 @@ safe-outputs:
     expires: false
 ---
 
-# Update NuGet dependencies for `${{ github.event.inputs.repo }}`
+# Update NuGet dependencies for a marcschier repository
 
 You are updating the NuGet dependencies of the repository **`marcschier/${{ github.event.inputs.repo }}`**, which is already checked out in the current working directory. The .NET 8/9/10 SDKs are installed.
 
