@@ -1,1 +1,14 @@
-{"status":"running","repos":{"dtls":{"phase":"done","note":"no outdated dependencies"},"mqtt-client":{"phase":"release","pr":4}}}
+{
+  "status": "running",
+  "repos": {
+    "dtls": {
+      "phase": "done",
+      "note": "no outdated dependencies"
+    },
+    "mqtt-client": {
+      "phase": "release",
+      "pr": 4
+    }
+  },
+  "updated_at": "2026-07-10T12:17:33Z"
+}
