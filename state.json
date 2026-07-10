@@ -13,7 +13,33 @@
     "nfs": {
       "phase": "done",
       "note": "DEFERRED: kernel-interop CI hang under dep bump; PR #1 left open for human review"
+    },
+    "opc-classic": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "BenchmarkDotNet",
+        "CsCheck",
+        "Meziantou.Analyzer",
+        "Microsoft.Extensions.Configuration.Abstractions",
+        "Microsoft.Extensions.Configuration.Binder",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.DependencyInjection.Abstractions",
+        "Microsoft.Extensions.Diagnostics.Testing",
+        "Microsoft.Extensions.Hosting",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Options",
+        "Microsoft.SourceLink.GitHub",
+        "ModelContextProtocol",
+        "Nerdbank.GitVersioning",
+        "TUnit",
+        "Testcontainers",
+        "Verify.TUnit",
+        "coverlet.collector",
+        "coverlet.msbuild"
+      ]
     }
   },
-  "updated_at": "2026-07-10T14:28:08Z"
+  "updated_at": "2026-07-10T14:28:50Z"
 }
