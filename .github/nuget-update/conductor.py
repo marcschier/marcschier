@@ -312,7 +312,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
         rstate["phase"] = "release"
         save_state(state)
 
-    # release: bump patch + tag -------------------------------------------
+    # release: bump patch + create GitHub Release (also creates the tag) ---
     if rstate["phase"] == "release":
         core = rcfg["wait"][0].get("id") or repo
         latest = nuget_latest(core) if rcfg["wait"][0]["type"] == "nuget" else "0.0.0"
@@ -324,12 +324,18 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
         if res["changed"]:
             sh("git", "-C", work, "commit", "-am", f"chore: release {tag}")
             sh("git", "-C", work, "push", "origin", "HEAD:main")
-        sh("git", "-C", work, "tag", tag)
-        sh("git", "-C", work, "push", "origin", tag)
+        # Create a GitHub Release rather than a bare tag: some repos' publish CI attaches
+        # artifacts to the release (gh release upload), and creating a release also creates the
+        # tag that triggers tag-based publish jobs — so this works for every repo's style.
+        existing = gh("release", "view", tag, "-R", f"{OWNER}/{repo}", "--json", "tagName",
+                      "--jq", ".tagName", check=False)
+        if existing.strip() != tag:
+            gh("release", "create", tag, "-R", f"{OWNER}/{repo}", "--target", "main",
+               "--title", tag, "--notes", f"Automated dependency-update release {tag}.")
         rstate["tag"] = tag
         rstate["phase"] = "awaiting-tag-ci"
         save_state(state)
-        log(f"{repo}: tagged {tag}")
+        log(f"{repo}: released {tag}")
 
     # await tag CI (tests + publish to GitHub Packages) -------------------
     if rstate["phase"] == "awaiting-tag-ci":
