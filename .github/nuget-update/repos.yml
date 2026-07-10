@@ -108,6 +108,18 @@ repos:
       - { type: nuget, id: IoTHubby }
       - { type: nuget, id: IoTHubby.Edge }
 
+  # ---- opc-classic: managed OPC Classic (DA/AE/HDA/...) DCOM stack ----
+  opc-classic:
+    packable:
+      - { path: src/Opc.Classic, id: Opc.Classic }
+      - { path: src/Opc.Classic.Windows, id: Opc.Classic.Windows }
+      - { path: src/Opc.Classic.Generators, id: Opc.Classic.Generators }
+      - { path: src/Opc.Classic.MigrationAnalyzer, id: Opc.Classic.MigrationAnalyzer }
+      - { path: mcp/Opc.Classic.Mcp, id: Opc.Classic.Mcp }
+    promote: nuget-yml
+    wait:
+      - { type: nuget, id: Opc.Classic }
+
   # ---- MCP servers (no nuget.yml; publish inside ci.yml) ----
   netcap-mcp:
     # The Netcap library is published to nuget.org; the Netcap.Mcp tool goes to GitHub Packages.
