@@ -37,6 +37,11 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 OWNER = "marcschier"
 ORCH_REPO = os.environ.get("GITHUB_REPOSITORY", f"{OWNER}/{OWNER}")
+# Cross-repo operations (clone target repos, PRs, merges, issues, tags, nuget.yml dispatch) use
+# GH_TOKEN (a PAT scoped to the README repos). Operations on the orchestrator repo itself (state
+# branch, dispatching the updater workflow) use ORCH_TOKEN — the workflow's own GITHUB_TOKEN,
+# which always has access to this repo — because the PAT is not scoped to marcschier/marcschier.
+ORCH_TOKEN = os.environ.get("STATE_TOKEN") or os.environ.get("GH_TOKEN", "")
 STATE_BRANCH = "automation/nuget-update-state"
 STATE_PATH = "state.json"
 UPDATER_WORKFLOW = "nuget-update-repo.lock.yml"
@@ -56,12 +61,13 @@ def sh(*args: str, check: bool = True, cwd: str | None = None, env: dict | None 
     return res.stdout.strip()
 
 
-def gh(*args: str, check: bool = True) -> str:
-    return sh("gh", *args, check=check)
+def gh(*args: str, check: bool = True, token: str | None = None) -> str:
+    env = {"GH_TOKEN": token} if token else None
+    return sh("gh", *args, check=check, env=env)
 
 
-def gh_json(*args: str):
-    out = gh(*args)
+def gh_json(*args: str, token: str | None = None):
+    out = gh(*args, token=token)
     return json.loads(out) if out else None
 
 
@@ -83,20 +89,20 @@ def load_config():
 # ------------------------------------------------------------------------- state I/O
 def _ensure_state_branch() -> None:
     try:
-        gh("api", f"repos/{ORCH_REPO}/branches/{STATE_BRANCH}")
+        gh("api", f"repos/{ORCH_REPO}/branches/{STATE_BRANCH}", token=ORCH_TOKEN)
         return
     except RuntimeError:
         pass
-    default = gh_json("api", f"repos/{ORCH_REPO}", "--jq", "{b:.default_branch}")["b"]
-    sha = gh("api", f"repos/{ORCH_REPO}/git/ref/heads/{default}", "--jq", ".object.sha")
+    default = gh_json("api", f"repos/{ORCH_REPO}", "--jq", "{b:.default_branch}", token=ORCH_TOKEN)["b"]
+    sha = gh("api", f"repos/{ORCH_REPO}/git/ref/heads/{default}", "--jq", ".object.sha", token=ORCH_TOKEN)
     gh("api", "-X", "POST", f"repos/{ORCH_REPO}/git/refs",
-       "-f", f"ref=refs/heads/{STATE_BRANCH}", "-f", f"sha={sha}")
+       "-f", f"ref=refs/heads/{STATE_BRANCH}", "-f", f"sha={sha}", token=ORCH_TOKEN)
 
 
 def load_state() -> dict:
     try:
         raw = gh("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}?ref={STATE_BRANCH}",
-                 "--jq", ".content", check=True)
+                 "--jq", ".content", check=True, token=ORCH_TOKEN)
         return json.loads(base64.b64decode(raw).decode())
     except RuntimeError:
         return {"status": "idle", "repos": {}}
@@ -107,13 +113,13 @@ def save_state(state: dict) -> None:
     state["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     content = base64.b64encode(json.dumps(state, indent=2).encode()).decode()
     sha = gh("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}?ref={STATE_BRANCH}",
-             "--jq", ".sha", check=False)
+             "--jq", ".sha", check=False, token=ORCH_TOKEN)
     args = ["api", "-X", "PUT", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
             "-f", "message=chore: update nuget-update conductor state",
             "-f", f"branch={STATE_BRANCH}", "-f", f"content={content}"]
     if sha:
         args += ["-f", f"sha={sha}"]
-    gh(*args)
+    gh(*args, token=ORCH_TOKEN)
 
 
 # ------------------------------------------------------------------- pipeline helpers
@@ -227,7 +233,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
             save_state(state)
             log(f"{repo}: adopting existing dependency PR #{existing['number']}")
         else:
-            gh("workflow", "run", UPDATER_WORKFLOW, "-R", ORCH_REPO, "-f", f"repo={repo}")
+            gh("workflow", "run", UPDATER_WORKFLOW, "-R", ORCH_REPO, "-f", f"repo={repo}", token=ORCH_TOKEN)
             rstate["phase"] = "awaiting-pr"
             save_state(state)
             log(f"{repo}: dispatched updater for {len(updated)} outdated package(s)")

@@ -29,7 +29,8 @@ on:
     - cron: "0 6 * * 1"   # Mondays 06:00 UTC
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 concurrency:
   group: nuget-update-conductor
@@ -59,6 +60,7 @@ jobs:
       - name: Run conductor
         env:
           GH_TOKEN: ${{ secrets.NUGET_UPDATE_TOKEN }}
+          STATE_TOKEN: ${{ github.token }}
           RUN_BUDGET_MIN: ${{ github.event.inputs.run_budget_min || '300' }}
           GATE_WAIT_MIN: "45"
           ONLY_REPO: ${{ github.event.inputs.only_repo || '' }}
