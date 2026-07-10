@@ -13,15 +13,16 @@
       "note": "merged; Netcap.Mcp 1.0.3 published to GitHub Packages via ci.yml"
     },
     "nfs": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "BenchmarkDotNet",
         "Microsoft.CodeAnalysis.CSharp",
         "Nerdbank.GitVersioning",
         "Polyfill",
         "System.IO.Pipelines"
-      ]
+      ],
+      "pr": 1
     }
   },
-  "updated_at": "2026-07-10T13:51:05Z"
+  "updated_at": "2026-07-10T13:56:49Z"
 }
