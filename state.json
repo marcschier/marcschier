@@ -19,7 +19,7 @@
       "note": "DEFERRED: build/format/samba-smoke failures; PR #11 open for review"
     },
     "opcuakb-mcp": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "AngleSharp",
         "Azure.Identity",
@@ -36,5 +36,5 @@
       "pr": 2
     }
   },
-  "updated_at": "2026-07-10T14:55:07Z"
+  "updated_at": "2026-07-10T14:55:43Z"
 }
