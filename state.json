@@ -6,11 +6,12 @@
       "note": "no outdated dependencies"
     },
     "mqtt-client": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "pr": 4,
       "tag": "v1.1.2",
-      "released_at": "2026-07-10T12:17:00Z"
+      "released_at": "2026-07-10T12:17:00Z",
+      "note": "released v1.1.2"
     }
   },
-  "updated_at": "2026-07-10T13:21:45Z"
+  "updated_at": "2026-07-10T13:25:47Z"
 }
