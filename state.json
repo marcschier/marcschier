@@ -35,7 +35,15 @@
       ],
       "pr": 2,
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
+    },
+    "pgm": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "BenchmarkDotNet",
+        "Nerdbank.GitVersioning",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-10T14:55:45Z"
+  "updated_at": "2026-07-10T14:55:57Z"
 }
