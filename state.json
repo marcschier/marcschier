@@ -7,7 +7,7 @@
       "note": "no outdated dependencies"
     },
     "mqtt-client": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -31,8 +31,9 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 4
+      "pr": 4,
+      "tag": "v1.1.2"
     }
   },
-  "updated_at": "2026-07-10T12:02:05Z"
+  "updated_at": "2026-07-10T12:02:09Z"
 }
