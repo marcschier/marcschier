@@ -299,6 +299,14 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
 
     # publish-impact gate --------------------------------------------------
     if rstate["phase"] == "publish-impact":
+        # MCP repos (promote: ci-yml) publish to GitHub Packages / GHCR from the merge push's own
+        # ci.yml — there is no tag->nuget.org flow and no human gate, so the merge completes them.
+        if rcfg["promote"] == "ci-yml":
+            rstate["phase"] = "done"
+            rstate["note"] = "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
+            save_state(state)
+            log(f"{repo}: merged; ci.yml publishes on the merge push -> done")
+            return "done"
         work = clone(repo)
         sh("dotnet", "restore", cwd=work, check=False)
         imp = subprocess.run(
