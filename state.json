@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -15,7 +15,7 @@
       "note": "DEFERRED: kernel-interop CI hang under dep bump; PR #1 left open for human review"
     },
     "opc-classic": {
-      "phase": "awaiting-pr-ci",
+      "phase": "failed",
       "updated": [
         "BenchmarkDotNet",
         "CsCheck",
@@ -39,8 +39,9 @@
         "coverlet.collector",
         "coverlet.msbuild"
       ],
-      "pr": 11
+      "pr": 11,
+      "note": "await-pr-ci: PR #11 checks failed"
     }
   },
-  "updated_at": "2026-07-10T14:45:24Z"
+  "updated_at": "2026-07-10T14:46:29Z"
 }
