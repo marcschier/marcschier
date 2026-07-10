@@ -66,9 +66,14 @@ def gh(*args: str, check: bool = True, token: str | None = None) -> str:
     return sh("gh", *args, check=check, env=env)
 
 
-def gh_json(*args: str, token: str | None = None):
-    out = gh(*args, token=token)
-    return json.loads(out) if out else None
+def gh_json(*args: str, check: bool = True, token: str | None = None):
+    out = gh(*args, check=check, token=token)
+    if not out:
+        return None
+    try:
+        return json.loads(out)
+    except json.JSONDecodeError:
+        return None
 
 
 def budget_left() -> float:
