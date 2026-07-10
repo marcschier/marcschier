@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -13,7 +13,7 @@
       "note": "merged; Netcap.Mcp 1.0.3 published to GitHub Packages via ci.yml"
     },
     "nfs": {
-      "phase": "awaiting-pr-ci",
+      "phase": "failed",
       "updated": [
         "BenchmarkDotNet",
         "Microsoft.CodeAnalysis.CSharp",
@@ -21,8 +21,9 @@
         "Polyfill",
         "System.IO.Pipelines"
       ],
-      "pr": 1
+      "pr": 1,
+      "note": "await-pr-ci: PR #1 checks failed"
     }
   },
-  "updated_at": "2026-07-10T13:56:49Z"
+  "updated_at": "2026-07-10T14:16:48Z"
 }
