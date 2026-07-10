@@ -13,7 +13,7 @@
       "note": "released v1.1.2"
     },
     "netcap-mcp": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Extensions.Hosting.Abstractions",
         "Microsoft.NET.Test.Sdk",
@@ -22,8 +22,9 @@
         "ModelContextProtocol.Core",
         "Moq",
         "Nerdbank.GitVersioning"
-      ]
+      ],
+      "pr": 1
     }
   },
-  "updated_at": "2026-07-10T13:26:04Z"
+  "updated_at": "2026-07-10T13:31:45Z"
 }
