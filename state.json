@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done",
@@ -7,7 +7,7 @@
       "note": "no outdated dependencies"
     },
     "mqtt-client": {
-      "phase": "awaiting-tag-ci",
+      "phase": "failed",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -32,8 +32,9 @@
         "TUnit"
       ],
       "pr": 4,
-      "tag": "v1.1.2"
+      "tag": "v1.1.2",
+      "note": "await-tag-ci: tag v1.1.2 CI failed (run 29091277346)"
     }
   },
-  "updated_at": "2026-07-10T12:02:09Z"
+  "updated_at": "2026-07-10T12:05:57Z"
 }
