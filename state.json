@@ -45,7 +45,27 @@
       ],
       "pr": 1,
       "note": "updated-not-released (no published package affected)"
+    },
+    "iothubby": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.DependencyInjection.Abstractions",
+        "Microsoft.Extensions.Hosting",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Options",
+        "Microsoft.Testing.Extensions.CodeCoverage",
+        "Mqtt.Client",
+        "Mqtt.Client.Testing",
+        "Nerdbank.GitVersioning",
+        "System.IO.Pipelines",
+        "System.Text.Json",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-10T15:28:22Z"
+  "updated_at": "2026-07-10T15:28:37Z"
 }
