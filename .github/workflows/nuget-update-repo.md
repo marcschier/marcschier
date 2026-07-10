@@ -10,6 +10,10 @@ on:
 engine: copilot
 permissions:
   contents: read
+network:
+  allowed:
+    - defaults
+    - dotnet
 tools:
   edit:
   bash: ["dotnet:*", "git:*", "ls", "cat", "grep", "head", "tail", "find", "pwd", "echo", "sed"]
