@@ -1,1 +1,19 @@
-{"status":"running","repos":{"dtls":{"phase":"done"},"mqtt-client":{"phase":"done"},"netcap-mcp":{"phase":"done"},"nfs":{"phase":"done","note":"DEFERRED: kernel-interop CI hang under dep bump; PR #1 left open for human review"}}}
+{
+  "status": "running",
+  "repos": {
+    "dtls": {
+      "phase": "done"
+    },
+    "mqtt-client": {
+      "phase": "done"
+    },
+    "netcap-mcp": {
+      "phase": "done"
+    },
+    "nfs": {
+      "phase": "done",
+      "note": "DEFERRED: kernel-interop CI hang under dep bump; PR #1 left open for human review"
+    }
+  },
+  "updated_at": "2026-07-10T14:28:08Z"
+}
