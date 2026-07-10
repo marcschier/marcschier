@@ -112,14 +112,27 @@ def save_state(state: dict) -> None:
     _ensure_state_branch()
     state["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     content = base64.b64encode(json.dumps(state, indent=2).encode()).decode()
-    sha = gh("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}?ref={STATE_BRANCH}",
-             "--jq", ".sha", check=False, token=ORCH_TOKEN)
-    args = ["api", "-X", "PUT", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
-            "-f", "message=chore: update nuget-update conductor state",
-            "-f", f"branch={STATE_BRANCH}", "-f", f"content={content}"]
-    if sha:
-        args += ["-f", f"sha={sha}"]
-    gh(*args, token=ORCH_TOKEN)
+    # The Contents API requires the current blob sha when updating an existing file. Re-fetch the
+    # sha immediately before each attempt and retry, so a stale/missing sha (propagation race or a
+    # concurrent write) cannot wedge the pipeline with a 422 "sha wasn't supplied".
+    last_err: Exception | None = None
+    for attempt in range(4):
+        sha = gh_json("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
+                      "-f", f"ref={STATE_BRANCH}", "--jq", "{sha:.sha}",
+                      check=False, token=ORCH_TOKEN)
+        sha_val = (sha or {}).get("sha")
+        args = ["api", "-X", "PUT", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
+                "-f", "message=chore: update nuget-update conductor state",
+                "-f", f"branch={STATE_BRANCH}", "-f", f"content={content}"]
+        if sha_val:
+            args += ["-f", f"sha={sha_val}"]
+        try:
+            gh(*args, token=ORCH_TOKEN)
+            return
+        except RuntimeError as exc:
+            last_err = exc
+            time.sleep(2 + attempt * 2)
+    raise RuntimeError(f"save_state failed after retries: {last_err}")
 
 
 # ------------------------------------------------------------------- pipeline helpers
