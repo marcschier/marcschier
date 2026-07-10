@@ -15,7 +15,7 @@
       "note": "DEFERRED: kernel-interop CI hang under dep bump; PR #1 left open for human review"
     },
     "opc-classic": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "BenchmarkDotNet",
         "CsCheck",
@@ -38,8 +38,9 @@
         "Verify.TUnit",
         "coverlet.collector",
         "coverlet.msbuild"
-      ]
+      ],
+      "pr": 11
     }
   },
-  "updated_at": "2026-07-10T14:28:50Z"
+  "updated_at": "2026-07-10T14:45:24Z"
 }
