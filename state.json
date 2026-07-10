@@ -6,9 +6,10 @@
       "note": "no outdated dependencies"
     },
     "mqtt-client": {
-      "phase": "release",
-      "pr": 4
+      "phase": "awaiting-tag-ci",
+      "pr": 4,
+      "tag": "v1.1.2"
     }
   },
-  "updated_at": "2026-07-10T12:17:33Z"
+  "updated_at": "2026-07-10T12:17:36Z"
 }
