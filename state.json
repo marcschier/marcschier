@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -47,7 +47,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "iothubby": {
-      "phase": "awaiting-pr-ci",
+      "phase": "failed",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Extensions.DependencyInjection",
@@ -65,8 +65,9 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 1
+      "pr": 1,
+      "note": "await-pr-ci: PR #1 checks failed"
     }
   },
-  "updated_at": "2026-07-10T15:47:12Z"
+  "updated_at": "2026-07-10T15:52:51Z"
 }
