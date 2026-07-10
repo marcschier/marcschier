@@ -17,7 +17,23 @@
     "opc-classic": {
       "phase": "done",
       "note": "DEFERRED: build/format/samba-smoke failures; PR #11 open for review"
+    },
+    "opcuakb-mcp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "AngleSharp",
+        "Azure.Identity",
+        "Azure.Search.Documents",
+        "Azure.Storage.Blobs",
+        "DotNetEnv",
+        "Microsoft.Agents.AI.Foundry.Hosting",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Logging.Console",
+        "ModelContextProtocol",
+        "ModelContextProtocol.AspNetCore",
+        "Nerdbank.GitVersioning"
+      ]
     }
   },
-  "updated_at": "2026-07-10T14:48:36Z"
+  "updated_at": "2026-07-10T14:48:53Z"
 }
