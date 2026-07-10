@@ -41,6 +41,19 @@ safe-outputs:
     labels: [dependencies, automation]
     title-prefix: "[nuget-update] "
     if-no-changes: ignore
+    # Central Package Management: all version bumps happen in the root Directory.Packages.props,
+    # which is in gh-aw's default protected set — exclude it so a dependency bump yields a PR.
+    protected-files:
+      policy: fallback-to-issue
+      exclude:
+        - "Directory.Packages.props"
+    # Exclusive allowlist: the agent may only touch production source and the central manifest.
+    # Any edit to tests/**, benchmarks/**, samples/**, eng/**, .github/**, version.json, *.slnx,
+    # etc. is outside this list and is refused, falling back to an explanatory issue.
+    allowed-files:
+      - "Directory.Packages.props"
+      - "**/Directory.Packages.props"
+      - "src/**"
   create-issue:
     target-repo: "marcschier/${{ github.event.inputs.repo }}"
     github-token: ${{ secrets.NUGET_UPDATE_TOKEN }}
@@ -69,8 +82,9 @@ Bring **every** NuGet dependency of this repository up to its **latest stable** 
 
 ## Hard rules
 
-- **Never** modify anything under `tests/`, any `*.Tests*` project, `.github/`, `eng/`, `version.json`, `*.sln`/`*.slnx`, or coverage/lint configuration. These are protected.
-- If the only way to make the build or tests pass is to change tests or CI, **do not** do it. Instead, open **one issue** (via the create-issue safe output) titled after the repo that explains which dependency update requires a test/CI change and why, and do **not** open a pull request.
+- Your changes may only touch **production source under `src/`** and the central **`Directory.Packages.props`** (where all package versions live). These are the only paths the PR will accept.
+- **Never** modify anything under `tests/`, `benchmarks/`, `samples/`, any `*.Tests*` project, `.github/`, `eng/`, `version.json`, `*.sln`/`*.slnx`, or coverage/lint configuration. Such edits are refused and will turn the run into an issue instead of a pull request.
+- If the only way to make the build or tests pass is to change tests or CI, **do not** do it. Instead, open **one issue** (via the create-issue safe output) that explains which dependency update requires a test/CI change and why, and do **not** open a pull request.
 - Do **not** bump `version.json` or create tags — releasing is handled separately by the conductor.
 - Keep the change limited to dependency versions plus the minimal source fixes they require.
 
