@@ -47,7 +47,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "iothubby": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Extensions.DependencyInjection",
@@ -64,8 +64,9 @@
         "System.Text.Json",
         "System.Threading.Channels",
         "TUnit"
-      ]
+      ],
+      "pr": 1
     }
   },
-  "updated_at": "2026-07-10T15:28:37Z"
+  "updated_at": "2026-07-10T15:47:12Z"
 }
