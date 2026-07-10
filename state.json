@@ -19,7 +19,7 @@
       "note": "DEFERRED: build/format/samba-smoke failures; PR #11 open for review"
     },
     "opcuakb-mcp": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "AngleSharp",
         "Azure.Identity",
@@ -33,8 +33,9 @@
         "ModelContextProtocol.AspNetCore",
         "Nerdbank.GitVersioning"
       ],
-      "pr": 2
+      "pr": 2,
+      "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     }
   },
-  "updated_at": "2026-07-10T14:55:43Z"
+  "updated_at": "2026-07-10T14:55:45Z"
 }
