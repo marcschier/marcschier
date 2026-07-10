@@ -122,10 +122,10 @@ def save_state(state: dict) -> None:
     # concurrent write) cannot wedge the pipeline with a 422 "sha wasn't supplied".
     last_err: Exception | None = None
     for attempt in range(4):
-        sha = gh_json("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
-                      "-f", f"ref={STATE_BRANCH}", "--jq", "{sha:.sha}",
-                      check=False, token=ORCH_TOKEN)
-        sha_val = (sha or {}).get("sha")
+        # Pure GET (query in the URL) — adding -f fields would flip gh api to POST and break the
+        # read. `.sha // empty` yields nothing when the file does not yet exist (first create).
+        sha_val = gh("api", f"repos/{ORCH_REPO}/contents/{STATE_PATH}?ref={STATE_BRANCH}",
+                     "--jq", ".sha // empty", check=False, token=ORCH_TOKEN).strip()
         args = ["api", "-X", "PUT", f"repos/{ORCH_REPO}/contents/{STATE_PATH}",
                 "-f", "message=chore: update nuget-update conductor state",
                 "-f", f"branch={STATE_BRANCH}", "-f", f"content={content}"]
