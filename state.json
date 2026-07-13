@@ -12,7 +12,7 @@
       "phase": "done"
     },
     "nfs": {
-      "phase": "publish-impact",
+      "phase": "release",
       "note": "PR #1 merged+green; releasing patch for Polyfill bump (owner decision 2026-07-13)",
       "updated": [
         "Nerdbank.GitVersioning",
@@ -79,5 +79,5 @@
       "released_at": "2026-07-13T08:55:18Z"
     }
   },
-  "updated_at": "2026-07-13T13:46:35Z"
+  "updated_at": "2026-07-13T13:46:56Z"
 }
