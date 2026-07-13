@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -61,16 +61,14 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "failed",
+      "phase": "awaiting-pr-ci",
       "updated": [
-        "Microsoft.Testing.Extensions.CodeCoverage",
-        "Mqtt.Client",
-        "NanoMsgSharp",
         "Nerdbank.GitVersioning",
-        "TUnit"
+        "RaftCs",
+        "Mqtt.Client"
       ],
       "pr": 11,
-      "note": "await-pr-ci: PR #11 checks failed"
+      "note": "coverage-gate fixed (pin TUnit/CodeCoverage); CI green; resuming"
     }
   },
   "updated_at": "2026-07-13T08:40:54Z"
