@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "awaiting-tag-ci",
+      "phase": "failed",
       "updated": [
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
@@ -43,10 +43,10 @@
         "System.Threading.Channels"
       ],
       "pr": 1,
-      "note": "coverage-gate fixed by pinning TUnit/CodeCoverage; CI green; resuming",
+      "note": "await-tag-ci: tag v1.1.1 CI failed (run 29232861015)",
       "tag": "v1.1.1",
       "released_at": "2026-07-13T07:40:57Z"
     }
   },
-  "updated_at": "2026-07-13T07:40:58Z"
+  "updated_at": "2026-07-13T07:44:08Z"
 }
