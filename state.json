@@ -48,7 +48,7 @@
       "released_at": "2026-07-13T07:40:57Z"
     },
     "raft-cs": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Microsoft.Testing.Extensions.CodeCoverage",
         "NanoMsgSharp",
@@ -57,8 +57,9 @@
       ],
       "pr": 5,
       "tag": "v1.1.1",
-      "released_at": "2026-07-13T08:19:44Z"
+      "released_at": "2026-07-13T08:19:44Z",
+      "note": "released v1.1.1"
     }
   },
-  "updated_at": "2026-07-13T08:28:38Z"
+  "updated_at": "2026-07-13T08:31:39Z"
 }
