@@ -61,7 +61,7 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "Nerdbank.GitVersioning",
         "RaftCs",
@@ -71,5 +71,5 @@
       "note": "coverage-gate fixed (pin TUnit/CodeCoverage); CI green; resuming"
     }
   },
-  "updated_at": "2026-07-13T08:54:08Z"
+  "updated_at": "2026-07-13T08:54:17Z"
 }
