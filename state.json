@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
@@ -43,10 +43,10 @@
         "System.Threading.Channels"
       ],
       "pr": 1,
-      "note": "tag v1.1.1 CI green (aot flake re-run); promoting to nuget.org",
+      "note": "released v1.1.1",
       "tag": "v1.1.1",
       "released_at": "2026-07-13T07:40:57Z"
     }
   },
-  "updated_at": "2026-07-13T07:58:06Z"
+  "updated_at": "2026-07-13T08:04:08Z"
 }
