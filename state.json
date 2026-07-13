@@ -27,12 +27,13 @@
       "note": "updated-not-released"
     },
     "iothubby": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "TUnit"
       ],
-      "pr": 5
+      "pr": 5,
+      "note": "updated-not-released (no published package affected)"
     }
   },
-  "updated_at": "2026-07-13T07:11:54Z"
+  "updated_at": "2026-07-13T07:12:05Z"
 }
