@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -35,18 +35,16 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "failed",
+      "phase": "await-pr-ci",
       "updated": [
-        "Microsoft.Bcl.AsyncInterfaces",
-        "Microsoft.Testing.Extensions.CodeCoverage",
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
-        "System.Threading.Channels",
-        "TUnit"
+        "Microsoft.Bcl.AsyncInterfaces",
+        "System.Threading.Channels"
       ],
       "pr": 1,
-      "note": "await-pr-ci: PR #1 checks failed"
+      "note": "coverage-gate fixed by pinning TUnit/CodeCoverage; CI green; resuming"
     }
   },
-  "updated_at": "2026-07-13T07:20:16Z"
+  "updated_at": "2026-07-13T07:33:56Z"
 }
