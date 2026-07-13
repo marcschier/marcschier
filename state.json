@@ -1,73 +1,9 @@
-{
-  "status": "halted",
-  "repos": {
-    "dtls": {
-      "phase": "done"
-    },
-    "mqtt-client": {
-      "phase": "done"
-    },
-    "netcap-mcp": {
-      "phase": "done"
-    },
-    "nfs": {
-      "phase": "done",
-      "note": "DEFERRED: kernel-interop CI hang; PR #1 open for review"
-    },
-    "opc-classic": {
-      "phase": "done",
-      "note": "DEFERRED: build/format/samba-smoke failures; PR #11 open for review"
-    },
-    "opcuakb-mcp": {
-      "phase": "done",
-      "updated": [
-        "AngleSharp",
-        "Azure.Identity",
-        "Azure.Search.Documents",
-        "Azure.Storage.Blobs",
-        "DotNetEnv",
-        "Microsoft.Agents.AI.Foundry.Hosting",
-        "Microsoft.Extensions.Logging.Abstractions",
-        "Microsoft.Extensions.Logging.Console",
-        "ModelContextProtocol",
-        "ModelContextProtocol.AspNetCore",
-        "Nerdbank.GitVersioning"
-      ],
-      "pr": 2,
-      "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
-    },
-    "pgm": {
-      "phase": "done",
-      "updated": [
-        "BenchmarkDotNet",
-        "Nerdbank.GitVersioning",
-        "TUnit"
-      ],
-      "pr": 1,
-      "note": "updated-not-released (no published package affected)"
-    },
-    "iothubby": {
-      "phase": "failed",
-      "updated": [
-        "Microsoft.Bcl.AsyncInterfaces",
-        "Microsoft.Extensions.DependencyInjection",
-        "Microsoft.Extensions.DependencyInjection.Abstractions",
-        "Microsoft.Extensions.Hosting",
-        "Microsoft.Extensions.Hosting.Abstractions",
-        "Microsoft.Extensions.Logging.Abstractions",
-        "Microsoft.Extensions.Options",
-        "Microsoft.Testing.Extensions.CodeCoverage",
-        "Mqtt.Client",
-        "Mqtt.Client.Testing",
-        "Nerdbank.GitVersioning",
-        "System.IO.Pipelines",
-        "System.Text.Json",
-        "System.Threading.Channels",
-        "TUnit"
-      ],
-      "pr": 1,
-      "note": "await-pr-ci: PR #1 checks failed"
-    }
-  },
-  "updated_at": "2026-07-10T15:52:51Z"
-}
+{"status":"running","repos":{
+"dtls":{"phase":"done"},
+"mqtt-client":{"phase":"done","note":"released 1.1.2"},
+"netcap-mcp":{"phase":"done"},
+"nfs":{"phase":"done","note":"DEFERRED: kernel-interop CI hang; PR #1 open"},
+"opc-classic":{"phase":"done","note":"DEFERRED: build/format/samba failures; PR #11 open"},
+"opcuakb-mcp":{"phase":"done"},
+"pgm":{"phase":"done","note":"updated-not-released"}
+}}
