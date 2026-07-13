@@ -13,7 +13,7 @@
     },
     "nfs": {
       "phase": "done",
-      "note": "DEFERRED: kernel-interop CI hang; PR #1 open"
+      "note": "PR #1 merged+green 2026-07-13 (kernel-interop hang resolved). Bumps: nbgv+BenchmarkDotNet (non-impacting), Polyfill 10.11.0->10.11.2 (source-only, technically impacting). nuget.org still at 0.11.0. Awaiting promote decision."
     },
     "opc-classic": {
       "phase": "done",
