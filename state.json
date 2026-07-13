@@ -1,5 +1,5 @@
 {
-  "status": "idle",
+  "status": "running",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -12,8 +12,14 @@
       "phase": "done"
     },
     "nfs": {
-      "phase": "done",
-      "note": "PR #1 merged+green 2026-07-13 (kernel-interop hang resolved). Bumps: nbgv+BenchmarkDotNet (non-impacting), Polyfill 10.11.0->10.11.2 (source-only, technically impacting). nuget.org still at 0.11.0. Awaiting promote decision."
+      "phase": "publish-impact",
+      "note": "PR #1 merged+green; releasing patch for Polyfill bump (owner decision 2026-07-13)",
+      "updated": [
+        "Nerdbank.GitVersioning",
+        "Polyfill",
+        "BenchmarkDotNet"
+      ],
+      "pr": 1
     },
     "opc-classic": {
       "phase": "done",
