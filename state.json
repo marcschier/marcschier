@@ -17,7 +17,7 @@
     },
     "opc-classic": {
       "phase": "done",
-      "note": "PR #11 merged+green (07-12); v0.2.0-alpha released to GitHub Packages (impacting bumps included); NOT promoted to nuget.org (still 0.1.0-alpha). Awaiting promote decision."
+      "note": "Dep updates merged+green; v0.2.0-alpha on GitHub Packages. Intentionally NOT promoted to nuget.org while alpha (owner decision 2026-07-13)."
     },
     "opcuakb-mcp": {
       "phase": "done"
