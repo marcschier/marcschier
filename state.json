@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
@@ -46,5 +46,5 @@
       "note": "coverage-gate fixed by pinning TUnit/CodeCoverage; CI green; resuming"
     }
   },
-  "updated_at": "2026-07-13T07:40:26Z"
+  "updated_at": "2026-07-13T07:40:37Z"
 }
