@@ -17,7 +17,7 @@
     },
     "opc-classic": {
       "phase": "done",
-      "note": "DEFERRED: build/format/samba failures; PR #11 open"
+      "note": "PR #11 merged+green (07-12); v0.2.0-alpha released to GitHub Packages (impacting bumps included); NOT promoted to nuget.org (still 0.1.0-alpha). Awaiting promote decision."
     },
     "opcuakb-mcp": {
       "phase": "done"
