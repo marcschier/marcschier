@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "awaiting-pr-ci",
+      "phase": "failed",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Testing.Extensions.CodeCoverage",
@@ -44,8 +44,9 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 1
+      "pr": 1,
+      "note": "await-pr-ci: PR #1 checks failed"
     }
   },
-  "updated_at": "2026-07-13T07:19:11Z"
+  "updated_at": "2026-07-13T07:20:16Z"
 }
