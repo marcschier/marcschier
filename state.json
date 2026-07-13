@@ -12,14 +12,16 @@
       "phase": "done"
     },
     "nfs": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "note": "PR #1 merged+green; releasing patch for Polyfill bump (owner decision 2026-07-13)",
       "updated": [
         "Nerdbank.GitVersioning",
         "Polyfill",
         "BenchmarkDotNet"
       ],
-      "pr": 1
+      "pr": 1,
+      "tag": "v0.11.1",
+      "released_at": "2026-07-13T13:46:58Z"
     },
     "opc-classic": {
       "phase": "done",
@@ -79,5 +81,5 @@
       "released_at": "2026-07-13T08:55:18Z"
     }
   },
-  "updated_at": "2026-07-13T13:46:56Z"
+  "updated_at": "2026-07-13T13:47:00Z"
 }
