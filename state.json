@@ -33,7 +33,18 @@
       ],
       "pr": 5,
       "note": "updated-not-released (no published package affected)"
+    },
+    "nanomsg-sharp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Testing.Extensions.CodeCoverage",
+        "Nerdbank.GitVersioning",
+        "System.IO.Pipelines",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-13T07:12:05Z"
+  "updated_at": "2026-07-13T07:12:26Z"
 }
