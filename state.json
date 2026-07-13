@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "promote",
+      "phase": "awaiting-promotion",
       "updated": [
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
@@ -48,5 +48,5 @@
       "released_at": "2026-07-13T07:40:57Z"
     }
   },
-  "updated_at": "2026-07-13T07:52:47Z"
+  "updated_at": "2026-07-13T07:52:57Z"
 }
