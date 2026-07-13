@@ -35,7 +35,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "nanomsg-sharp": {
-      "phase": "await-pr-ci",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Nerdbank.GitVersioning",
         "System.IO.Pipelines",
