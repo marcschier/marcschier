@@ -61,7 +61,7 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "awaiting-promotion",
+      "phase": "awaiting-listing",
       "updated": [
         "Nerdbank.GitVersioning",
         "RaftCs",
@@ -73,5 +73,5 @@
       "released_at": "2026-07-13T08:55:18Z"
     }
   },
-  "updated_at": "2026-07-13T09:01:22Z"
+  "updated_at": "2026-07-13T09:02:57Z"
 }
