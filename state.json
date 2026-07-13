@@ -1,9 +1,31 @@
-{"status":"running","repos":{
-"dtls":{"phase":"done"},
-"mqtt-client":{"phase":"done","note":"released 1.1.2"},
-"netcap-mcp":{"phase":"done"},
-"nfs":{"phase":"done","note":"DEFERRED: kernel-interop CI hang; PR #1 open"},
-"opc-classic":{"phase":"done","note":"DEFERRED: build/format/samba failures; PR #11 open"},
-"opcuakb-mcp":{"phase":"done"},
-"pgm":{"phase":"done","note":"updated-not-released"}
-}}
+{
+  "status": "running",
+  "repos": {
+    "dtls": {
+      "phase": "done"
+    },
+    "mqtt-client": {
+      "phase": "done",
+      "note": "released 1.1.2"
+    },
+    "netcap-mcp": {
+      "phase": "done"
+    },
+    "nfs": {
+      "phase": "done",
+      "note": "DEFERRED: kernel-interop CI hang; PR #1 open"
+    },
+    "opc-classic": {
+      "phase": "done",
+      "note": "DEFERRED: build/format/samba failures; PR #11 open"
+    },
+    "opcuakb-mcp": {
+      "phase": "done"
+    },
+    "pgm": {
+      "phase": "done",
+      "note": "updated-not-released"
+    }
+  },
+  "updated_at": "2026-07-13T06:53:26Z"
+}
