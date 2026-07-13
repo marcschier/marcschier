@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -61,7 +61,7 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "awaiting-pr-ci",
+      "phase": "failed",
       "updated": [
         "Microsoft.Testing.Extensions.CodeCoverage",
         "Mqtt.Client",
@@ -69,8 +69,9 @@
         "Nerdbank.GitVersioning",
         "TUnit"
       ],
-      "pr": 11
+      "pr": 11,
+      "note": "await-pr-ci: PR #11 checks failed"
     }
   },
-  "updated_at": "2026-07-13T08:39:47Z"
+  "updated_at": "2026-07-13T08:40:54Z"
 }
