@@ -61,17 +61,17 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Nerdbank.GitVersioning",
         "RaftCs",
         "Mqtt.Client"
       ],
       "pr": 11,
-      "note": "coverage-gate fixed (pin TUnit/CodeCoverage); CI green; resuming",
+      "note": "released v1.1.1",
       "tag": "v1.1.1",
       "released_at": "2026-07-13T08:55:18Z"
     }
   },
-  "updated_at": "2026-07-13T09:02:57Z"
+  "updated_at": "2026-07-13T09:08:30Z"
 }
