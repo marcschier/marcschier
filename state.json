@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "idle",
   "repos": {
     "dtls": {
       "phase": "done"
@@ -48,5 +48,5 @@
       "released_at": "2026-07-13T07:40:57Z"
     }
   },
-  "updated_at": "2026-07-13T08:04:08Z"
+  "updated_at": "2026-07-13T08:04:11Z"
 }
