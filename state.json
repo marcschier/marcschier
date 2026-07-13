@@ -61,15 +61,16 @@
       "note": "released v1.1.1"
     },
     "crdt": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Testing.Extensions.CodeCoverage",
         "Mqtt.Client",
         "NanoMsgSharp",
         "Nerdbank.GitVersioning",
         "TUnit"
-      ]
+      ],
+      "pr": 11
     }
   },
-  "updated_at": "2026-07-13T08:32:03Z"
+  "updated_at": "2026-07-13T08:39:47Z"
 }
