@@ -48,15 +48,17 @@
       "released_at": "2026-07-13T07:40:57Z"
     },
     "raft-cs": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "Microsoft.Testing.Extensions.CodeCoverage",
         "NanoMsgSharp",
         "Nerdbank.GitVersioning",
         "TUnit"
       ],
-      "pr": 5
+      "pr": 5,
+      "tag": "v1.1.1",
+      "released_at": "2026-07-13T08:19:44Z"
     }
   },
-  "updated_at": "2026-07-13T08:19:41Z"
+  "updated_at": "2026-07-13T08:19:46Z"
 }
