@@ -27,12 +27,12 @@
       "note": "updated-not-released"
     },
     "iothubby": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "TUnit"
       ],
       "pr": 5
     }
   },
-  "updated_at": "2026-07-13T07:02:08Z"
+  "updated_at": "2026-07-13T07:11:54Z"
 }
