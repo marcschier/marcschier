@@ -120,7 +120,7 @@
       "note": "released v0.10.1"
     },
     "nanomsg-sharp": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Testing.Extensions.CodeCoverage",
@@ -130,9 +130,10 @@
       ],
       "pr": 4,
       "tag": "v1.1.2",
-      "released_at": "2026-07-15T07:20:26Z"
+      "released_at": "2026-07-15T07:20:26Z",
+      "note": "released v1.1.2"
     }
   },
-  "updated_at": "2026-07-15T07:26:24Z",
+  "updated_at": "2026-07-15T07:31:26Z",
   "status": "running"
 }
