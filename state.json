@@ -2,13 +2,14 @@
   "note": "fresh full-cascade drive 2026-07-15",
   "repos": {
     "dtls": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "Microsoft.NET.Test.Sdk"
       ],
-      "pr": 5
+      "pr": 5,
+      "note": "updated-not-released (no published package affected)"
     }
   },
-  "updated_at": "2026-07-15T04:55:21Z",
+  "updated_at": "2026-07-15T04:55:28Z",
   "status": "running"
 }
