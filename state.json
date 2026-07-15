@@ -37,15 +37,16 @@
       "note": "released v1.1.3"
     },
     "netcap-mcp": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "Microsoft.Extensions.Hosting.Abstractions",
         "Microsoft.NET.Test.Sdk",
         "Microsoft.SourceLink.GitHub"
       ],
-      "pr": 2
+      "pr": 2,
+      "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     }
   },
-  "updated_at": "2026-07-15T05:24:50Z",
+  "updated_at": "2026-07-15T05:24:52Z",
   "status": "running"
 }
