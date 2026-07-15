@@ -1,6 +1,13 @@
 {
   "note": "fresh full-cascade drive 2026-07-15",
-  "repos": {},
-  "updated_at": "2026-07-15T04:46:11Z",
+  "repos": {
+    "dtls": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.NET.Test.Sdk"
+      ]
+    }
+  },
+  "updated_at": "2026-07-15T04:46:30Z",
   "status": "running"
 }
