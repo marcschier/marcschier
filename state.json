@@ -47,7 +47,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -56,9 +56,11 @@
         "Polyfill",
         "System.IO.Pipelines"
       ],
-      "pr": 3
+      "pr": 3,
+      "tag": "v0.11.2",
+      "released_at": "2026-07-15T05:37:58Z"
     }
   },
-  "updated_at": "2026-07-15T05:37:55Z",
+  "updated_at": "2026-07-15T05:38:00Z",
   "status": "running"
 }
