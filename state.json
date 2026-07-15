@@ -98,7 +98,7 @@
       "released_at": "2026-07-15T06:36:49Z"
     },
     "iothubby": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Extensions.DependencyInjection",
@@ -113,9 +113,10 @@
         "System.Text.Json",
         "System.Threading.Channels",
         "TUnit"
-      ]
+      ],
+      "pr": 6
     }
   },
-  "updated_at": "2026-07-15T06:49:06Z",
+  "updated_at": "2026-07-15T06:53:47Z",
   "status": "running"
 }
