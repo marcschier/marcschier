@@ -132,8 +132,20 @@
       "tag": "v1.1.2",
       "released_at": "2026-07-15T07:20:26Z",
       "note": "released v1.1.2"
+    },
+    "raft-cs": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Bcl.TimeProvider",
+        "Microsoft.Testing.Extensions.CodeCoverage",
+        "NanoMsgSharp",
+        "System.Text.Json",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T07:31:26Z",
+  "updated_at": "2026-07-15T07:31:42Z",
   "status": "running"
 }
