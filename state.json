@@ -150,7 +150,7 @@
       "note": "released v1.1.2"
     },
     "crdt": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -166,9 +166,9 @@
       "pr": 13,
       "tag": "v1.1.2",
       "released_at": "2026-07-15T08:02:39Z",
-      "note": "ci.yml nbgv GITHUB_ENV race fixed (#15); re-cut tag v1.1.2 CI green incl GH Packages publish; promoting to nuget.org"
+      "note": "released v1.1.2"
     }
   },
-  "updated_at": "2026-07-15T15:32:18Z",
+  "updated_at": "2026-07-15T15:37:20Z",
   "status": "running"
 }
