@@ -148,8 +148,23 @@
       "tag": "v1.1.2",
       "released_at": "2026-07-15T07:40:52Z",
       "note": "released v1.1.2"
+    },
+    "crdt": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Bcl.TimeProvider",
+        "Microsoft.Testing.Extensions.CodeCoverage",
+        "Mqtt.Client",
+        "NanoMsgSharp",
+        "Pgm",
+        "RaftCs",
+        "System.Text.Json",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T07:51:53Z",
+  "updated_at": "2026-07-15T07:52:14Z",
   "status": "running"
 }
