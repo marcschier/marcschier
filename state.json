@@ -83,8 +83,18 @@
       ],
       "pr": 3,
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
+    },
+    "pgm": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Bcl.TimeProvider",
+        "System.Text.Json",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T06:22:06Z",
+  "updated_at": "2026-07-15T06:22:20Z",
   "status": "running"
 }
