@@ -118,8 +118,18 @@
       "tag": "v0.10.1",
       "released_at": "2026-07-15T06:58:10Z",
       "note": "released v0.10.1"
+    },
+    "nanomsg-sharp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Testing.Extensions.CodeCoverage",
+        "System.IO.Pipelines",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T07:09:38Z",
+  "updated_at": "2026-07-15T07:09:49Z",
   "status": "running"
 }
