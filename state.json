@@ -96,8 +96,26 @@
       ],
       "tag": "v0.10.1",
       "released_at": "2026-07-15T06:36:49Z"
+    },
+    "iothubby": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.DependencyInjection.Abstractions",
+        "Microsoft.Extensions.Hosting",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Options",
+        "Mqtt.Client",
+        "Mqtt.Client.Testing",
+        "System.IO.Pipelines",
+        "System.Text.Json",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T06:48:45Z",
+  "updated_at": "2026-07-15T06:49:06Z",
   "status": "running"
 }
