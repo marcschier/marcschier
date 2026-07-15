@@ -134,7 +134,7 @@
       "note": "released v1.1.2"
     },
     "raft-cs": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -144,9 +144,11 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 6
+      "pr": 6,
+      "tag": "v1.1.2",
+      "released_at": "2026-07-15T07:40:52Z"
     }
   },
-  "updated_at": "2026-07-15T07:40:48Z",
+  "updated_at": "2026-07-15T07:40:53Z",
   "status": "running"
 }
