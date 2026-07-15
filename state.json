@@ -150,7 +150,7 @@
       "note": "released v1.1.2"
     },
     "crdt": {
-      "phase": "awaiting-tag-ci",
+      "phase": "failed",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -165,9 +165,10 @@
       ],
       "pr": 13,
       "tag": "v1.1.2",
-      "released_at": "2026-07-15T08:02:39Z"
+      "released_at": "2026-07-15T08:02:39Z",
+      "note": "await-tag-ci: tag v1.1.2 CI failed (run 29399387259)"
     }
   },
-  "updated_at": "2026-07-15T08:02:41Z",
-  "status": "running"
+  "updated_at": "2026-07-15T08:09:12Z",
+  "status": "halted"
 }
