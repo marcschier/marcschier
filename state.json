@@ -169,6 +169,6 @@
       "note": "ci.yml nbgv GITHUB_ENV race fixed (#15); re-cut tag v1.1.2 CI green incl GH Packages publish; promoting to nuget.org"
     }
   },
-  "updated_at": "2026-07-15T08:09:12Z",
+  "updated_at": "2026-07-15T15:31:13Z",
   "status": "running"
 }
