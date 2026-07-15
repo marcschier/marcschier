@@ -150,7 +150,7 @@
       "note": "released v1.1.2"
     },
     "crdt": {
-      "phase": "failed",
+      "phase": "promote",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -166,9 +166,9 @@
       "pr": 13,
       "tag": "v1.1.2",
       "released_at": "2026-07-15T08:02:39Z",
-      "note": "Deps MERGED to main (PR #13); tag v1.1.2 cut; ALL tests green. BLOCKED: ci.yml \"publish to GitHub Packages\" job fails on a pre-existing env-format bug (Unable to process file command env / Invalid format 1.2) BEFORE the nuget push, so Crdt 1.1.2 never reached GitHub Packages; nuget.yml (which downloads from GH Packages) therefore cannot promote to nuget.org. Needs an owner ci.yml fix (or a write:packages manual push). Not a dependency problem."
+      "note": "ci.yml nbgv GITHUB_ENV race fixed (#15); re-cut tag v1.1.2 CI green incl GH Packages publish; promoting to nuget.org"
     }
   },
   "updated_at": "2026-07-15T08:09:12Z",
-  "status": "halted"
+  "status": "running"
 }
