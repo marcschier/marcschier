@@ -73,16 +73,17 @@
       "note": "PR #20 merged (merge-only, --admin; all tests green, lone failure was a coverage->GITHUB_ENV format glitch in ubuntu-Debug, infra-only). NOT released: alpha, owner decision to keep off nuget.org. Deps now current on main."
     },
     "opcuakb-mcp": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Agents.AI.Foundry.Hosting",
         "Microsoft.Extensions.Hosting.Abstractions",
         "Microsoft.Extensions.Logging.Abstractions",
         "Microsoft.Extensions.Logging.Console",
         "Nerdbank.GitVersioning"
-      ]
+      ],
+      "pr": 3
     }
   },
-  "updated_at": "2026-07-15T06:08:02Z",
+  "updated_at": "2026-07-15T06:21:29Z",
   "status": "running"
 }
