@@ -60,8 +60,19 @@
       "tag": "v0.11.2",
       "released_at": "2026-07-15T05:37:58Z",
       "note": "released v0.11.2"
+    },
+    "opc-classic": {
+      "phase": "done",
+      "updated": [
+        "Microsoft.Extensions.*",
+        "System.IO.Hashing",
+        "Meziantou.Analyzer",
+        "Microsoft.SourceLink.GitHub"
+      ],
+      "pr": 20,
+      "note": "PR #20 merged (merge-only, --admin; all tests green, lone failure was a coverage->GITHUB_ENV format glitch in ubuntu-Debug, infra-only). NOT released: alpha, owner decision to keep off nuget.org. Deps now current on main."
     }
   },
   "updated_at": "2026-07-15T05:56:56Z",
-  "status": "idle"
+  "status": "running"
 }
