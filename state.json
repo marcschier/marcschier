@@ -35,8 +35,16 @@
       "tag": "v1.1.3",
       "released_at": "2026-07-15T05:07:21Z",
       "note": "released v1.1.3"
+    },
+    "netcap-mcp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.NET.Test.Sdk",
+        "Microsoft.SourceLink.GitHub"
+      ]
     }
   },
-  "updated_at": "2026-07-15T05:17:52Z",
+  "updated_at": "2026-07-15T05:18:01Z",
   "status": "running"
 }
