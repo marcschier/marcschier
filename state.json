@@ -150,7 +150,7 @@
       "note": "released v1.1.2"
     },
     "crdt": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -163,9 +163,11 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 13
+      "pr": 13,
+      "tag": "v1.1.2",
+      "released_at": "2026-07-15T08:02:39Z"
     }
   },
-  "updated_at": "2026-07-15T08:02:36Z",
+  "updated_at": "2026-07-15T08:02:41Z",
   "status": "running"
 }
