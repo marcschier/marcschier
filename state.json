@@ -134,7 +134,7 @@
       "note": "released v1.1.2"
     },
     "raft-cs": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -146,9 +146,10 @@
       ],
       "pr": 6,
       "tag": "v1.1.2",
-      "released_at": "2026-07-15T07:40:52Z"
+      "released_at": "2026-07-15T07:40:52Z",
+      "note": "released v1.1.2"
     }
   },
-  "updated_at": "2026-07-15T07:46:50Z",
+  "updated_at": "2026-07-15T07:51:53Z",
   "status": "running"
 }
