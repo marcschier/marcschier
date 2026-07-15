@@ -8,8 +8,31 @@
       ],
       "pr": 5,
       "note": "updated-not-released (no published package affected)"
+    },
+    "mqtt-client": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "BenchmarkDotNet",
+        "MQTTnet",
+        "MQTTnet.AspNetCore",
+        "MQTTnet.Server",
+        "Meziantou.Analyzer",
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.DependencyInjection.Abstractions",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Options",
+        "Microsoft.SourceLink.GitHub",
+        "SharpFuzz",
+        "System.Diagnostics.DiagnosticSource",
+        "System.IO.Pipelines",
+        "System.Threading.Channels",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-07-15T04:55:28Z",
+  "updated_at": "2026-07-15T04:55:43Z",
   "status": "running"
 }
