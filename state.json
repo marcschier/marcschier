@@ -85,18 +85,17 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "pgm": {
-      "phase": "failed",
+      "phase": "awaiting-pr-ci",
+      "pr": 2,
+      "note": "coverage-gate fixed (revert TUnit->1.58.0/CodeCoverage->18.8.0); CI green; resuming",
       "updated": [
-        "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
         "System.Text.Json",
         "System.Threading.Channels",
-        "TUnit"
-      ],
-      "pr": 2,
-      "note": "await-pr-ci: PR #2 checks failed"
+        "Microsoft.Bcl.AsyncInterfaces"
+      ]
     }
   },
   "updated_at": "2026-07-15T06:28:37Z",
-  "status": "halted"
+  "status": "running"
 }
