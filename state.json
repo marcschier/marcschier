@@ -47,7 +47,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "promote",
+      "phase": "awaiting-promotion",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -61,6 +61,6 @@
       "released_at": "2026-07-15T05:37:58Z"
     }
   },
-  "updated_at": "2026-07-15T05:46:02Z",
+  "updated_at": "2026-07-15T05:46:05Z",
   "status": "running"
 }
