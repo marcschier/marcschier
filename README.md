@@ -113,6 +113,15 @@ High-performance, NativeAOT-ready **Azure IoT Hub &amp; IoT Edge** device/module
 | [`IoTHubby`](https://www.nuget.org/packages/IoTHubby) | ![v](https://img.shields.io/nuget/v/IoTHubby) | ![dt](https://img.shields.io/nuget/dt/IoTHubby) |
 | [`IoTHubby.Edge`](https://www.nuget.org/packages/IoTHubby.Edge) | ![v](https://img.shields.io/nuget/v/IoTHubby.Edge) | ![dt](https://img.shields.io/nuget/dt/IoTHubby.Edge) |
 
+### 🧊 [openusd-dotnet](https://github.com/marcschier/openusd-dotnet)
+
+A high-performance, NativeAOT-compatible **.NET data and rendering stack for
+[OpenUSD](https://openusd.org/)** — project-owned C ABI, Hydra/Storm, Hydra-fed
+D3D12/Vulkan/Metal backends, and an Avalonia viewer.
+
+> 🧪 Public source at `0.1.0-alpha`; packages are built and tested from source but are not yet
+> published to a public feed.
+
 ### ⚙️ [opc-classic](https://github.com/marcschier/opc-classic)
 
 A cross-platform, NativeAOT-ready **.NET 10 OPC Classic** stack — DA, AE, HDA, Batch, Commands, Complex Data, DX, Security, Discovery, and XML-DA — over a fully managed DCOM/MSRPC transport with self-contained NTLMv2 / Kerberos / SPNEGO authentication. No Windows COM required at runtime.
@@ -139,7 +148,7 @@ All cross-repository links are via published NuGet packages (no source coupling)
 | 🗳️ **raft-cs** | nanomsg-sharp | `NanoMsgSharp` (`RaftCs.Transport.NanoMsg`) |
 | 🔌 **nanomsg-sharp** | dtls | `DtlsSharp` (`NanoMsgSharp.Dtls`) |
 | 🛰️ **iothubby** | mqtt-client | `Mqtt.Client` |
-| 📨 **mqtt-client** · 📡 **pgm** · 🔐 **dtls** · 🗂️ **nfs** · ⚙️ **opc-classic** | — | standalone |
+| 📨 **mqtt-client** · 📡 **pgm** · 🔐 **dtls** · 🗂️ **nfs** · 🧊 **openusd-dotnet** · ⚙️ **opc-classic** | — | standalone |
 | 🏭 **opcuakb-mcp** · 🕸️ **netcap-mcp** | — | standalone |
 
 The libraries are layered: lower-level transports and consensus are independent packages that the higher-level **CRDT** stack composes. An arrow **A → B** means *A depends on B* (consumes B's NuGet package).
@@ -156,12 +165,14 @@ graph TD
     iothubby["🛰️ iothubby"] -->|Mqtt.Client| mqtt
 
     nfs["🗂️ nfs"]
+    openusd["🧊 openusd-dotnet"]
     opcclassic["⚙️ opc-classic"]
     opcuakb["🏭 opcuakb-mcp"]
     netcap["🕸️ netcap-mcp"]
 
     classDef standalone fill:#f6f8fa,stroke:#999,stroke-dasharray:4 3,color:#333;
-    class nfs,opcclassic,opcuakb,netcap standalone;
+    class nfs,openusd,opcclassic,opcuakb,netcap standalone;
 ```
 
-> Dashed nodes (`nfs`, `opc-classic`, `opcuakb-mcp`, `netcap-mcp`) are standalone — they have no dependencies on the other projects here.
+> Dashed nodes (`nfs`, `openusd-dotnet`, `opc-classic`, `opcuakb-mcp`, `netcap-mcp`) are standalone —
+> they have no dependencies on the other projects here.
