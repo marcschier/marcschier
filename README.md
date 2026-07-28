@@ -119,8 +119,33 @@ A high-performance, NativeAOT-compatible **.NET data and rendering stack for
 [OpenUSD](https://openusd.org/)** — project-owned C ABI, Hydra/Storm, Hydra-fed
 D3D12/Vulkan/Metal backends, and an Avalonia viewer.
 
-> 🧪 Public source at `0.1.0-alpha`; packages are built and tested from source but are not yet
-> published to a public feed.
+| Package | Version | Downloads |
+|---|---|---|
+| [`OpenUsd`](https://www.nuget.org/packages/OpenUsd) | ![v](https://img.shields.io/nuget/vpre/OpenUsd) | ![dt](https://img.shields.io/nuget/dt/OpenUsd) |
+| [`OpenUsd.Interop`](https://www.nuget.org/packages/OpenUsd.Interop) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Interop) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Interop) |
+| [`OpenUsd.Rendering`](https://www.nuget.org/packages/OpenUsd.Rendering) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering) |
+| [`OpenUsd.Rendering.Storm`](https://www.nuget.org/packages/OpenUsd.Rendering.Storm) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering.Storm) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering.Storm) |
+| [`OpenUsd.Rendering.Silk`](https://www.nuget.org/packages/OpenUsd.Rendering.Silk) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering.Silk) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering.Silk) |
+| [`OpenUsd.Rendering.Silk.D3D12`](https://www.nuget.org/packages/OpenUsd.Rendering.Silk.D3D12) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering.Silk.D3D12) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering.Silk.D3D12) |
+| [`OpenUsd.Rendering.Silk.Vulkan`](https://www.nuget.org/packages/OpenUsd.Rendering.Silk.Vulkan) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering.Silk.Vulkan) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering.Silk.Vulkan) |
+| [`OpenUsd.Rendering.Silk.Metal`](https://www.nuget.org/packages/OpenUsd.Rendering.Silk.Metal) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Rendering.Silk.Metal) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Rendering.Silk.Metal) |
+| [`OpenUsd.Viewer`](https://www.nuget.org/packages/OpenUsd.Viewer) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Viewer) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Viewer) |
+
+Native runtime, paired with a managed package by RID — `Imaging` takes an exact dependency on `Core`:
+
+| Package | Version | Downloads |
+|---|---|---|
+| [`OpenUsd.Runtime.Core.win-x64`](https://www.nuget.org/packages/OpenUsd.Runtime.Core.win-x64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Core.win-x64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Core.win-x64) |
+| [`OpenUsd.Runtime.Core.linux-x64`](https://www.nuget.org/packages/OpenUsd.Runtime.Core.linux-x64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Core.linux-x64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Core.linux-x64) |
+| [`OpenUsd.Runtime.Core.osx-arm64`](https://www.nuget.org/packages/OpenUsd.Runtime.Core.osx-arm64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Core.osx-arm64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Core.osx-arm64) |
+| [`OpenUsd.Runtime.Imaging.win-x64`](https://www.nuget.org/packages/OpenUsd.Runtime.Imaging.win-x64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Imaging.win-x64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Imaging.win-x64) |
+| [`OpenUsd.Runtime.Imaging.linux-x64`](https://www.nuget.org/packages/OpenUsd.Runtime.Imaging.linux-x64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Imaging.linux-x64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Imaging.linux-x64) |
+| [`OpenUsd.Runtime.Imaging.osx-arm64`](https://www.nuget.org/packages/OpenUsd.Runtime.Imaging.osx-arm64) | ![v](https://img.shields.io/nuget/vpre/OpenUsd.Runtime.Imaging.osx-arm64) | ![dt](https://img.shields.io/nuget/dt/OpenUsd.Runtime.Imaging.osx-arm64) |
+
+> ℹ️ Data-only consumers pair `OpenUsd` with `OpenUsd.Runtime.Core.<rid>`; rendering consumers add a
+> backend and `OpenUsd.Runtime.Imaging.<rid>`. `OpenUsd.Viewer` is an embeddable Avalonia viewer
+> library; the standalone desktop shell ships outside NuGet. Published at `0.1.0-alpha` — a
+> prerelease, so `dotnet add package` needs `--prerelease`.
 
 ### ⚙️ [opc-classic](https://github.com/marcschier/opc-classic)
 
