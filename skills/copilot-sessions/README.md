@@ -55,6 +55,9 @@ the **currently focused** window, starts in that session's original working dire
 ./scripts/Resume-CopilotSessions.ps1 -Hours 6
 ./scripts/Resume-CopilotSessions.ps1 -Days 3 -WhatIf
 ./scripts/Resume-CopilotSessions.ps1 -Days 2 -Filter '*UA-.NETStandard*'
+
+# Run the same opening prompt in every resumed tab
+./scripts/Resume-CopilotSessions.ps1 -Hours 12 -Prompt 'Summarise where we left off and list next steps'
 ```
 
 | Parameter | Default | Description |
@@ -64,7 +67,14 @@ the **currently focused** window, starts in that session's original working dire
 | `-Filter` | — | Wildcard over working directory, repository and name |
 | `-MaxTabs` | `20` | Safety cap on tabs |
 | `-CopilotArgument` | — | Extra arguments for `copilot`, e.g. `--model` |
+| `-Prompt` | — | Text run as the first prompt in every resumed session (passed as `-i`) |
 | `-CloseTabOnExit` | off | Close the tab when `copilot` exits |
+
+`-Prompt` keeps the session interactive and simply executes the text straight away, so it is handy
+for things like *"summarise where we left off"* or *"re-run the tests and fix anything broken"* across
+a whole day's worth of sessions at once. Quotes, semicolons, ampersands, pipes and trailing
+backslashes are all escaped for you. Avoid `%VARIABLE%` references — tabs launch through `cmd.exe`,
+which expands those before Copilot sees them, and the script warns when it spots one.
 
 ---
 

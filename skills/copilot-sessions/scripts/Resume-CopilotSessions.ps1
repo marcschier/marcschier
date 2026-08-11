@@ -35,6 +35,12 @@
 .PARAMETER CopilotArgument
     Additional arguments appended to the copilot command line, for example --model or --plan.
 
+.PARAMETER Prompt
+    Text to run as the first prompt in every resumed session, passed to copilot as -i. The session
+    still opens interactively; the prompt simply executes immediately.
+
+    Avoid %VARIABLE% references: tabs are launched through cmd.exe, which expands them first.
+
 .PARAMETER CloseTabOnExit
     Close the tab as soon as copilot exits. By default the tab keeps a shell prompt in the
     session's working directory.
@@ -53,6 +59,11 @@
     .\Resume-CopilotSessions.ps1 -Days 2 -Filter '*UA-.NETStandard*'
 
     Resume only sessions whose directory, repository or name matches the pattern.
+
+.EXAMPLE
+    .\Resume-CopilotSessions.ps1 -Hours 12 -Prompt 'Summarise where we left off and list next steps'
+
+    Resume each session and immediately run the same opening prompt in every tab.
 
 .NOTES
     Requires PowerShell 7, Windows Terminal (wt.exe) and the Copilot CLI (copilot.exe).
@@ -82,6 +93,9 @@ param(
     [int] $MaxTabs = 20,
 
     [string[]] $CopilotArgument = @(),
+
+    [ValidateNotNullOrEmpty()]
+    [string] $Prompt,
 
     [switch] $CloseTabOnExit
 )
@@ -143,6 +157,32 @@ function Get-StartingDirectory {
     return $trimmed
 }
 
+function ConvertTo-QuotedTabArgument {
+    <#
+    .SYNOPSIS
+        Escapes free text so it survives the wt.exe -> cmd.exe -> copilot argument chain intact.
+
+    .DESCRIPTION
+        The text passes through three parsers, each with its own rules, all verified empirically:
+
+          * Windows Terminal splits its command line on ';', and only un-escapes the sequence '\;'.
+          * The Windows argument parser treats '"' as a delimiter, accepts '""' as a literal quote,
+            and lets a backslash escape a quote - so a backslash run touching the closing quote
+            must be doubled.
+          * Newlines cannot appear in a command line at all.
+
+        Returns the escaped text without the surrounding quotes.
+    #>
+    param([Parameter(Mandatory)] [string] $Value)
+
+    $escaped = $Value -replace '[\r\n\t]+', ' '
+    $escaped = $escaped -replace '"', '""'
+    # Double any backslash run that touches the closing quote or an escaped inner quote.
+    $escaped = [regex]::Replace($escaped, '(\\+)(?=""|$)', { param($match) $match.Groups[1].Value * 2 })
+    # Applied last: the backslash is consumed by Windows Terminal, never reaching the argument parser.
+    return ($escaped -replace ';', '\;')
+}
+
 $copilotHomePath = Resolve-CopilotHome -Requested $CopilotHome
 $databasePath = Get-CopilotStorePath -CopilotHome $copilotHomePath -Require
 
@@ -154,6 +194,11 @@ if (-not $windowsTerminal) {
 
 if (-not (Get-Command -Name 'copilot' -ErrorAction SilentlyContinue)) {
     throw 'The Copilot CLI (copilot) was not found on PATH.'
+}
+
+if ($Prompt -and $Prompt -match '%[A-Za-z_][A-Za-z0-9_]*%') {
+    Write-Warning ('The prompt contains a %VARIABLE% reference. Tabs are launched through cmd.exe, ' +
+        'which expands those before Copilot sees them. Rephrase to avoid the percent signs.')
 }
 
 $window = if ($PSCmdlet.ParameterSetName -eq 'Hours') {
@@ -240,6 +285,9 @@ foreach ($session in $selected) {
     $copilotCommand = "copilot --resume=$($session.Id) --allow-all"
     if ($CopilotArgument.Count -gt 0) {
         $copilotCommand = "$copilotCommand $($CopilotArgument -join ' ')"
+    }
+    if ($Prompt) {
+        $copilotCommand = "$copilotCommand -i `"$(ConvertTo-QuotedTabArgument -Value $Prompt)`""
     }
 
     # '-w 0' targets the most recently used (currently focused) Windows Terminal window.

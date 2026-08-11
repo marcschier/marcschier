@@ -64,11 +64,26 @@ Two rules that are easy to get backwards:
 |---|---|---|
 | "Reopen what I was working on" | Resume | `-Hours 8` |
 | "Open a tab per repo" | Resume | (default, 1 day) |
+| "Reopen everything and ask each one to catch me up" | Resume | `-Prompt '<text>'` |
 | "My .copilot folder is huge" | Remove | **`-WhatIf` first**, then agree a threshold |
 | "Delete empty sessions" | Remove | `-Scope Sessions` |
 | "Clean up but keep anything with a plan" | Remove | `-ProtectOrphansWithPlan` |
 | "Move my sessions to my laptop" | Copy | `-Export` then `-Import` on the target |
 | "Just the transcripts, not the artifacts" | Copy | `-Export -Lean` |
+
+### Opening prompts
+
+`Resume-CopilotSessions.ps1 -Prompt '<text>'` runs the same text as the first prompt in every
+resumed session. The session still opens interactively — the prompt just executes immediately.
+
+Use it when the user wants every reopened session to do something on arrival, for example
+*"summarise where we left off"*, *"re-run the tests and fix anything broken"*, or
+*"check whether my PR has new review comments"*.
+
+The script escapes quotes, semicolons, ampersands, pipes and trailing backslashes automatically, so
+pass the user's wording through as-is. The one exception is `%VARIABLE%`: tabs launch through
+`cmd.exe`, which expands those before Copilot sees them, so rephrase to avoid percent signs. The
+script warns when it detects one.
 
 ## Safety rules
 
@@ -99,6 +114,9 @@ Resolve `$skill` to this skill's directory first.
 ```powershell
 # Reopen everything touched in the last 8 hours, one tab per working directory
 & "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 8
+
+# Reopen and have every session immediately catch the user up
+& "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 12 -Prompt 'Summarise where we left off and list next steps'
 
 # Preview only - ALWAYS do this before any purge
 & "$skill/scripts/Remove-EmptyCopilotSessions.ps1" -WhatIf
@@ -163,6 +181,7 @@ no rule are kept verbatim, and the script warns when a resulting directory does 
 | "Copilot session store not found" | Wrong `COPILOT_HOME`; pass `-CopilotHome <path>` |
 | Resume opens no tabs | No sessions in the window, or their directories no longer exist — widen `-Hours`/`-Days` and check the warnings |
 | Tabs open in the wrong window | `wt -w 0` targets the most recently used window; focus the intended one first |
+| `-Prompt` text arrives truncated or altered | A `%VARIABLE%` reference was expanded by `cmd.exe`; rephrase without percent signs |
 | Import says the schema differs | The bundle came from a different CLI version. `-Force` overrides, but verify afterwards |
 | Import skipped everything | The sessions already exist locally; re-run with `-Overwrite` |
 | Imported session points at a missing directory | Add or correct a `-PathMap` rule and re-import with `-Overwrite` |
