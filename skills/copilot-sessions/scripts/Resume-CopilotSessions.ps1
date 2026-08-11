@@ -59,6 +59,9 @@
     Reading the SQLite session store requires either sqlite3.exe or python on PATH.
 #>
 #Requires -Version 7.0
+# Write-Host is deliberate: these are interactive console tools whose tables and summaries are for
+# the operator to read, not for the pipeline.
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '')]
 [CmdletBinding(SupportsShouldProcess, DefaultParameterSetName = 'Days')]
 param(
     [Parameter(ParameterSetName = 'Hours')]
@@ -86,13 +89,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-function Resolve-CopilotHome {
-    param([string] $Requested)
-
-    if ($Requested) { return $Requested }
-    if ($env:COPILOT_HOME) { return $env:COPILOT_HOME }
-    return (Join-Path -Path $HOME -ChildPath '.copilot')
-}
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'CopilotSessionStore.psm1') -Force
 
 function Get-SessionQuery {
     param([string] $SinceDate)
@@ -111,100 +108,6 @@ WHERE substr(s.updated_at, 1, 10) >= '$SinceDate'
   AND EXISTS (SELECT 1 FROM turns t WHERE t.session_id = s.id)
 ORDER BY s.updated_at DESC
 "@
-}
-
-$script:PythonQueryScript = @'
-import json, os, shutil, sqlite3, sys, tempfile
-from pathlib import Path
-
-db = sys.argv[1]
-query = sys.argv[2]
-tmpdir = None
-try:
-    try:
-        con = sqlite3.connect(Path(db).as_uri() + "?mode=ro", uri=True)
-        con.execute("SELECT count(*) FROM sqlite_master").fetchone()
-    except sqlite3.Error:
-        # Fall back to a private snapshot when the live store cannot be opened read-only.
-        tmpdir = tempfile.mkdtemp(prefix="copilot-sessions-")
-        base = os.path.basename(db)
-        for suffix in ("", "-wal", "-shm"):
-            src = db + suffix
-            if os.path.exists(src):
-                shutil.copy2(src, os.path.join(tmpdir, base + suffix))
-        con = sqlite3.connect(os.path.join(tmpdir, base))
-    con.row_factory = sqlite3.Row
-    rows = [dict(r) for r in con.execute(query)]
-    con.close()
-    json.dump(rows, sys.stdout)
-finally:
-    if tmpdir:
-        shutil.rmtree(tmpdir, ignore_errors=True)
-'@
-
-function Invoke-SessionStoreQuery {
-    param(
-        [Parameter(Mandatory)] [string] $DatabasePath,
-        [Parameter(Mandatory)] [string] $Query
-    )
-
-    $sqlite = Get-Command -Name 'sqlite3.exe' -CommandType Application -ErrorAction SilentlyContinue |
-        Select-Object -First 1
-    if ($sqlite) {
-        Write-Verbose "Querying session store with $($sqlite.Source)."
-        $json = & $sqlite.Source '-readonly' '-json' $DatabasePath $Query
-        if ($LASTEXITCODE -ne 0) {
-            throw "sqlite3.exe failed with exit code $LASTEXITCODE while reading '$DatabasePath'."
-        }
-        return ConvertFrom-SqliteJson -Json ($json -join [Environment]::NewLine)
-    }
-
-    $python = Get-Command -Name 'python.exe', 'python3.exe', 'python' -CommandType Application -ErrorAction SilentlyContinue |
-        Select-Object -First 1
-    if (-not $python) {
-        throw @'
-No SQLite reader available. The Copilot session store is a SQLite database, so this script needs
-either sqlite3.exe or python on PATH. Install one of them, for example:
-
-    winget install Python.Python.3.13
-    winget install SQLite.SQLite
-'@
-    }
-
-    Write-Verbose "Querying session store with $($python.Source)."
-    $scriptFile = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath ("copilot-sessions-{0}.py" -f [guid]::NewGuid())
-    try {
-        Set-Content -LiteralPath $scriptFile -Value $script:PythonQueryScript -Encoding utf8 -WhatIf:$false -Confirm:$false
-        $json = & $python.Source $scriptFile $DatabasePath $Query
-        if ($LASTEXITCODE -ne 0) {
-            throw "python failed with exit code $LASTEXITCODE while reading '$DatabasePath'."
-        }
-        return ConvertFrom-SqliteJson -Json ($json -join [Environment]::NewLine)
-    }
-    finally {
-        Remove-Item -LiteralPath $scriptFile -Force -ErrorAction SilentlyContinue -WhatIf:$false -Confirm:$false
-    }
-}
-
-function ConvertFrom-SqliteJson {
-    param([string] $Json)
-
-    if ([string]::IsNullOrWhiteSpace($Json)) { return @() }
-    return @($Json | ConvertFrom-Json)
-}
-
-function ConvertTo-UtcTimestamp {
-    param([string] $Value)
-
-    if ([string]::IsNullOrWhiteSpace($Value)) { return $null }
-
-    $styles = [System.Globalization.DateTimeStyles]::AdjustToUniversal -bor
-              [System.Globalization.DateTimeStyles]::AssumeUniversal
-    $parsed = [datetime]::MinValue
-    if ([datetime]::TryParse($Value, [cultureinfo]::InvariantCulture, $styles, [ref] $parsed)) {
-        return $parsed
-    }
-    return $null
 }
 
 function Get-TabTitle {
@@ -241,10 +144,7 @@ function Get-StartingDirectory {
 }
 
 $copilotHomePath = Resolve-CopilotHome -Requested $CopilotHome
-$databasePath = Join-Path -Path $copilotHomePath -ChildPath 'session-store.db'
-if (-not (Test-Path -LiteralPath $databasePath -PathType Leaf)) {
-    throw "Copilot session store not found at '$databasePath'. Use -CopilotHome to point at the right directory."
-}
+$databasePath = Get-CopilotStorePath -CopilotHome $copilotHomePath -Require
 
 $windowsTerminal = Get-Command -Name 'wt.exe' -CommandType Application -ErrorAction SilentlyContinue |
     Select-Object -First 1
@@ -265,7 +165,7 @@ $cutoffUtc = [datetime]::UtcNow - $window
 Write-Verbose "Selecting sessions updated after $($cutoffUtc.ToString('u')) (window: $window)."
 
 $query = Get-SessionQuery -SinceDate $cutoffUtc.AddDays(-1).ToString('yyyy-MM-dd')
-$rows = Invoke-SessionStoreQuery -DatabasePath $databasePath -Query $query
+$rows = Invoke-CopilotStoreQuery -DatabasePath $databasePath -Query $query
 Write-Verbose "Session store returned $($rows.Count) non-empty candidate session(s)."
 
 $candidates = [System.Collections.Generic.List[pscustomobject]]::new()
