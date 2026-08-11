@@ -2,13 +2,34 @@
 
 An installable [agent skill](https://docs.github.com/copilot/concepts/agents/about-agent-skills) plus
 three standalone PowerShell scripts for managing local [GitHub Copilot CLI](https://github.com/github/copilot-cli)
-session state on Windows.
+session state on Windows. It installs as a Copilot CLI plugin, or as a bare skill.
 
 Working across a dozen clones means a dozen Copilot sessions. After a reboot there is no quick way to
 get them back, the session store quietly grows into the tens of gigabytes, and there is no built-in way
 to carry work over to another machine. These scripts cover all three.
 
-## Install as a skill
+## Install
+
+### As a plugin (recommended)
+
+Register the marketplace once, then install:
+
+```powershell
+copilot plugin marketplace add marcschier/marcschier
+copilot plugin install copilot-sessions@marcschier
+```
+
+Or install straight from the repository, without registering a marketplace:
+
+```powershell
+copilot plugin install marcschier/marcschier:skills
+```
+
+Updates come with `copilot plugin update copilot-sessions`.
+
+### As a skill only
+
+From a clone of this repository:
 
 ```powershell
 copilot skill add .\skills\copilot-sessions
@@ -25,7 +46,15 @@ Once installed you can just ask for what you want — *"reopen what I was workin
 script to run and which safety checks to apply. The scripts also work standalone.
 
 > `copilot skill add <directory>` registers the folder by reference, so edits to the scripts take
-> effect for new sessions. Use `/skills reload` to pick them up inside a running session.
+> effect for new sessions. Use `/skills reload` to pick them up inside a running session. A plugin
+> install copies the files instead, so use `copilot plugin update` after changing them.
+
+### Where the scripts land
+
+A plugin install puts them under
+`~/.copilot/installed-plugins/marcschier/copilot-sessions/copilot-sessions/scripts/`. The skill
+resolves them relative to its own `SKILL.md`, so you never need that path yourself — but it is handy
+when invoking a script directly.
 
 ## Requirements
 

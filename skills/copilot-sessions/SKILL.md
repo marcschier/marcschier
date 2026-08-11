@@ -190,3 +190,6 @@ no rule are kept verbatim, and the script warns when a resulting directory does 
 
 `copilot skill add <directory>` registers the folder by reference, so edits to the scripts take
 effect for new sessions. Use `/skills reload` to pick them up inside a running session.
+
+When installed as a plugin (`copilot-sessions@marcschier`) the files are copied instead, so changes
+need `copilot plugin update copilot-sessions`.

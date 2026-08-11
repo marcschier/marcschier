@@ -1,0 +1,28 @@
+{
+  "name": "copilot-sessions",
+  "version": "1.1.0",
+  "description": "Manage local GitHub Copilot CLI session state on Windows: reopen recent sessions as Windows Terminal tabs, reclaim disk by purging empty and orphaned session folders, and move session state between machines.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/copilot-sessions",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "copilot-cli",
+    "sessions",
+    "resume",
+    "windows-terminal",
+    "cleanup",
+    "disk-space",
+    "backup",
+    "migration",
+    "powershell",
+    "windows"
+  ],
+  "skills": [
+    "./"
+  ]
+}

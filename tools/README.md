@@ -1,8 +1,15 @@
 # 🛠️ Tools
 
 The Copilot CLI session tooling that used to live here has moved to
-[`skills/copilot-sessions`](../skills/copilot-sessions), where it ships as an installable agent skill
-that bundles its own scripts:
+[`skills/copilot-sessions`](../skills/copilot-sessions), where it ships as an agent skill that
+bundles its own scripts. Install it as a plugin:
+
+```powershell
+copilot plugin marketplace add marcschier/marcschier
+copilot plugin install copilot-sessions@marcschier
+```
+
+or as a skill only, from a clone:
 
 ```powershell
 copilot skill add .\skills\copilot-sessions
