@@ -19,13 +19,10 @@ copilot plugin marketplace add marcschier/marcschier
 copilot plugin install copilot-sessions@marcschier
 ```
 
-Or install straight from the repository, without registering a marketplace:
-
-```powershell
-copilot plugin install marcschier/marcschier:skills
-```
-
 Updates come with `copilot plugin update copilot-sessions`.
+
+> Direct installs (`copilot plugin install marcschier/marcschier:skills`) also work, but the CLI
+> warns that repo, URL and local-path installs are deprecated in favour of `plugin@marketplace`.
 
 ### As a skill only
 
