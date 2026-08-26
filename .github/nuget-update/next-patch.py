@@ -8,9 +8,9 @@ its patch incremented — guaranteeing we never re-publish an existing version w
 staged higher base.
 
 Usage:
-    next-patch.py --version-json PATH [--latest X.Y.Z] [--write]
+    next-patch.py --version-json PATH [--latest X.Y.Z] [--prerelease LABEL] [--write]
 
-Prints JSON {"current": "...", "next": "X.Y.Z", "tag": "vX.Y.Z", "changed": bool}.
+Prints JSON {"current": "...", "next": "X.Y.Z[-LABEL]", "tag": "v...", "changed": bool}.
 """
 from __future__ import annotations
 
@@ -51,13 +51,15 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--version-json", required=True)
     ap.add_argument("--latest", default="0.0.0", help="latest published version, e.g. 1.0.5")
+    ap.add_argument("--prerelease", default="", help="prerelease channel to preserve, e.g. alpha")
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
 
     text, had_bom, current = read_version_text(args.version_json)
     nxt = compute_next(current, args.latest)
-    nxt_str = f"{nxt[0]}.{nxt[1]}.{nxt[2]}"
-    changed = parse_semver_core(current) != nxt
+    suffix = f"-{args.prerelease}" if args.prerelease else ""
+    nxt_str = f"{nxt[0]}.{nxt[1]}.{nxt[2]}{suffix}"
+    changed = current.split("+", maxsplit=1)[0] != nxt_str
 
     if args.write and changed:
         # Targeted replacement of just the version value preserves the file's formatting; the

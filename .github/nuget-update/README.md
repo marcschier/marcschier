@@ -26,13 +26,13 @@ detect → update → await-pr-ci → merge → publish-impact
 - **Human gate** — nuget.org promotion (`nuget.yml` in each library repo) runs under the `release` environment; configure reviewers there so promotion pauses for approval. The conductor yields at the gate if approval has not arrived within `GATE_WAIT_MIN` and resumes on the next trigger.
 - **Stop on error** — a failed CI the agent cannot fix, a denied promotion, or a wait timeout opens an issue in the affected repo and halts the whole run (state stays `halted` until the issue is resolved and state is cleared).
 
-State is persisted as `state.json` on the `automation/nuget-update-state` branch, so runs are resumable across the weekly schedule and manual dispatches.
+State is persisted as `state.json` on the `automation/nuget-update-state` branch, so runs are resumable across the weekly schedule and manual dispatches. A trigger resumes a `running` cycle, leaves a `halted` cycle stopped, and starts a fresh cycle after the previous one reaches `done` or `idle`.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `repos.yml` | Per-repo release mechanics: packable projects + package ids, promotion mechanism (`nuget-yml` / `ci-yml`), and the artifacts to wait for (nuget.org / GHCR / GitHub Packages). |
+| `repos.yml` | Per-repo release mechanics: packable projects + package ids, promotion mechanism (`nuget-yml` / `ci-yml`), optional tag workflow/prerelease channel, and the artifacts to wait for (nuget.org / GHCR / GitHub Packages). |
 | `parse-readme.py` | Parse `README.md` → leaf→top ordered repo list + dependency graph. |
 | `detect-outdated.py` | Restore a repo and list outdated NuGet packages. |
 | `publish-impact.py` | Compute whether updated packages reach a packable project (→ release) or not. |
@@ -55,6 +55,7 @@ State is persisted as `state.json` on the `automation/nuget-update-state` branch
 
 - **Manual:** Actions → `nuget-update-conductor` → *Run workflow* (optionally set a per-run time budget).
 - **Scheduled:** Mondays 06:00 UTC.
+- **New weekly cycle:** A completed cycle is cleared automatically on the next full trigger, so every repository is checked again. A still-running cycle resumes from its persisted phase.
 - **Resume after a halt:** resolve the issue opened in the affected repo, then edit `state.json` on the `automation/nuget-update-state` branch (set `status` back to `running` / clear the failed repo's phase) and dispatch again.
 
 ## Adding or removing a project

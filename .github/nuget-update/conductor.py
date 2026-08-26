@@ -141,15 +141,26 @@ def save_state(state: dict) -> None:
 
 
 # ------------------------------------------------------------------- pipeline helpers
-def nuget_latest(pkg_id: str) -> str:
+def nuget_latest(pkg_id: str, prerelease: str = "") -> str:
     url = f"https://api.nuget.org/v3-flatcontainer/{pkg_id.lower()}/index.json"
     try:
         with urllib.request.urlopen(url, timeout=30) as resp:
             versions = json.load(resp)["versions"]
     except Exception:
         return "0.0.0"
-    stable = [v for v in versions if "-" not in v]
-    return (stable or versions or ["0.0.0"])[-1]
+    if prerelease:
+        candidates = [
+            v for v in versions
+            if "-" in v and (
+                v.split("-", maxsplit=1)[1].split("+", maxsplit=1)[0] == prerelease
+                or v.split("-", maxsplit=1)[1].split("+", maxsplit=1)[0].startswith(
+                    f"{prerelease}."
+                )
+            )
+        ]
+    else:
+        candidates = [v for v in versions if "-" not in v]
+    return (candidates or ["0.0.0"])[-1]
 
 
 def nuget_has_version(pkg_id: str, version: str) -> bool:
@@ -199,11 +210,11 @@ def run_conclusion(repo: str, run_id: int) -> str:
     return r["conclusion"] or "failure"
 
 
-def latest_ci_run_for_tag(repo: str, tag: str, since: str | None = None) -> int | None:
-    """Most recent ci.yml run for the tag, ignoring runs created before `since` (the release
-    time). This avoids concluding from a stale run left over from an earlier release attempt
-    before the fresh run has registered."""
-    runs = gh_json("run", "list", "-R", f"{OWNER}/{repo}", "-w", "ci.yml",
+def latest_tag_run(
+    repo: str, workflow: str, tag: str, since: str | None = None
+) -> int | None:
+    """Most recent tag workflow run, ignoring runs created before the release time."""
+    runs = gh_json("run", "list", "-R", f"{OWNER}/{repo}", "-w", workflow,
                    "--json", "databaseId,headBranch,createdAt", "-L", "40") or []
     for r in runs:  # gh returns newest first
         if r.get("headBranch") == tag and (not since or (r.get("createdAt") or "") >= since):
@@ -222,6 +233,35 @@ def fail(repo: str, state: dict, phase: str, detail: str) -> None:
     state["repos"][repo]["note"] = f"{phase}: {detail[:500]}"
     save_state(state)
     log(f"HALTED at {repo} / {phase}: {detail[:200]}")
+
+
+def prepare_run_state(state: dict, only: str = "", started_at: str | None = None) -> dict:
+    """Create a new terminal-state cycle or prepare a safe scoped/full resume."""
+    status = state.get("status", "idle")
+    if status == "halted":
+        return state
+
+    timestamp = started_at or time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    if only:
+        if status == "running":
+            if state.get("scope") == only:
+                return state
+            raise ValueError("cannot start a scoped run while another cascade is running")
+        state.setdefault("repos", {}).pop(only, None)
+        state["status"] = "running"
+        state["scope"] = only
+        state["cycle_started_at"] = timestamp
+        return state
+
+    if status in ("done", "idle"):
+        return {
+            "status": "running",
+            "cycle_started_at": timestamp,
+            "repos": {},
+        }
+
+    state["status"] = "running"
+    return state
 
 
 # --------------------------------------------------------------------------- phases
@@ -326,11 +366,21 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
     # release: bump patch + create GitHub Release (also creates the tag) ---
     if rstate["phase"] == "release":
         core = rcfg["wait"][0].get("id") or repo
-        latest = nuget_latest(core) if rcfg["wait"][0]["type"] == "nuget" else "0.0.0"
+        prerelease = rcfg.get("prerelease", "")
+        latest = (
+            nuget_latest(core, prerelease)
+            if rcfg["wait"][0]["type"] == "nuget"
+            else "0.0.0"
+        )
         work = clone(repo)
         vj = os.path.join(work, "version.json")
-        res = json.loads(sh("python", os.path.join(HERE, "next-patch.py"),
-                            "--version-json", vj, "--latest", latest, "--write"))
+        version_args = [
+            "python", os.path.join(HERE, "next-patch.py"),
+            "--version-json", vj, "--latest", latest, "--write",
+        ]
+        if prerelease:
+            version_args += ["--prerelease", prerelease]
+        res = json.loads(sh(*version_args))
         tag = res["tag"]
         if res["changed"]:
             sh("git", "-C", work, "commit", "-am", f"chore: release {tag}")
@@ -352,8 +402,11 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
 
     # await tag CI (tests + publish to GitHub Packages) -------------------
     if rstate["phase"] == "awaiting-tag-ci":
+        tag_workflow = rcfg.get("tag_workflow", "ci.yml")
         while budget_left() > POLL_SECS:
-            run_id = latest_ci_run_for_tag(repo, rstate["tag"], rstate.get("released_at"))
+            run_id = latest_tag_run(
+                repo, tag_workflow, rstate["tag"], rstate.get("released_at")
+            )
             if run_id:
                 c = run_conclusion(repo, run_id)
                 if c == "success":
@@ -425,6 +478,10 @@ def main() -> int:
         return 0
 
     only = os.environ.get("ONLY_REPO", "").strip()
+    persisted_scope = state.get("scope", "") if state.get("status") == "running" else ""
+    if not only and persisted_scope:
+        only = persisted_scope
+        log(f"resuming persisted scoped run for '{only}'")
     if only:
         if only not in order:
             log(f"ONLY_REPO='{only}' is not a known repo in {order}")
@@ -432,7 +489,11 @@ def main() -> int:
         order = [only]
         log(f"scoped run: processing only '{only}'")
 
-    state["status"] = "running"
+    try:
+        state = prepare_run_state(state, only)
+    except ValueError as exc:
+        log(str(exc))
+        return 1
     save_state(state)
 
     for repo in order:
@@ -455,6 +516,7 @@ def main() -> int:
         log("all repos processed")
     else:
         state["status"] = "idle"
+        state.pop("scope", None)
         save_state(state)
         log(f"scoped run for '{only}' complete")
     return 0

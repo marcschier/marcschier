@@ -15,6 +15,8 @@
 #   promote          How a release reaches its public feed:
 #                      nuget-yml : dispatch the repo's .github/workflows/nuget.yml (workflow_dispatch)
 #                      ci-yml    : publishing happens inside ci.yml on the tag / main push
+#   tag_workflow     Workflow to await after creating a release tag (default: ci.yml).
+#   prerelease       Optional prerelease channel preserved by automated patch bumps.
 #   wait             Artifacts to poll before the pipeline advances to the next repo. Types:
 #                      nuget  : nuget.org registration index for {id} at the new version
 #                      ghcr   : ghcr.io/{owner}/{image} tag
@@ -119,6 +121,68 @@ repos:
     promote: nuget-yml
     wait:
       - { type: nuget, id: Opc.Classic }
+
+  # ---- openusd-dotnet: alpha-channel OpenUSD stack with a dedicated release gate ----
+  openusd-dotnet:
+    packable:
+      - { path: src/OpenUsd, id: OpenUsd }
+      - { path: src/OpenUsd.Interop, id: OpenUsd.Interop }
+      - { path: src/OpenUsd.Rendering, id: OpenUsd.Rendering }
+      - { path: src/OpenUsd.Rendering.Silk, id: OpenUsd.Rendering.Silk }
+      - { path: src/OpenUsd.Rendering.Silk.D3D12, id: OpenUsd.Rendering.Silk.D3D12 }
+      - { path: src/OpenUsd.Rendering.Silk.Metal, id: OpenUsd.Rendering.Silk.Metal }
+      - { path: src/OpenUsd.Rendering.Silk.Vulkan, id: OpenUsd.Rendering.Silk.Vulkan }
+      - { path: src/OpenUsd.Rendering.Storm, id: OpenUsd.Rendering.Storm }
+      - { path: src/OpenUsd.Cesium, id: OpenUsd.Cesium }
+      - { path: src/OpenUsd.Physics, id: OpenUsd.Physics }
+      - { path: src/OpenUsd.Viewer, id: OpenUsd.Viewer }
+      - { path: src/OpenUsd.Mcp, id: OpenUsd.Mcp.Tool }
+      - { path: src/OpenUsd.Runtime.Core, id: OpenUsd.Runtime.Core }
+      - { path: src/OpenUsd.Runtime.Core.win-x64, id: OpenUsd.Runtime.Core.win-x64 }
+      - { path: src/OpenUsd.Runtime.Core.linux-x64, id: OpenUsd.Runtime.Core.linux-x64 }
+      - { path: src/OpenUsd.Runtime.Core.osx-arm64, id: OpenUsd.Runtime.Core.osx-arm64 }
+      - { path: src/OpenUsd.Runtime.Imaging, id: OpenUsd.Runtime.Imaging }
+      - { path: src/OpenUsd.Runtime.Imaging.win-x64, id: OpenUsd.Runtime.Imaging.win-x64 }
+      - { path: src/OpenUsd.Runtime.Imaging.linux-x64, id: OpenUsd.Runtime.Imaging.linux-x64 }
+      - { path: src/OpenUsd.Runtime.Imaging.osx-arm64, id: OpenUsd.Runtime.Imaging.osx-arm64 }
+      - { path: src/OpenUsd.Runtime.Cesium, id: OpenUsd.Runtime.Cesium }
+      - { path: src/OpenUsd.Runtime.Cesium.win-x64, id: OpenUsd.Runtime.Cesium.win-x64 }
+      - { path: src/OpenUsd.Runtime.Cesium.linux-x64, id: OpenUsd.Runtime.Cesium.linux-x64 }
+      - { path: src/OpenUsd.Runtime.Cesium.osx-arm64, id: OpenUsd.Runtime.Cesium.osx-arm64 }
+      - { path: src/OpenUsd.Runtime.Physics, id: OpenUsd.Runtime.Physics }
+      - { path: src/OpenUsd.Runtime.Physics.win-x64, id: OpenUsd.Runtime.Physics.win-x64 }
+      - { path: src/OpenUsd.Runtime.Physics.linux-x64, id: OpenUsd.Runtime.Physics.linux-x64 }
+    promote: nuget-yml
+    tag_workflow: release.yml
+    prerelease: alpha
+    wait:
+      - { type: nuget, id: OpenUsd }
+      - { type: nuget, id: OpenUsd.Interop }
+      - { type: nuget, id: OpenUsd.Rendering }
+      - { type: nuget, id: OpenUsd.Rendering.Silk }
+      - { type: nuget, id: OpenUsd.Rendering.Silk.D3D12 }
+      - { type: nuget, id: OpenUsd.Rendering.Silk.Metal }
+      - { type: nuget, id: OpenUsd.Rendering.Silk.Vulkan }
+      - { type: nuget, id: OpenUsd.Rendering.Storm }
+      - { type: nuget, id: OpenUsd.Cesium }
+      - { type: nuget, id: OpenUsd.Physics }
+      - { type: nuget, id: OpenUsd.Viewer }
+      - { type: nuget, id: OpenUsd.Mcp.Tool }
+      - { type: nuget, id: OpenUsd.Runtime.Core }
+      - { type: nuget, id: OpenUsd.Runtime.Core.win-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Core.linux-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Core.osx-arm64 }
+      - { type: nuget, id: OpenUsd.Runtime.Imaging }
+      - { type: nuget, id: OpenUsd.Runtime.Imaging.win-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Imaging.linux-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Imaging.osx-arm64 }
+      - { type: nuget, id: OpenUsd.Runtime.Cesium }
+      - { type: nuget, id: OpenUsd.Runtime.Cesium.win-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Cesium.linux-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Cesium.osx-arm64 }
+      - { type: nuget, id: OpenUsd.Runtime.Physics }
+      - { type: nuget, id: OpenUsd.Runtime.Physics.win-x64 }
+      - { type: nuget, id: OpenUsd.Runtime.Physics.linux-x64 }
 
   # ---- MCP servers (no nuget.yml; publish inside ci.yml) ----
   netcap-mcp:
