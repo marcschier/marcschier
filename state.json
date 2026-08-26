@@ -1,6 +1,16 @@
 {
   "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
-  "repos": {},
-  "updated_at": "2026-08-26T16:42:19Z"
+  "repos": {
+    "dtls": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.NET.Test.Sdk",
+        "Roslynator.Analyzers",
+        "Roslynator.Formatting.Analyzers",
+        "xunit.runner.visualstudio"
+      ]
+    }
+  },
+  "updated_at": "2026-08-26T16:42:41Z"
 }
