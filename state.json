@@ -14,7 +14,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "mqtt-client": {
-      "phase": "awaiting-listing",
+      "phase": "done",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -39,8 +39,9 @@
       ],
       "pr": 9,
       "tag": "v1.1.4",
-      "released_at": "2026-08-26T17:21:05Z"
+      "released_at": "2026-08-26T17:21:05Z",
+      "note": "released v1.1.4"
     }
   },
-  "updated_at": "2026-08-26T23:39:17Z"
+  "updated_at": "2026-08-26T23:41:19Z"
 }
