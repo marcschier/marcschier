@@ -14,7 +14,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "mqtt-client": {
-      "phase": "awaiting-tag-ci",
+      "phase": "promote",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -42,5 +42,5 @@
       "released_at": "2026-08-26T17:21:05Z"
     }
   },
-  "updated_at": "2026-08-26T17:21:07Z"
+  "updated_at": "2026-08-26T17:31:18Z"
 }
