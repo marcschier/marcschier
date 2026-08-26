@@ -14,7 +14,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "mqtt-client": {
-      "phase": "publish-impact",
+      "phase": "release",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -40,5 +40,5 @@
       "pr": 9
     }
   },
-  "updated_at": "2026-08-26T17:20:50Z"
+  "updated_at": "2026-08-26T17:21:01Z"
 }
