@@ -14,7 +14,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "mqtt-client": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -37,8 +37,10 @@
         "System.Threading.Channels",
         "TUnit"
       ],
-      "pr": 9
+      "pr": 9,
+      "tag": "v1.1.4",
+      "released_at": "2026-08-26T17:21:05Z"
     }
   },
-  "updated_at": "2026-08-26T17:21:01Z"
+  "updated_at": "2026-08-26T17:21:07Z"
 }
