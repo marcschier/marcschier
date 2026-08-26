@@ -3,7 +3,7 @@
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "Microsoft.NET.Test.Sdk",
         "Roslynator.Analyzers",
@@ -13,5 +13,5 @@
       "pr": 6
     }
   },
-  "updated_at": "2026-08-26T16:47:53Z"
+  "updated_at": "2026-08-26T16:59:11Z"
 }
