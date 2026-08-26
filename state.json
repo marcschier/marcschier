@@ -41,7 +41,19 @@
       "tag": "v1.1.4",
       "released_at": "2026-08-26T17:21:05Z",
       "note": "released v1.1.4"
+    },
+    "netcap-mcp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.NET.Test.Sdk",
+        "Microsoft.SourceLink.GitHub",
+        "ModelContextProtocol",
+        "ModelContextProtocol.AspNetCore",
+        "ModelContextProtocol.Core",
+        "xunit.runner.visualstudio"
+      ]
     }
   },
-  "updated_at": "2026-08-26T23:41:19Z"
+  "updated_at": "2026-08-26T23:41:37Z"
 }
