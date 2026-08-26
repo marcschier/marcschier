@@ -14,7 +14,7 @@
       "note": "updated-not-released (no published package affected)"
     },
     "mqtt-client": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "BenchmarkDotNet",
         "MQTTnet",
@@ -36,8 +36,9 @@
         "System.IO.Pipelines",
         "System.Threading.Channels",
         "TUnit"
-      ]
+      ],
+      "pr": 9
     }
   },
-  "updated_at": "2026-08-26T16:59:44Z"
+  "updated_at": "2026-08-26T17:05:59Z"
 }
