@@ -3,15 +3,16 @@
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "Microsoft.NET.Test.Sdk",
         "Roslynator.Analyzers",
         "Roslynator.Formatting.Analyzers",
         "xunit.runner.visualstudio"
       ],
-      "pr": 6
+      "pr": 6,
+      "note": "updated-not-released (no published package affected)"
     }
   },
-  "updated_at": "2026-08-26T16:59:11Z"
+  "updated_at": "2026-08-26T16:59:20Z"
 }
