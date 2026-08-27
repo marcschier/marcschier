@@ -55,7 +55,22 @@
       ],
       "pr": 3,
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
+    },
+    "nfs": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Microsoft.Bcl.AsyncInterfaces",
+        "Microsoft.Bcl.TimeProvider",
+        "Microsoft.CodeAnalysis.CSharp",
+        "Microsoft.NET.Test.Sdk",
+        "Polyfill",
+        "Roslynator.Analyzers",
+        "Roslynator.Formatting.Analyzers",
+        "System.IO.Pipelines",
+        "xunit.runner.visualstudio",
+        "xunit.v3"
+      ]
     }
   },
-  "updated_at": "2026-08-27T04:47:09Z"
+  "updated_at": "2026-08-27T04:47:46Z"
 }
