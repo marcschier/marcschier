@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -57,7 +57,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "failed",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -71,7 +71,7 @@
         "xunit.v3"
       ],
       "pr": 4,
-      "note": "await-pr-ci: PR #4 checks failed"
+      "note": "await-pr-ci: PR #4 checks passed after Microsoft Testing Platform migration"
     }
   },
   "updated_at": "2026-08-27T04:56:05Z"
