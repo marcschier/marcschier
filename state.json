@@ -43,7 +43,7 @@
       "note": "released v1.1.4"
     },
     "netcap-mcp": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "Microsoft.Extensions.Hosting.Abstractions",
         "Microsoft.NET.Test.Sdk",
@@ -56,5 +56,5 @@
       "pr": 3
     }
   },
-  "updated_at": "2026-08-27T04:47:02Z"
+  "updated_at": "2026-08-27T04:47:07Z"
 }
