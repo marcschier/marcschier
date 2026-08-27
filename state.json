@@ -57,7 +57,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -71,8 +71,10 @@
         "xunit.v3"
       ],
       "pr": 4,
-      "note": "await-pr-ci: PR #4 checks passed after Microsoft Testing Platform migration"
+      "note": "await-pr-ci: PR #4 checks passed after Microsoft Testing Platform migration",
+      "tag": "v0.11.3",
+      "released_at": "2026-08-27T05:13:52Z"
     }
   },
-  "updated_at": "2026-08-27T05:13:49Z"
+  "updated_at": "2026-08-27T05:13:54Z"
 }
