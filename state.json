@@ -57,7 +57,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -69,8 +69,9 @@
         "System.IO.Pipelines",
         "xunit.runner.visualstudio",
         "xunit.v3"
-      ]
+      ],
+      "pr": 4
     }
   },
-  "updated_at": "2026-08-27T04:47:46Z"
+  "updated_at": "2026-08-27T04:53:59Z"
 }
