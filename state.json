@@ -57,7 +57,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "nfs": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "Microsoft.Bcl.AsyncInterfaces",
         "Microsoft.Bcl.TimeProvider",
@@ -74,5 +74,5 @@
       "note": "await-pr-ci: PR #4 checks passed after Microsoft Testing Platform migration"
     }
   },
-  "updated_at": "2026-08-27T05:13:21Z"
+  "updated_at": "2026-08-27T05:13:26Z"
 }
