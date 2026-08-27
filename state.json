@@ -43,7 +43,7 @@
       "note": "released v1.1.4"
     },
     "netcap-mcp": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "Microsoft.Extensions.Hosting.Abstractions",
         "Microsoft.NET.Test.Sdk",
@@ -53,8 +53,9 @@
         "ModelContextProtocol.Core",
         "xunit.runner.visualstudio"
       ],
-      "pr": 3
+      "pr": 3,
+      "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     }
   },
-  "updated_at": "2026-08-27T04:47:07Z"
+  "updated_at": "2026-08-27T04:47:09Z"
 }
