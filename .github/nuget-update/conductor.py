@@ -87,7 +87,8 @@ def log(msg: str) -> None:
 def load_config():
     import yaml  # provided by the workflow (pip install pyyaml)
     order = json.loads(sh("python", os.path.join(HERE, "parse-readme.py")))["order"]
-    cfg = yaml.safe_load(open(os.path.join(HERE, "repos.yml"), encoding="utf-8"))
+    with open(os.path.join(HERE, "repos.yml"), encoding="utf-8") as stream:
+        cfg = yaml.safe_load(stream)
     return order, cfg
 
 

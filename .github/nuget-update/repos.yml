@@ -118,6 +118,7 @@ repos:
       - { path: src/Opc.Classic.Generators, id: Opc.Classic.Generators }
       - { path: src/Opc.Classic.MigrationAnalyzer, id: Opc.Classic.MigrationAnalyzer }
       - { path: mcp/Opc.Classic.Mcp, id: Opc.Classic.Mcp }
+    tag_workflow: release.yml
     promote: nuget-yml
     wait:
       - { type: nuget, id: Opc.Classic }

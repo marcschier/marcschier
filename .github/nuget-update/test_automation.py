@@ -201,6 +201,16 @@ class ConfigurationTests(unittest.TestCase):
         self.assertIn("openusd-dotnet", parsed["order"])
         self.assertEqual(len(parsed["order"]), 12)
 
+    def test_repositories_with_dedicated_release_workflows_are_configured(self):
+        _, config = conductor.load_config()
+
+        self.assertEqual(
+            config["repos"]["opc-classic"]["tag_workflow"], "release.yml"
+        )
+        self.assertEqual(
+            config["repos"]["openusd-dotnet"]["tag_workflow"], "release.yml"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
