@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -74,7 +74,11 @@
       "note": "released v0.11.3",
       "tag": "v0.11.3",
       "released_at": "2026-08-27T05:13:52Z"
+    },
+    "opc-classic": {
+      "phase": "failed",
+      "note": "detect:   Determining projects to restore...\n  Restored /tmp/opc-classic-gik7ceqw/tests/Opc.Classic.VendorDescriptors.Tests/Opc.Classic.VendorDescriptors.Tests.csproj (in 2.76 sec).\n  Restored /tmp/opc-classic-gik7ceqw/src/Opc.Classic.Batch/Opc.Classic.Batch.csproj (in 2.76 sec).\n  Restored /tmp/opc-classic-gik7ceqw/tests/Opc.Classic.Xml.Tests/Opc.Classic.Xml.Tests.csproj (in 2.76 sec).\n  Restored /tmp/opc-classic-gik7ceqw/tests/Opc.Classic.Tests.Fuzz/Opc.Classic.Tests.Fuzz.csproj (in 13 ms).\n  Restored"
     }
   },
-  "updated_at": "2026-08-28T15:00:38Z"
+  "updated_at": "2026-08-28T15:00:57Z"
 }
