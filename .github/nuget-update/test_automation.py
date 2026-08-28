@@ -207,6 +207,7 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(
             config["repos"]["opc-classic"]["tag_workflow"], "release.yml"
         )
+        self.assertEqual(config["repos"]["opc-classic"]["prerelease"], "alpha")
         self.assertEqual(
             config["repos"]["openusd-dotnet"]["tag_workflow"], "release.yml"
         )
