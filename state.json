@@ -76,7 +76,7 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "note": "retry after closing stale partial Dependabot PRs",
       "updated": [
         "CsCheck",
@@ -103,8 +103,9 @@
         "Verify.TUnit",
         "coverlet.collector",
         "coverlet.msbuild"
-      ]
+      ],
+      "pr": 32
     }
   },
-  "updated_at": "2026-08-28T15:45:48Z"
+  "updated_at": "2026-08-28T15:59:43Z"
 }
