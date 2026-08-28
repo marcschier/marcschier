@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -76,8 +76,8 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "failed",
-      "note": "await-pr-ci: PR #28 checks failed",
+      "phase": "pending",
+      "note": "retry after closing stale partial Dependabot PRs",
       "updated": [
         "CsCheck",
         "Kerberos.NET",
@@ -103,8 +103,7 @@
         "Verify.TUnit",
         "coverlet.collector",
         "coverlet.msbuild"
-      ],
-      "pr": 28
+      ]
     }
   },
   "updated_at": "2026-08-28T15:42:29Z"
