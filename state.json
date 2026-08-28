@@ -76,9 +76,36 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "pending",
-      "note": "detect retry after Testcontainers/SSH.NET vulnerability remediation"
+      "phase": "awaiting-pr-ci",
+      "note": "detect retry after Testcontainers/SSH.NET vulnerability remediation",
+      "updated": [
+        "CsCheck",
+        "Kerberos.NET",
+        "Meziantou.Analyzer",
+        "Microsoft.CodeAnalysis.Analyzers",
+        "Microsoft.CodeAnalysis.CSharp",
+        "Microsoft.CodeAnalysis.CSharp.Workspaces",
+        "Microsoft.Extensions.Configuration.Abstractions",
+        "Microsoft.Extensions.Configuration.Binder",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.DependencyInjection.Abstractions",
+        "Microsoft.Extensions.Diagnostics.Testing",
+        "Microsoft.Extensions.Hosting",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Options",
+        "Microsoft.SourceLink.GitHub",
+        "ModelContextProtocol",
+        "Roslynator.Analyzers",
+        "Roslynator.Formatting.Analyzers",
+        "TUnit",
+        "Verify.TUnit",
+        "coverlet.collector",
+        "coverlet.msbuild"
+      ],
+      "pr": 28
     }
   },
-  "updated_at": "2026-08-28T15:41:46Z"
+  "updated_at": "2026-08-28T15:42:25Z"
 }
