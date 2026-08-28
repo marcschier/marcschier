@@ -76,7 +76,7 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "publish-impact",
+      "phase": "release",
       "note": "retry after closing stale partial Dependabot PRs",
       "updated": [
         "CsCheck",
@@ -107,5 +107,5 @@
       "pr": 32
     }
   },
-  "updated_at": "2026-08-28T16:15:32Z"
+  "updated_at": "2026-08-28T16:15:53Z"
 }
