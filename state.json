@@ -76,7 +76,7 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "release",
+      "phase": "awaiting-tag-ci",
       "note": "retry after closing stale partial Dependabot PRs",
       "updated": [
         "CsCheck",
@@ -104,8 +104,10 @@
         "coverlet.collector",
         "coverlet.msbuild"
       ],
-      "pr": 32
+      "pr": 32,
+      "tag": "v0.4.0",
+      "released_at": "2026-08-28T16:15:58Z"
     }
   },
-  "updated_at": "2026-08-28T16:15:53Z"
+  "updated_at": "2026-08-28T16:16:00Z"
 }
