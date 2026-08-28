@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -76,8 +76,8 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "awaiting-tag-ci",
-      "note": "retry after closing stale partial Dependabot PRs",
+      "phase": "failed",
+      "note": "await-tag-ci: tag v0.4.0 CI failed (run 33189141852)",
       "updated": [
         "CsCheck",
         "Kerberos.NET",
@@ -109,5 +109,5 @@
       "released_at": "2026-08-28T16:15:58Z"
     }
   },
-  "updated_at": "2026-08-28T16:22:01Z"
+  "updated_at": "2026-08-28T16:24:41Z"
 }
