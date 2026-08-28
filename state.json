@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "halted",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -76,8 +76,8 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "awaiting-pr-ci",
-      "note": "detect retry after Testcontainers/SSH.NET vulnerability remediation",
+      "phase": "failed",
+      "note": "await-pr-ci: PR #28 checks failed",
       "updated": [
         "CsCheck",
         "Kerberos.NET",
@@ -107,5 +107,5 @@
       "pr": 28
     }
   },
-  "updated_at": "2026-08-28T15:42:25Z"
+  "updated_at": "2026-08-28T15:42:29Z"
 }
