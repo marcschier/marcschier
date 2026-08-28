@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -76,8 +76,8 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "failed",
-      "note": "await-tag-ci: tag v0.4.0 CI failed (run 33189141852)",
+      "phase": "awaiting-tag-ci",
+      "note": "replaced failed stable v0.4.0 attempt with valid alpha release v0.4.1-alpha",
       "updated": [
         "CsCheck",
         "Kerberos.NET",
@@ -105,9 +105,9 @@
         "coverlet.msbuild"
       ],
       "pr": 32,
-      "tag": "v0.4.0",
-      "released_at": "2026-08-28T16:15:58Z"
+      "tag": "v0.4.1-alpha",
+      "released_at": "2026-08-28T16:48:50Z"
     }
   },
-  "updated_at": "2026-08-28T16:24:41Z"
+  "updated_at": "2026-08-28T16:55:38Z"
 }
