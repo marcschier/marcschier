@@ -109,7 +109,7 @@
       "released_at": "2026-08-28T16:48:50Z"
     },
     "opcuakb-mcp": {
-      "phase": "awaiting-pr-ci",
+      "phase": "publish-impact",
       "updated": [
         "AngleSharp",
         "Azure.Storage.Blobs",
@@ -125,5 +125,5 @@
       "pr": 5
     }
   },
-  "updated_at": "2026-08-29T07:10:39Z"
+  "updated_at": "2026-08-29T07:10:45Z"
 }
