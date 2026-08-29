@@ -124,7 +124,23 @@
       ],
       "pr": 5,
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
+    },
+    "openusd-dotnet": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "Avalonia",
+        "Avalonia.Desktop",
+        "Avalonia.Fonts.Inter",
+        "Avalonia.Themes.Fluent",
+        "Avalonia.Wayland",
+        "Microsoft.Direct3D.DXC",
+        "Microsoft.SourceLink.GitHub",
+        "Nerdbank.GitVersioning",
+        "Roslynator.Analyzers",
+        "Roslynator.Formatting.Analyzers",
+        "TUnit"
+      ]
     }
   },
-  "updated_at": "2026-08-29T07:16:13Z"
+  "updated_at": "2026-08-29T07:17:00Z"
 }
