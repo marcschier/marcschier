@@ -53,6 +53,7 @@ jobs:
             8.0.x
             9.0.x
             10.0.x
+            10.0.301
 
       - name: Install Python dependencies
         run: pip install --quiet pyyaml

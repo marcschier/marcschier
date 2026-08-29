@@ -189,6 +189,13 @@ class VersionTests(unittest.TestCase):
 
 
 class ConfigurationTests(unittest.TestCase):
+    def test_conductor_installs_openusd_pinned_sdk(self):
+        workflow = (HERE.parent / "workflows" / "nuget-update-conductor.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("10.0.301", workflow)
+
     def test_updater_allows_supported_central_package_manifests(self):
         workflow = (HERE.parent / "workflows" / "nuget-update-repo.md").read_text(
             encoding="utf-8"
