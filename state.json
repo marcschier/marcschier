@@ -107,7 +107,22 @@
       "pr": 32,
       "tag": "v0.4.1-alpha",
       "released_at": "2026-08-28T16:48:50Z"
+    },
+    "opcuakb-mcp": {
+      "phase": "awaiting-pr",
+      "updated": [
+        "AngleSharp",
+        "Azure.Storage.Blobs",
+        "Microsoft.Agents.AI.Foundry.Hosting",
+        "Microsoft.AspNetCore.Authentication.JwtBearer",
+        "Microsoft.Extensions.Hosting.Abstractions",
+        "Microsoft.Extensions.Logging.Abstractions",
+        "Microsoft.Extensions.Logging.Console",
+        "ModelContextProtocol",
+        "ModelContextProtocol.AspNetCore",
+        "Nerdbank.GitVersioning"
+      ]
     }
   },
-  "updated_at": "2026-08-29T01:58:48Z"
+  "updated_at": "2026-08-29T01:59:14Z"
 }
