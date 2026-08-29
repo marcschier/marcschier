@@ -126,7 +126,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "openusd-dotnet": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "Avalonia",
         "Avalonia.Desktop",
@@ -139,8 +139,9 @@
         "Roslynator.Analyzers",
         "Roslynator.Formatting.Analyzers",
         "TUnit"
-      ]
+      ],
+      "pr": 18
     }
   },
-  "updated_at": "2026-08-29T11:51:17Z"
+  "updated_at": "2026-08-29T11:51:20Z"
 }
