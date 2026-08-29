@@ -109,7 +109,7 @@
       "released_at": "2026-08-28T16:48:50Z"
     },
     "opcuakb-mcp": {
-      "phase": "publish-impact",
+      "phase": "done",
       "updated": [
         "AngleSharp",
         "Azure.Storage.Blobs",
@@ -122,8 +122,9 @@
         "ModelContextProtocol.AspNetCore",
         "Nerdbank.GitVersioning"
       ],
-      "pr": 5
+      "pr": 5,
+      "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     }
   },
-  "updated_at": "2026-08-29T07:10:45Z"
+  "updated_at": "2026-08-29T07:10:46Z"
 }
