@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -124,11 +124,7 @@
       ],
       "pr": 5,
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
-    },
-    "openusd-dotnet": {
-      "phase": "failed",
-      "note": "detect: The command could not be loaded, possibly because:\n  * You intended to execute a .NET application:\n      The application 'restore' does not exist or is not a managed .dll or .exe.\n  * You intended to execute a .NET SDK command:\n      Required .NET SDK 10.0.301 not found. Run ./eng/install-dotnet.ps1 or ./eng/install-dotnet.sh.\n"
     }
   },
-  "updated_at": "2026-08-29T07:10:50Z"
+  "updated_at": "2026-08-29T07:14:00Z"
 }
