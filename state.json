@@ -76,8 +76,8 @@
       "released_at": "2026-08-27T05:13:52Z"
     },
     "opc-classic": {
-      "phase": "awaiting-listing",
-      "note": "replaced failed stable v0.4.0 attempt with valid alpha release v0.4.1-alpha",
+      "phase": "done",
+      "note": "released v0.4.1-alpha",
       "updated": [
         "CsCheck",
         "Kerberos.NET",
@@ -109,5 +109,5 @@
       "released_at": "2026-08-28T16:48:50Z"
     }
   },
-  "updated_at": "2026-08-29T01:53:46Z"
+  "updated_at": "2026-08-29T01:58:48Z"
 }
