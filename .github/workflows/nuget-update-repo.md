@@ -47,12 +47,15 @@ safe-outputs:
       policy: fallback-to-issue
       exclude:
         - "Directory.Packages.props"
-    # Exclusive allowlist: the agent may only touch production source and the central manifest.
+        - "Directory.Build.props"
+    # Exclusive allowlist: the agent may only touch production source and package manifests.
     # Any edit to tests/**, benchmarks/**, samples/**, eng/**, .github/**, version.json, *.slnx,
     # etc. is outside this list and is refused, falling back to an explanatory issue.
     allowed-files:
       - "Directory.Packages.props"
       - "**/Directory.Packages.props"
+      - "Directory.Build.props"
+      - "**/Directory.Build.props"
       - "src/**"
   create-issue:
     target-repo: "marcschier/${{ github.event.inputs.repo }}"
@@ -75,7 +78,7 @@ Bring **every** NuGet dependency of this repository up to its **latest stable** 
 
 1. Run `dotnet restore` on the solution (`*.slnx` or `*.sln`), then `dotnet list <solution> package --outdated --format json` to find outdated packages.
 2. If **nothing** is outdated, stop and make **no** pull request and **no** issue. Report "no updates".
-3. Otherwise raise each outdated package to its latest **stable** version. Versions are managed centrally in `Directory.Packages.props` (Central Package Management) — edit the `<PackageVersion .../>` entries there (or the `.csproj` `<PackageReference Version="..."/>` where a repo pins locally). Update **all** outdated packages, including those used only by test/benchmark/sample projects.
+3. Otherwise raise each outdated package to its latest **stable** version. Versions are usually managed centrally in `Directory.Packages.props` (Central Package Management), but some repositories pin build dependencies in `Directory.Build.props` — edit the existing package-version entry in the manifest that owns it (or the `.csproj` `<PackageReference Version="..."/>` where a repo pins locally). Update **all** outdated packages, including those used only by test/benchmark/sample projects.
 4. Run `dotnet build <solution> -c Release`. Fix any breakages caused by the upgrades by editing **production source only** (files under `src/`). Prefer the smallest correct change that adapts to the new APIs.
 5. Run `dotnet format <solution> --verify-no-changes` and fix formatting; keep lines within the repo's length limit (see `eng/` if present).
 6. Run `dotnet test <solution> -c Release` where feasible. Some suites need external services (brokers, native libraries) that are not available here — that is fine; the repository's CI will run the full matrix on your PR.

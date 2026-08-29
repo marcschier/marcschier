@@ -189,6 +189,14 @@ class VersionTests(unittest.TestCase):
 
 
 class ConfigurationTests(unittest.TestCase):
+    def test_updater_allows_supported_central_package_manifests(self):
+        workflow = (HERE.parent / "workflows" / "nuget-update-repo.md").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn('- "Directory.Packages.props"', workflow)
+        self.assertIn('- "Directory.Build.props"', workflow)
+
     def test_readme_and_release_descriptors_match(self):
         result = subprocess.run(
             [sys.executable, str(HERE / "parse-readme.py")],
