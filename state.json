@@ -1,5 +1,5 @@
 {
-  "status": "halted",
+  "status": "running",
   "cycle_started_at": "2026-08-26T16:42:19Z",
   "repos": {
     "dtls": {
@@ -126,7 +126,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "openusd-dotnet": {
-      "phase": "failed",
+      "phase": "release",
       "updated": [
         "Avalonia",
         "Avalonia.Desktop",
@@ -141,8 +141,8 @@
         "TUnit"
       ],
       "pr": 18,
-      "note": "merge: $ gh pr merge 18 -R marcschier/openusd-dotnet --squash --admin\n\nGraphQL: Resource not accessible by personal access token (mergePullRequest)\n"
+      "note": "merged manually; confirmed published-package impact and opened release version PR #19"
     }
   },
-  "updated_at": "2026-08-29T11:51:25Z"
+  "updated_at": "2026-08-29T12:09:42Z"
 }
