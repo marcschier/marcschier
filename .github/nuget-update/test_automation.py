@@ -188,6 +188,20 @@ class VersionTests(unittest.TestCase):
         self.assertEqual(actual["written"], "0.12.1-alpha")
 
 
+class ReleaseTests(unittest.TestCase):
+    def test_prerelease_channel_marks_github_release_as_prerelease(self):
+        with patch.object(conductor, "gh") as gh:
+            conductor.create_release("openusd-dotnet", "v0.12.1-alpha", "alpha")
+
+        self.assertIn("--prerelease", gh.call_args.args)
+
+    def test_stable_release_is_not_marked_as_prerelease(self):
+        with patch.object(conductor, "gh") as gh:
+            conductor.create_release("mqtt-client", "v1.1.4")
+
+        self.assertNotIn("--prerelease", gh.call_args.args)
+
+
 class ConfigurationTests(unittest.TestCase):
     def test_conductor_installs_openusd_pinned_sdk(self):
         workflow = (HERE.parent / "workflows" / "nuget-update-conductor.yml").read_text(

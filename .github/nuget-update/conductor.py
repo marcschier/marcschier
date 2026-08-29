@@ -76,6 +76,16 @@ def gh_json(*args: str, check: bool = True, token: str | None = None):
         return None
 
 
+def create_release(repo: str, tag: str, prerelease: str = "") -> None:
+    args = [
+        "release", "create", tag, "-R", f"{OWNER}/{repo}", "--target", "main",
+        "--title", tag, "--notes", f"Automated dependency-update release {tag}.",
+    ]
+    if prerelease:
+        args.append("--prerelease")
+    gh(*args)
+
+
 def budget_left() -> float:
     return RUN_BUDGET - (time.time() - START)
 
@@ -393,8 +403,7 @@ def process_repo(repo: str, cfg: dict, state: dict) -> str:
         existing = gh("release", "view", tag, "-R", f"{OWNER}/{repo}", "--json", "tagName",
                       "--jq", ".tagName", check=False)
         if existing.strip() != tag:
-            gh("release", "create", tag, "-R", f"{OWNER}/{repo}", "--target", "main",
-               "--title", tag, "--notes", f"Automated dependency-update release {tag}.")
+            create_release(repo, tag, prerelease)
         rstate["tag"] = tag
         rstate["released_at"] = released_at
         rstate["phase"] = "awaiting-tag-ci"
