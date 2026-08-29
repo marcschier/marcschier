@@ -109,7 +109,7 @@
       "released_at": "2026-08-28T16:48:50Z"
     },
     "opcuakb-mcp": {
-      "phase": "awaiting-pr",
+      "phase": "awaiting-pr-ci",
       "updated": [
         "AngleSharp",
         "Azure.Storage.Blobs",
@@ -121,8 +121,9 @@
         "ModelContextProtocol",
         "ModelContextProtocol.AspNetCore",
         "Nerdbank.GitVersioning"
-      ]
+      ],
+      "pr": 5
     }
   },
-  "updated_at": "2026-08-29T07:10:37Z"
+  "updated_at": "2026-08-29T07:10:39Z"
 }
