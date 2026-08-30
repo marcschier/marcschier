@@ -126,7 +126,7 @@
       "note": "merged; published to GitHub Packages/GHCR by ci.yml on the merge push"
     },
     "openusd-dotnet": {
-      "phase": "awaiting-tag-ci",
+      "phase": "release",
       "updated": [
         "Avalonia",
         "Avalonia.Desktop",
@@ -141,10 +141,8 @@
         "TUnit"
       ],
       "pr": 18,
-      "tag": "v0.12.2-alpha",
-      "released_at": "2026-08-30T15:04:41Z",
-      "note": "v0.12.1-alpha failed after a concurrent main change caused parity-list drift; corrected release PR #20 merged as 0c550c252898381cb8607ee14a94c2d0193772ef"
+      "note": "v0.12.1-alpha failed from parity-list drift; v0.12.2-alpha failed because duplicate Windows WGL filters inflated the minimum-test count; corrected release PR #21 is open for v0.12.3-alpha"
     }
   },
-  "updated_at": "2026-08-30T15:04:41Z"
+  "updated_at": "2026-08-30T19:24:00Z"
 }
