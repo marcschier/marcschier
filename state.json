@@ -146,5 +146,5 @@
       "note": "v0.12.1-alpha failed from parity-list drift; v0.12.2-alpha failed because duplicate Windows WGL filters inflated the minimum-test count; corrected release PR #21 merged as a3a7dee1d86068126a6eb2b46fff12eeccb5fc07"
     }
   },
-  "updated_at": "2026-08-30T21:55:27Z"
+  "updated_at": "2026-08-31T11:55:58Z"
 }
