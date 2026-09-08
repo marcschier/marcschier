@@ -13,8 +13,8 @@
     accumulated several sessions contributes exactly one tab.
 
     For every selected session a new tab is added to the currently focused Windows Terminal
-    window. The tab starts in the session's original working directory and runs
-    'copilot --resume=<id> --allow-all'.
+    window. The tab starts in the session's original working directory and resumes Copilot with
+    --allow-all plus the shared Node.js crash workaround.
 
 .PARAMETER Hours
     Size of the time window in hours. Mutually exclusive with -Days.
@@ -216,12 +216,14 @@ $selected |
     Out-String |
     Write-Host
 
+$runtimeArguments = @(Get-CopilotSessionRuntimeArgument)
+$runtimeCommand = $runtimeArguments -join ' '
 $opened = 0
 foreach ($session in $selected) {
     $title = Get-TabTitle -Session $session
     $directory = Get-StartingDirectory -Path $session.Cwd
 
-    $copilotCommand = "copilot --resume=$($session.Id) --allow-all"
+    $copilotCommand = "copilot $runtimeCommand --resume=$($session.Id) --allow-all"
     if ($CopilotArgument.Count -gt 0) {
         $copilotCommand = "$copilotCommand $($CopilotArgument -join ' ')"
     }
@@ -231,7 +233,7 @@ foreach ($session in $selected) {
 
     # '-w 0' targets the most recently used (currently focused) Windows Terminal window.
     # The copilot command is passed as a single token so Windows Terminal never tries to
-    # interpret '--resume' or '--allow-all' as options of its own.
+    # interpret the Copilot and Node.js arguments as options of its own.
     $wtArguments = @(
         '-w', '0'
         'new-tab'

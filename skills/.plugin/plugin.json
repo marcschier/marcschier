@@ -1,6 +1,6 @@
 {
   "name": "copilot-sessions",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Manage local GitHub Copilot CLI session state on Windows: interactively select or reopen recent sessions, clean up stale state, and move sessions between machines.",
   "author": {
     "name": "Marc Schier",

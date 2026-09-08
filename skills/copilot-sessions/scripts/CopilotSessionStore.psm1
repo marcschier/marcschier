@@ -363,6 +363,26 @@ ORDER BY s.updated_at DESC
         Sort-Object -Property UpdatedUtc -Descending)
 }
 
+function Get-CopilotSessionRuntimeArgument {
+    <#
+    .SYNOPSIS
+        Returns the temporary Node.js crash-mitigation arguments used to launch Copilot sessions.
+
+    .DESCRIPTION
+        The packaged Copilot CLI ignores the NODE_OPTIONS environment variable, so the larger
+        old-space limit must be supplied through its --node-options argument. Fatal Node.js errors
+        also write a diagnostic report for later investigation.
+    #>
+    [CmdletBinding()]
+    [OutputType([string[]])]
+    param()
+
+    return @(
+        '--node-options=--max-old-space-size=8000'
+        '--report-on-fatalerror'
+    )
+}
+
 function Get-DirectorySize {
     <#
     .SYNOPSIS
@@ -459,6 +479,7 @@ Export-ModuleMember -Function @(
     'Invoke-CopilotStoreCommand'
     'ConvertTo-UtcTimestamp'
     'Get-CopilotResumableSession'
+    'Get-CopilotSessionRuntimeArgument'
     'Get-DirectorySize'
     'Test-CopilotSessionInUse'
     'Get-CopilotWorkspaceInfo'

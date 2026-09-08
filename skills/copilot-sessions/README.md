@@ -68,7 +68,7 @@ when invoking a script directly.
 Shows the same resumable set used by `Resume-CopilotSessions.ps1`, but lets you choose one session
 with a dependency-free console picker. Use Up/Down, Page Up/Page Down, Home and End to navigate,
 Enter to resume, or Escape to cancel. The selected session runs in the current terminal and its
-original working directory with `--yolo`.
+original working directory with `--yolo` and the temporary Node.js crash workaround described below.
 
 | Rule | Behaviour |
 |---|---|
@@ -84,18 +84,13 @@ original working directory with `--yolo`.
 ./scripts/Select-CopilotSession.ps1 -CopilotArgument '--model=claude-sonnet-4.6'
 ```
 
-`-EnableErrorReport` is capability-gated: it passes `--enable-error-report=true` only when the
-installed CLI advertises that option, and otherwise stops with an explanatory error. The option is
-not currently documented by Copilot CLI; `-CopilotArgument` remains available for other
-version-specific flags.
-
 ---
 
 ## `Resume-CopilotSessions.ps1`
 
 Reopens the sessions you were actually working in, one per Windows Terminal tab. Each tab is added to
-the **currently focused** window, starts in that session's original working directory, and runs
-`copilot --resume=<id> --allow-all`.
+the **currently focused** window, starts in that session's original working directory, and resumes
+Copilot with `--allow-all` plus the temporary Node.js crash workaround below.
 
 | Rule | Behaviour |
 |---|---|
@@ -129,6 +124,20 @@ for things like *"summarise where we left off"* or *"re-run the tests and fix an
 a whole day's worth of sessions at once. Quotes, semicolons, ampersands, pipes and trailing
 backslashes are all escaped for you. Avoid `%VARIABLE%` references — tabs launch through `cmd.exe`,
 which expands those before Copilot sees them, and the script warns when it spots one.
+
+### Temporary Node.js crash workaround
+
+Both scripts that start Copilot sessions currently add:
+
+```text
+--node-options="--max-old-space-size=8000" --report-on-fatalerror
+```
+
+The packaged executable ignores the `NODE_OPTIONS` environment variable, so the old-space limit must
+go through `--node-options`. The larger heap is a temporary mitigation rather than a leak fix, while
+`--report-on-fatalerror` preserves a Node.js diagnostic report if the process still exhausts memory.
+See [github/copilot-cli#4686](https://github.com/github/copilot-cli/issues/4686) and
+[github/copilot-cli#4725](https://github.com/github/copilot-cli/issues/4725).
 
 ---
 

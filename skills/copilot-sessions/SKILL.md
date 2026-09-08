@@ -78,12 +78,20 @@ Two rules that are easy to get backwards:
 
 `Select-CopilotSession.ps1` uses the same recent, non-empty, existing-directory and one-per-directory
 rules as the resume script. It presents a native console list navigated with Up/Down, Page Up/Page
-Down, Home and End; Enter resumes the highlighted session in the current terminal with `--yolo`,
-while Escape or Ctrl+C cancels.
+Down, Home and End; Enter resumes the highlighted session in the current terminal with `--yolo` and
+the shared Node.js crash workaround, while Escape or Ctrl+C cancels.
 
-Use `-EnableErrorReport` only when requested. The script probes `copilot --help` and passes
-`--enable-error-report=true` when the installed CLI advertises it; otherwise it stops clearly rather
-than launching with an invalid option. Use `-CopilotArgument` for other version-specific flags.
+### Temporary startup workaround
+
+Every script that starts a Copilot session must include both
+`--node-options="--max-old-space-size=8000"` and `--report-on-fatalerror`. The packaged executable
+ignores the `NODE_OPTIONS` environment variable; the larger heap only delays the reported leak, and
+the fatal-error flag preserves a Node.js report if it still crashes. Keep the arguments centralized
+through `Get-CopilotSessionRuntimeArgument`.
+
+This workaround tracks [github/copilot-cli#4686](https://github.com/github/copilot-cli/issues/4686)
+and [github/copilot-cli#4725](https://github.com/github/copilot-cli/issues/4725). Remove or revise it
+only when the upstream behavior changes.
 
 ### Opening prompts
 

@@ -11,7 +11,8 @@
       * only the most recently updated session per working directory is shown.
 
     Use Up/Down, Page Up/Page Down, Home and End to move through the list. Enter resumes the
-    highlighted session in the current terminal with --yolo; Escape or Ctrl+C cancels.
+    highlighted session in the current terminal with --yolo and the shared Node.js crash
+    workaround; Escape or Ctrl+C cancels.
 
 .PARAMETER Hours
     Size of the time window in hours. Mutually exclusive with -Days.
@@ -26,10 +27,6 @@
 .PARAMETER Filter
     Optional wildcard pattern matched against the session working directory, repository and name.
 
-.PARAMETER EnableErrorReport
-    Passes --enable-error-report=true when the installed Copilot CLI advertises that option.
-    Stops with a clear error when the installed CLI does not support it.
-
 .PARAMETER CopilotArgument
     Additional arguments appended to the Copilot command line.
 
@@ -42,11 +39,6 @@
     .\Select-CopilotSession.ps1 -Hours 8 -Filter '*UA-.NETStandard*'
 
     Pick from matching sessions updated in the last eight hours.
-
-.EXAMPLE
-    .\Select-CopilotSession.ps1 -EnableErrorReport
-
-    Enable error reporting on CLI versions that support --enable-error-report.
 
 .NOTES
     Requires PowerShell 7, the Copilot CLI and either python or sqlite3.exe on PATH.
@@ -68,8 +60,6 @@ param(
 
     [ValidateNotNullOrEmpty()]
     [string] $Filter,
-
-    [switch] $EnableErrorReport,
 
     [string[]] $CopilotArgument = @()
 )
@@ -240,28 +230,6 @@ function Select-Session {
     }
 }
 
-function Get-ErrorReportArgument {
-    param([Parameter(Mandatory)] [string] $CopilotPath)
-
-    $helpText = (& $CopilotPath --help 2>&1 | Out-String)
-    if ($LASTEXITCODE -ne 0) {
-        throw "Could not inspect Copilot CLI options (exit code $LASTEXITCODE)."
-    }
-
-    $optionLine = @($helpText -split '\r?\n' |
-        Where-Object { $_ -match '^\s*--enable-error-report(?:\s|$)' } |
-        Select-Object -First 1)
-    if ($optionLine.Count -eq 0) {
-        throw ('This Copilot CLI version does not support --enable-error-report. ' +
-            'Omit -EnableErrorReport or update the CLI when that option becomes available.')
-    }
-
-    if ($optionLine[0] -match '<[^>]+>|\[[^\]]+\]') {
-        return '--enable-error-report=true'
-    }
-    return '--enable-error-report'
-}
-
 $copilot = Get-Command -Name 'copilot' -CommandType Application -ErrorAction SilentlyContinue |
     Select-Object -First 1
 if (-not $copilot) {
@@ -281,12 +249,6 @@ if ($sessions.Count -eq 0) {
     return
 }
 
-$errorReportArgument = if ($EnableErrorReport) {
-    Get-ErrorReportArgument -CopilotPath $copilot.Source
-} else {
-    $null
-}
-
 $selected = Select-Session -Session $sessions
 if (-not $selected) {
     Write-Host 'Session selection cancelled.'
@@ -294,11 +256,11 @@ if (-not $selected) {
 }
 
 $arguments = [System.Collections.Generic.List[string]]::new()
+foreach ($argument in (Get-CopilotSessionRuntimeArgument)) {
+    $arguments.Add($argument)
+}
 $arguments.Add("--resume=$($selected.Id)")
 $arguments.Add('--yolo')
-if ($errorReportArgument) {
-    $arguments.Add($errorReportArgument)
-}
 foreach ($argument in $CopilotArgument) {
     if ([string]::IsNullOrWhiteSpace($argument)) {
         throw 'CopilotArgument entries cannot be empty.'
@@ -308,11 +270,11 @@ foreach ($argument in $CopilotArgument) {
 
 $title = Get-SessionTitle -Session $selected
 $target = "$title [$($selected.Cwd)]"
-if (-not $PSCmdlet.ShouldProcess($target, "Resume Copilot session with --yolo")) {
+if (-not $PSCmdlet.ShouldProcess($target, 'Resume Copilot session with --yolo and Node.js crash workaround')) {
     return
 }
 
-Write-Host "Resuming '$title' in '$($selected.Cwd)' with --yolo." -ForegroundColor Green
+Write-Host "Resuming '$title' in '$($selected.Cwd)' with --yolo and the Node.js crash workaround." -ForegroundColor Green
 Push-Location -LiteralPath $selected.Cwd
 try {
     & $copilot.Source @arguments
