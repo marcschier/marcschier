@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "copilot-sessions",
       "source": "./skills",
-      "description": "Manage local GitHub Copilot CLI session state on Windows: reopen recent sessions as Windows Terminal tabs, reclaim disk by purging empty and orphaned session folders, and move session state between machines.",
-      "version": "1.1.0",
+      "description": "Manage local GitHub Copilot CLI session state on Windows: interactively select or reopen recent sessions, clean up stale state, and move sessions between machines.",
+      "version": "1.2.0",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"
@@ -25,6 +25,7 @@
       "keywords": [
         "copilot-cli",
         "sessions",
+        "picker",
         "resume",
         "windows-terminal",
         "cleanup",

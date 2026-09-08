@@ -1,12 +1,12 @@
 # 💤 copilot-sessions
 
 An installable [agent skill](https://docs.github.com/copilot/concepts/agents/about-agent-skills) plus
-three standalone PowerShell scripts for managing local [GitHub Copilot CLI](https://github.com/github/copilot-cli)
+four standalone PowerShell scripts for managing local [GitHub Copilot CLI](https://github.com/github/copilot-cli)
 session state on Windows. It installs as a Copilot CLI plugin, or as a bare skill.
 
 Working across a dozen clones means a dozen Copilot sessions. After a reboot there is no quick way to
 get them back, the session store quietly grows into the tens of gigabytes, and there is no built-in way
-to carry work over to another machine. These scripts cover all three.
+to carry work over to another machine. These scripts cover those workflows.
 
 ## Install
 
@@ -56,10 +56,38 @@ when invoking a script directly.
 ## Requirements
 
 * PowerShell 7
-* [Windows Terminal](https://github.com/microsoft/terminal) (`wt.exe`) — resume script only
-* [Copilot CLI](https://github.com/github/copilot-cli) (`copilot.exe`) — resume script only
+* [Windows Terminal](https://github.com/microsoft/terminal) (`wt.exe`) — automatic resume script only
+* [Copilot CLI](https://github.com/github/copilot-cli) (`copilot.exe`) — select and resume scripts
 * `python` **or** `sqlite3.exe` on `PATH` — the session store is a SQLite database, and neither
   PowerShell nor .NET can read one out of the box
+
+---
+
+## `Select-CopilotSession.ps1`
+
+Shows the same resumable set used by `Resume-CopilotSessions.ps1`, but lets you choose one session
+with a dependency-free console picker. Use Up/Down, Page Up/Page Down, Home and End to navigate,
+Enter to resume, or Escape to cancel. The selected session runs in the current terminal and its
+original working directory with `--yolo`.
+
+| Rule | Behaviour |
+|---|---|
+| Non-empty | Sessions with at least one recorded turn; blank launches are ignored |
+| Time window | Sessions last updated within `-Hours` / `-Days` (default: 1 day) |
+| One per directory | Only the most recently updated session per working directory |
+| Live directories | Sessions whose directory no longer exists are skipped with a warning |
+
+```powershell
+./scripts/Select-CopilotSession.ps1
+./scripts/Select-CopilotSession.ps1 -Hours 8
+./scripts/Select-CopilotSession.ps1 -Days 7 -Filter '*UA-.NETStandard*'
+./scripts/Select-CopilotSession.ps1 -CopilotArgument '--model=claude-sonnet-4.6'
+```
+
+`-EnableErrorReport` is capability-gated: it passes `--enable-error-report=true` only when the
+installed CLI advertises that option, and otherwise stops with an explanatory error. The option is
+not currently documented by Copilot CLI; `-CopilotArgument` remains available for other
+version-specific flags.
 
 ---
 

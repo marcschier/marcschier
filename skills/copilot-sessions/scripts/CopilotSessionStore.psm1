@@ -281,6 +281,88 @@ function ConvertTo-UtcTimestamp {
     return $null
 }
 
+function Get-CopilotResumableSession {
+    <#
+    .SYNOPSIS
+        Returns recent, non-empty sessions whose working directories still exist.
+
+    .DESCRIPTION
+        Applies the selection rules shared by the automatic and interactive resume scripts:
+        sessions must contain a turn, fall within the requested time window and point at an
+        existing working directory. Only the most recently updated session per directory is
+        returned.
+    #>
+    [CmdletBinding()]
+    [OutputType([object[]])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $DatabasePath,
+
+        [Parameter(Mandatory)]
+        [timespan] $Window,
+
+        [string] $Filter
+    )
+
+    if ($Window -lt [timespan]::Zero) {
+        throw 'The session time window cannot be negative.'
+    }
+
+    $cutoffUtc = [datetime]::UtcNow - $Window
+    Write-Verbose "Selecting sessions updated after $($cutoffUtc.ToString('u')) (window: $Window)."
+
+    # Use a coarse, index-friendly day prefilter, then apply the exact cutoff after parsing.
+    $rows = Invoke-CopilotStoreQuery -DatabasePath $DatabasePath -Query @'
+SELECT s.id AS id,
+       s.cwd AS cwd,
+       s.repository AS repository,
+       s.branch AS branch,
+       s.summary AS summary,
+       s.updated_at AS updated_at
+FROM sessions s
+WHERE substr(s.updated_at, 1, 10) >= ?
+  AND EXISTS (SELECT 1 FROM turns t WHERE t.session_id = s.id)
+ORDER BY s.updated_at DESC
+'@ -Parameters @($cutoffUtc.AddDays(-1).ToString('yyyy-MM-dd'))
+    Write-Verbose "Session store returned $($rows.Count) non-empty candidate session(s)."
+
+    $candidates = [System.Collections.Generic.List[pscustomobject]]::new()
+    foreach ($row in $rows) {
+        $updated = ConvertTo-UtcTimestamp -Value $row.updated_at
+        if (-not $updated) {
+            Write-Verbose "Skipping session $($row.id): unparsable timestamp '$($row.updated_at)'."
+            continue
+        }
+        if ($updated -lt $cutoffUtc) { continue }
+
+        if ([string]::IsNullOrWhiteSpace($row.cwd)) {
+            Write-Verbose "Skipping session $($row.id): no working directory recorded."
+            continue
+        }
+        if (-not (Test-Path -LiteralPath $row.cwd -PathType Container)) {
+            Write-Warning "Skipping session $($row.id) ($($row.summary)): directory '$($row.cwd)' no longer exists."
+            continue
+        }
+        if ($Filter -and -not ($row.cwd -like $Filter -or $row.repository -like $Filter -or $row.summary -like $Filter)) {
+            continue
+        }
+
+        $candidates.Add([pscustomobject]@{
+            Id         = $row.id
+            Cwd        = $row.cwd
+            Repository = $row.repository
+            Branch     = $row.branch
+            Summary    = $row.summary
+            UpdatedUtc = $updated
+        })
+    }
+
+    return @($candidates |
+        Group-Object -Property { $_.Cwd.ToLowerInvariant() } |
+        ForEach-Object { $_.Group | Sort-Object -Property UpdatedUtc -Descending | Select-Object -First 1 } |
+        Sort-Object -Property UpdatedUtc -Descending)
+}
+
 function Get-DirectorySize {
     <#
     .SYNOPSIS
@@ -376,6 +458,7 @@ Export-ModuleMember -Function @(
     'Invoke-CopilotStoreQuery'
     'Invoke-CopilotStoreCommand'
     'ConvertTo-UtcTimestamp'
+    'Get-CopilotResumableSession'
     'Get-DirectorySize'
     'Test-CopilotSessionInUse'
     'Get-CopilotWorkspaceInfo'

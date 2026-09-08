@@ -2,21 +2,21 @@
 name: copilot-sessions
 license: MIT
 description: >
-  Manage local GitHub Copilot CLI session state on Windows: reopen recent sessions as
-  Windows Terminal tabs, reclaim disk by purging empty and orphaned session folders, and
-  move session state between machines.
-  USE FOR: "resume my sessions", "reopen what I was working on yesterday", "open a tab per
-  repo I was working in", "my .copilot folder is huge", "clean up empty Copilot sessions",
-  "delete orphaned session state", "why is session-state so big", "move my Copilot sessions
-  to my other machine", "export/import Copilot session history", "transfer my chat history
-  to another PC".
+  Manage local GitHub Copilot CLI session state on Windows: interactively pick one session,
+  reopen recent sessions as Windows Terminal tabs, reclaim disk by purging empty and orphaned
+  session folders, and move session state between machines.
+  USE FOR: "pick a Copilot session", "choose a session to resume", "resume my sessions",
+  "reopen what I was working on yesterday", "open a tab per repo I was working in", "my
+  .copilot folder is huge", "clean up empty Copilot sessions", "delete orphaned session
+  state", "why is session-state so big", "move my Copilot sessions to my other machine",
+  "export/import Copilot session history", "transfer my chat history to another PC".
   DO NOT USE FOR: managing GitHub Codespaces, git worktrees, VS Code windows, Copilot
   settings/config unrelated to session state, or deleting files inside a user's repository.
 ---
 
 # copilot-sessions
 
-Three PowerShell scripts that operate on the Copilot CLI's local session store.
+Four PowerShell scripts that operate on the Copilot CLI's local session store.
 
 ## Script location
 
@@ -25,6 +25,7 @@ file's directory — never assume the user has a clone of the repository they ca
 
 | Script | Purpose |
 |---|---|
+| `scripts/Select-CopilotSession.ps1` | Interactively choose and resume one recent session |
 | `scripts/Resume-CopilotSessions.ps1` | Reopen recent sessions as Windows Terminal tabs |
 | `scripts/Remove-EmptyCopilotSessions.ps1` | Purge empty sessions and orphaned session state |
 | `scripts/Copy-CopilotSessions.ps1` | Export/import session state between machines |
@@ -34,7 +35,7 @@ file's directory — never assume the user has a clone of the repository they ca
 
 * PowerShell 7 (`pwsh`)
 * Windows Terminal (`wt.exe`) — only for the resume script
-* Copilot CLI (`copilot.exe`) — only for the resume script
+* Copilot CLI (`copilot.exe`) — for the select and resume scripts
 * `python` **or** `sqlite3.exe` on `PATH` — the session store is a SQLite database and neither
   PowerShell nor .NET can read one unaided
 
@@ -62,6 +63,8 @@ Two rules that are easy to get backwards:
 
 | User intent | Script | Typical invocation |
 |---|---|---|
+| "Let me choose one session to resume" | Select | (default, 1 day) |
+| "Pick from everything I touched this week" | Select | `-Days 7` |
 | "Reopen what I was working on" | Resume | `-Hours 8` |
 | "Open a tab per repo" | Resume | (default, 1 day) |
 | "Reopen everything and ask each one to catch me up" | Resume | `-Prompt '<text>'` |
@@ -70,6 +73,17 @@ Two rules that are easy to get backwards:
 | "Clean up but keep anything with a plan" | Remove | `-ProtectOrphansWithPlan` |
 | "Move my sessions to my laptop" | Copy | `-Export` then `-Import` on the target |
 | "Just the transcripts, not the artifacts" | Copy | `-Export -Lean` |
+
+### Interactive selection
+
+`Select-CopilotSession.ps1` uses the same recent, non-empty, existing-directory and one-per-directory
+rules as the resume script. It presents a native console list navigated with Up/Down, Page Up/Page
+Down, Home and End; Enter resumes the highlighted session in the current terminal with `--yolo`,
+while Escape or Ctrl+C cancels.
+
+Use `-EnableErrorReport` only when requested. The script probes `copilot --help` and passes
+`--enable-error-report=true` when the installed CLI advertises it; otherwise it stops clearly rather
+than launching with an invalid option. Use `-CopilotArgument` for other version-specific flags.
 
 ### Opening prompts
 
@@ -112,6 +126,12 @@ the target machine, since the import writes to the session store.
 Resolve `$skill` to this skill's directory first.
 
 ```powershell
+# Interactively pick one recent session and resume it with --yolo
+& "$skill/scripts/Select-CopilotSession.ps1"
+
+# Pick from a wider or filtered window
+& "$skill/scripts/Select-CopilotSession.ps1" -Days 7 -Filter '*UA-.NETStandard*'
+
 # Reopen everything touched in the last 8 hours, one tab per working directory
 & "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 8
 

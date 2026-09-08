@@ -17,6 +17,7 @@ copilot skill add .\skills\copilot-sessions
 
 | Script | Purpose |
 |---|---|
+| [`Select-CopilotSession.ps1`](../skills/copilot-sessions/scripts/Select-CopilotSession.ps1) | Interactively choose and resume one recent session with `--yolo` |
 | [`Resume-CopilotSessions.ps1`](../skills/copilot-sessions/scripts/Resume-CopilotSessions.ps1) | Reopen recent sessions as Windows Terminal tabs |
 | [`Remove-EmptyCopilotSessions.ps1`](../skills/copilot-sessions/scripts/Remove-EmptyCopilotSessions.ps1) | Purge empty sessions and orphaned session state |
 | [`Copy-CopilotSessions.ps1`](../skills/copilot-sessions/scripts/Copy-CopilotSessions.ps1) | Export and import session state between machines |

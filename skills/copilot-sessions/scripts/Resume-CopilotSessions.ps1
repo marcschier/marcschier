@@ -105,25 +105,6 @@ $ErrorActionPreference = 'Stop'
 
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'CopilotSessionStore.psm1') -Force
 
-function Get-SessionQuery {
-    param([string] $SinceDate)
-
-    # Coarse, index friendly day-granularity prefilter. The exact cutoff is applied afterwards
-    # against the parsed timestamps so that fractional -Hours windows are honoured.
-    return @"
-SELECT s.id AS id,
-       s.cwd AS cwd,
-       s.repository AS repository,
-       s.branch AS branch,
-       s.summary AS summary,
-       s.updated_at AS updated_at
-FROM sessions s
-WHERE substr(s.updated_at, 1, 10) >= '$SinceDate'
-  AND EXISTS (SELECT 1 FROM turns t WHERE t.session_id = s.id)
-ORDER BY s.updated_at DESC
-"@
-}
-
 function Get-TabTitle {
     param([pscustomobject] $Session)
 
@@ -206,57 +187,15 @@ $window = if ($PSCmdlet.ParameterSetName -eq 'Hours') {
 } else {
     [timespan]::FromDays($Days)
 }
-$cutoffUtc = [datetime]::UtcNow - $window
-Write-Verbose "Selecting sessions updated after $($cutoffUtc.ToString('u')) (window: $window)."
 
-$query = Get-SessionQuery -SinceDate $cutoffUtc.AddDays(-1).ToString('yyyy-MM-dd')
-$rows = Invoke-CopilotStoreQuery -DatabasePath $databasePath -Query $query
-Write-Verbose "Session store returned $($rows.Count) non-empty candidate session(s)."
-
-$candidates = [System.Collections.Generic.List[pscustomobject]]::new()
-foreach ($row in $rows) {
-    $updated = ConvertTo-UtcTimestamp -Value $row.updated_at
-    if (-not $updated) {
-        Write-Verbose "Skipping session $($row.id): unparsable timestamp '$($row.updated_at)'."
-        continue
+$selected = @(Get-CopilotResumableSession -DatabasePath $databasePath -Window $window -Filter $Filter)
+$selected = @($selected | Where-Object {
+    if ($_.Cwd.Contains(';')) {
+        Write-Warning "Skipping session $($_.Id): directory '$($_.Cwd)' contains ';', which Windows Terminal cannot handle."
+        return $false
     }
-    if ($updated -lt $cutoffUtc) { continue }
-
-    if ([string]::IsNullOrWhiteSpace($row.cwd)) {
-        Write-Verbose "Skipping session $($row.id): no working directory recorded."
-        continue
-    }
-    if (-not (Test-Path -LiteralPath $row.cwd -PathType Container)) {
-        Write-Warning "Skipping session $($row.id) ($($row.summary)): directory '$($row.cwd)' no longer exists."
-        continue
-    }
-    if ($row.cwd.Contains(';')) {
-        Write-Warning "Skipping session $($row.id): directory '$($row.cwd)' contains ';', which Windows Terminal cannot handle."
-        continue
-    }
-
-    $candidates.Add([pscustomobject]@{
-        Id         = $row.id
-        Cwd        = $row.cwd
-        Repository = $row.repository
-        Branch     = $row.branch
-        Summary    = $row.summary
-        UpdatedUtc = $updated
-    })
-}
-
-if ($Filter) {
-    $before = $candidates.Count
-    $candidates = [System.Collections.Generic.List[pscustomobject]](@($candidates | Where-Object {
-        $_.Cwd -like $Filter -or $_.Repository -like $Filter -or $_.Summary -like $Filter
-    }))
-    Write-Verbose "Filter '$Filter' removed $($before - $candidates.Count) session(s)."
-}
-
-$selected = @($candidates |
-    Group-Object -Property { $_.Cwd.ToLowerInvariant() } |
-    ForEach-Object { $_.Group | Sort-Object -Property UpdatedUtc -Descending | Select-Object -First 1 } |
-    Sort-Object -Property UpdatedUtc -Descending)
+    return $true
+})
 
 if ($selected.Count -eq 0) {
     Write-Host "No non-empty Copilot sessions were updated in the last $window." -ForegroundColor Yellow
