@@ -379,7 +379,6 @@ function Get-CopilotSessionRuntimeArgument {
 
     return @(
         '--node-options=--max-old-space-size=8000'
-        '--report-on-fatalerror'
     )
 }
 

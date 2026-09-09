@@ -130,13 +130,12 @@ which expands those before Copilot sees them, and the script warns when it spots
 Both scripts that start Copilot sessions currently add:
 
 ```text
---node-options="--max-old-space-size=8000" --report-on-fatalerror
+--node-options="--max-old-space-size=8000"
 ```
 
 The packaged executable ignores the `NODE_OPTIONS` environment variable, so the old-space limit must
-go through `--node-options`. The larger heap is a temporary mitigation rather than a leak fix, while
-`--report-on-fatalerror` preserves a Node.js diagnostic report if the process still exhausts memory.
-See [github/copilot-cli#4686](https://github.com/github/copilot-cli/issues/4686) and
+go through `--node-options`. The larger heap is a temporary mitigation rather than a leak fix. See
+[github/copilot-cli#4686](https://github.com/github/copilot-cli/issues/4686) and
 [github/copilot-cli#4725](https://github.com/github/copilot-cli/issues/4725).
 
 ---
@@ -186,6 +185,51 @@ Kept: 49 with turns, 0 protected by plan.md, 8 in use, 0 newer than 1.00:00:00, 
 ```
 
 Add `-Verbose` to list the ten largest candidates before committing.
+
+---
+
+## `Remove-OldCopilotSessions.ps1`
+
+Removes sessions **by age**, including sessions that recorded real work — so it is interactive by
+default. Use it to reclaim space long after the work is done; use `Remove-EmptyCopilotSessions.ps1`
+for the routine, safe tidy-up.
+
+1. Every session last updated before the cutoff is collected, together with the size of its
+   `session-state` directory.
+2. A checklist appears with all candidates pre-selected, largest first. **Deselect the ones you want
+   to keep.** The footer shows a live count and the space the current selection would free.
+3. Enter removes what is still checked: the session's rows in `session-store.db` and its
+   `session-state` directory.
+
+| Key | Action |
+|---|---|
+| Up/Down, PgUp/PgDn, Home/End | Move |
+| Space | Toggle keep/remove on the highlighted session |
+| `A` / `N` / `I` | Check all / uncheck all / invert |
+| Enter | Remove the checked sessions |
+| Esc, Ctrl+C | Cancel — nothing is removed |
+
+Sessions open in another terminal are never offered, and neither is anything newer than the age
+threshold or holding a `plan.md` (unless `-IncludePlanned`).
+
+```powershell
+./scripts/Remove-OldCopilotSessions.ps1 -Days 30 -WhatIf          # list only, no checklist
+./scripts/Remove-OldCopilotSessions.ps1 -Days 14                  # checklist, then remove
+./scripts/Remove-OldCopilotSessions.ps1 -Days 60 -Recycle
+./scripts/Remove-OldCopilotSessions.ps1 -Hours 6 -Filter '*scratch*' -Force
+```
+
+| Parameter | Default | Description |
+|---|---|---|
+| `-Hours` / `-Days` | 30 days | Only offer sessions **older than** this |
+| `-Filter` | none | Wildcard over working directory, repository and summary |
+| `-IncludePlanned` | off | Also offer sessions whose state directory has a `plan.md` |
+| `-Recycle` | off | Send to the Recycle Bin instead of deleting permanently |
+| `-Force` | off | Skip the checklist and the prompt, and remove every candidate |
+
+The reported size covers the `session-state` tree only. Deleted database rows free space *inside*
+`session-store.db`, which SQLite reuses rather than returning to the file system, so it is not
+counted.
 
 ---
 

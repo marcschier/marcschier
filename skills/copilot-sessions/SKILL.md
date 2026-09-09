@@ -28,6 +28,7 @@ file's directory — never assume the user has a clone of the repository they ca
 | `scripts/Select-CopilotSession.ps1` | Interactively choose and resume one recent session |
 | `scripts/Resume-CopilotSessions.ps1` | Reopen recent sessions as Windows Terminal tabs |
 | `scripts/Remove-EmptyCopilotSessions.ps1` | Purge empty sessions and orphaned session state |
+| `scripts/Remove-OldCopilotSessions.ps1` | Review sessions older than an age and remove the ones you do not deselect |
 | `scripts/Copy-CopilotSessions.ps1` | Export/import session state between machines |
 | `scripts/CopilotSessionStore.psm1` | Shared helper module — never invoked directly |
 
@@ -83,11 +84,10 @@ the shared Node.js crash workaround, while Escape or Ctrl+C cancels.
 
 ### Temporary startup workaround
 
-Every script that starts a Copilot session must include both
-`--node-options="--max-old-space-size=8000"` and `--report-on-fatalerror`. The packaged executable
-ignores the `NODE_OPTIONS` environment variable; the larger heap only delays the reported leak, and
-the fatal-error flag preserves a Node.js report if it still crashes. Keep the arguments centralized
-through `Get-CopilotSessionRuntimeArgument`.
+Every script that starts a Copilot session must include
+`--node-options="--max-old-space-size=8000"`. The packaged executable ignores the `NODE_OPTIONS`
+environment variable, and the larger heap only delays the reported leak. Keep the argument
+centralized through `Get-CopilotSessionRuntimeArgument`.
 
 This workaround tracks [github/copilot-cli#4686](https://github.com/github/copilot-cli/issues/4686)
 and [github/copilot-cli#4725](https://github.com/github/copilot-cli/issues/4725). Remove or revise it
@@ -125,6 +125,10 @@ These are mandatory. The purge script deletes tens of gigabytes with its default
 6. **Never purge in order to "free space" during an unrelated task.** Only run it when the user asked
    for cleanup.
 7. Live sessions are skipped automatically — do not attempt to work around that.
+8. **`Remove-OldCopilotSessions.ps1` deletes sessions that contain real work.** Run it with `-WhatIf`
+   first, then let the *user* drive the checklist and deselect what to keep. Never pass `-Force`
+   yourself unless the user has seen the list and explicitly asked to remove all of it, and never
+   pass `-IncludePlanned` unasked.
 
 For `Copy-CopilotSessions.ps1 -Import`, warn the user that the Copilot CLI should not be running on
 the target machine, since the import writes to the session store.
@@ -154,6 +158,12 @@ Resolve `$skill` to this skill's directory first.
 
 # Only tidy the /resume picker, leave every orphaned folder alone
 & "$skill/scripts/Remove-EmptyCopilotSessions.ps1" -Scope Sessions
+
+# List sessions older than 30 days and what they cost on disk, without touching anything
+& "$skill/scripts/Remove-OldCopilotSessions.ps1" -Days 30 -WhatIf
+
+# Same list as a checklist: deselect what to keep, Enter removes the rest
+& "$skill/scripts/Remove-OldCopilotSessions.ps1" -Days 30 -Recycle
 
 # Bundle the last two days of real work
 & "$skill/scripts/Copy-CopilotSessions.ps1" -Export -Path D:\transfer\copilot -Days 2
