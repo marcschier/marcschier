@@ -11,8 +11,9 @@
       * only the most recently updated session per working directory is shown.
 
     Use Up/Down, Page Up/Page Down, Home and End to move through the list. Enter resumes the
-    highlighted session in the current terminal with --yolo and the shared Node.js crash
-    workaround; Escape or Ctrl+C cancels.
+    highlighted session with --yolo and the shared Node.js crash workaround; Escape or Ctrl+C
+    cancels. By default the session opens in its own new Windows Terminal window; pass
+    -Launch Inline to run it in the current terminal instead.
 
 .PARAMETER Hours
     Size of the time window in hours. Mutually exclusive with -Days.
@@ -27,13 +28,26 @@
 .PARAMETER Filter
     Optional wildcard pattern matched against the session working directory, repository and name.
 
+.PARAMETER Launch
+    How the chosen session is started:
+
+      * NewWindow (default) - a new Windows Terminal window, requires wt.exe,
+      * Inline               - the current terminal, which then blocks until Copilot exits.
+
 .PARAMETER CopilotArgument
-    Additional arguments appended to the Copilot command line.
+    Additional arguments appended to the Copilot command line. With -Launch NewWindow they are
+    escaped and quoted for the wt.exe -> cmd.exe -> copilot chain; entries containing '%' are
+    rejected because cmd.exe expands those before Copilot sees them.
 
 .EXAMPLE
     .\Select-CopilotSession.ps1
 
-    Pick from non-empty sessions updated in the last day and resume one with --yolo.
+    Pick from non-empty sessions updated in the last day and open one in a new terminal window.
+
+.EXAMPLE
+    .\Select-CopilotSession.ps1 -Launch Inline
+
+    Resume the chosen session in the current terminal instead of a new window.
 
 .EXAMPLE
     .\Select-CopilotSession.ps1 -Hours 8 -Filter '*UA-.NETStandard*'
@@ -42,6 +56,7 @@
 
 .NOTES
     Requires PowerShell 7, the Copilot CLI and either python or sqlite3.exe on PATH.
+    -Launch NewWindow additionally requires Windows Terminal (wt.exe).
 #>
 #Requires -Version 7.0
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '')]
@@ -60,6 +75,9 @@ param(
 
     [ValidateNotNullOrEmpty()]
     [string] $Filter,
+
+    [ValidateSet('NewWindow', 'Inline')]
+    [string] $Launch = 'NewWindow',
 
     [string[]] $CopilotArgument = @()
 )
@@ -236,6 +254,16 @@ if (-not $copilot) {
     throw 'The Copilot CLI (copilot) was not found on PATH.'
 }
 
+$windowsTerminal = $null
+if ($Launch -eq 'NewWindow') {
+    $windowsTerminal = Get-Command -Name 'wt.exe' -CommandType Application -ErrorAction SilentlyContinue |
+        Select-Object -First 1
+    if (-not $windowsTerminal) {
+        throw ('Windows Terminal (wt.exe) was not found on PATH. Install it with ' +
+            '"winget install Microsoft.WindowsTerminal", or use -Launch Inline.')
+    }
+}
+
 $window = if ($PSCmdlet.ParameterSetName -eq 'Hours') {
     [timespan]::FromHours($Hours)
 } else {
@@ -244,6 +272,16 @@ $window = if ($PSCmdlet.ParameterSetName -eq 'Hours') {
 
 $databasePath = Get-CopilotStorePath -CopilotHome (Resolve-CopilotHome -Requested $CopilotHome) -Require
 $sessions = @(Get-CopilotResumableSession -DatabasePath $databasePath -Window $window -Filter $Filter)
+if ($Launch -eq 'NewWindow') {
+    $sessions = @($sessions | Where-Object {
+        if ($_.Cwd.Contains(';')) {
+            Write-Warning ("Skipping session $($_.Id): directory '$($_.Cwd)' contains ';', which " +
+                'Windows Terminal cannot handle. Use -Launch Inline to resume it.')
+            return $false
+        }
+        return $true
+    })
+}
 if ($sessions.Count -eq 0) {
     Write-Host "No non-empty Copilot sessions were updated in the last $window." -ForegroundColor Yellow
     return
@@ -265,25 +303,60 @@ foreach ($argument in $CopilotArgument) {
     if ([string]::IsNullOrWhiteSpace($argument)) {
         throw 'CopilotArgument entries cannot be empty.'
     }
+    if ($Launch -eq 'NewWindow' -and $argument.Contains('%')) {
+        throw ("CopilotArgument '$argument' contains '%', which cmd.exe expands before Copilot " +
+            'sees it. Use -Launch Inline for such arguments.')
+    }
     $arguments.Add($argument)
 }
 
 $title = Get-SessionTitle -Session $selected
-$target = "$title [$($selected.Cwd)]"
-if (-not $PSCmdlet.ShouldProcess($target, 'Resume Copilot session with --yolo and Node.js crash workaround')) {
+
+if ($Launch -eq 'Inline') {
+    $target = "$title [$($selected.Cwd)]"
+    if (-not $PSCmdlet.ShouldProcess($target, 'Resume Copilot session in the current terminal')) {
+        return
+    }
+
+    Write-Host "Resuming '$title' in '$($selected.Cwd)' with --yolo and the Node.js crash workaround." -ForegroundColor Green
+    Push-Location -LiteralPath $selected.Cwd
+    try {
+        & $copilot.Source @arguments
+        $exitCode = $LASTEXITCODE
+    }
+    finally {
+        Pop-Location
+    }
+
+    if ($exitCode -ne 0) {
+        throw "Copilot exited with code $exitCode."
+    }
     return
 }
 
-Write-Host "Resuming '$title' in '$($selected.Cwd)' with --yolo and the Node.js crash workaround." -ForegroundColor Green
-Push-Location -LiteralPath $selected.Cwd
-try {
-    & $copilot.Source @arguments
-    $exitCode = $LASTEXITCODE
-}
-finally {
-    Pop-Location
+# '-w new' forces a separate Windows Terminal window instead of a tab in the current one. The
+# Copilot command is passed as a single token so Windows Terminal never tries to interpret the
+# Copilot and Node.js arguments as options of its own. Every argument is escaped and quoted, which
+# is also what keeps cmd.exe from acting on metacharacters such as '&', '|', '<', '>' and '('.
+$quoted = $arguments | ForEach-Object { '"' + (ConvertTo-QuotedTabArgument -Value $_) + '"' }
+$wtArguments = @(
+    '-w', 'new'
+    'new-tab'
+    '--title', (Get-CopilotSessionTabTitle -Session $selected)
+    '-d', (Get-CopilotSessionStartingDirectory -Path $selected.Cwd)
+    'cmd.exe'
+    '/k'
+    "copilot $($quoted -join ' ')"
+)
+
+$target = "$title [$($selected.Cwd)]"
+if (-not $PSCmdlet.ShouldProcess($target, 'Open Copilot session in a new Windows Terminal window')) {
+    Write-Verbose ("Would run: wt.exe {0}" -f ($wtArguments -join ' '))
+    return
 }
 
-if ($exitCode -ne 0) {
-    throw "Copilot exited with code $exitCode."
+& $windowsTerminal.Source @wtArguments
+if ($LASTEXITCODE -ne 0) {
+    throw "wt.exe returned exit code $LASTEXITCODE for session $($selected.Id)."
 }
+Write-Host "Opened '$title' in a new Windows Terminal window." -ForegroundColor Green

@@ -105,65 +105,6 @@ $ErrorActionPreference = 'Stop'
 
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'CopilotSessionStore.psm1') -Force
 
-function Get-TabTitle {
-    param([pscustomobject] $Session)
-
-    $title = $Session.summary
-    if ([string]::IsNullOrWhiteSpace($title)) {
-        if (-not [string]::IsNullOrWhiteSpace($Session.repository)) {
-            $title = $Session.repository
-            if (-not [string]::IsNullOrWhiteSpace($Session.branch)) {
-                $title = "$title#$($Session.branch)"
-            }
-        }
-    }
-    if ([string]::IsNullOrWhiteSpace($title)) {
-        $title = "copilot $($Session.id.Substring(0, 8))"
-    }
-
-    # Windows Terminal splits its command line on ';', and quotes break argument passing.
-    $title = ($title -replace '[;"\u0060\p{C}]', ' ') -replace '\s+', ' '
-    $title = $title.Trim()
-    if ($title.Length -gt 40) { $title = $title.Substring(0, 39).TrimEnd() + [char]0x2026 }
-    return $title
-}
-
-function Get-StartingDirectory {
-    param([string] $Path)
-
-    # A trailing backslash would escape the closing quote of -d "<path>".
-    $trimmed = $Path.TrimEnd('\', '/')
-    if ($trimmed -match '^[A-Za-z]:$') { return "$trimmed\" }
-    if ([string]::IsNullOrWhiteSpace($trimmed)) { return $Path }
-    return $trimmed
-}
-
-function ConvertTo-QuotedTabArgument {
-    <#
-    .SYNOPSIS
-        Escapes free text so it survives the wt.exe -> cmd.exe -> copilot argument chain intact.
-
-    .DESCRIPTION
-        The text passes through three parsers, each with its own rules, all verified empirically:
-
-          * Windows Terminal splits its command line on ';', and only un-escapes the sequence '\;'.
-          * The Windows argument parser treats '"' as a delimiter, accepts '""' as a literal quote,
-            and lets a backslash escape a quote - so a backslash run touching the closing quote
-            must be doubled.
-          * Newlines cannot appear in a command line at all.
-
-        Returns the escaped text without the surrounding quotes.
-    #>
-    param([Parameter(Mandatory)] [string] $Value)
-
-    $escaped = $Value -replace '[\r\n\t]+', ' '
-    $escaped = $escaped -replace '"', '""'
-    # Double any backslash run that touches the closing quote or an escaped inner quote.
-    $escaped = [regex]::Replace($escaped, '(\\+)(?=""|$)', { param($match) $match.Groups[1].Value * 2 })
-    # Applied last: the backslash is consumed by Windows Terminal, never reaching the argument parser.
-    return ($escaped -replace ';', '\;')
-}
-
 $copilotHomePath = Resolve-CopilotHome -Requested $CopilotHome
 $databasePath = Get-CopilotStorePath -CopilotHome $copilotHomePath -Require
 
@@ -208,7 +149,7 @@ if ($selected.Count -gt $MaxTabs) {
 }
 
 $selected |
-    Select-Object @{ Name = 'Title'; Expression = { Get-TabTitle -Session $_ } },
+    Select-Object @{ Name = 'Title'; Expression = { Get-CopilotSessionTabTitle -Session $_ } },
                   @{ Name = 'Directory'; Expression = { $_.Cwd } },
                   @{ Name = 'UpdatedUtc'; Expression = { $_.UpdatedUtc.ToString('yyyy-MM-dd HH:mm') } },
                   @{ Name = 'Session'; Expression = { $_.Id } } |
@@ -220,8 +161,8 @@ $runtimeArguments = @(Get-CopilotSessionRuntimeArgument)
 $runtimeCommand = $runtimeArguments -join ' '
 $opened = 0
 foreach ($session in $selected) {
-    $title = Get-TabTitle -Session $session
-    $directory = Get-StartingDirectory -Path $session.Cwd
+    $title = Get-CopilotSessionTabTitle -Session $session
+    $directory = Get-CopilotSessionStartingDirectory -Path $session.Cwd
 
     $copilotCommand = "copilot $runtimeCommand --resume=$($session.Id) --allow-all"
     if ($CopilotArgument.Count -gt 0) {

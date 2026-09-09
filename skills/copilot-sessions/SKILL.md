@@ -25,7 +25,7 @@ file's directory — never assume the user has a clone of the repository they ca
 
 | Script | Purpose |
 |---|---|
-| `scripts/Select-CopilotSession.ps1` | Interactively choose and resume one recent session |
+| `scripts/Select-CopilotSession.ps1` | Interactively choose one recent session and resume it in a new window or inline |
 | `scripts/Resume-CopilotSessions.ps1` | Reopen recent sessions as Windows Terminal tabs |
 | `scripts/Remove-EmptyCopilotSessions.ps1` | Purge empty sessions and orphaned session state |
 | `scripts/Remove-OldCopilotSessions.ps1` | Review sessions older than an age and remove the ones you do not deselect |
@@ -35,7 +35,8 @@ file's directory — never assume the user has a clone of the repository they ca
 ## Prerequisites
 
 * PowerShell 7 (`pwsh`)
-* Windows Terminal (`wt.exe`) — only for the resume script
+* Windows Terminal (`wt.exe`) — for the resume script, and for the select script unless it is run
+  with `-Launch Inline`
 * Copilot CLI (`copilot.exe`) — for the select and resume scripts
 * `python` **or** `sqlite3.exe` on `PATH` — the session store is a SQLite database and neither
   PowerShell nor .NET can read one unaided
@@ -79,8 +80,10 @@ Two rules that are easy to get backwards:
 
 `Select-CopilotSession.ps1` uses the same recent, non-empty, existing-directory and one-per-directory
 rules as the resume script. It presents a native console list navigated with Up/Down, Page Up/Page
-Down, Home and End; Enter resumes the highlighted session in the current terminal with `--yolo` and
-the shared Node.js crash workaround, while Escape or Ctrl+C cancels.
+Down, Home and End; Enter resumes the highlighted session with `--yolo` and the shared Node.js crash
+workaround, while Escape or Ctrl+C cancels. `-Launch NewWindow` (the default) opens it in a separate
+Windows Terminal window; `-Launch Inline` runs it in the current terminal and blocks until Copilot
+exits.
 
 ### Temporary startup workaround
 

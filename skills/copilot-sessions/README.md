@@ -56,7 +56,8 @@ when invoking a script directly.
 ## Requirements
 
 * PowerShell 7
-* [Windows Terminal](https://github.com/microsoft/terminal) (`wt.exe`) — automatic resume script only
+* [Windows Terminal](https://github.com/microsoft/terminal) (`wt.exe`) — resume script, and the
+  select script unless it is run with `-Launch Inline`
 * [Copilot CLI](https://github.com/github/copilot-cli) (`copilot.exe`) — select and resume scripts
 * `python` **or** `sqlite3.exe` on `PATH` — the session store is a SQLite database, and neither
   PowerShell nor .NET can read one out of the box
@@ -67,8 +68,15 @@ when invoking a script directly.
 
 Shows the same resumable set used by `Resume-CopilotSessions.ps1`, but lets you choose one session
 with a dependency-free console picker. Use Up/Down, Page Up/Page Down, Home and End to navigate,
-Enter to resume, or Escape to cancel. The selected session runs in the current terminal and its
-original working directory with `--yolo` and the temporary Node.js crash workaround described below.
+Enter to resume, or Escape to cancel. The selected session starts in its original working directory
+with `--yolo` and the temporary Node.js crash workaround described below.
+
+`-Launch` decides where it starts:
+
+| `-Launch` | Behaviour |
+|---|---|
+| `NewWindow` (default) | Opens a separate Windows Terminal window (`wt -w new`) and returns immediately |
+| `Inline` | Runs in the current terminal, which then blocks until Copilot exits; no `wt.exe` needed |
 
 | Rule | Behaviour |
 |---|---|
@@ -77,8 +85,15 @@ original working directory with `--yolo` and the temporary Node.js crash workaro
 | One per directory | Only the most recently updated session per working directory |
 | Live directories | Sessions whose directory no longer exists are skipped with a warning |
 
+With `-Launch NewWindow`, working directories containing `;` are skipped — Windows Terminal splits
+its command line on that character. `-CopilotArgument` entries are escaped and quoted for the
+`wt.exe` → `cmd.exe` → `copilot` chain, so spaces, quotes, `;` and cmd metacharacters such as `&`,
+`|`, `<`, `>` and `(` reach Copilot unchanged; only `%` is rejected, because `cmd.exe` expands it
+first. Use `-Launch Inline` for those.
+
 ```powershell
 ./scripts/Select-CopilotSession.ps1
+./scripts/Select-CopilotSession.ps1 -Launch Inline
 ./scripts/Select-CopilotSession.ps1 -Hours 8
 ./scripts/Select-CopilotSession.ps1 -Days 7 -Filter '*UA-.NETStandard*'
 ./scripts/Select-CopilotSession.ps1 -CopilotArgument '--model=claude-sonnet-4.6'
@@ -282,6 +297,6 @@ Close the Copilot CLI on the target machine before importing — the import writ
 * The session store is opened **read-only** for every query. If that fails because the database is
   locked, the scripts fall back to a temporary snapshot of the `.db`, `-wal` and `-shm` files, so a
   running session is never disturbed.
-* `wt -w 0` targets the most recently used Windows Terminal window. If none is open, Windows Terminal
-  creates one.
+* `wt -w new` opens a separate Windows Terminal window; `wt -w 0` targets the most recently used one.
+  If none is open, Windows Terminal creates one.
 * The resume script does not detect sessions already open elsewhere — resuming a duplicate is allowed.

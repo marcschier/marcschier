@@ -370,8 +370,7 @@ function Get-CopilotSessionRuntimeArgument {
 
     .DESCRIPTION
         The packaged Copilot CLI ignores the NODE_OPTIONS environment variable, so the larger
-        old-space limit must be supplied through its --node-options argument. Fatal Node.js errors
-        also write a diagnostic report for later investigation.
+        old-space limit must be supplied through its --node-options argument.
     #>
     [CmdletBinding()]
     [OutputType([string[]])]
@@ -380,6 +379,80 @@ function Get-CopilotSessionRuntimeArgument {
     return @(
         '--node-options=--max-old-space-size=8000'
     )
+}
+
+function Get-CopilotSessionTabTitle {
+    <#
+    .SYNOPSIS
+        Returns a short Windows Terminal-safe title for a Copilot session.
+    #>
+    [CmdletBinding()]
+    [OutputType([string])]
+    param([Parameter(Mandatory)] [pscustomobject] $Session)
+
+    $title = $Session.Summary
+    if ([string]::IsNullOrWhiteSpace($title) -and
+        -not [string]::IsNullOrWhiteSpace($Session.Repository)) {
+        $title = $Session.Repository
+        if (-not [string]::IsNullOrWhiteSpace($Session.Branch)) {
+            $title = "$title#$($Session.Branch)"
+        }
+    }
+    if ([string]::IsNullOrWhiteSpace($title)) {
+        $title = "copilot $($Session.Id.Substring(0, 8))"
+    }
+
+    # Windows Terminal splits its command line on ';', and quotes break argument passing.
+    $title = (($title -replace '[;"\u0060\p{C}]', ' ') -replace '\s+', ' ').Trim()
+    if ($title.Length -gt 40) {
+        $title = $title.Substring(0, 39).TrimEnd() + [char] 0x2026
+    }
+    return $title
+}
+
+function ConvertTo-QuotedTabArgument {
+    <#
+    .SYNOPSIS
+        Escapes free text so it survives the wt.exe -> cmd.exe -> copilot argument chain intact.
+
+    .DESCRIPTION
+        The text passes through three parsers, each with its own rules, all verified empirically:
+
+          * Windows Terminal splits its command line on ';', and only un-escapes the sequence '\;'.
+          * The Windows argument parser treats '"' as a delimiter, accepts '""' as a literal quote,
+            and lets a backslash escape a quote - so a backslash run touching the closing quote
+            must be doubled.
+          * Newlines cannot appear in a command line at all.
+
+        Returns the escaped text without the surrounding quotes. The caller must wrap the result in
+        double quotes, which is also what stops cmd.exe from acting on '&', '|', '<', '>' and '('.
+    #>
+    [CmdletBinding()]
+    [OutputType([string])]
+    param([Parameter(Mandatory)] [string] $Value)
+
+    $escaped = $Value -replace '[\r\n\t]+', ' '
+    $escaped = $escaped -replace '"', '""'
+    # Double any backslash run that touches the closing quote or an escaped inner quote.
+    $escaped = [regex]::Replace($escaped, '(\\+)(?=""|$)', { param($match) $match.Groups[1].Value * 2 })
+    # Applied last: the backslash is consumed by Windows Terminal, never reaching the argument parser.
+    return ($escaped -replace ';', '\;')
+}
+
+function Get-CopilotSessionStartingDirectory {
+    <#
+    .SYNOPSIS
+        Normalizes a working directory for Windows Terminal's -d argument.
+    #>
+    [CmdletBinding()]
+    [OutputType([string])]
+    param([Parameter(Mandatory)] [string] $Path)
+
+    # A trailing backslash would escape the closing quote of -d "<path>".
+    $trimmed = $Path.TrimEnd('\', '/')
+    if ($trimmed -match '^[A-Za-z]:$') { return "$trimmed\" }
+    if ([string]::IsNullOrWhiteSpace($trimmed)) { return $Path }
+    return $trimmed
 }
 
 function Get-DirectorySize {
@@ -479,6 +552,9 @@ Export-ModuleMember -Function @(
     'ConvertTo-UtcTimestamp'
     'Get-CopilotResumableSession'
     'Get-CopilotSessionRuntimeArgument'
+    'Get-CopilotSessionTabTitle'
+    'Get-CopilotSessionStartingDirectory'
+    'ConvertTo-QuotedTabArgument'
     'Get-DirectorySize'
     'Test-CopilotSessionInUse'
     'Get-CopilotWorkspaceInfo'
