@@ -3,12 +3,13 @@ name: copilot-sessions
 license: MIT
 description: >
   Manage local GitHub Copilot CLI session state on Windows: interactively pick one session,
-  reopen recent sessions as Windows Terminal tabs, reclaim disk by purging empty and orphaned
-  session folders, and move session state between machines.
+  reopen recent sessions as Windows Terminal tabs or windows, reclaim disk by purging empty and
+  orphaned session folders, and move session state between machines.
   USE FOR: "pick a Copilot session", "choose a session to resume", "resume my sessions",
-  "reopen what I was working on yesterday", "open a tab per repo I was working in", "my
-  .copilot folder is huge", "clean up empty Copilot sessions", "delete orphaned session
-  state", "why is session-state so big", "move my Copilot sessions to my other machine",
+  "reopen what I was working on yesterday", "open a tab per repo I was working in", "open a
+  separate window per repo", "my .copilot folder is huge", "clean up empty Copilot sessions",
+  "delete orphaned session state", "why is session-state so big", "move my Copilot sessions to my
+  other machine",
   "export/import Copilot session history", "transfer my chat history to another PC".
   DO NOT USE FOR: managing GitHub Codespaces, git worktrees, VS Code windows, Copilot
   settings/config unrelated to session state, or deleting files inside a user's repository.
@@ -26,7 +27,7 @@ file's directory — never assume the user has a clone of the repository they ca
 | Script | Purpose |
 |---|---|
 | `scripts/Select-CopilotSession.ps1` | Interactively choose one recent session and resume it in a new window or inline |
-| `scripts/Resume-CopilotSessions.ps1` | Reopen recent sessions as Windows Terminal tabs |
+| `scripts/Resume-CopilotSessions.ps1` | Reopen recent sessions as Windows Terminal tabs or separate windows |
 | `scripts/Remove-EmptyCopilotSessions.ps1` | Purge empty sessions and orphaned session state |
 | `scripts/Remove-OldCopilotSessions.ps1` | Review sessions older than an age and remove the ones you do not deselect |
 | `scripts/Copy-CopilotSessions.ps1` | Export/import session state between machines |
@@ -69,6 +70,7 @@ Two rules that are easy to get backwards:
 | "Pick from everything I touched this week" | Select | `-Days 7` |
 | "Reopen what I was working on" | Resume | `-Hours 8` |
 | "Open a tab per repo" | Resume | (default, 1 day) |
+| "Open a separate window per repo" | Resume | `-Launch NewWindow` |
 | "Reopen everything and ask each one to catch me up" | Resume | `-Prompt '<text>'` |
 | "My .copilot folder is huge" | Remove | **`-WhatIf` first**, then agree a threshold |
 | "Delete empty sessions" | Remove | `-Scope Sessions` |
@@ -100,13 +102,15 @@ only when the upstream behavior changes.
 
 `Resume-CopilotSessions.ps1 -Prompt '<text>'` runs the same text as the first prompt in every
 resumed session. The session still opens interactively — the prompt just executes immediately.
+Use `-Launch Tab` (the default) to add tabs to the focused Windows Terminal window, or
+`-Launch NewWindow` to open every resumed session in its own separate window.
 
 Use it when the user wants every reopened session to do something on arrival, for example
 *"summarise where we left off"*, *"re-run the tests and fix anything broken"*, or
 *"check whether my PR has new review comments"*.
 
 The script escapes quotes, semicolons, ampersands, pipes and trailing backslashes automatically, so
-pass the user's wording through as-is. The one exception is `%VARIABLE%`: tabs launch through
+pass the user's wording through as-is. The one exception is `%VARIABLE%`: terminals launch through
 `cmd.exe`, which expands those before Copilot sees them, so rephrase to avoid percent signs. The
 script warns when it detects one.
 
@@ -149,6 +153,9 @@ Resolve `$skill` to this skill's directory first.
 
 # Reopen everything touched in the last 8 hours, one tab per working directory
 & "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 8
+
+# Reopen each matching session in its own separate Windows Terminal window
+& "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 8 -Launch NewWindow
 
 # Reopen and have every session immediately catch the user up
 & "$skill/scripts/Resume-CopilotSessions.ps1" -Hours 12 -Prompt 'Summarise where we left off and list next steps'
@@ -220,8 +227,8 @@ no rule are kept verbatim, and the script warns when a resulting directory does 
 |---|---|
 | "No usable SQLite reader was found" | Install Python: `winget install Python.Python.3.13` |
 | "Copilot session store not found" | Wrong `COPILOT_HOME`; pass `-CopilotHome <path>` |
-| Resume opens no tabs | No sessions in the window, or their directories no longer exist — widen `-Hours`/`-Days` and check the warnings |
-| Tabs open in the wrong window | `wt -w 0` targets the most recently used window; focus the intended one first |
+| Resume opens no terminals | No sessions in the window, or their directories no longer exist — widen `-Hours`/`-Days` and check the warnings |
+| Tabs open in the wrong window | `-Launch Tab` uses `wt -w 0`, which targets the most recently used window; focus the intended one first |
 | `-Prompt` text arrives truncated or altered | A `%VARIABLE%` reference was expanded by `cmd.exe`; rephrase without percent signs |
 | Import says the schema differs | The bundle came from a different CLI version. `-Force` overrides, but verify afterwards |
 | Import skipped everything | The sessions already exist locally; re-run with `-Overwrite` |

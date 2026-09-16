@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Resumes recently used, non-empty GitHub Copilot CLI sessions in Windows Terminal tabs.
+    Resumes recently used, non-empty GitHub Copilot CLI sessions in Windows Terminal.
 
 .DESCRIPTION
     Reads the local Copilot CLI session store (session-store.db) and selects sessions that
@@ -10,11 +10,12 @@
       * still have an existing working directory on disk.
 
     Only the most recently updated session per working directory is kept, so a directory that
-    accumulated several sessions contributes exactly one tab.
+    accumulated several sessions contributes exactly one terminal.
 
-    For every selected session a new tab is added to the currently focused Windows Terminal
-    window. The tab starts in the session's original working directory and resumes Copilot with
-    --allow-all plus the shared Node.js crash workaround.
+    By default, every selected session is added as a new tab to the currently focused Windows
+    Terminal window. Pass -Launch NewWindow to give every session its own separate Windows Terminal
+    window. Each terminal starts in the session's original working directory and resumes Copilot
+    with --allow-all plus the shared Node.js crash workaround.
 
 .PARAMETER Hours
     Size of the time window in hours. Mutually exclusive with -Days.
@@ -30,7 +31,13 @@
     Optional wildcard pattern matched against the session working directory, repository and name.
 
 .PARAMETER MaxTabs
-    Safety cap on the number of tabs to open. Defaults to 20.
+    Safety cap on the number of sessions to open. Defaults to 20.
+
+.PARAMETER Launch
+    How each selected session is started:
+
+      * Tab (default) - a new tab in the currently focused Windows Terminal window,
+      * NewWindow     - a separate Windows Terminal window for every session.
 
 .PARAMETER CopilotArgument
     Additional arguments appended to the copilot command line, for example --model or --plan.
@@ -39,11 +46,11 @@
     Text to run as the first prompt in every resumed session, passed to copilot as -i. The session
     still opens interactively; the prompt simply executes immediately.
 
-    Avoid %VARIABLE% references: tabs are launched through cmd.exe, which expands them first.
+    Avoid %VARIABLE% references: terminals are launched through cmd.exe, which expands them first.
 
 .PARAMETER CloseTabOnExit
-    Close the tab as soon as copilot exits. By default the tab keeps a shell prompt in the
-    session's working directory.
+    Close the terminal tab or window as soon as copilot exits. By default it keeps a shell prompt
+    in the session's working directory.
 
 .EXAMPLE
     .\Resume-CopilotSessions.ps1 -Hours 8
@@ -53,7 +60,7 @@
 .EXAMPLE
     .\Resume-CopilotSessions.ps1 -Days 3 -WhatIf
 
-    Show which sessions would be resumed for a three day window without opening any tabs.
+    Show which sessions would be resumed for a three day window without opening any terminals.
 
 .EXAMPLE
     .\Resume-CopilotSessions.ps1 -Days 2 -Filter '*UA-.NETStandard*'
@@ -61,9 +68,14 @@
     Resume only sessions whose directory, repository or name matches the pattern.
 
 .EXAMPLE
+    .\Resume-CopilotSessions.ps1 -Hours 8 -Launch NewWindow
+
+    Resume every matching session in its own separate Windows Terminal window.
+
+.EXAMPLE
     .\Resume-CopilotSessions.ps1 -Hours 12 -Prompt 'Summarise where we left off and list next steps'
 
-    Resume each session and immediately run the same opening prompt in every tab.
+    Resume each session and immediately run the same opening prompt in every terminal.
 
 .NOTES
     Requires PowerShell 7, Windows Terminal (wt.exe) and the Copilot CLI (copilot.exe).
@@ -91,6 +103,9 @@ param(
 
     [ValidateRange(1, 200)]
     [int] $MaxTabs = 20,
+
+    [ValidateSet('Tab', 'NewWindow')]
+    [string] $Launch = 'Tab',
 
     [string[]] $CopilotArgument = @(),
 
@@ -159,6 +174,13 @@ $selected |
 
 $runtimeArguments = @(Get-CopilotSessionRuntimeArgument)
 $runtimeCommand = $runtimeArguments -join ' '
+$windowSelector = if ($Launch -eq 'NewWindow') { 'new' } else { '0' }
+$launchDescription = if ($Launch -eq 'NewWindow') {
+    'Open separate Windows Terminal window'
+} else {
+    'Open Windows Terminal tab'
+}
+$launchNoun = if ($Launch -eq 'NewWindow') { 'window(s)' } else { 'tab(s)' }
 $opened = 0
 foreach ($session in $selected) {
     $title = Get-CopilotSessionTabTitle -Session $session
@@ -172,11 +194,12 @@ foreach ($session in $selected) {
         $copilotCommand = "$copilotCommand -i `"$(ConvertTo-QuotedTabArgument -Value $Prompt)`""
     }
 
-    # '-w 0' targets the most recently used (currently focused) Windows Terminal window.
+    # '-w 0' targets the most recently used Windows Terminal window; '-w new' creates a separate
+    # window for every invocation.
     # The copilot command is passed as a single token so Windows Terminal never tries to
     # interpret the Copilot and Node.js arguments as options of its own.
     $wtArguments = @(
-        '-w', '0'
+        '-w', $windowSelector
         'new-tab'
         '--title', $title
         '-d', $directory
@@ -186,14 +209,14 @@ foreach ($session in $selected) {
     )
 
     $target = "$title  [$($session.Cwd)]"
-    if ($PSCmdlet.ShouldProcess($target, 'Open Windows Terminal tab')) {
+    if ($PSCmdlet.ShouldProcess($target, $launchDescription)) {
         & $windowsTerminal.Source @wtArguments
         if ($LASTEXITCODE -ne 0) {
             Write-Warning "wt.exe returned exit code $LASTEXITCODE for session $($session.Id)."
         } else {
             $opened++
         }
-        # Give Windows Terminal a moment so tabs appear in the intended order.
+        # Give Windows Terminal a moment so terminals appear in the intended order.
         Start-Sleep -Milliseconds 250
     } else {
         Write-Verbose ("Would run: wt.exe {0}" -f ($wtArguments -join ' '))
@@ -201,5 +224,5 @@ foreach ($session in $selected) {
 }
 
 if ($opened -gt 0) {
-    Write-Host "Opened $opened Copilot session tab(s)." -ForegroundColor Green
+    Write-Host "Opened $opened Copilot session $launchNoun." -ForegroundColor Green
 }

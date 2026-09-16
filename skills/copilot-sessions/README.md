@@ -103,9 +103,16 @@ first. Use `-Launch Inline` for those.
 
 ## `Resume-CopilotSessions.ps1`
 
-Reopens the sessions you were actually working in, one per Windows Terminal tab. Each tab is added to
-the **currently focused** window, starts in that session's original working directory, and resumes
-Copilot with `--allow-all` plus the temporary Node.js crash workaround below.
+Reopens the sessions you were actually working in, one per Windows Terminal tab or separate window.
+Each terminal starts in that session's original working directory and resumes Copilot with
+`--allow-all` plus the temporary Node.js crash workaround below.
+
+`-Launch` decides where each session starts:
+
+| `-Launch` | Behaviour |
+|---|---|
+| `Tab` (default) | Adds every session as a tab to the currently focused Windows Terminal window (`wt -w 0`) |
+| `NewWindow` | Opens every session in its own separate Windows Terminal window (`wt -w new`) |
 
 | Rule | Behaviour |
 |---|---|
@@ -117,6 +124,7 @@ Copilot with `--allow-all` plus the temporary Node.js crash workaround below.
 ```powershell
 ./scripts/Resume-CopilotSessions.ps1              # last 24 hours
 ./scripts/Resume-CopilotSessions.ps1 -Hours 6
+./scripts/Resume-CopilotSessions.ps1 -Hours 6 -Launch NewWindow
 ./scripts/Resume-CopilotSessions.ps1 -Days 3 -WhatIf
 ./scripts/Resume-CopilotSessions.ps1 -Days 2 -Filter '*UA-.NETStandard*'
 
@@ -129,16 +137,17 @@ Copilot with `--allow-all` plus the temporary Node.js crash workaround below.
 | `-Hours` / `-Days` | 1 day | Size of the window |
 | `-CopilotHome` | `$env:COPILOT_HOME`, else `$HOME/.copilot` | Directory holding `session-store.db` |
 | `-Filter` | — | Wildcard over working directory, repository and name |
-| `-MaxTabs` | `20` | Safety cap on tabs |
+| `-MaxTabs` | `20` | Safety cap on sessions opened |
+| `-Launch` | `Tab` | Open sessions as tabs in the focused window or as separate windows |
 | `-CopilotArgument` | — | Extra arguments for `copilot`, e.g. `--model` |
 | `-Prompt` | — | Text run as the first prompt in every resumed session (passed as `-i`) |
-| `-CloseTabOnExit` | off | Close the tab when `copilot` exits |
+| `-CloseTabOnExit` | off | Close the terminal tab or window when `copilot` exits |
 
 `-Prompt` keeps the session interactive and simply executes the text straight away, so it is handy
 for things like *"summarise where we left off"* or *"re-run the tests and fix anything broken"* across
 a whole day's worth of sessions at once. Quotes, semicolons, ampersands, pipes and trailing
-backslashes are all escaped for you. Avoid `%VARIABLE%` references — tabs launch through `cmd.exe`,
-which expands those before Copilot sees them, and the script warns when it spots one.
+backslashes are all escaped for you. Avoid `%VARIABLE%` references — terminals launch through
+`cmd.exe`, which expands those before Copilot sees them, and the script warns when it spots one.
 
 ### Temporary Node.js crash workaround
 
