@@ -377,7 +377,7 @@ function Get-CopilotSessionRuntimeArgument {
     param()
 
     return @(
-        '--node-options=--max-old-space-size=8000'
+        '--node-options=--max-old-space-size=20000'
     )
 }
 
