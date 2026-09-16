@@ -163,6 +163,30 @@ A cross-platform, NativeAOT-ready **.NET 10 OPC Classic** stack — DA, AE, HDA,
 
 ---
 
+### [xregistry-dotnet](https://github.com/marcschier/xregistry-dotnet)
+
+**In development:** model-driven xRegistry client and ASP.NET Core server
+components for **.NET 8 and .NET 10**, with Native AOT qualification for
+Windows/Linux x64 and ARM64. Includes non-OPC-UA federation, File, managed Git,
+OCI, domain models, and schema validation; the implementation and full
+conformance qualification are still in progress.
+
+| Package | Publication |
+|---|---|
+| `XRegistry` | Not yet published |
+| `XRegistry.Client` | Not yet published |
+| `XRegistry.Server` | Not yet published |
+| `XRegistry.AspNetCore` | Not yet published |
+| `XRegistry.Storage.File` | Not yet published |
+| `XRegistry.Models` | Not yet published |
+| `XRegistry.Validation` | Not yet published |
+| `XRegistry.Federation` | Not yet published |
+| `XRegistry.Bindings.File` | Not yet published |
+| `XRegistry.Bindings.Git` | Not yet published |
+| `XRegistry.Bindings.Oci` | Not yet published |
+
+---
+
 ## 🧭 Repo dependencies
 
 All cross-repository links are via published NuGet packages (no source coupling), each repo produces a core nuget without any dependencies to other nugets produced from other repositories. Extension libraries pull in nugets from other repositories to extend the functionality of the core nuget:
@@ -175,6 +199,7 @@ All cross-repository links are via published NuGet packages (no source coupling)
 | 🛰️ **iothubby** | mqtt-client | `Mqtt.Client` |
 | 📨 **mqtt-client** · 📡 **pgm** · 🔐 **dtls** · 🗂️ **nfs** · 🧊 **openusd-dotnet** · ⚙️ **opc-classic** | — | standalone |
 | 🏭 **opcuakb-mcp** · 🕸️ **netcap-mcp** | — | standalone |
+| **xregistry-dotnet** | — | standalone |
 
 The libraries are layered: lower-level transports and consensus are independent packages that the higher-level **CRDT** stack composes. An arrow **A → B** means *A depends on B* (consumes B's NuGet package).
 
@@ -194,10 +219,11 @@ graph TD
     opcclassic["⚙️ opc-classic"]
     opcuakb["🏭 opcuakb-mcp"]
     netcap["🕸️ netcap-mcp"]
+    xregistry["xregistry-dotnet"]
 
     classDef standalone fill:#f6f8fa,stroke:#999,stroke-dasharray:4 3,color:#333;
-    class nfs,openusd,opcclassic,opcuakb,netcap standalone;
+    class nfs,openusd,opcclassic,opcuakb,netcap,xregistry standalone;
 ```
 
-> Dashed nodes (`nfs`, `openusd-dotnet`, `opc-classic`, `opcuakb-mcp`, `netcap-mcp`) are standalone —
+> Dashed nodes (`nfs`, `openusd-dotnet`, `opc-classic`, `opcuakb-mcp`, `netcap-mcp`, `xregistry-dotnet`) are standalone —
 > they have no dependencies on the other projects here.

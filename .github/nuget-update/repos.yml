@@ -34,6 +34,36 @@ defaults:
 
 repos:
   # ---- Libraries published to nuget.org (promoted via nuget.yml) ----
+  # Prepared registration; repository setup and first qualified publication remain separately approved.
+  xregistry-dotnet:
+    packable:
+      - { path: src/XRegistry, id: XRegistry }
+      - { path: src/XRegistry.Client, id: XRegistry.Client }
+      - { path: src/XRegistry.Server, id: XRegistry.Server }
+      - { path: src/XRegistry.AspNetCore, id: XRegistry.AspNetCore }
+      - { path: src/XRegistry.Storage.File, id: XRegistry.Storage.File }
+      - { path: src/XRegistry.Models, id: XRegistry.Models }
+      - { path: src/XRegistry.Validation, id: XRegistry.Validation }
+      - { path: src/XRegistry.Federation, id: XRegistry.Federation }
+      - { path: src/XRegistry.Bindings.File, id: XRegistry.Bindings.File }
+      - { path: src/XRegistry.Bindings.Git, id: XRegistry.Bindings.Git }
+      - { path: src/XRegistry.Bindings.Oci, id: XRegistry.Bindings.Oci }
+    promote: nuget-yml
+    tag_workflow: release.yml
+    prerelease: alpha
+    wait:
+      - { type: nuget, id: XRegistry }
+      - { type: nuget, id: XRegistry.Client }
+      - { type: nuget, id: XRegistry.Server }
+      - { type: nuget, id: XRegistry.AspNetCore }
+      - { type: nuget, id: XRegistry.Storage.File }
+      - { type: nuget, id: XRegistry.Models }
+      - { type: nuget, id: XRegistry.Validation }
+      - { type: nuget, id: XRegistry.Federation }
+      - { type: nuget, id: XRegistry.Bindings.File }
+      - { type: nuget, id: XRegistry.Bindings.Git }
+      - { type: nuget, id: XRegistry.Bindings.Oci }
+
   dtls:
     packable:
       - { path: src/Dtls, id: DtlsSharp }
