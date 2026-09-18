@@ -171,19 +171,19 @@ Windows/Linux x64 and ARM64. Includes non-OPC-UA federation, File, managed Git,
 OCI, domain models, and schema validation; the implementation and full
 conformance qualification are still in progress.
 
-| Package | Publication |
-|---|---|
-| `XRegistry` | Not yet published |
-| `XRegistry.Client` | Not yet published |
-| `XRegistry.Server` | Not yet published |
-| `XRegistry.AspNetCore` | Not yet published |
-| `XRegistry.Storage.File` | Not yet published |
-| `XRegistry.Models` | Not yet published |
-| `XRegistry.Validation` | Not yet published |
-| `XRegistry.Federation` | Not yet published |
-| `XRegistry.Bindings.File` | Not yet published |
-| `XRegistry.Bindings.Git` | Not yet published |
-| `XRegistry.Bindings.Oci` | Not yet published |
+| Package | Version | Downloads |
+|---|---|---|
+| [`XRegistry`](https://www.nuget.org/packages/XRegistry) | ![v](https://img.shields.io/nuget/v/XRegistry?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry) |
+| [`XRegistry.Client`](https://www.nuget.org/packages/XRegistry.Client) | ![v](https://img.shields.io/nuget/v/XRegistry.Client?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Client) |
+| [`XRegistry.Server`](https://www.nuget.org/packages/XRegistry.Server) | ![v](https://img.shields.io/nuget/v/XRegistry.Server?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Server) |
+| [`XRegistry.AspNetCore`](https://www.nuget.org/packages/XRegistry.AspNetCore) | ![v](https://img.shields.io/nuget/v/XRegistry.AspNetCore?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.AspNetCore) |
+| [`XRegistry.Storage.File`](https://www.nuget.org/packages/XRegistry.Storage.File) | ![v](https://img.shields.io/nuget/v/XRegistry.Storage.File?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Storage.File) |
+| [`XRegistry.Models`](https://www.nuget.org/packages/XRegistry.Models) | ![v](https://img.shields.io/nuget/v/XRegistry.Models?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Models) |
+| [`XRegistry.Validation`](https://www.nuget.org/packages/XRegistry.Validation) | ![v](https://img.shields.io/nuget/v/XRegistry.Validation?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Validation) |
+| [`XRegistry.Federation`](https://www.nuget.org/packages/XRegistry.Federation) | ![v](https://img.shields.io/nuget/v/XRegistry.Federation?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Federation) |
+| [`XRegistry.Bindings.File`](https://www.nuget.org/packages/XRegistry.Bindings.File) | ![v](https://img.shields.io/nuget/v/XRegistry.Bindings.File?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Bindings.File) |
+| [`XRegistry.Bindings.Git`](https://www.nuget.org/packages/XRegistry.Bindings.Git) | ![v](https://img.shields.io/nuget/v/XRegistry.Bindings.Git?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Bindings.Git) |
+| [`XRegistry.Bindings.Oci`](https://www.nuget.org/packages/XRegistry.Bindings.Oci) | ![v](https://img.shields.io/nuget/v/XRegistry.Bindings.Oci?include_prereleases) | ![dt](https://img.shields.io/nuget/dt/XRegistry.Bindings.Oci) |
 
 ---
 
