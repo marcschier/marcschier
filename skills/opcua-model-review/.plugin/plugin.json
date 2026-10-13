@@ -1,0 +1,26 @@
+{
+  "name": "opcua-model-review",
+  "version": "1.0.0",
+  "description": "Audit OPC UA companion NodeSets and specification documents against source-cited Part 3 modelling rules and OPC 11030 best practices, with an explicit coverage ledger.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opcua-model-review",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "development",
+  "keywords": [
+    "opc-ua",
+    "companion-specifications",
+    "nodeset",
+    "information-models",
+    "modelling-rules",
+    "interfaces",
+    "addins",
+    "specification-review"
+  ],
+  "skills": [
+    "./"
+  ]
+}

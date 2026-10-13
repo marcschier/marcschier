@@ -12,6 +12,29 @@ A collection of public, NativeAOT-ready building blocks for modern .NET — secu
 
 ---
 
+## Agent skills
+
+This repository is also a Copilot CLI plugin marketplace.
+
+| Skill | Purpose |
+|---|---|
+| [Claudism Killer](skills/claudism-killer) | Remove stock AI phrasing from Markdown and other prose while preserving the author's voice |
+| [copilot-sessions](skills/copilot-sessions) | Select, reopen, clean up, and transfer local Copilot CLI sessions on Windows |
+| [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
+
+Register the marketplace once, then install the plugins you want:
+
+```powershell
+copilot plugin marketplace add marcschier/marcschier
+copilot plugin install claudism-killer@marcschier
+copilot plugin install copilot-sessions@marcschier
+copilot plugin install opcua-model-review@marcschier
+```
+
+Each skill's README also covers installation as a bare skill from a local clone.
+
+---
+
 ## 🤖 MCP servers
 
 [Model Context Protocol](https://modelcontextprotocol.io) servers. These ship as container images and/or .NET tools rather than reusable nuget.org libraries.

@@ -1,0 +1,9375 @@
+{
+  "source": "https://raw.githubusercontent.com/OPCFoundation/UA-Nodeset/36d5fcead17f52844fc32b917bca767d09ccf535/Schema/Opc.Ua.NodeSet2.xml",
+  "release": "UA-1.05.06-2025-11-08",
+  "version": "1.05.06",
+  "source_sha256": "79d4e0d787cac6234acfe72d48d370b316ec811176bf912c7f1ed199a4c94d5a",
+  "scope": "Factual identifiers, NodeClasses, type ancestry, and selected Attribute values only. Does not include complete standard member declarations.",
+  "nodes": [
+    {
+      "id": "i=24",
+      "class": "DataType",
+      "name": "BaseDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": []
+    },
+    {
+      "id": "i=26",
+      "class": "DataType",
+      "name": "Number",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=27",
+      "class": "DataType",
+      "name": "Integer",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=26"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=28",
+      "class": "DataType",
+      "name": "UInteger",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=26"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=29",
+      "class": "DataType",
+      "name": "Enumeration",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=1",
+      "class": "DataType",
+      "name": "Boolean",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2",
+      "class": "DataType",
+      "name": "SByte",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=27"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3",
+      "class": "DataType",
+      "name": "Byte",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=28"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=4",
+      "class": "DataType",
+      "name": "Int16",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=27"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=5",
+      "class": "DataType",
+      "name": "UInt16",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=28"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=6",
+      "class": "DataType",
+      "name": "Int32",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=27"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=7",
+      "class": "DataType",
+      "name": "UInt32",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=28"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8",
+      "class": "DataType",
+      "name": "Int64",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=27"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9",
+      "class": "DataType",
+      "name": "UInt64",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=28"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10",
+      "class": "DataType",
+      "name": "Float",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=26"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11",
+      "class": "DataType",
+      "name": "Double",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=26"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12",
+      "class": "DataType",
+      "name": "String",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=13",
+      "class": "DataType",
+      "name": "DateTime",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14",
+      "class": "DataType",
+      "name": "Guid",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15",
+      "class": "DataType",
+      "name": "ByteString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16",
+      "class": "DataType",
+      "name": "XmlElement",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17",
+      "class": "DataType",
+      "name": "NodeId",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18",
+      "class": "DataType",
+      "name": "ExpandedNodeId",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19",
+      "class": "DataType",
+      "name": "StatusCode",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=20",
+      "class": "DataType",
+      "name": "QualifiedName",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21",
+      "class": "DataType",
+      "name": "LocalizedText",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=22",
+      "class": "DataType",
+      "name": "Structure",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23",
+      "class": "DataType",
+      "name": "DataValue",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25",
+      "class": "DataType",
+      "name": "DiagnosticInfo",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=24"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=30",
+      "class": "DataType",
+      "name": "Image",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=50",
+      "class": "DataType",
+      "name": "Decimal",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=26"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=31",
+      "class": "ReferenceType",
+      "name": "References",
+      "attributes": {
+        "IsAbstract": "true",
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": []
+    },
+    {
+      "id": "i=32",
+      "class": "ReferenceType",
+      "name": "NonHierarchicalReferences",
+      "attributes": {
+        "IsAbstract": "true",
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=31"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=33",
+      "class": "ReferenceType",
+      "name": "HierarchicalReferences",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=31"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=34",
+      "class": "ReferenceType",
+      "name": "HasChild",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=35",
+      "class": "ReferenceType",
+      "name": "Organizes",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=36",
+      "class": "ReferenceType",
+      "name": "HasEventSource",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=37",
+      "class": "ReferenceType",
+      "name": "HasModellingRule",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=38",
+      "class": "ReferenceType",
+      "name": "HasEncoding",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=39",
+      "class": "ReferenceType",
+      "name": "HasDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=40",
+      "class": "ReferenceType",
+      "name": "HasTypeDefinition",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=41",
+      "class": "ReferenceType",
+      "name": "GeneratesEvent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3065",
+      "class": "ReferenceType",
+      "name": "AlwaysGeneratesEvent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=41"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=44",
+      "class": "ReferenceType",
+      "name": "Aggregates",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=34"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=45",
+      "class": "ReferenceType",
+      "name": "HasSubtype",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=34"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=46",
+      "class": "ReferenceType",
+      "name": "HasProperty",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=44"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=47",
+      "class": "ReferenceType",
+      "name": "HasComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=44"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=48",
+      "class": "ReferenceType",
+      "name": "HasNotifier",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=36"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=49",
+      "class": "ReferenceType",
+      "name": "HasOrderedComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=51",
+      "class": "ReferenceType",
+      "name": "FromState",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=52",
+      "class": "ReferenceType",
+      "name": "ToState",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=53",
+      "class": "ReferenceType",
+      "name": "HasCause",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=54",
+      "class": "ReferenceType",
+      "name": "HasEffect",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=117",
+      "class": "ReferenceType",
+      "name": "HasSubStateMachine",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=56",
+      "class": "ReferenceType",
+      "name": "HasHistoricalConfiguration",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=44"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24136",
+      "class": "ReferenceType",
+      "name": "HasStructuredComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24137",
+      "class": "ReferenceType",
+      "name": "AssociatedWith",
+      "attributes": {
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32407",
+      "class": "ReferenceType",
+      "name": "HasKeyValueDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=58",
+      "class": "ObjectType",
+      "name": "BaseObjectType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [],
+      "type": []
+    },
+    {
+      "id": "i=61",
+      "class": "ObjectType",
+      "name": "FolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=62",
+      "class": "VariableType",
+      "name": "BaseVariableType",
+      "attributes": {
+        "IsAbstract": "true",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": []
+    },
+    {
+      "id": "i=63",
+      "class": "VariableType",
+      "name": "BaseDataVariableType",
+      "attributes": {
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=62"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=68",
+      "class": "VariableType",
+      "name": "PropertyType",
+      "attributes": {
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=62"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=69",
+      "class": "VariableType",
+      "name": "DataTypeDescriptionType",
+      "attributes": {
+        "DataType": "i=12",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=72",
+      "class": "VariableType",
+      "name": "DataTypeDictionaryType",
+      "attributes": {
+        "DataType": "i=15",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=75",
+      "class": "ObjectType",
+      "name": "DataTypeSystemType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=76",
+      "class": "ObjectType",
+      "name": "DataTypeEncodingType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=120",
+      "class": "DataType",
+      "name": "NamingRuleType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=77",
+      "class": "ObjectType",
+      "name": "ModellingRuleType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=78",
+      "class": "Object",
+      "name": "Mandatory",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=77"
+      ]
+    },
+    {
+      "id": "i=80",
+      "class": "Object",
+      "name": "Optional",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=77"
+      ]
+    },
+    {
+      "id": "i=83",
+      "class": "Object",
+      "name": "ExposesItsArray",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=77"
+      ]
+    },
+    {
+      "id": "i=11508",
+      "class": "Object",
+      "name": "OptionalPlaceholder",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=77"
+      ]
+    },
+    {
+      "id": "i=11510",
+      "class": "Object",
+      "name": "MandatoryPlaceholder",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=77"
+      ]
+    },
+    {
+      "id": "i=84",
+      "class": "Object",
+      "name": "Root",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=61"
+      ]
+    },
+    {
+      "id": "i=85",
+      "class": "Object",
+      "name": "Objects",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=61"
+      ]
+    },
+    {
+      "id": "i=86",
+      "class": "Object",
+      "name": "Types",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=61"
+      ]
+    },
+    {
+      "id": "i=87",
+      "class": "Object",
+      "name": "Views",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=61"
+      ]
+    },
+    {
+      "id": "i=129",
+      "class": "ReferenceType",
+      "name": "HasArgumentDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=131",
+      "class": "ReferenceType",
+      "name": "HasOptionalInputArgumentDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=129"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2000",
+      "class": "DataType",
+      "name": "ImageBMP",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=30"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2001",
+      "class": "DataType",
+      "name": "ImageGIF",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=30"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2002",
+      "class": "DataType",
+      "name": "ImageJPG",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=30"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2003",
+      "class": "DataType",
+      "name": "ImagePNG",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=30"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16307",
+      "class": "DataType",
+      "name": "AudioDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12756",
+      "class": "DataType",
+      "name": "Union",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23751",
+      "class": "DataType",
+      "name": "UriString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2004",
+      "class": "ObjectType",
+      "name": "ServerType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2013",
+      "class": "ObjectType",
+      "name": "ServerCapabilitiesType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2020",
+      "class": "ObjectType",
+      "name": "ServerDiagnosticsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2026",
+      "class": "ObjectType",
+      "name": "SessionsDiagnosticsSummaryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2029",
+      "class": "ObjectType",
+      "name": "SessionDiagnosticsObjectType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2033",
+      "class": "ObjectType",
+      "name": "VendorServerInfoType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2034",
+      "class": "ObjectType",
+      "name": "ServerRedundancyType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2036",
+      "class": "ObjectType",
+      "name": "TransparentRedundancyType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2034"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2039",
+      "class": "ObjectType",
+      "name": "NonTransparentRedundancyType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2034"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11945",
+      "class": "ObjectType",
+      "name": "NonTransparentNetworkRedundancyType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2039"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32411",
+      "class": "ObjectType",
+      "name": "NonTransparentBackupRedundancyType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2039"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32417",
+      "class": "DataType",
+      "name": "RedundantServerMode",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11564",
+      "class": "ObjectType",
+      "name": "OperationLimitsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11575",
+      "class": "ObjectType",
+      "name": "FileType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11595",
+      "class": "ObjectType",
+      "name": "AddressSpaceFileType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11575"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11616",
+      "class": "ObjectType",
+      "name": "NamespaceMetadataType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11645",
+      "class": "ObjectType",
+      "name": "NamespacesType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2041",
+      "class": "ObjectType",
+      "name": "BaseEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2052",
+      "class": "ObjectType",
+      "name": "AuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2058",
+      "class": "ObjectType",
+      "name": "AuditSecurityEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2059",
+      "class": "ObjectType",
+      "name": "AuditChannelEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2058"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2060",
+      "class": "ObjectType",
+      "name": "AuditOpenSecureChannelEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2059"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2069",
+      "class": "ObjectType",
+      "name": "AuditSessionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2058"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2071",
+      "class": "ObjectType",
+      "name": "AuditCreateSessionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2069"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2748",
+      "class": "ObjectType",
+      "name": "AuditUrlMismatchEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2071"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2075",
+      "class": "ObjectType",
+      "name": "AuditActivateSessionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2069"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2078",
+      "class": "ObjectType",
+      "name": "AuditCancelEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2069"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2080",
+      "class": "ObjectType",
+      "name": "AuditCertificateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2058"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2082",
+      "class": "ObjectType",
+      "name": "AuditCertificateDataMismatchEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2085",
+      "class": "ObjectType",
+      "name": "AuditCertificateExpiredEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2086",
+      "class": "ObjectType",
+      "name": "AuditCertificateInvalidEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2087",
+      "class": "ObjectType",
+      "name": "AuditCertificateUntrustedEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2088",
+      "class": "ObjectType",
+      "name": "AuditCertificateRevokedEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2089",
+      "class": "ObjectType",
+      "name": "AuditCertificateMismatchEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2080"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2090",
+      "class": "ObjectType",
+      "name": "AuditNodeManagementEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2091",
+      "class": "ObjectType",
+      "name": "AuditAddNodesEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2090"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2093",
+      "class": "ObjectType",
+      "name": "AuditDeleteNodesEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2090"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2095",
+      "class": "ObjectType",
+      "name": "AuditAddReferencesEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2090"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2097",
+      "class": "ObjectType",
+      "name": "AuditDeleteReferencesEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2090"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2099",
+      "class": "ObjectType",
+      "name": "AuditUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2100",
+      "class": "ObjectType",
+      "name": "AuditWriteUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2099"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2104",
+      "class": "ObjectType",
+      "name": "AuditHistoryUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2099"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2127",
+      "class": "ObjectType",
+      "name": "AuditUpdateMethodEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2130",
+      "class": "ObjectType",
+      "name": "SystemEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2131",
+      "class": "ObjectType",
+      "name": "DeviceFailureEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11446",
+      "class": "ObjectType",
+      "name": "SystemStatusChangeEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2132",
+      "class": "ObjectType",
+      "name": "BaseModelChangeEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2133",
+      "class": "ObjectType",
+      "name": "GeneralModelChangeEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2132"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2738",
+      "class": "ObjectType",
+      "name": "SemanticChangeEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3035",
+      "class": "ObjectType",
+      "name": "EventQueueOverflowEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11436",
+      "class": "ObjectType",
+      "name": "ProgressEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23606",
+      "class": "ObjectType",
+      "name": "AuditClientEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23926",
+      "class": "ObjectType",
+      "name": "AuditClientUpdateMethodResultEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23606"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2340",
+      "class": "ObjectType",
+      "name": "AggregateFunctionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2137",
+      "class": "VariableType",
+      "name": "ServerVendorCapabilityType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2138",
+      "class": "VariableType",
+      "name": "ServerStatusType",
+      "attributes": {
+        "DataType": "i=862",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3051",
+      "class": "VariableType",
+      "name": "BuildInfoType",
+      "attributes": {
+        "DataType": "i=338",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2150",
+      "class": "VariableType",
+      "name": "ServerDiagnosticsSummaryType",
+      "attributes": {
+        "DataType": "i=859",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2164",
+      "class": "VariableType",
+      "name": "SamplingIntervalDiagnosticsArrayType",
+      "attributes": {
+        "DataType": "i=856",
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2165",
+      "class": "VariableType",
+      "name": "SamplingIntervalDiagnosticsType",
+      "attributes": {
+        "DataType": "i=856",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2171",
+      "class": "VariableType",
+      "name": "SubscriptionDiagnosticsArrayType",
+      "attributes": {
+        "DataType": "i=874",
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2172",
+      "class": "VariableType",
+      "name": "SubscriptionDiagnosticsType",
+      "attributes": {
+        "DataType": "i=874",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2196",
+      "class": "VariableType",
+      "name": "SessionDiagnosticsArrayType",
+      "attributes": {
+        "DataType": "i=865",
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2197",
+      "class": "VariableType",
+      "name": "SessionDiagnosticsVariableType",
+      "attributes": {
+        "DataType": "i=865",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2243",
+      "class": "VariableType",
+      "name": "SessionSecurityDiagnosticsArrayType",
+      "attributes": {
+        "DataType": "i=868",
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2244",
+      "class": "VariableType",
+      "name": "SessionSecurityDiagnosticsType",
+      "attributes": {
+        "DataType": "i=868",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11487",
+      "class": "VariableType",
+      "name": "OptionSetType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16309",
+      "class": "VariableType",
+      "name": "SelectionListType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17986",
+      "class": "VariableType",
+      "name": "AudioVariableType",
+      "attributes": {
+        "DataType": "i=16307",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2253",
+      "class": "Object",
+      "name": "Server",
+      "attributes": {
+        "EventNotifier": "1",
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=2004"
+      ]
+    },
+    {
+      "id": "i=23562",
+      "class": "ReferenceType",
+      "name": "IsDeprecated",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19814",
+      "class": "ReferenceType",
+      "name": "UsesDataTypeRefinement",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19815",
+      "class": "ReferenceType",
+      "name": "HasFieldDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19816",
+      "class": "ReferenceType",
+      "name": "HasFieldDescriptionSetMandatory",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=19815"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19817",
+      "class": "ReferenceType",
+      "name": "IsDisabledOptionalField",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=19815"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19818",
+      "class": "ReferenceType",
+      "name": "UsesSubtypeRestriction",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19819",
+      "class": "ReferenceType",
+      "name": "AllowedSubtype",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19846",
+      "class": "ReferenceType",
+      "name": "HasDataTypeRefinement",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=34"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11737",
+      "class": "DataType",
+      "name": "BitFieldMaskDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=9"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19820",
+      "class": "ObjectType",
+      "name": "DataTypeRefinementType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19822",
+      "class": "ObjectType",
+      "name": "SubtypeRestrictionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24263",
+      "class": "DataType",
+      "name": "SemanticVersionString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14533",
+      "class": "DataType",
+      "name": "KeyValuePair",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16313",
+      "class": "DataType",
+      "name": "AdditionalParametersType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17548",
+      "class": "DataType",
+      "name": "EphemeralKeyType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15528",
+      "class": "DataType",
+      "name": "EndpointType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=31917",
+      "class": "DataType",
+      "name": "Handle",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=31918",
+      "class": "DataType",
+      "name": "TrimmedString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2299",
+      "class": "ObjectType",
+      "name": "StateMachineType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2755",
+      "class": "VariableType",
+      "name": "StateVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2762",
+      "class": "VariableType",
+      "name": "TransitionVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2771",
+      "class": "ObjectType",
+      "name": "FiniteStateMachineType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2299"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2760",
+      "class": "VariableType",
+      "name": "FiniteStateVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2755"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2767",
+      "class": "VariableType",
+      "name": "FiniteTransitionVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2762"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2307",
+      "class": "ObjectType",
+      "name": "StateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2309",
+      "class": "ObjectType",
+      "name": "InitialStateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2307"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2310",
+      "class": "ObjectType",
+      "name": "TransitionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15109",
+      "class": "ObjectType",
+      "name": "ChoiceStateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2307"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15112",
+      "class": "ReferenceType",
+      "name": "HasGuard",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15113",
+      "class": "VariableType",
+      "name": "GuardVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15128",
+      "class": "VariableType",
+      "name": "ExpressionGuardVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15113"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15317",
+      "class": "VariableType",
+      "name": "ElseGuardVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15113"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17709",
+      "class": "VariableType",
+      "name": "RationalNumberType",
+      "attributes": {
+        "DataType": "i=18806",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17714",
+      "class": "VariableType",
+      "name": "VectorType",
+      "attributes": {
+        "IsAbstract": "true",
+        "DataType": "i=18807",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17716",
+      "class": "VariableType",
+      "name": "3DVectorType",
+      "attributes": {
+        "DataType": "i=18808",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=17714"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18772",
+      "class": "VariableType",
+      "name": "CartesianCoordinatesType",
+      "attributes": {
+        "IsAbstract": "true",
+        "DataType": "i=18809",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18774",
+      "class": "VariableType",
+      "name": "3DCartesianCoordinatesType",
+      "attributes": {
+        "DataType": "i=18810",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18772"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18779",
+      "class": "VariableType",
+      "name": "OrientationType",
+      "attributes": {
+        "IsAbstract": "true",
+        "DataType": "i=18811",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18781",
+      "class": "VariableType",
+      "name": "3DOrientationType",
+      "attributes": {
+        "DataType": "i=18812",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18779"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18786",
+      "class": "VariableType",
+      "name": "FrameType",
+      "attributes": {
+        "IsAbstract": "true",
+        "DataType": "i=18813",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18791",
+      "class": "VariableType",
+      "name": "3DFrameType",
+      "attributes": {
+        "DataType": "i=18814",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18786"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32431",
+      "class": "VariableType",
+      "name": "BitFieldType",
+      "attributes": {
+        "IsAbstract": "true",
+        "DataType": "i=28",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32421",
+      "class": "DataType",
+      "name": "BitFieldDefinition",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18806",
+      "class": "DataType",
+      "name": "RationalNumber",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18807",
+      "class": "DataType",
+      "name": "Vector",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18808",
+      "class": "DataType",
+      "name": "3DVector",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18807"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18809",
+      "class": "DataType",
+      "name": "CartesianCoordinates",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18810",
+      "class": "DataType",
+      "name": "3DCartesianCoordinates",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18809"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18811",
+      "class": "DataType",
+      "name": "Orientation",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18812",
+      "class": "DataType",
+      "name": "3DOrientation",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18811"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18813",
+      "class": "DataType",
+      "name": "Frame",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18814",
+      "class": "DataType",
+      "name": "3DFrame",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18813"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2311",
+      "class": "ObjectType",
+      "name": "TransitionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2315",
+      "class": "ObjectType",
+      "name": "AuditUpdateStateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11939",
+      "class": "DataType",
+      "name": "OpenFileMode",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=13353",
+      "class": "ObjectType",
+      "name": "FileDirectoryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15744",
+      "class": "ObjectType",
+      "name": "TemporaryFileTransferType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15803",
+      "class": "ObjectType",
+      "name": "FileTransferStateMachineType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2771"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15607",
+      "class": "ObjectType",
+      "name": "RoleSetType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15620",
+      "class": "ObjectType",
+      "name": "RoleType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15632",
+      "class": "DataType",
+      "name": "IdentityCriteriaType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15634",
+      "class": "DataType",
+      "name": "IdentityMappingRuleType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17641",
+      "class": "ObjectType",
+      "name": "RoleMappingRuleChangedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17589",
+      "class": "ObjectType",
+      "name": "DictionaryEntryType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17591",
+      "class": "ObjectType",
+      "name": "DictionaryFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17597",
+      "class": "ReferenceType",
+      "name": "HasDictionaryEntry",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17598",
+      "class": "ObjectType",
+      "name": "IrdiDictionaryEntryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17600",
+      "class": "ObjectType",
+      "name": "UriDictionaryEntryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17602",
+      "class": "ObjectType",
+      "name": "BaseInterfaceType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17708",
+      "class": "Object",
+      "name": "InterfaceTypes",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [],
+      "type": [
+        "i=61"
+      ]
+    },
+    {
+      "id": "i=17603",
+      "class": "ReferenceType",
+      "name": "HasInterface",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17604",
+      "class": "ReferenceType",
+      "name": "HasAddIn",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23498",
+      "class": "DataType",
+      "name": "CurrencyUnitType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23513",
+      "class": "ObjectType",
+      "name": "IOrderedObjectType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23518",
+      "class": "ObjectType",
+      "name": "OrderedListType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2365",
+      "class": "VariableType",
+      "name": "DataItemType",
+      "attributes": {
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15318",
+      "class": "VariableType",
+      "name": "BaseAnalogType",
+      "attributes": {
+        "DataType": "i=26",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2365"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2368",
+      "class": "VariableType",
+      "name": "AnalogItemType",
+      "attributes": {
+        "DataType": "i=26",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15318"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17497",
+      "class": "VariableType",
+      "name": "AnalogUnitType",
+      "attributes": {
+        "DataType": "i=26",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15318"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17570",
+      "class": "VariableType",
+      "name": "AnalogUnitRangeType",
+      "attributes": {
+        "DataType": "i=26",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2368"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2372",
+      "class": "VariableType",
+      "name": "DiscreteItemType",
+      "attributes": {
+        "IsAbstract": "true",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2365"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2373",
+      "class": "VariableType",
+      "name": "TwoStateDiscreteType",
+      "attributes": {
+        "DataType": "i=1",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2372"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2376",
+      "class": "VariableType",
+      "name": "MultiStateDiscreteType",
+      "attributes": {
+        "DataType": "i=28",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2372"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11238",
+      "class": "VariableType",
+      "name": "MultiStateValueDiscreteType",
+      "attributes": {
+        "DataType": "i=26",
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2372"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12021",
+      "class": "VariableType",
+      "name": "ArrayItemType",
+      "attributes": {
+        "IsAbstract": "true",
+        "ValueRank": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2365"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12029",
+      "class": "VariableType",
+      "name": "YArrayItemType",
+      "attributes": {
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12021"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12038",
+      "class": "VariableType",
+      "name": "XYArrayItemType",
+      "attributes": {
+        "DataType": "i=12080",
+        "ValueRank": "1",
+        "ArrayDimensions": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12021"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12047",
+      "class": "VariableType",
+      "name": "ImageItemType",
+      "attributes": {
+        "ValueRank": "2",
+        "ArrayDimensions": "0,0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12021"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12057",
+      "class": "VariableType",
+      "name": "CubeItemType",
+      "attributes": {
+        "ValueRank": "3",
+        "ArrayDimensions": "0,0,0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12021"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12068",
+      "class": "VariableType",
+      "name": "NDimensionArrayItemType",
+      "attributes": {
+        "ValueRank": "0",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12021"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32434",
+      "class": "DataType",
+      "name": "AnnotationDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32435",
+      "class": "DataType",
+      "name": "LinearConversionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32436",
+      "class": "DataType",
+      "name": "ConversionLimitEnum",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32438",
+      "class": "DataType",
+      "name": "QuantityDimension",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32439",
+      "class": "ObjectType",
+      "name": "SyntaxReferenceEntryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32442",
+      "class": "ObjectType",
+      "name": "UnitType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32447",
+      "class": "ObjectType",
+      "name": "ServerUnitType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=32442"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32467",
+      "class": "ObjectType",
+      "name": "AlternativeUnitType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=32442"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32475",
+      "class": "ObjectType",
+      "name": "QuantityType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32558",
+      "class": "ReferenceType",
+      "name": "HasEngineeringUnitDetails",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32559",
+      "class": "ReferenceType",
+      "name": "HasQuantity",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8995",
+      "class": "VariableType",
+      "name": "TwoStateVariableType",
+      "attributes": {
+        "DataType": "i=21",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=2755"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9002",
+      "class": "VariableType",
+      "name": "ConditionVariableType",
+      "attributes": {
+        "ValueRank": "-2",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9004",
+      "class": "ReferenceType",
+      "name": "HasTrueSubState",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9005",
+      "class": "ReferenceType",
+      "name": "HasFalseSubState",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16361",
+      "class": "ReferenceType",
+      "name": "HasAlarmSuppressionGroup",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16362",
+      "class": "ReferenceType",
+      "name": "AlarmGroupMember",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=35"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32059",
+      "class": "ReferenceType",
+      "name": "AlarmSuppressionGroupMember",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=16362"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2782",
+      "class": "ObjectType",
+      "name": "ConditionType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2830",
+      "class": "ObjectType",
+      "name": "DialogConditionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2782"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2881",
+      "class": "ObjectType",
+      "name": "AcknowledgeableConditionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2782"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2915",
+      "class": "ObjectType",
+      "name": "AlarmConditionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2881"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16405",
+      "class": "ObjectType",
+      "name": "AlarmGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32064",
+      "class": "ObjectType",
+      "name": "AlarmSuppressionGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=16405"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2929",
+      "class": "ObjectType",
+      "name": "ShelvedStateMachineType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2771"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2955",
+      "class": "ObjectType",
+      "name": "LimitAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2915"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9318",
+      "class": "ObjectType",
+      "name": "ExclusiveLimitStateMachineType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2771"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9341",
+      "class": "ObjectType",
+      "name": "ExclusiveLimitAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2955"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9906",
+      "class": "ObjectType",
+      "name": "NonExclusiveLimitAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2955"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10060",
+      "class": "ObjectType",
+      "name": "NonExclusiveLevelAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9906"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9482",
+      "class": "ObjectType",
+      "name": "ExclusiveLevelAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9341"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10368",
+      "class": "ObjectType",
+      "name": "NonExclusiveDeviationAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9906"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10214",
+      "class": "ObjectType",
+      "name": "NonExclusiveRateOfChangeAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9906"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9764",
+      "class": "ObjectType",
+      "name": "ExclusiveDeviationAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9341"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9623",
+      "class": "ObjectType",
+      "name": "ExclusiveRateOfChangeAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=9341"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10523",
+      "class": "ObjectType",
+      "name": "DiscreteAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2915"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10637",
+      "class": "ObjectType",
+      "name": "OffNormalAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=10523"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11753",
+      "class": "ObjectType",
+      "name": "SystemOffNormalAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=10637"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=10751",
+      "class": "ObjectType",
+      "name": "TripAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=10637"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18347",
+      "class": "ObjectType",
+      "name": "InstrumentDiagnosticAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=10637"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18496",
+      "class": "ObjectType",
+      "name": "SystemDiagnosticAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=10637"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=13225",
+      "class": "ObjectType",
+      "name": "CertificateExpirationAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11753"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17080",
+      "class": "ObjectType",
+      "name": "DiscrepancyAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2915"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11163",
+      "class": "ObjectType",
+      "name": "BaseConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11164",
+      "class": "ObjectType",
+      "name": "ProcessConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11165",
+      "class": "ObjectType",
+      "name": "MaintenanceConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11166",
+      "class": "ObjectType",
+      "name": "SystemConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17218",
+      "class": "ObjectType",
+      "name": "SafetyConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17219",
+      "class": "ObjectType",
+      "name": "HighlyManagedAlarmConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17220",
+      "class": "ObjectType",
+      "name": "TrainingConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18665",
+      "class": "ObjectType",
+      "name": "StatisticalConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17221",
+      "class": "ObjectType",
+      "name": "TestingConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2790",
+      "class": "ObjectType",
+      "name": "AuditConditionEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2803",
+      "class": "ObjectType",
+      "name": "AuditConditionEnableEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2829",
+      "class": "ObjectType",
+      "name": "AuditConditionCommentEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8927",
+      "class": "ObjectType",
+      "name": "AuditConditionRespondEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8944",
+      "class": "ObjectType",
+      "name": "AuditConditionAcknowledgeEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8961",
+      "class": "ObjectType",
+      "name": "AuditConditionConfirmEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11093",
+      "class": "ObjectType",
+      "name": "AuditConditionShelvingEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17225",
+      "class": "ObjectType",
+      "name": "AuditConditionSuppressionEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17242",
+      "class": "ObjectType",
+      "name": "AuditConditionSilenceEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15013",
+      "class": "ObjectType",
+      "name": "AuditConditionResetEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17259",
+      "class": "ObjectType",
+      "name": "AuditConditionOutOfServiceEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2790"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2787",
+      "class": "ObjectType",
+      "name": "RefreshStartEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2788",
+      "class": "ObjectType",
+      "name": "RefreshEndEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2789",
+      "class": "ObjectType",
+      "name": "RefreshRequiredEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=9006",
+      "class": "ReferenceType",
+      "name": "HasCondition",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17276",
+      "class": "ReferenceType",
+      "name": "HasEffectDisable",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=54"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17983",
+      "class": "ReferenceType",
+      "name": "HasEffectEnable",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=54"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17984",
+      "class": "ReferenceType",
+      "name": "HasEffectSuppressed",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=54"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17985",
+      "class": "ReferenceType",
+      "name": "HasEffectUnsuppressed",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=54"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17279",
+      "class": "ObjectType",
+      "name": "AlarmMetricsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17277",
+      "class": "VariableType",
+      "name": "AlarmRateVariableType",
+      "attributes": {
+        "DataType": "i=11",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32244",
+      "class": "VariableType",
+      "name": "AlarmStateVariableType",
+      "attributes": {
+        "DataType": "i=32251",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32251",
+      "class": "DataType",
+      "name": "AlarmMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=5"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2391",
+      "class": "ObjectType",
+      "name": "ProgramStateMachineType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2771"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2378",
+      "class": "ObjectType",
+      "name": "ProgramTransitionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2311"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11856",
+      "class": "ObjectType",
+      "name": "AuditProgramTransitionEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2315"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3806",
+      "class": "ObjectType",
+      "name": "ProgramTransitionAuditEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2315"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2380",
+      "class": "VariableType",
+      "name": "ProgramDiagnosticType",
+      "attributes": {
+        "DataType": "i=894",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15383",
+      "class": "VariableType",
+      "name": "ProgramDiagnostic2Type",
+      "attributes": {
+        "DataType": "i=24033",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2318",
+      "class": "ObjectType",
+      "name": "HistoricalDataConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32621",
+      "class": "ObjectType",
+      "name": "HistoricalEventConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32625",
+      "class": "ObjectType",
+      "name": "HistoricalExternalEventSourceType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32633",
+      "class": "ReferenceType",
+      "name": "HasCurrentData",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32634",
+      "class": "ReferenceType",
+      "name": "HasCurrentEvent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2330",
+      "class": "ObjectType",
+      "name": "HistoryServerCapabilitiesType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=2999",
+      "class": "ObjectType",
+      "name": "AuditHistoryEventUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3006",
+      "class": "ObjectType",
+      "name": "AuditHistoryValueUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19095",
+      "class": "ObjectType",
+      "name": "AuditHistoryAnnotationUpdateEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3012",
+      "class": "ObjectType",
+      "name": "AuditHistoryDeleteEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3014",
+      "class": "ObjectType",
+      "name": "AuditHistoryRawModifyDeleteEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=3012"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3019",
+      "class": "ObjectType",
+      "name": "AuditHistoryAtTimeDeleteEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=3012"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=3022",
+      "class": "ObjectType",
+      "name": "AuditHistoryEventDeleteEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=3012"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32758",
+      "class": "ObjectType",
+      "name": "AuditHistoryConfigurationChangeEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32803",
+      "class": "ObjectType",
+      "name": "AuditHistoryBulkInsertEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12522",
+      "class": "ObjectType",
+      "name": "TrustListType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11575"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23564",
+      "class": "DataType",
+      "name": "TrustListValidationOptions",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12552",
+      "class": "DataType",
+      "name": "TrustListMasks",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12554",
+      "class": "DataType",
+      "name": "TrustListDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19297",
+      "class": "ObjectType",
+      "name": "TrustListOutOfDateAlarmType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11753"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12555",
+      "class": "ObjectType",
+      "name": "CertificateGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=13813",
+      "class": "ObjectType",
+      "name": "CertificateGroupFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15434",
+      "class": "DataType",
+      "name": "BaseConfigurationDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15435",
+      "class": "DataType",
+      "name": "BaseConfigurationRecordDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15436",
+      "class": "DataType",
+      "name": "CertificateGroupDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12556",
+      "class": "ObjectType",
+      "name": "CertificateType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12557",
+      "class": "ObjectType",
+      "name": "ApplicationCertificateType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12556"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12558",
+      "class": "ObjectType",
+      "name": "HttpsCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12556"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19323",
+      "class": "ObjectType",
+      "name": "UserCertificateType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12556"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19324",
+      "class": "ObjectType",
+      "name": "TlsCertificateType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12556"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19325",
+      "class": "ObjectType",
+      "name": "TlsServerCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19324"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19326",
+      "class": "ObjectType",
+      "name": "TlsClientCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19324"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12559",
+      "class": "ObjectType",
+      "name": "RsaMinApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12557"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12560",
+      "class": "ObjectType",
+      "name": "RsaSha256ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12557"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23537",
+      "class": "ObjectType",
+      "name": "EccApplicationCertificateType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12557"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23538",
+      "class": "ObjectType",
+      "name": "EccNistP256ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23539",
+      "class": "ObjectType",
+      "name": "EccNistP384ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23540",
+      "class": "ObjectType",
+      "name": "EccBrainpoolP256r1ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23541",
+      "class": "ObjectType",
+      "name": "EccBrainpoolP384r1ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23542",
+      "class": "ObjectType",
+      "name": "EccCurve25519ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23543",
+      "class": "ObjectType",
+      "name": "EccCurve448ApplicationCertificateType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=23537"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15437",
+      "class": "ObjectType",
+      "name": "ConfigurationFileType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11575"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15538",
+      "class": "DataType",
+      "name": "ConfigurationUpdateTargetType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15539",
+      "class": "DataType",
+      "name": "ConfigurationUpdateType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15541",
+      "class": "ObjectType",
+      "name": "ConfigurationUpdatedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2052"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32260",
+      "class": "ObjectType",
+      "name": "TrustListUpdateRequestedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12561",
+      "class": "ObjectType",
+      "name": "TrustListUpdatedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32286",
+      "class": "ObjectType",
+      "name": "TransactionDiagnosticsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32285",
+      "class": "DataType",
+      "name": "TransactionErrorType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=16662",
+      "class": "ObjectType",
+      "name": "ApplicationConfigurationFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23743",
+      "class": "DataType",
+      "name": "ApplicationConfigurationDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15434"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15550",
+      "class": "ObjectType",
+      "name": "ApplicationConfigurationFileType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15437"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15556",
+      "class": "DataType",
+      "name": "ApplicationIdentityDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15557",
+      "class": "DataType",
+      "name": "EndpointDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15558",
+      "class": "DataType",
+      "name": "ServerEndpointDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15557"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15559",
+      "class": "DataType",
+      "name": "SecuritySettingsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15560",
+      "class": "DataType",
+      "name": "UserTokenSettingsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12581",
+      "class": "ObjectType",
+      "name": "ServerConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25731",
+      "class": "ObjectType",
+      "name": "ApplicationConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=12581"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32306",
+      "class": "ObjectType",
+      "name": "CertificateUpdateRequestedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12620",
+      "class": "ObjectType",
+      "name": "CertificateUpdatedAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17496",
+      "class": "ObjectType",
+      "name": "KeyCredentialConfigurationFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18001",
+      "class": "ObjectType",
+      "name": "KeyCredentialConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18011",
+      "class": "ObjectType",
+      "name": "KeyCredentialAuditEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2127"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18029",
+      "class": "ObjectType",
+      "name": "KeyCredentialUpdatedAuditEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=18011"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18047",
+      "class": "ObjectType",
+      "name": "KeyCredentialDeletedAuditEventType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=18011"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23556",
+      "class": "ObjectType",
+      "name": "AuthorizationServicesConfigurationFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17852",
+      "class": "ObjectType",
+      "name": "AuthorizationServiceConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23724",
+      "class": "DataType",
+      "name": "ServiceCertificateDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23744",
+      "class": "DataType",
+      "name": "AuthorizationServiceConfigurationDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15435"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11187",
+      "class": "ObjectType",
+      "name": "AggregateConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15534",
+      "class": "DataType",
+      "name": "DataTypeSchemaHeader",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14525",
+      "class": "DataType",
+      "name": "DataTypeDescription",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15487",
+      "class": "DataType",
+      "name": "StructureDescription",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=14525"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15488",
+      "class": "DataType",
+      "name": "EnumDescription",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=14525"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15005",
+      "class": "DataType",
+      "name": "SimpleTypeDescription",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=14525"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15006",
+      "class": "DataType",
+      "name": "UABinaryFileDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15534"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24105",
+      "class": "DataType",
+      "name": "PortableQualifiedName",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24106",
+      "class": "DataType",
+      "name": "PortableNodeId",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24107",
+      "class": "DataType",
+      "name": "UnsignedRationalNumber",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14647",
+      "class": "DataType",
+      "name": "PubSubState",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14523",
+      "class": "DataType",
+      "name": "DataSetMetaDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15534"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14524",
+      "class": "DataType",
+      "name": "FieldMetaData",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15904",
+      "class": "DataType",
+      "name": "DataSetFieldFlags",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=5"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14593",
+      "class": "DataType",
+      "name": "ConfigurationVersionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15578",
+      "class": "DataType",
+      "name": "PublishedDataSetDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15580",
+      "class": "DataType",
+      "name": "PublishedDataSetSourceDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14273",
+      "class": "DataType",
+      "name": "PublishedVariableDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15581",
+      "class": "DataType",
+      "name": "PublishedDataItemsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15580"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15582",
+      "class": "DataType",
+      "name": "PublishedEventsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15580"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25269",
+      "class": "DataType",
+      "name": "PublishedDataSetCustomSourceDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15580"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18593",
+      "class": "DataType",
+      "name": "ActionTargetDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18594",
+      "class": "DataType",
+      "name": "PublishedActionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15580"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18595",
+      "class": "DataType",
+      "name": "ActionState",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18597",
+      "class": "DataType",
+      "name": "ActionMethodDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18793",
+      "class": "DataType",
+      "name": "PublishedActionMethodDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=18594"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15583",
+      "class": "DataType",
+      "name": "DataSetFieldContentMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15597",
+      "class": "DataType",
+      "name": "DataSetWriterDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15598",
+      "class": "DataType",
+      "name": "DataSetWriterTransportDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15605",
+      "class": "DataType",
+      "name": "DataSetWriterMessageDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15609",
+      "class": "DataType",
+      "name": "PubSubGroupDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15480",
+      "class": "DataType",
+      "name": "WriterGroupDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15609"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15611",
+      "class": "DataType",
+      "name": "WriterGroupTransportDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15616",
+      "class": "DataType",
+      "name": "WriterGroupMessageDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15617",
+      "class": "DataType",
+      "name": "PubSubConnectionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15618",
+      "class": "DataType",
+      "name": "ConnectionTransportDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15502",
+      "class": "DataType",
+      "name": "NetworkAddressDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15510",
+      "class": "DataType",
+      "name": "NetworkAddressUrlDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15502"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15520",
+      "class": "DataType",
+      "name": "ReaderGroupDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15609"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15621",
+      "class": "DataType",
+      "name": "ReaderGroupTransportDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15622",
+      "class": "DataType",
+      "name": "ReaderGroupMessageDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15623",
+      "class": "DataType",
+      "name": "DataSetReaderDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15628",
+      "class": "DataType",
+      "name": "DataSetReaderTransportDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15629",
+      "class": "DataType",
+      "name": "DataSetReaderMessageDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15630",
+      "class": "DataType",
+      "name": "SubscribedDataSetDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15631",
+      "class": "DataType",
+      "name": "TargetVariablesDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15630"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14744",
+      "class": "DataType",
+      "name": "FieldTargetDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15874",
+      "class": "DataType",
+      "name": "OverrideValueHandling",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15635",
+      "class": "DataType",
+      "name": "SubscribedDataSetMirrorDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15630"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15530",
+      "class": "DataType",
+      "name": "PubSubConfigurationDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23599",
+      "class": "DataType",
+      "name": "StandaloneSubscribedDataSetRefDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15630"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23600",
+      "class": "DataType",
+      "name": "StandaloneSubscribedDataSetDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15630"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23601",
+      "class": "DataType",
+      "name": "SecurityGroupDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25270",
+      "class": "DataType",
+      "name": "PubSubKeyPushTargetDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23602",
+      "class": "DataType",
+      "name": "PubSubConfiguration2DataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15530"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=20408",
+      "class": "DataType",
+      "name": "DataSetOrderingType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15642",
+      "class": "DataType",
+      "name": "UadpNetworkMessageContentMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15645",
+      "class": "DataType",
+      "name": "UadpWriterGroupMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15616"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15646",
+      "class": "DataType",
+      "name": "UadpDataSetMessageContentMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15652",
+      "class": "DataType",
+      "name": "UadpDataSetWriterMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15605"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15653",
+      "class": "DataType",
+      "name": "UadpDataSetReaderMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15629"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15654",
+      "class": "DataType",
+      "name": "JsonNetworkMessageContentMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15657",
+      "class": "DataType",
+      "name": "JsonWriterGroupMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15616"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15658",
+      "class": "DataType",
+      "name": "JsonDataSetMessageContentMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15664",
+      "class": "DataType",
+      "name": "JsonDataSetWriterMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15605"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15665",
+      "class": "DataType",
+      "name": "JsonDataSetReaderMessageDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15629"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23603",
+      "class": "DataType",
+      "name": "QosDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23604",
+      "class": "DataType",
+      "name": "TransmitQosDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=23603"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23605",
+      "class": "DataType",
+      "name": "TransmitQosPriorityDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=23604"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23608",
+      "class": "DataType",
+      "name": "ReceiveQosDataType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=23603"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23609",
+      "class": "DataType",
+      "name": "ReceiveQosPriorityDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=23608"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17467",
+      "class": "DataType",
+      "name": "DatagramConnectionTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15618"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23612",
+      "class": "DataType",
+      "name": "DatagramConnectionTransport2DataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=17467"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15532",
+      "class": "DataType",
+      "name": "DatagramWriterGroupTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15611"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23613",
+      "class": "DataType",
+      "name": "DatagramWriterGroupTransport2DataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15532"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23614",
+      "class": "DataType",
+      "name": "DatagramDataSetReaderTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15628"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18794",
+      "class": "DataType",
+      "name": "DtlsPubSubConnectionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15007",
+      "class": "DataType",
+      "name": "BrokerConnectionTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15618"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15008",
+      "class": "DataType",
+      "name": "BrokerTransportQualityOfService",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15667",
+      "class": "DataType",
+      "name": "BrokerWriterGroupTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15611"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15669",
+      "class": "DataType",
+      "name": "BrokerDataSetWriterTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15598"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15670",
+      "class": "DataType",
+      "name": "BrokerDataSetReaderTransportDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15628"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15906",
+      "class": "ObjectType",
+      "name": "PubSubKeyServiceType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15452",
+      "class": "ObjectType",
+      "name": "SecurityGroupFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15471",
+      "class": "ObjectType",
+      "name": "SecurityGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25345",
+      "class": "ReferenceType",
+      "name": "HasPushedSecurityGroup",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25337",
+      "class": "ObjectType",
+      "name": "PubSubKeyPushTargetType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25346",
+      "class": "ObjectType",
+      "name": "PubSubKeyPushTargetFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14416",
+      "class": "ObjectType",
+      "name": "PublishSubscribeType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15906"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14476",
+      "class": "ReferenceType",
+      "name": "HasPubSubConnection",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25482",
+      "class": "ObjectType",
+      "name": "PubSubConfigurationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11575"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25517",
+      "class": "DataType",
+      "name": "PubSubConfigurationRefMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25519",
+      "class": "DataType",
+      "name": "PubSubConfigurationRefDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25520",
+      "class": "DataType",
+      "name": "PubSubConfigurationValueDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14509",
+      "class": "ObjectType",
+      "name": "PublishedDataSetType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15489",
+      "class": "ObjectType",
+      "name": "ExtensionFieldsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14936",
+      "class": "ReferenceType",
+      "name": "DataSetToWriter",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14534",
+      "class": "ObjectType",
+      "name": "PublishedDataItemsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=14509"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14572",
+      "class": "ObjectType",
+      "name": "PublishedEventsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=14509"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14477",
+      "class": "ObjectType",
+      "name": "DataSetFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14209",
+      "class": "ObjectType",
+      "name": "PubSubConnectionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17721",
+      "class": "ObjectType",
+      "name": "ConnectionTransportType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14232",
+      "class": "ObjectType",
+      "name": "PubSubGroupType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17725",
+      "class": "ObjectType",
+      "name": "WriterGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=14232"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15296",
+      "class": "ReferenceType",
+      "name": "HasDataSetWriter",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18804",
+      "class": "ReferenceType",
+      "name": "HasWriterGroup",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17997",
+      "class": "ObjectType",
+      "name": "WriterGroupTransportType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17998",
+      "class": "ObjectType",
+      "name": "WriterGroupMessageType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17999",
+      "class": "ObjectType",
+      "name": "ReaderGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=14232"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15297",
+      "class": "ReferenceType",
+      "name": "HasDataSetReader",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18805",
+      "class": "ReferenceType",
+      "name": "HasReaderGroup",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21090",
+      "class": "ObjectType",
+      "name": "ReaderGroupTransportType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21091",
+      "class": "ObjectType",
+      "name": "ReaderGroupMessageType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15298",
+      "class": "ObjectType",
+      "name": "DataSetWriterType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15305",
+      "class": "ObjectType",
+      "name": "DataSetWriterTransportType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21096",
+      "class": "ObjectType",
+      "name": "DataSetWriterMessageType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15306",
+      "class": "ObjectType",
+      "name": "DataSetReaderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15319",
+      "class": "ObjectType",
+      "name": "DataSetReaderTransportType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21104",
+      "class": "ObjectType",
+      "name": "DataSetReaderMessageType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15108",
+      "class": "ObjectType",
+      "name": "SubscribedDataSetType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15111",
+      "class": "ObjectType",
+      "name": "TargetVariablesType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15108"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15127",
+      "class": "ObjectType",
+      "name": "SubscribedDataSetMirrorType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15108"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23795",
+      "class": "ObjectType",
+      "name": "SubscribedDataSetFolderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23828",
+      "class": "ObjectType",
+      "name": "StandaloneSubscribedDataSetType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=14643",
+      "class": "ObjectType",
+      "name": "PubSubStatusType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19677",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19723",
+      "class": "DataType",
+      "name": "DiagnosticsLevel",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19725",
+      "class": "VariableType",
+      "name": "PubSubDiagnosticsCounterType",
+      "attributes": {
+        "DataType": "i=7",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19730",
+      "class": "DataType",
+      "name": "PubSubDiagnosticsCounterClassification",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19732",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsRootType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19786",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsConnectionType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19834",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsWriterGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19903",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsReaderGroupType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19968",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsDataSetWriterType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=20027",
+      "class": "ObjectType",
+      "name": "PubSubDiagnosticsDataSetReaderType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=19677"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23832",
+      "class": "ObjectType",
+      "name": "PubSubCapabilitiesType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15535",
+      "class": "ObjectType",
+      "name": "PubSubStatusEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2130"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15548",
+      "class": "ObjectType",
+      "name": "PubSubTransportLimitsExceedEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15535"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15563",
+      "class": "ObjectType",
+      "name": "PubSubCommunicationFailureEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15535"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21105",
+      "class": "ObjectType",
+      "name": "UadpWriterGroupMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17998"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21111",
+      "class": "ObjectType",
+      "name": "UadpDataSetWriterMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=21096"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21116",
+      "class": "ObjectType",
+      "name": "UadpDataSetReaderMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=21104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21126",
+      "class": "ObjectType",
+      "name": "JsonWriterGroupMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17998"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21128",
+      "class": "ObjectType",
+      "name": "JsonDataSetWriterMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=21096"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21130",
+      "class": "ObjectType",
+      "name": "JsonDataSetReaderMessageType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=21104"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15064",
+      "class": "ObjectType",
+      "name": "DatagramConnectionTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17721"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21133",
+      "class": "ObjectType",
+      "name": "DatagramWriterGroupTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17997"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24016",
+      "class": "ObjectType",
+      "name": "DatagramDataSetReaderTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15319"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15155",
+      "class": "ObjectType",
+      "name": "BrokerConnectionTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17721"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21136",
+      "class": "ObjectType",
+      "name": "BrokerWriterGroupTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17997"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21138",
+      "class": "ObjectType",
+      "name": "BrokerDataSetWriterTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15305"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21142",
+      "class": "ObjectType",
+      "name": "BrokerDataSetReaderTransportType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=15319"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21145",
+      "class": "ObjectType",
+      "name": "NetworkAddressType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=21147",
+      "class": "ObjectType",
+      "name": "NetworkAddressUrlType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=21145"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23455",
+      "class": "ObjectType",
+      "name": "AliasNameType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23456",
+      "class": "ObjectType",
+      "name": "AliasNameCategoryType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=61"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23468",
+      "class": "DataType",
+      "name": "AliasNameDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=23469",
+      "class": "ReferenceType",
+      "name": "AliasFor",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24264",
+      "class": "ObjectType",
+      "name": "UserManagementType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24277",
+      "class": "DataType",
+      "name": "PasswordOptionsMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24279",
+      "class": "DataType",
+      "name": "UserConfigurationMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24281",
+      "class": "DataType",
+      "name": "UserManagementDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19077",
+      "class": "VariableType",
+      "name": "MultiStateDictionaryEntryDiscreteBaseType",
+      "attributes": {
+        "DataType": "i=26",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=11238"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19084",
+      "class": "VariableType",
+      "name": "MultiStateDictionaryEntryDiscreteType",
+      "attributes": {
+        "DataType": "i=26",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=19077"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25726",
+      "class": "DataType",
+      "name": "EncodedTicket",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=26871",
+      "class": "ObjectType",
+      "name": "ProvisionableDeviceType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24148",
+      "class": "ObjectType",
+      "name": "IIetfBaseNetworkInterfaceType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24158",
+      "class": "ObjectType",
+      "name": "IIeeeBaseEthernetPortType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24233",
+      "class": "ObjectType",
+      "name": "IIeeeAutoNegotiationStatusType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24167",
+      "class": "ObjectType",
+      "name": "IBaseEthernetCapabilitiesType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25218",
+      "class": "ObjectType",
+      "name": "IVlanIdType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24169",
+      "class": "ObjectType",
+      "name": "ISrClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24173",
+      "class": "ObjectType",
+      "name": "IIeeeBaseTsnStreamType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24179",
+      "class": "ObjectType",
+      "name": "IIeeeBaseTsnTrafficSpecificationType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24183",
+      "class": "ObjectType",
+      "name": "IIeeeBaseTsnStatusStreamType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24188",
+      "class": "ObjectType",
+      "name": "IIeeeTsnInterfaceConfigurationType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24191",
+      "class": "ObjectType",
+      "name": "IIeeeTsnInterfaceConfigurationTalkerType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=24188"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24195",
+      "class": "ObjectType",
+      "name": "IIeeeTsnInterfaceConfigurationListenerType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=24188"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24199",
+      "class": "ObjectType",
+      "name": "IIeeeTsnMacAddressType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24202",
+      "class": "ObjectType",
+      "name": "IIeeeTsnVlanTagType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24205",
+      "class": "ObjectType",
+      "name": "IPriorityMappingEntryType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=17602"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24210",
+      "class": "DataType",
+      "name": "Duplex",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24212",
+      "class": "DataType",
+      "name": "InterfaceAdminStatus",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24214",
+      "class": "DataType",
+      "name": "InterfaceOperStatus",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24216",
+      "class": "DataType",
+      "name": "NegotiationStatus",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24218",
+      "class": "DataType",
+      "name": "TsnFailureCode",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24220",
+      "class": "DataType",
+      "name": "TsnStreamState",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24222",
+      "class": "DataType",
+      "name": "TsnTalkerStatus",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24224",
+      "class": "DataType",
+      "name": "TsnListenerStatus",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18947",
+      "class": "DataType",
+      "name": "ChassisIdSubtype",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18949",
+      "class": "DataType",
+      "name": "PortIdSubtype",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18951",
+      "class": "DataType",
+      "name": "ManAddrIfSubtype",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25220",
+      "class": "DataType",
+      "name": "PriorityMappingEntryType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18953",
+      "class": "DataType",
+      "name": "LldpManagementAddressTxPortType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18954",
+      "class": "DataType",
+      "name": "LldpManagementAddressType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18955",
+      "class": "DataType",
+      "name": "LldpTlvType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18956",
+      "class": "DataType",
+      "name": "LldpSystemCapabilitiesMap",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25221",
+      "class": "ObjectType",
+      "name": "IetfBaseNetworkInterfaceType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25227",
+      "class": "ObjectType",
+      "name": "PriorityMappingTableType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18973",
+      "class": "ObjectType",
+      "name": "LldpInformationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=18996",
+      "class": "ObjectType",
+      "name": "LldpRemoteStatisticsType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19002",
+      "class": "ObjectType",
+      "name": "LldpLocalSystemType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19009",
+      "class": "ObjectType",
+      "name": "LldpPortInformationType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19033",
+      "class": "ObjectType",
+      "name": "LldpRemoteSystemType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25237",
+      "class": "ReferenceType",
+      "name": "UsesPriorityMappingTable",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25238",
+      "class": "ReferenceType",
+      "name": "HasLowerLayerInterface",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25253",
+      "class": "ReferenceType",
+      "name": "IsExecutableOn",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25254",
+      "class": "ReferenceType",
+      "name": "Controls",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25255",
+      "class": "ReferenceType",
+      "name": "Utilizes",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25265",
+      "class": "ReferenceType",
+      "name": "IsExecutingOn",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=25255"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25256",
+      "class": "ReferenceType",
+      "name": "Requires",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25257",
+      "class": "ReferenceType",
+      "name": "IsPhysicallyConnectedTo",
+      "attributes": {
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25258",
+      "class": "ReferenceType",
+      "name": "RepresentsSameEntityAs",
+      "attributes": {
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=32"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25259",
+      "class": "ReferenceType",
+      "name": "RepresentsSameHardwareAs",
+      "attributes": {
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=25258"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25260",
+      "class": "ReferenceType",
+      "name": "RepresentsSameFunctionalityAs",
+      "attributes": {
+        "Symmetric": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=25258"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25261",
+      "class": "ReferenceType",
+      "name": "IsHostedBy",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=25255"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25262",
+      "class": "ReferenceType",
+      "name": "HasPhysicalComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=47"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25263",
+      "class": "ReferenceType",
+      "name": "HasContainedComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=25262"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=25264",
+      "class": "ReferenceType",
+      "name": "HasAttachedComponent",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=25262"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32679",
+      "class": "ReferenceType",
+      "name": "HasReferenceDescription",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=34"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32657",
+      "class": "VariableType",
+      "name": "ReferenceDescriptionVariableType",
+      "attributes": {
+        "DataType": "i=32659",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=63"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32659",
+      "class": "DataType",
+      "name": "ReferenceDescriptionDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32660",
+      "class": "DataType",
+      "name": "ReferenceListEntryDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19824",
+      "class": "ObjectType",
+      "name": "SerializationEntityType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19845",
+      "class": "ReferenceType",
+      "name": "HasSerializationEntity",
+      "attributes": {
+        "HasInverseName": "true"
+      },
+      "parents": [
+        "i=33"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19352",
+      "class": "ObjectType",
+      "name": "LogObjectType",
+      "attributes": {
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=58"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19361",
+      "class": "DataType",
+      "name": "LogRecord",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19745",
+      "class": "DataType",
+      "name": "LogRecordsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19746",
+      "class": "DataType",
+      "name": "SpanContextDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19747",
+      "class": "DataType",
+      "name": "TraceContextDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=19746"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19748",
+      "class": "DataType",
+      "name": "NameValuePair",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19749",
+      "class": "DataType",
+      "name": "LogRecordMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19362",
+      "class": "ObjectType",
+      "name": "BaseLogEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19369",
+      "class": "ObjectType",
+      "name": "LogOverflowEventType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=2041"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=19370",
+      "class": "ObjectType",
+      "name": "LogEntryConditionClassType",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false",
+        "HasDefaultInstanceBrowseName": "false"
+      },
+      "parents": [
+        "i=11163"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=256",
+      "class": "DataType",
+      "name": "IdType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=257",
+      "class": "DataType",
+      "name": "NodeClass",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=94",
+      "class": "DataType",
+      "name": "PermissionType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15031",
+      "class": "DataType",
+      "name": "AccessLevelType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=3"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15406",
+      "class": "DataType",
+      "name": "AccessLevelExType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=15033",
+      "class": "DataType",
+      "name": "EventNotifierType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=3"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=95",
+      "class": "DataType",
+      "name": "AccessRestrictionType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=5"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=96",
+      "class": "DataType",
+      "name": "RolePermissionType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=97",
+      "class": "DataType",
+      "name": "DataTypeDefinition",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=98",
+      "class": "DataType",
+      "name": "StructureType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=101",
+      "class": "DataType",
+      "name": "StructureField",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=99",
+      "class": "DataType",
+      "name": "StructureDefinition",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=97"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=100",
+      "class": "DataType",
+      "name": "EnumDefinition",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=97"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=296",
+      "class": "DataType",
+      "name": "Argument",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=7594",
+      "class": "DataType",
+      "name": "EnumValueType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=102",
+      "class": "DataType",
+      "name": "EnumField",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7594"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12755",
+      "class": "DataType",
+      "name": "OptionSet",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12877",
+      "class": "DataType",
+      "name": "NormalizedString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12878",
+      "class": "DataType",
+      "name": "DecimalString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12879",
+      "class": "DataType",
+      "name": "DurationString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12880",
+      "class": "DataType",
+      "name": "TimeString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12881",
+      "class": "DataType",
+      "name": "DateString",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=290",
+      "class": "DataType",
+      "name": "Duration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=11"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=294",
+      "class": "DataType",
+      "name": "UtcTime",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=13"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=295",
+      "class": "DataType",
+      "name": "LocaleId",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=8912",
+      "class": "DataType",
+      "name": "TimeZoneDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=17588",
+      "class": "DataType",
+      "name": "Index",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=288",
+      "class": "DataType",
+      "name": "IntegerId",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=307",
+      "class": "DataType",
+      "name": "ApplicationType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=308",
+      "class": "DataType",
+      "name": "ApplicationDescription",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=20998",
+      "class": "DataType",
+      "name": "VersionTime",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12189",
+      "class": "DataType",
+      "name": "ServerOnNetwork",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=311",
+      "class": "DataType",
+      "name": "ApplicationInstanceCertificate",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=302",
+      "class": "DataType",
+      "name": "MessageSecurityMode",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=303",
+      "class": "DataType",
+      "name": "UserTokenType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=304",
+      "class": "DataType",
+      "name": "UserTokenPolicy",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=312",
+      "class": "DataType",
+      "name": "EndpointDescription",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=432",
+      "class": "DataType",
+      "name": "RegisteredServer",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12890",
+      "class": "DataType",
+      "name": "DiscoveryConfiguration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12891",
+      "class": "DataType",
+      "name": "MdnsDiscoveryConfiguration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12890"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=315",
+      "class": "DataType",
+      "name": "SecurityTokenRequestType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=344",
+      "class": "DataType",
+      "name": "SignedSoftwareCertificate",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=388",
+      "class": "DataType",
+      "name": "SessionAuthenticationToken",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=17"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=316",
+      "class": "DataType",
+      "name": "UserIdentityToken",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=319",
+      "class": "DataType",
+      "name": "AnonymousIdentityToken",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=316"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=322",
+      "class": "DataType",
+      "name": "UserNameIdentityToken",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=316"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=325",
+      "class": "DataType",
+      "name": "X509IdentityToken",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=316"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=938",
+      "class": "DataType",
+      "name": "IssuedIdentityToken",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=316"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=348",
+      "class": "DataType",
+      "name": "NodeAttributesMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=376",
+      "class": "DataType",
+      "name": "AddNodesItem",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=379",
+      "class": "DataType",
+      "name": "AddReferencesItem",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=382",
+      "class": "DataType",
+      "name": "DeleteNodesItem",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=385",
+      "class": "DataType",
+      "name": "DeleteReferencesItem",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=347",
+      "class": "DataType",
+      "name": "AttributeWriteMask",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=521",
+      "class": "DataType",
+      "name": "ContinuationPoint",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=15"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=537",
+      "class": "DataType",
+      "name": "RelativePathElement",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=540",
+      "class": "DataType",
+      "name": "RelativePath",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=289",
+      "class": "DataType",
+      "name": "Counter",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=7"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=291",
+      "class": "DataType",
+      "name": "NumericRange",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=12"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=331",
+      "class": "DataType",
+      "name": "EndpointConfiguration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=576",
+      "class": "DataType",
+      "name": "FilterOperator",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=583",
+      "class": "DataType",
+      "name": "ContentFilterElement",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=586",
+      "class": "DataType",
+      "name": "ContentFilter",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=589",
+      "class": "DataType",
+      "name": "FilterOperand",
+      "attributes": {
+        "IsAbstract": "true",
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=592",
+      "class": "DataType",
+      "name": "ElementOperand",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=595",
+      "class": "DataType",
+      "name": "LiteralOperand",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=598",
+      "class": "DataType",
+      "name": "AttributeOperand",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=601",
+      "class": "DataType",
+      "name": "SimpleAttributeOperand",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=589"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11216",
+      "class": "DataType",
+      "name": "ModificationInfo",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=659",
+      "class": "DataType",
+      "name": "HistoryEvent",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=32824",
+      "class": "DataType",
+      "name": "HistoryModifiedEvent",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=659"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11234",
+      "class": "DataType",
+      "name": "HistoryUpdateType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11293",
+      "class": "DataType",
+      "name": "PerformUpdateType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=719",
+      "class": "DataType",
+      "name": "MonitoringFilter",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=725",
+      "class": "DataType",
+      "name": "EventFilter",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=719"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=948",
+      "class": "DataType",
+      "name": "AggregateConfiguration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=920",
+      "class": "DataType",
+      "name": "HistoryEventFieldList",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=338",
+      "class": "DataType",
+      "name": "BuildInfo",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=851",
+      "class": "DataType",
+      "name": "RedundancySupport",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=852",
+      "class": "DataType",
+      "name": "ServerState",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=853",
+      "class": "DataType",
+      "name": "RedundantServerDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11943",
+      "class": "DataType",
+      "name": "EndpointUrlListDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=11944",
+      "class": "DataType",
+      "name": "NetworkGroupDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=856",
+      "class": "DataType",
+      "name": "SamplingIntervalDiagnosticsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=859",
+      "class": "DataType",
+      "name": "ServerDiagnosticsSummaryDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=862",
+      "class": "DataType",
+      "name": "ServerStatusDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=865",
+      "class": "DataType",
+      "name": "SessionDiagnosticsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=868",
+      "class": "DataType",
+      "name": "SessionSecurityDiagnosticsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=871",
+      "class": "DataType",
+      "name": "ServiceCounterDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=299",
+      "class": "DataType",
+      "name": "StatusResult",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=874",
+      "class": "DataType",
+      "name": "SubscriptionDiagnosticsDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=877",
+      "class": "DataType",
+      "name": "ModelChangeStructureDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=897",
+      "class": "DataType",
+      "name": "SemanticChangeStructureDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=884",
+      "class": "DataType",
+      "name": "Range",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=887",
+      "class": "DataType",
+      "name": "EUInformation",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12077",
+      "class": "DataType",
+      "name": "AxisScaleEnumeration",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12171",
+      "class": "DataType",
+      "name": "ComplexNumberType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12172",
+      "class": "DataType",
+      "name": "DoubleComplexNumberType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12079",
+      "class": "DataType",
+      "name": "AxisInformation",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=12080",
+      "class": "DataType",
+      "name": "XVType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=894",
+      "class": "DataType",
+      "name": "ProgramDiagnosticDataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=24033",
+      "class": "DataType",
+      "name": "ProgramDiagnostic2DataType",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=891",
+      "class": "DataType",
+      "name": "Annotation",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=22"
+      ],
+      "type": []
+    },
+    {
+      "id": "i=890",
+      "class": "DataType",
+      "name": "ExceptionDeviationFormat",
+      "attributes": {
+        "HasInverseName": "false"
+      },
+      "parents": [
+        "i=29"
+      ],
+      "type": []
+    }
+  ]
+}

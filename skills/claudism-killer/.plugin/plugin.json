@@ -1,0 +1,25 @@
+{
+  "name": "claudism-killer",
+  "version": "1.0.0",
+  "description": "Edit Markdown and other prose to remove stock AI phrasing while preserving the author's voice, facts, and document structure.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/claudism-killer",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "markdown",
+    "editing",
+    "prose",
+    "claude-isms",
+    "ai-isms",
+    "styleguide",
+    "voice"
+  ],
+  "skills": [
+    "./"
+  ]
+}
