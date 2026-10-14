@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.4.0"
+    "version": "1.5.0"
   },
   "plugins": [
     {
@@ -43,7 +43,7 @@
       "name": "claudism-killer",
       "source": "./skills/claudism-killer",
       "description": "Edit Markdown and other prose to remove stock AI phrasing while preserving the author's voice, facts, and document structure.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"
@@ -60,6 +60,33 @@
         "ai-isms",
         "styleguide",
         "voice"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "marc-writer",
+      "source": "./skills/marc-writer",
+      "description": "Write technical documents in Marc Schier's voice, with causal arguments, testable requirements, and a final claudism-killer editing pass.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/marc-writer",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "writing",
+        "markdown",
+        "architecture",
+        "standards",
+        "requirements",
+        "technical-writing",
+        "marc-schier",
+        "claudism-killer"
       ],
       "skills": [
         "./"

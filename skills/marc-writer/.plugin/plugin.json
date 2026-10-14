@@ -1,0 +1,26 @@
+{
+  "name": "marc-writer",
+  "version": "1.0.0",
+  "description": "Write technical documents in Marc Schier's voice, with causal arguments, testable requirements, and a final claudism-killer editing pass.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/marc-writer",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "writing",
+    "markdown",
+    "architecture",
+    "standards",
+    "requirements",
+    "technical-writing",
+    "marc-schier",
+    "claudism-killer"
+  ],
+  "skills": [
+    "./"
+  ]
+}

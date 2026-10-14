@@ -271,7 +271,24 @@ overuse rather than prohibiting a rhetorical figure everywhere.
 
 ## Output format
 
-### Edit pass (default)
+### Composition and clean output
+
+A writing skill may invoke this skill after drafting, supplying its author
+styleguide, the draft, and the permitted edit scope. Read that guide first and
+apply the same detection, judgment, measurement, and re-reading workflow.
+Protect its endorsed devices when they carry meaning; a preferred construction
+is not permission for padding or fabricated claims.
+
+When the user or composing skill explicitly requests **clean output**, keep the
+findings table, before/after counts, and protected choices as working evidence
+rather than appending an editorial report to the document. Return or apply the
+revised prose. Surface unresolved facts and blocked edits separately; clean
+output does not permit hiding those gaps. An explicit audit remains read-only.
+
+Without a clean-output request, use the standalone report below. Do not invoke
+the composing writer again from this pass; return the edited draft to its caller.
+
+### Edit pass (standalone default)
 
 1. **Findings table**, worst-first: location (file and line or pasted passage),
    original phrase, category or construction, why it is a tic here, replacement

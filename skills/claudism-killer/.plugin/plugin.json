@@ -1,6 +1,6 @@
 {
   "name": "claudism-killer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Edit Markdown and other prose to remove stock AI phrasing while preserving the author's voice, facts, and document structure.",
   "author": {
     "name": "Marc Schier",

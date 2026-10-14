@@ -51,6 +51,12 @@ An edit pass reports the findings and replacements, applies edits to the selecte
 files (or returns revised pasted text), and gives measured before/after counts.
 It also identifies protected phrasing and claims that need verification.
 
+Writing skills such as [marc-writer](../marc-writer) can invoke the same editing
+workflow with an author styleguide and explicitly request clean output. In that
+mode, the findings and measurements remain working evidence; the delivered
+artifact contains the revised prose, with unresolved factual gaps still visible.
+Standalone edits keep the report described above unless clean output is requested.
+
 Code blocks, inline code, link destinations, and frontmatter stay unchanged unless
 explicitly included in the request. The skill does not run on every Markdown write
 and does not do automatic word substitution.
