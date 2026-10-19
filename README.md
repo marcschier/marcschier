@@ -18,8 +18,6 @@ This repository is also a Copilot CLI plugin marketplace.
 
 | Skill | Purpose |
 |---|---|
-| [Claudism Killer](skills/claudism-killer) | Remove stock AI phrasing from Markdown and other prose while preserving the author's voice |
-| [marc-writer](skills/marc-writer) | Draft technical documents in Marc Schier's voice, then edit with Claudism Killer |
 | [copilot-sessions](skills/copilot-sessions) | Select, reopen, clean up, and transfer local Copilot CLI sessions on Windows |
 | [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
 
@@ -27,8 +25,6 @@ Register the marketplace once, then install the plugins you want:
 
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
-copilot plugin install claudism-killer@marcschier
-copilot plugin install marc-writer@marcschier
 copilot plugin install copilot-sessions@marcschier
 copilot plugin install opcua-model-review@marcschier
 ```
