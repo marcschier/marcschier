@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OPC specification review</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="eyebrow">OPC AUTHORING</span><h1>Specification review</h1><p id="repository">Connecting to this checkout...</p></div>
+    <div class="toolbar">
+      <label>Specification <select id="spec" aria-label="Specification"></select></label>
+      <button id="build" class="primary">Build preview</button>
+      <button id="undo">Undo accepted edit</button>
+      <button id="publish">Publish to PR...</button>
+    </div>
+  </header>
+  <div class="notice" id="notice" role="status">Build a preview, then select text or click a source pencil to edit.</div>
+  <main>
+    <section class="reader" aria-label="Published specification">
+      <div class="reader-tools"><input id="find" type="search" placeholder="Find text in rendered specification" aria-label="Find text"><button id="find-next">Find next</button><span id="preview-status">No local preview</span></div>
+      <div id="welcome"><h2>Read the real publication.</h2><p>The pinned OPC publisher renders clauses, node tables, cross-references and draw.io figures exactly as it does for GitHub Pages.</p><p>Changes stay local until you explicitly publish. Generated content points to its owner and is read-only here.</p></div>
+      <iframe id="document" title="Publisher-rendered specification" sandbox="allow-same-origin" hidden></iframe>
+    </section>
+    <div id="panel-divider" role="separator" tabindex="0" aria-label="Resize editing panel" aria-orientation="vertical" aria-controls="review-panel" aria-valuemin="320" aria-valuemax="390" aria-valuenow="390" title="Drag left to widen the editing panel, or use Left and Right arrow keys"></div>
+    <aside id="review-panel">
+      <nav class="tabs" aria-label="Review tools">
+        <button data-tab="edit" class="active">Edit</button><button data-tab="drafts">Drafts <span id="draft-count"></span></button><button data-tab="comments">PR comments</button><button data-tab="tools">Tools</button><button data-tab="help">Help</button>
+      </nav>
+      <section id="tab-edit" class="tab">
+        <h2>Selected source</h2><p id="selection-meta" class="muted">Highlight rendered text, or click a source pencil. Markdown formatting is preserved in the source editor.</p>
+        <blockquote id="quote" hidden></blockquote>
+        <label for="source">Markdown source <span id="selection-kind"></span></label>
+        <textarea id="source" spellcheck="false" rows="14" placeholder="The mapped Markdown range appears here." disabled></textarea>
+        <div class="inline"><select id="anchors" aria-label="Insert cross-reference"><option value="">Insert cross-reference...</option></select><button id="insert-anchor">Insert</button></div>
+        <button id="manual" disabled>Stage manual draft</button>
+        <label for="instruction">Ask Copilot about this selection, or request a change</label>
+        <textarea id="instruction" rows="3" placeholder="For example: What does this mean? Or: clarify this requirement without changing its meaning."></textarea>
+        <div class="chips"><button data-instruction="Explain this selection and its role in the specification.">Explain</button><button data-instruction="What is this? Explain the terminology and why this section is needed.">What is this?</button><button data-instruction="Clarify this text without changing its normative meaning.">Clarify</button><button data-instruction="Make this text more concise, preserving all requirements and authoring syntax.">Shorten</button><button data-instruction="Review the normative wording and propose a clearer version; explain any change in meaning.">Normative wording</button></div>
+        <div class="inline"><button id="ask" disabled>Ask about selection</button><button id="rewrite" class="primary" disabled>Request rewrite</button></div>
+        <p class="hint">Questions return explanations without edits. In Drafts, ask follow-ups or request a change based on the answer. Rewrites remain proposals until accepted.</p>
+      </section>
+      <section id="tab-drafts" class="tab" hidden><h2>Drafts and activity</h2><p class="hint">Accept writes only the selected source range locally. Publishing is separate.</p><div id="drafts"></div></section>
+      <section id="tab-comments" class="tab" hidden>
+        <div class="inline"><h2>PR discussion</h2><button id="refresh-comments">Refresh</button></div>
+        <p id="pr-info" class="muted">Load comments from the open PR for this branch.</p>
+        <div id="comments"></div>
+        <h3>Post a comment</h3>
+        <select id="comment-kind" aria-label="Comment placement"><option value="general">General PR comment</option><option value="inline">Inline on selected source line</option><option value="reply">Reply to selected thread</option></select>
+        <p id="reply-target" class="hint"></p>
+        <textarea id="comment-body" rows="4" placeholder="Your comment (Markdown supported on GitHub)"></textarea>
+        <button id="post-comment">Post to GitHub...</button>
+        <p class="hint">Inline comments require a changed PR line and a published, unchanged source file. General comments and thread replies have no diff-line restriction.</p>
+      </section>
+      <section id="tab-tools" class="tab" hidden>
+        <h2>Repository / PR</h2><p>Open another specification repository or PR in its own isolated session.</p>
+        <input id="target" placeholder="OPCF-Members/repo or GitHub PR URL" aria-label="Repository or PR"><button id="open-target">Open in separate session</button>
+        <h2>Publisher diagnostics</h2><pre id="diagnostics">No build run yet.</pre>
+        <h2>Workflow</h2><p>Build, select, propose, accept, rebuild, publish. The canvas never silently pushes or switches branches.</p>
+        <p>Generated clauses and tables are read-only: their source map identifies the manifest, profiles or model owner.</p>
+        <p>Private content stays local except for your existing Copilot session and explicit GitHub actions. Preview scripts and remote images are blocked.</p>
+      </section>
+      <section id="tab-help" class="tab" hidden aria-label="Workflow guide">
+        <h2>Workflow guide</h2>
+        <p><strong>Select, ask or edit, review, accept locally, then publish.</strong> Questions and staged proposals do not change source files. Only acceptance writes locally; publishing and posting comments require separate confirmation.</p>
+        <details class="workflow" open>
+          <summary>Read and select content</summary>
+          <ol>
+            <li>Choose a <strong>Specification</strong> and click <strong>Build preview</strong>. The initial specification builds automatically on open.</li>
+            <li>Use the document contents or <strong>Find next</strong> to navigate. The preview always uses a light theme, including tables and code blocks, regardless of the app or OS theme.</li>
+            <li>Drag the divider between the preview and review sidebar left to enlarge the editing panel, or right to enlarge the preview. You can also focus the divider and use the arrow keys. On narrow windows the panels stack instead.</li>
+            <li>Highlight text within one clause, table or figure, or click its source pencil to select the mapped block. The <strong>Edit</strong> tab shows its file, lines and Markdown.</li>
+            <li>Check whether the editor says <strong>exact selection</strong> or <strong>mapped block</strong>. Formatted or ambiguous text may select the whole block; changes must preserve the surrounding Markdown.</li>
+          </ol>
+          <p>Rebuilds, accepting edits and undo retain the reading position where possible. Generated clauses, node tables and agreement text are read-only; their owning source is shown. Figures are displayed here, not edited as drawings.</p>
+        </details>
+        <details class="workflow">
+          <summary>Ask questions, then request changes</summary>
+          <ol>
+            <li>Select content and enter a question in <strong>Edit</strong>. <strong>Explain</strong> or <strong>What is this?</strong> fills in a prompt; then click <strong>Ask about selection</strong>.</li>
+            <li>Read the answer in <strong>Drafts</strong>. Asking does not rewrite anything, and questions also work for generated content.</li>
+            <li>Under the answer, enter another question and choose <strong>Ask follow-up</strong>, or describe a desired change and choose <strong>Request change from answer</strong>.</li>
+            <li>A change request includes the selection and discussion history, but still returns a proposal for you to review and accept. Generated content cannot be converted to a Markdown edit here.</li>
+          </ol>
+          <p>Copilot requests may wait until the current session turn ends. <strong>Cancel question</strong> discards a queued answer. If the source changed since the question, rebuild and select the current text again.</p>
+        </details>
+        <details class="workflow">
+          <summary>Edit manually or with Copilot</summary>
+          <ol>
+            <li>Select authored content. For a manual edit, change the <strong>Markdown source</strong> and click <strong>Stage manual draft</strong>. For an assisted edit, describe the change and click <strong>Request rewrite</strong>.</li>
+            <li>Use <strong>Insert cross-reference</strong> to insert a source anchor at the Markdown cursor; it becomes part of the manual draft.</li>
+            <li>In <strong>Drafts</strong>, inspect the before/after diff and <strong>Full replacement Markdown</strong>. Choose <strong>Accept locally</strong> to write and rebuild, or <strong>Reject</strong> to discard without writing.</li>
+            <li>Use <strong>Undo accepted edit</strong> to restore the last canvas edit if no later external changes would be overwritten. Undo does not rewrite Git history.</li>
+          </ol>
+          <p>Stage text before closing: unsaved textarea contents are transient. Staged drafts, answers and undo snapshots persist. A stale draft is refused rather than overwriting newer source; rebuild and create a fresh selection.</p>
+        </details>
+        <details class="workflow">
+          <summary>Read and post PR comments</summary>
+          <ol>
+            <li>Open <strong>PR comments</strong> and click <strong>Refresh</strong> to read the open PR for this branch.</li>
+            <li>Use <strong>Go to source</strong> on a current thread to select its mapped content and prepare an instruction to address it. Enter the instruction and request a rewrite separately.</li>
+            <li>Choose <strong>Reply</strong> on a thread, or select <strong>General PR comment</strong> or <strong>Inline on selected source line</strong>. Write the comment, click <strong>Post to GitHub...</strong>, and confirm.</li>
+          </ol>
+          <p>Inline comments require a changed PR line, local HEAD matching the PR head, and no local edits in that file. Publish or sync first, or deliberately choose a general comment. Outdated, deletion-side or locally diverged threads stay in the sidebar without misleading pins. Resolved-thread status is not displayed.</p>
+        </details>
+        <details class="workflow">
+          <summary>Publish accepted edits to a PR</summary>
+          <ol>
+            <li>Accept or reject pending drafts, and ensure the accepted source has a successful current preview.</li>
+            <li>Click <strong>Publish to PR...</strong> and confirm. This authorizes Copilot to validate, commit and push accepted source changes on this feature branch.</li>
+            <li>Copilot updates the branch's existing PR, or creates one using the repository's PR template. Review any approval or blocker in the session; the outcome appears in <strong>Drafts</strong>.</li>
+          </ol>
+          <p>Opening, asking, staging and accepting do not push anything. Unrelated edits require separate approval. Generated output is not automatically staged, and this flow does not merge the PR.</p>
+        </details>
+        <details class="workflow">
+          <summary>Open another repository or PR</summary>
+          <ol>
+            <li>In <strong>Tools</strong>, enter <code>owner/repository</code> or a GitHub PR URL.</li>
+            <li>Click <strong>Open in separate session</strong>. Copilot opens an isolated session for that target and this user-scoped canvas there.</li>
+            <li>Follow the session link or resolve any blocker reported in <strong>Drafts</strong> and the Copilot conversation.</li>
+          </ol>
+          <p>The current checkout is not switched. Each repository needs the supported OPC publisher pipeline, its .NET SDK and restored pinned tools. GitHub operations use your own authenticated <code>gh</code> CLI.</p>
+        </details>
+        <details class="workflow">
+          <summary>Troubleshooting and privacy</summary>
+          <p><strong>Build failed:</strong> read <strong>Tools / Publisher diagnostics</strong>, fix the reported source or dependency problem, and rebuild. Missing pinned tools can be restored with <code>dotnet tool restore</code> in the intended checkout. A failed build does not make an old preview safe to edit.</p>
+          <p><strong>Request queued:</strong> let Copilot finish the current turn and check the session for permission prompts. Failed requests report their error; they are not silently retried.</p>
+          <p><strong>Source changed:</strong> rebuild, reselect and restage. Hash checks protect external edits from stale proposals and undo.</p>
+          <p><strong>No PR:</strong> accept a source edit, rebuild, and explicitly publish. Merely opening the canvas does not create a PR.</p>
+          <p>Review data is stored locally under the installed extension's <code>artifacts/</code> directory, keyed by checkout and branch. Do not include that directory when sharing the extension. Selected content is sent to your existing Copilot session; confirmed comments and publishing go to GitHub. The preview blocks scripts and remote images.</p>
+        </details>
+      </section>
+    </aside>
+  </main>
+  <dialog id="confirm-dialog"><h2 id="confirm-title">Confirm action</h2><p id="confirm-text"></p><div class="inline"><button id="confirm-cancel">Cancel</button><button id="confirm-yes" class="primary">Confirm</button></div></dialog>
+</body>
+</html>

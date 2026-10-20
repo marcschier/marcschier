@@ -1,0 +1,16 @@
+/* Keep the publisher's light palette even when the host or OS prefers dark. */
+:root {
+    color-scheme: only light !important;
+    --text: #17191c !important;
+    --muted: #5c636b !important;
+    --rule: #d7dbe0 !important;
+    --rule-strong: #aeb5bd !important;
+    --accent: #0b5fa5 !important;
+    --surface: #f6f7f9 !important;
+    --surface-strong: #eceff2 !important;
+}
+html, body {
+    color-scheme: only light !important;
+    background-color: #fff !important;
+    color: #17191c !important;
+}
