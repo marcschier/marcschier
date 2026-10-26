@@ -218,13 +218,13 @@ repos:
 
   # ---- MCP servers (no nuget.yml; publish inside ci.yml) ----
   netcap-mcp:
-    # The Netcap library is published to nuget.org; the Netcap.Mcp tool goes to GitHub Packages.
+    # Both packages are published to GitHub Packages by ci.yml.
     packable:
       - { path: src/Netcap, id: Netcap }
       - { path: src/Netcap.Mcp, id: Netcap.Mcp }
     promote: ci-yml
     wait:
-      - { type: nuget, id: Netcap }
+      - { type: ghpkg, id: Netcap }
       - { type: ghpkg, id: Netcap.Mcp }
 
   opcuakb-mcp:
