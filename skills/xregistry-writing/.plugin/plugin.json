@@ -1,0 +1,24 @@
+{
+  "name": "xregistry-writing",
+  "version": "1.0.0",
+  "description": "Write xRegistry specifications, Primers and supporting documents in the style of upstream xregistry/spec, preserving technical meaning.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/xregistry-writing",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "xregistry",
+    "writing",
+    "specifications",
+    "primers",
+    "technical-writing",
+    "documentation"
+  ],
+  "skills": [
+    "./"
+  ]
+}

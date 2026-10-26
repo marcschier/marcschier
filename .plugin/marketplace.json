@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.5.0"
+    "version": "1.6.0"
   },
   "plugins": [
     {
@@ -87,6 +87,31 @@
         "technical-writing",
         "marc-schier",
         "claudism-killer"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "xregistry-writing",
+      "source": "./skills/xregistry-writing",
+      "description": "Write xRegistry specifications, Primers and supporting documents in the style of upstream xregistry/spec, preserving technical meaning.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/xregistry-writing",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "xregistry",
+        "writing",
+        "specifications",
+        "primers",
+        "technical-writing",
+        "documentation"
       ],
       "skills": [
         "./"

@@ -20,6 +20,7 @@ This repository is also a Copilot CLI plugin marketplace.
 |---|---|
 | [copilot-sessions](skills/copilot-sessions) | Select, reopen, clean up, and transfer local Copilot CLI sessions on Windows |
 | [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
+| [xregistry-writing](skills/xregistry-writing) | Write specifications and Primers in the style of upstream xregistry/spec |
 
 Register the marketplace once, then install the plugins you want:
 
@@ -27,6 +28,7 @@ Register the marketplace once, then install the plugins you want:
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install copilot-sessions@marcschier
 copilot plugin install opcua-model-review@marcschier
+copilot plugin install xregistry-writing@marcschier
 ```
 
 Each skill's README also covers installation as a bare skill from a local clone.
