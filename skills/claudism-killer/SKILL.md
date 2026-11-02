@@ -150,13 +150,14 @@ can also be precise; recurrence alone does not settle the judgment.
 **Behavior labels instead of behavior**
 
 Prefer a sentence that states a behavior to a label that names it. Labels such
-as "fail-closed", "fail-fast" and "fail-safe" compress a policy into one
-hyphenated word, and the reader must still guess the trigger, the action and
-the effect on existing state. Write the policy itself: "When this option is
-enabled, the server rejects the request if it cannot verify the required
-condition. Existing sessions remain open." Name an option after its effect,
-such as reject-on-error or no-fallback, rather than after the label. Where the
-label must remain, the established spelling is "fail-closed", not "fail-close".
+as "fail-closed", "fail-fast" and "fail-safe" can leave the reader guessing the
+trigger, the action and the effect on existing state. When the source establishes
+request rejection, write the policy itself: "When this option is enabled, the
+server rejects the request if it cannot verify the required condition." State
+what happens to existing sessions separately, only when the source supplies it.
+A shorter option label such as reject-on-error is not a substitute for that
+sentence; preserve existing option names. In software access-control prose,
+the conventional term is "fail-closed", not "fail-close".
 
 The fail-* labels are not interchangeable. Fail-fast concerns when a failure is
 detected and reported; fail-safe concerns reaching a defined safe state;
@@ -165,30 +166,37 @@ when a check cannot complete. Recover the meaning from the passage. If the
 passage does not establish the trigger or the outcome, keep the label and flag
 the missing behavior; do not invent a policy.
 
-The same preference applies to other established labels:
+The same preference applies to other established labels. Use these questions
+to recover the behavior, not as definitions or defaults to insert:
 
 | Label | State instead |
 |---|---|
 | fail-closed, fail-secure | Whether the request or access is rejected when a required check cannot complete, and what happens to existing state |
-| fail-open | That processing continues without the check, and what is recorded or reported |
+| fail-open | Which processing continues when a check fails or cannot complete, and what is recorded or reported |
 | fail-fast | Where processing stops after the first detected failure, and what is reported |
 | fail-safe | The defined safe state and the action that reaches it |
 | fail-soft, graceful degradation | Which functions continue and which stop |
-| fail-stop, fail-silent | That the component stops producing output, and how other components detect it |
+| fail-stop, fail-silent | Which output stops and what failure detection, if any, the stated model guarantees; preserve the distinction between the models |
 | failover | What triggers the switch, which state transfers, and what clients observe |
 | best-effort | What is attempted, and whether a failure is retried or reported |
-| fire-and-forget | That the sender does not wait for confirmation and is not told about a failure |
+| fire-and-forget | Whether the sender waits for completion or confirmation, and whether failures can be reported later through another channel |
 | soft delete, hard delete | Whether a deleted item remains readable or restorable, and for how long |
 | zero-downtime, hitless | Which operations continue during the change and which are delayed |
 | strict, lenient or permissive mode | Which input is accepted, which is rejected, and what is reported |
 
 Some terms have formal definitions: at-least-once, at-most-once, exactly-once,
 eventually consistent, last-writer-wins, all-or-nothing, atomic and idempotent.
-Keep them when the text uses them precisely, and make sure it states the
-mechanism the guarantee depends on: how duplicates are detected, when replicas
-converge and what readers observe before then, what orders concurrent writes,
-which operations an atomic unit covers, or what a repeated call returns and
-changes. Flag a guarantee whose mechanism the passage does not supply.
+Keep them when used precisely, with their scope and observable contract
+established by the document or a referenced definition. Explain what delivery
+or state changes are guaranteed, what readers can observe, and which operations
+are covered where the reader needs those distinctions. A specification can
+define that contract without prescribing an implementation algorithm; do not
+require every occurrence to repeat its definition.
+
+Preserve the limits of each term: duplicate detection alone does not establish
+exactly-once processing, and idempotence does not require identical responses.
+When a material ambiguity prevents a faithful rewrite, flag it rather than
+choosing a policy or strengthening a guarantee.
 
 Keep any of these labels in quotations, stable identifiers such as option or
 schema names, passages about the term itself, and references to a standard
@@ -321,8 +329,8 @@ Measure "worked", the assertion family, behavior labels and formal guarantees
 separately, with raw candidate counts and confirmed/protected/unresolved
 dispositions. Inspect "worked" as a modifier or verb, each assertion's actor,
 action and evidence level, each label's trigger, action and resulting state,
-and each guarantee's stated mechanism. Overlapping
-patterns still describe one occurrence. Re-run these counts after editing;
+and each guarantee's scope and observable contract. Overlapping patterns still
+describe one occurrence. Re-run these counts after editing;
 zero occurrences is not a target. Use [tests/cases.json](tests/cases.json) for
 synthetic judgment cases and [tests/README.md](tests/README.md) for detector
 regressions and manual evaluation.

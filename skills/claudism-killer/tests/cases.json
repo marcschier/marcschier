@@ -185,11 +185,11 @@
   },
   {
     "id": "fail-safe-state",
-    "text": "On loss of communication, the controller fails safe by closing the inlet valve.",
+    "text": "A closed inlet valve is the defined safe state for this example. On loss of communication, the controller fails safe by closing that valve.",
     "candidates": ["fails safe"],
     "disposition": "rewrite",
-    "revision": "On loss of communication, the controller closes the inlet valve, which is its defined safe state.",
-    "reason": "The revision keeps the safety meaning by naming the safe state and the action that reaches it."
+    "revision": "A closed inlet valve is the defined safe state for this example. On loss of communication, the controller closes that valve.",
+    "reason": "The source explicitly supplies the safe state; the rewrite preserves it without inferring safety from the action alone."
   },
   {
     "id": "fail-open-continues",
@@ -253,15 +253,23 @@
     "candidates": ["exactly once"],
     "disposition": "unresolved",
     "revision": null,
-    "reason": "The guarantee is formal but the duplicate-detection mechanism is missing; flag it rather than inventing one."
+    "reason": "The passage leaves the processing boundary and recovery behavior unspecified; flag that scope ambiguity without demanding a particular implementation algorithm."
   },
   {
     "id": "exactly-once-mechanism",
     "text": "The subscriber processes each message exactly once by discarding any message whose sequence number it has already committed.",
     "candidates": ["exactly once"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "Discarding previously committed sequence numbers does not by itself establish recovery or coordination with processing effects. Preserve the text and flag the unsupported guarantee rather than treating a named mechanism as proof."
+  },
+  {
+    "id": "exactly-once-contract",
+    "text": "The subscriber shall apply each accepted message exactly once to the ledger. Retransmissions shall have no additional ledger effect; after recovery, the subscriber shall resume unapplied messages.",
+    "candidates": ["exactly once"],
     "disposition": "protect",
     "revision": null,
-    "reason": "The formal guarantee is used precisely and its mechanism is stated."
+    "reason": "This normative contract specifies the effects, duplicate handling and recovery obligation without prescribing an algorithm or asserting that an implementation has been verified."
   },
   {
     "id": "idempotent-defined",
@@ -270,6 +278,22 @@
     "disposition": "protect",
     "revision": null,
     "reason": "The passage states what a repeated call returns and changes."
+  },
+  {
+    "id": "idempotent-different-response",
+    "text": "Deletion is idempotent: the first request removes the resource and returns 204; a repeated request returns 404 and leaves it absent.",
+    "candidates": ["idempotent"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "The intended state effect is unchanged by repetition; idempotence does not require identical response codes."
+  },
+  {
+    "id": "fire-and-forget-error-channel",
+    "text": "The client uses fire-and-forget submission: it returns without waiting for completion, and the service reports later failures on the error topic.",
+    "candidates": ["fire-and-forget"],
+    "disposition": "rewrite",
+    "revision": "The client returns after submission without waiting for completion, and the service reports later failures on the error topic.",
+    "reason": "The rewrite preserves asynchronous error reporting; the label does not imply that failures cannot be reported."
   },
   {
     "id": "quoted-delivery-level",

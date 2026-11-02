@@ -20,6 +20,11 @@ and evidence level; matching a preferred word is insufficient.
 In particular, reject edits that turn an unverified declaration into proven
 support, alter a quoted standards term, or change a stable identifier. Reject
 a behavior sentence that invents a failure policy, safe state or delivery
-mechanism the passage does not state. Keep
-unresolved cases unchanged and ask for the missing context. Evaluate the full
-passage where the fixture's reason identifies a context requirement.
+mechanism the passage does not state. Do not require an implementation algorithm
+where a specification defines an observable contract. In the fixtures, duplicate
+detection alone does not prove exactly-once processing, and an idempotent
+operation can return different responses. A sender that does not wait for
+completion can still receive an error through another channel.
+
+Keep unresolved cases unchanged and ask for the missing context. Evaluate the
+full passage where the fixture's reason identifies a context requirement.
