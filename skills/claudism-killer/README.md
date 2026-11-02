@@ -67,6 +67,13 @@ and replaces vague assertions with the actual actor and action when supported.
 It preserves legitimate calculations, verb uses, defined assertions and the
 distinction between a declaration and verified conformance.
 
+Behavior labels such as fail-closed, fail-fast, fail-safe, best-effort and soft
+delete are also candidates. The skill prefers a sentence that states the
+trigger, the action and the resulting state, and flags a label whose behavior
+the passage does not supply instead of inventing a policy. Formally defined
+guarantees such as exactly-once or idempotent stay when used precisely, but the
+text must state the mechanism they depend on.
+
 Synthetic [judgment cases](tests/cases.json) cover both edits and protected uses.
 Run detector regressions from the repository root with:
 

@@ -147,6 +147,53 @@ keys, anchors, API names and quoted normative terms even when their spelling
 contains these words. Generic editorial references to an unsupported claim
 can also be precise; recurrence alone does not settle the judgment.
 
+**Behavior labels instead of behavior**
+
+Prefer a sentence that states a behavior to a label that names it. Labels such
+as "fail-closed", "fail-fast" and "fail-safe" compress a policy into one
+hyphenated word, and the reader must still guess the trigger, the action and
+the effect on existing state. Write the policy itself: "When this option is
+enabled, the server rejects the request if it cannot verify the required
+condition. Existing sessions remain open." Name an option after its effect,
+such as reject-on-error or no-fallback, rather than after the label. Where the
+label must remain, the established spelling is "fail-closed", not "fail-close".
+
+The fail-* labels are not interchangeable. Fail-fast concerns when a failure is
+detected and reported; fail-safe concerns reaching a defined safe state;
+fail-closed and fail-open decide whether a request is rejected or processed
+when a check cannot complete. Recover the meaning from the passage. If the
+passage does not establish the trigger or the outcome, keep the label and flag
+the missing behavior; do not invent a policy.
+
+The same preference applies to other established labels:
+
+| Label | State instead |
+|---|---|
+| fail-closed, fail-secure | Whether the request or access is rejected when a required check cannot complete, and what happens to existing state |
+| fail-open | That processing continues without the check, and what is recorded or reported |
+| fail-fast | Where processing stops after the first detected failure, and what is reported |
+| fail-safe | The defined safe state and the action that reaches it |
+| fail-soft, graceful degradation | Which functions continue and which stop |
+| fail-stop, fail-silent | That the component stops producing output, and how other components detect it |
+| failover | What triggers the switch, which state transfers, and what clients observe |
+| best-effort | What is attempted, and whether a failure is retried or reported |
+| fire-and-forget | That the sender does not wait for confirmation and is not told about a failure |
+| soft delete, hard delete | Whether a deleted item remains readable or restorable, and for how long |
+| zero-downtime, hitless | Which operations continue during the change and which are delayed |
+| strict, lenient or permissive mode | Which input is accepted, which is rejected, and what is reported |
+
+Some terms have formal definitions: at-least-once, at-most-once, exactly-once,
+eventually consistent, last-writer-wins, all-or-nothing, atomic and idempotent.
+Keep them when the text uses them precisely, and make sure it states the
+mechanism the guarantee depends on: how duplicates are detected, when replicas
+converge and what readers observe before then, what orders concurrent writes,
+which operations an atomic unit covers, or what a repeated call returns and
+changes. Flag a guarantee whose mechanism the passage does not supply.
+
+Keep any of these labels in quotations, stable identifiers such as option or
+schema names, passages about the term itself, and references to a standard
+that defines it. Add the behavioral sentence where the reader needs it.
+
 ### Tier 2 - Constructions
 
 **Antithesis scaffolding**
@@ -243,6 +290,10 @@ candidates, not instructions for automatic replacement.
 # Context-sensitive candidates: inspect actor, action and evidence
 \bworked\b
 \b(claim(?:s|ed|ing|able)?|conformance[- ]claims?)\b
+# Behavior labels and formal guarantees: recover trigger, action and resulting state
+\bfail(?:s|ed|ing)?(?:- ?| )?(?:closed?|open|fast|safe|secure|soft|stop|silent)\b
+\b(fail-?over|best[- ]effort|fire[- ]and[- ]forget|graceful(?:ly)? degrad(?:e|es|ed|ing|ation)|degrad(?:e|es|ed|ing) gracefully|(?:soft|hard)[- ]delet(?:e|es|ed|ion)|zero[- ]downtime|hitless|(?:strict|lenient|permissive) mode)\b
+\b(at[- ]least[- ]once|at[- ]most[- ]once|exactly[- ]once|eventual(?:ly)? consisten(?:t|cy)|last[- ]writer[- ]wins|all[- ]or[- ]nothing|atomic(?:ally)?|idempoten(?:t|ce|cy))\b
 
 # Tier 2 candidates; close reading is still required
 \b(isn't just|is not just|not just|not merely|isn't about|is not about|isn't a|is not a|the real question isn't)\b.{0,100}\b(it's|it is|but|it's about)\b
@@ -266,9 +317,11 @@ rates per 1,000 prose words. Count triads and repeated constructions separately
 from regex hits. Show per-document counts when editing a batch; do not hide a
 document's regression behind a lower aggregate.
 
-Measure "worked" and the assertion family separately, with raw candidate counts
-and confirmed/protected/unresolved dispositions. Inspect "worked" as a modifier
-or verb and each assertion's actor, action and evidence level. Overlapping
+Measure "worked", the assertion family, behavior labels and formal guarantees
+separately, with raw candidate counts and confirmed/protected/unresolved
+dispositions. Inspect "worked" as a modifier or verb, each assertion's actor,
+action and evidence level, each label's trigger, action and resulting state,
+and each guarantee's stated mechanism. Overlapping
 patterns still describe one occurrence. Re-run these counts after editing;
 zero occurrences is not a target. Use [tests/cases.json](tests/cases.json) for
 synthetic judgment cases and [tests/README.md](tests/README.md) for detector

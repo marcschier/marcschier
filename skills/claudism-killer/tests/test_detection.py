@@ -40,7 +40,7 @@ def raw_candidates(text):
 class ContextualDetectionTests(unittest.TestCase):
     def test_catalogue_patterns_match_synthetic_candidates(self):
         cases = json.loads((ROOT / "tests" / "cases.json").read_text(encoding="utf-8"))
-        self.assertEqual(2, len(contextual_patterns()))
+        self.assertEqual(5, len(contextual_patterns()))
         for case in cases:
             with self.subTest(case=case["id"]):
                 self.assertEqual(case["candidates"], raw_candidates(case["text"]))
@@ -59,6 +59,20 @@ class ContextualDetectionTests(unittest.TestCase):
 
     def test_paragraph_boundaries_do_not_form_a_phrase(self):
         self.assertEqual(["claims"], raw_candidates("conformance\n\nclaims"))
+        self.assertEqual([], raw_candidates("fail\n\nclosed"))
+
+    def test_failure_label_spellings_are_each_one_candidate(self):
+        self.assertEqual(
+            ["fail-closed", "fails closed", "fail-close", "failsafe",
+             "fail fast", "failing open", "fail-secure", "fail-over"],
+            raw_candidates(
+                "fail-closed fails closed fail-close failsafe "
+                "fail fast failing open fail-secure fail-over"
+            ),
+        )
+
+    def test_label_wrapped_after_hyphen_is_one_candidate(self):
+        self.assertEqual(["fail- closed"], raw_candidates("The fail-\nclosed option."))
 
     def test_empty_and_unrelated_prose_have_no_candidates(self):
         for text in ("", "The server returns the identifier.", "reworked acclaimed claimant"):

@@ -158,5 +158,133 @@
     "disposition": "protect",
     "revision": null,
     "reason": "Substrings are not the targeted words."
+  },
+  {
+    "id": "fail-closed-restated",
+    "text": "The gateway is fail-closed: it rejects the request when it cannot complete the revocation check.",
+    "candidates": ["fail-closed"],
+    "disposition": "rewrite",
+    "revision": "The gateway rejects the request when it cannot complete the revocation check.",
+    "reason": "The sentence after the label already states the trigger and the action; the label adds nothing."
+  },
+  {
+    "id": "fail-close-unstated",
+    "text": "Enable the fail-close option for the policy check.",
+    "candidates": ["fail-close"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "The passage does not say whether the request is rejected, aborted or queued, or what happens to existing sessions; ask rather than inventing a policy."
+  },
+  {
+    "id": "fail-fast-parser",
+    "text": "The parser is fail-fast and stops at the first malformed element, returning its location.",
+    "candidates": ["fail-fast"],
+    "disposition": "rewrite",
+    "revision": "The parser stops at the first malformed element and returns its location.",
+    "reason": "The passage states where processing stops and what is reported."
+  },
+  {
+    "id": "fail-safe-state",
+    "text": "On loss of communication, the controller fails safe by closing the inlet valve.",
+    "candidates": ["fails safe"],
+    "disposition": "rewrite",
+    "revision": "On loss of communication, the controller closes the inlet valve, which is its defined safe state.",
+    "reason": "The revision keeps the safety meaning by naming the safe state and the action that reaches it."
+  },
+  {
+    "id": "fail-open-continues",
+    "text": "If the license server is unreachable, the client fails open and continues to accept connections.",
+    "candidates": ["fails open"],
+    "disposition": "rewrite",
+    "revision": "If the license server is unreachable, the client continues to accept connections.",
+    "reason": "The passage states that processing continues without the check."
+  },
+  {
+    "id": "fail-ordinary-verbs",
+    "text": "Steps that fail stop the pipeline and report their index.",
+    "candidates": ["fail stop"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Fail and stop are separate verbs here, not the fail-stop label; a raw hit is not a finding."
+  },
+  {
+    "id": "fail-identifier",
+    "text": "Set `failClosed` to true to enable the check.",
+    "candidates": ["failClosed"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "An inline-code identifier stays unchanged and is excluded from prose counts."
+  },
+  {
+    "id": "fail-term-discussion",
+    "text": "The terms fail-fast and fail-safe are not interchangeable.",
+    "candidates": ["fail-fast", "fail-safe"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "The passage discusses the terms themselves."
+  },
+  {
+    "id": "best-effort-stated",
+    "text": "The publisher delivers notifications on a best-effort basis: it sends each notification once and does not report a lost notification.",
+    "candidates": ["best-effort"],
+    "disposition": "rewrite",
+    "revision": "The publisher sends each notification once and does not report a lost notification.",
+    "reason": "The passage states what is attempted and that a failure is not reported."
+  },
+  {
+    "id": "best-effort-unstated",
+    "text": "Delivery is best effort.",
+    "candidates": ["best effort"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "Neither retry nor failure reporting is stated; ask rather than inventing a delivery policy."
+  },
+  {
+    "id": "degrades-gracefully",
+    "text": "When the historian is unreachable, the gateway degrades gracefully and continues to serve live values without history.",
+    "candidates": ["degrades gracefully"],
+    "disposition": "rewrite",
+    "revision": "When the historian is unreachable, the gateway continues to serve live values but returns no history.",
+    "reason": "The passage states which function continues and which stops."
+  },
+  {
+    "id": "exactly-once-unstated",
+    "text": "The subscriber processes each message exactly once.",
+    "candidates": ["exactly once"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "The guarantee is formal but the duplicate-detection mechanism is missing; flag it rather than inventing one."
+  },
+  {
+    "id": "exactly-once-mechanism",
+    "text": "The subscriber processes each message exactly once by discarding any message whose sequence number it has already committed.",
+    "candidates": ["exactly once"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "The formal guarantee is used precisely and its mechanism is stated."
+  },
+  {
+    "id": "idempotent-defined",
+    "text": "The method is idempotent: a repeated call with the same arguments returns the same result and changes no state.",
+    "candidates": ["idempotent"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "The passage states what a repeated call returns and changes."
+  },
+  {
+    "id": "quoted-delivery-level",
+    "text": "The cited protocol names its second delivery level \"at least once\".",
+    "candidates": ["at least once"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Preserve a quoted term defined by a cited standard."
+  },
+  {
+    "id": "behavior-word-boundaries",
+    "text": "The check failed safely, and the standby took over the atomicity review.",
+    "candidates": [],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Adverbs and longer words are not the targeted labels."
   }
 ]

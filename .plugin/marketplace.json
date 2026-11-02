@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.7.0"
+    "version": "1.7.1"
   },
   "plugins": [
     {
@@ -43,7 +43,7 @@
       "name": "claudism-killer",
       "source": "./skills/claudism-killer",
       "description": "Edit Markdown and other prose to remove stock AI phrasing while preserving the author's voice, facts, and document structure.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"

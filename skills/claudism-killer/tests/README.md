@@ -18,6 +18,8 @@ editable prose. A rewrite passes only if it preserves actor, technical meaning
 and evidence level; matching a preferred word is insufficient.
 
 In particular, reject edits that turn an unverified declaration into proven
-support, alter a quoted standards term, or change a stable identifier. Keep
+support, alter a quoted standards term, or change a stable identifier. Reject
+a behavior sentence that invents a failure policy, safe state or delivery
+mechanism the passage does not state. Keep
 unresolved cases unchanged and ask for the missing context. Evaluate the full
 passage where the fixture's reason identifies a context requirement.
