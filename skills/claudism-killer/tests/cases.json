@@ -1,0 +1,162 @@
+[
+  {
+    "id": "worked-filler",
+    "text": "The annex contains a complete worked instance.",
+    "candidates": ["worked"],
+    "disposition": "rewrite",
+    "revision": "The annex contains a complete example.",
+    "reason": "The passage illustrates an instance without deriving a result."
+  },
+  {
+    "id": "guided-sequence",
+    "text": "The worked example guides the reader through each registration operation.",
+    "candidates": ["worked"],
+    "disposition": "rewrite",
+    "revision": "The walkthrough guides the reader through each registration operation.",
+    "reason": "A walkthrough names the guided procedure."
+  },
+  {
+    "id": "derivation",
+    "text": "The worked example derives the final bound from each intermediate inequality.",
+    "candidates": ["worked"],
+    "disposition": "rewrite",
+    "revision": "The step-by-step derivation obtains the final bound from each intermediate inequality.",
+    "reason": "The purpose is the derivation, not merely an instance."
+  },
+  {
+    "id": "worked-calculation",
+    "text": "Keep the worked calculation: every intermediate sum is needed to reproduce the result.",
+    "candidates": ["worked"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "The modifier describes the calculation's necessary intermediate steps."
+  },
+  {
+    "id": "worked-verb",
+    "text": "The retry worked correctly after the connection recovered.",
+    "candidates": ["worked"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Worked is an ordinary verb describing observed behavior."
+  },
+  {
+    "id": "artifact-declaration",
+    "text": "The manifest claims profile P.",
+    "candidates": ["claims"],
+    "disposition": "rewrite",
+    "revision": "The manifest declares profile P.",
+    "reason": "The artifact records a declaration; it does not demonstrate implementation support."
+  },
+  {
+    "id": "implementation-support",
+    "text": "The implementation is claiming operation Q; the supplied test results establish its support.",
+    "candidates": ["claiming"],
+    "disposition": "rewrite",
+    "revision": "The implementation supports operation Q, as established by the supplied test results.",
+    "reason": "The evidence supports the capability; claiming obscures the actor's behavior."
+  },
+  {
+    "id": "implemented-feature",
+    "text": "The server claimed feature R; its supplied implementation defines all required operations.",
+    "candidates": ["claimed"],
+    "disposition": "rewrite",
+    "revision": "The server implements feature R; its supplied implementation defines all required operations.",
+    "reason": "The supplied implementation, not a declaration alone, establishes the action."
+  },
+  {
+    "id": "converter-report",
+    "text": "The converter claims that the conversion is lossless.",
+    "candidates": ["claims"],
+    "disposition": "rewrite",
+    "revision": "The converter reports that the conversion is lossless.",
+    "reason": "This describes a report, not independent verification of losslessness."
+  },
+  {
+    "id": "claimable-profiles",
+    "text": "The table lists claimable profiles for which an implementation can declare support.",
+    "candidates": ["claimable"],
+    "disposition": "rewrite",
+    "revision": "The table lists profiles for which an implementation can declare support.",
+    "reason": "The eligibility and declaring actor are already explicit."
+  },
+  {
+    "id": "conformance-declaration",
+    "text": "These conformance-claims identify the profiles declared by the manifest.",
+    "candidates": ["conformance-claims"],
+    "disposition": "rewrite",
+    "revision": "These declarations identify the profiles declared by the manifest.",
+    "reason": "The statement concerns declarations, not verified conformance."
+  },
+  {
+    "id": "verified-conformance",
+    "text": "The implementation claims conformance to profile S; the supplied conformance assessment verifies every obligation in that profile.",
+    "candidates": ["claims"],
+    "disposition": "rewrite",
+    "revision": "The implementation conforms to profile S, as verified by the supplied conformance assessment.",
+    "reason": "The fixture supplies conformance evidence for the entire stated profile, not merely a declaration."
+  },
+  {
+    "id": "unverified-declaration",
+    "text": "The vendor claims conformance; no implementation evidence was supplied.",
+    "candidates": ["claims"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Claim distinguishes an assertion from verified conformance; replacing it with conforms to would strengthen the evidence."
+  },
+  {
+    "id": "missing-meaning",
+    "text": "Profiles are claimable.",
+    "candidates": ["claimable"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "The actor and eligibility condition are missing; ask rather than inventing either."
+  },
+  {
+    "id": "security-defined",
+    "text": "The verifier checks the signed claim against the issuer's public key.",
+    "candidates": ["claim"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Claim denotes a security assertion."
+  },
+  {
+    "id": "legal-defined",
+    "text": "The patent claim defines the protected subject matter.",
+    "candidates": ["claim"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Claim is a precise legal term."
+  },
+  {
+    "id": "quoted-standard",
+    "text": "The standard defines \"conformance claims\" as declarations by a supplier.",
+    "candidates": ["conformance claims"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Preserve the quoted standards-defined term."
+  },
+  {
+    "id": "protected-identities",
+    "text": "Keep `claimable` and [profile](https://example.invalid/claims#worked) unchanged.",
+    "candidates": ["claimable", "claims", "worked"],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Raw hits in inline code and link destinations are outside editable prose and its measured counts."
+  },
+  {
+    "id": "case-insensitive",
+    "text": "WORKED examples accompany the supplier's Claims.",
+    "candidates": ["WORKED", "Claims"],
+    "disposition": "unresolved",
+    "revision": null,
+    "reason": "Capitalization does not establish purpose or evidence; inspect the surrounding passage."
+  },
+  {
+    "id": "word-boundaries",
+    "text": "The reclamation service reworked the acclaimed design.",
+    "candidates": [],
+    "disposition": "protect",
+    "revision": null,
+    "reason": "Substrings are not the targeted words."
+  }
+]

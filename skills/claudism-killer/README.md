@@ -61,4 +61,19 @@ Code blocks, inline code, link destinations, and frontmatter stay unchanged unle
 explicitly included in the request. The skill does not run on every Markdown write
 and does not do automatic word substitution.
 
+The catalogue also checks habitual "worked" modifiers and vague assertion
+language. It chooses between example, walkthrough and derivation by purpose,
+and replaces vague assertions with the actual actor and action when supported.
+It preserves legitimate calculations, verb uses, defined assertions and the
+distinction between a declaration and verified conformance.
+
+Synthetic [judgment cases](tests/cases.json) cover both edits and protected uses.
+Run detector regressions from the repository root with:
+
+```powershell
+python -B -m unittest discover -s skills\claudism-killer\tests -v
+```
+
+See the [evaluation guide](tests/README.md) for what those checks establish.
+
 See [SKILL.md](SKILL.md) for the workflow and catalogue.

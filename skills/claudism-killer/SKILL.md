@@ -124,6 +124,29 @@ literal, technical, quoted, and author-endorsed uses can be legitimate.
 `Feel free to` / `Let me know if you have any questions` / `Certainly!` /
 `Absolutely!`
 
+**Habitual "worked" and vague assertions**
+
+Use "example" for an illustration, "walkthrough" for a guided sequence, and
+"step-by-step derivation" when the intermediate reasoning is the point.
+"Complete worked instance" usually needs only "complete example"; "worked"
+adds nothing unless the document actually develops the result through steps.
+Keep a legitimately worked calculation when those steps matter, ordinary verb
+uses such as "worked correctly", quotations and stable identifiers. Decide from
+the passage, not a blind replacement.
+
+Repeated "claim", "claiming", "claimable" and "conformance claims" can obscure
+who does what. Recover the actor and action: an artifact declares a profile,
+an implementation supports or implements it, and a converter reports whether
+conversion is lossless. Use "conforms to" or "declares support" only when the
+evidence establishes that status. An unverified declaration is not proven
+support or verified conformance.
+
+Retain "claim" for a precise legal, security or standards-defined assertion, or
+when distinguishing an assertion from verified conformance. Preserve schema
+keys, anchors, API names and quoted normative terms even when their spelling
+contains these words. Generic editorial references to an unsupported claim
+can also be precise; recurrence alone does not settle the judgment.
+
 ### Tier 2 - Constructions
 
 **Antithesis scaffolding**
@@ -217,6 +240,10 @@ candidates, not instructions for automatic replacement.
 \b(worth noting|worth noticing|important to understand|let's dive|let's unpack|here's the thing|simply put|put simply|at the end of the day|needless to say|as we all know)\b
 \b(great question|you're absolutely right|i hope this helps|feel free to|let me know if you have any questions|certainly|absolutely)\b
 
+# Context-sensitive candidates: inspect actor, action and evidence
+\bworked\b
+\b(claim(?:s|ed|ing|able)?|conformance[- ]claims?)\b
+
 # Tier 2 candidates; close reading is still required
 \b(isn't just|is not just|not just|not merely|isn't about|is not about|isn't a|is not a|the real question isn't)\b.{0,100}\b(it's|it is|but|it's about)\b
 ,\s*(making|allowing|ensuring|providing|helping)\b
@@ -238,6 +265,14 @@ word counts with each measurement. Give absolute counts and, where helpful,
 rates per 1,000 prose words. Count triads and repeated constructions separately
 from regex hits. Show per-document counts when editing a batch; do not hide a
 document's regression behind a lower aggregate.
+
+Measure "worked" and the assertion family separately, with raw candidate counts
+and confirmed/protected/unresolved dispositions. Inspect "worked" as a modifier
+or verb and each assertion's actor, action and evidence level. Overlapping
+patterns still describe one occurrence. Re-run these counts after editing;
+zero occurrences is not a target. Use [tests/cases.json](tests/cases.json) for
+synthetic judgment cases and [tests/README.md](tests/README.md) for detector
+regressions and manual evaluation.
 
 ## The judgment call: tic or tool?
 

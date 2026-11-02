@@ -1,0 +1,24 @@
+{
+  "name": "opc-spec-review",
+  "version": "1.0.0",
+  "description": "Review composed OPC Foundation specifications, plan revisions and verify approved fixes with explicit coverage and publication evidence.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opc-spec-review",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "development",
+  "keywords": [
+    "opc-ua",
+    "specification-review",
+    "publication",
+    "editorial-review",
+    "conformance",
+    "revision-planning"
+  ],
+  "skills": [
+    "./"
+  ]
+}
