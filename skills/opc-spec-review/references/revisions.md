@@ -9,7 +9,12 @@ technical choice.
 Map every finding to its proposed source change, affected artifacts,
 dependencies, owner or decision, and checks. Order changes by dependency.
 Separate editorial corrections from technical decisions and publication work.
-Record deferred findings and the consequence of deferral.
+When a decision needs the user, show each option as a before and after excerpt
+of the actual text, so the first ask is concrete. Keep the finding IDs as an
+enumerated list until the work ends. Each ID closes with evidence, is deferred
+with the consequence of deferral recorded, or is blocked on a named external
+action. State a blocker once, with what would unblock it, then finish the
+unblocked work. Label an interim reply as progress and list the IDs still open.
 
 Present the plan for approval before implementation unless the user has already
 authorized those specific fixes. Read-only review, plan and removal-audit modes
@@ -24,10 +29,24 @@ patch is not a fix. Preserve published identifiers, anchors, normative force,
 permissions and exception conditions unless an approved technical change
 explicitly accounts for compatibility.
 
-Use `marc-writer` with its guide and `claudism-killer` pass for revised prose.
-Use `drawio-skill` for editable figure work and `opcua-model-review` for model
-conformance. Recheck that editorial substitutions preserve the actual actor,
-action and evidence level.
+Run `marc-writer` with its guide and the `claudism-killer` pass on each batch of
+revised prose, authored reports included, before counting the wording as
+applied, and record the counts for each edited passage. Use `drawio-skill` for
+editable figure work and `opcua-model-review` for model conformance. Recheck
+that editorial substitutions preserve the actual actor, action and evidence
+level.
+
+Check free space before a large write or generation. After a failed write, list
+zero-byte and partial tracked files; restore an unchanged file from the base and
+rebuild a file that held uncommitted edits by replaying the edits you recorded
+for it.
+
+A defect owned by the pinned renderer or a shared template belongs in its
+owner's tracker. Reproduce it on the pinned version and record the version, a
+minimal reproduction and a workaround. Search the tracker for duplicates and
+file where the user directs. Report any assignment right you lack. When the
+renderer's source repository answers 404, assume missing access and reproduce
+from the pinned build.
 
 ## Information-preservation audit
 
@@ -54,11 +73,19 @@ Discover this repository's dependency order and gates; do not assume one
 specification family's command names apply everywhere. Regenerate all dependent
 artifacts after approved source changes. Where the repository derives a
 requirement ledger and CTT cases, regenerate both after normative edits and
-update exact-profile reconciliation expectations.
+update exact-profile reconciliation expectations. Register each new check in
+every list that enumerates checks, such as runner target lists and workflow
+steps, and confirm it by diffing the test files against those lists. Group
+approved edits into batches by dependency level and run one integrated
+regenerate, render and reread cycle per batch.
 
 Check generation determinism before running gates that regenerate files, so
-those gates cannot hide stale checked-in output. Serialize commands that rewrite
-tracked fixtures; never run those tests concurrently. Preserve explicit failure
+those gates cannot hide stale checked-in output. Rerun the determinism check and
+the full gate after any merge or rebase that brings in generator changes.
+Serialize commands that rewrite tracked fixtures; never run those tests
+concurrently. After a gate rewrites tracked files, classify each diff as content
+or line-ending-only, restore the line-ending-only files to the base bytes, and
+write edits in the repository's line-ending policy. Preserve explicit failure
 output and address the cause rather than masking it with a successful fallback.
 
 Render and reread changed clauses, their neighboring explanation and cross-part
@@ -69,16 +96,26 @@ output. Recheck the information-preservation audit after the final rewrite.
 
 ## PR feedback and authorized publication
 
-For PR feedback, map each thread to its finding, decision, source change and
-verification. Treat a reviewer's technical proposal as evidence to assess, not
-automatic authority to change the contract. Reply in the existing thread with
-the action actually taken. Resolve only after the fix is verified; leave
-unresolved technical decisions open with the reason.
+For PR feedback, map each thread and each review body to its finding, decision,
+source change and verification. Treat a reviewer's technical proposal as
+evidence to assess, not automatic authority to change the contract. Reply in
+the existing thread with the action actually taken. Resolve only after the fix
+is verified; leave unresolved technical decisions open with the reason.
 
-After an authorized push, inspect the actual CI conclusion for the pushed
-revision. A watcher exiting successfully is not evidence that CI passed.
-Report failed, pending, skipped or unavailable checks explicitly. Never infer
-publication approval or certification from green CI.
+Before publishing, reconcile the staged set (tracked changes and untracked
+files) with the authorized scope and name each exclusion with its reason. Scan
+added archives for integrity and credential content, and confirm that the
+remote tree holds every artifact the PR text cites.
+
+After an authorized push, poll the pushed revision until a CI conclusion exists
+and inspect it. A watcher exiting successfully is not evidence that CI passed.
+A check list that stays empty means no CI ran: name the cause, such as a
+conflicting PR that suppresses pull-request workflows or a path filter, and
+report no conclusion. Report failed, pending, skipped or unavailable checks
+explicitly.
+After each push, re-read every review body as well as the threads, because a
+re-review can post findings without a thread, and report any re-review still
+pending. Never infer publication approval or certification from green CI.
 
 Close with the implemented and deferred finding IDs, current source and render
 revisions, validation evidence, removal dispositions and remaining decisions.

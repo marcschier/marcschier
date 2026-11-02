@@ -10,6 +10,8 @@ other shipped format that the review contract covers.
 Give every composed clause a row, including generated clauses and annexes.
 Track figures separately so an uninspected image cannot disappear inside a
 completed chapter. Map each row to its source or generator and current output.
+Read the part number and title inside each artifact before its evidence joins a
+row; file names and output folders can point at another part.
 
 | Spec / clause | Source or generator | Render revision / hash | Route | Structure | Detail | Words | Evidence / findings |
 |---|---|---|---|---|---|---|---|
@@ -25,15 +27,19 @@ mean:
    Determine whether definitions arrive before use and responsibilities before
    protocol detail.
 3. **Detail:** read every paragraph, table, snippet and annex in context,
-   including generated content. Follow pagination and fetch omitted ranges;
-   truncated reads do not count as coverage.
+   including generated content. Reread generated bibliography and glossary
+   entries in each shipped format after a contract correction. Follow
+   pagination and fetch omitted ranges; truncated reads do not count as
+   coverage.
 4. **Words:** check terminology, qualifications, normative force and consistency
    at word level against the technical sources and other parts.
 
-A search assists these passes but does not replace them. Record the exact
-covered range and remaining gap after interrupted reading. Reopen affected
-cells after source changes or regeneration; complete only when their evidence
-matches the current output.
+A search assists these passes but does not replace them. Scan results and
+delegate reports are candidates until confirmed in the composed artifact.
+Record the exact covered range and remaining gap after interrupted reading;
+require each delegate to return the same two facts, and reopen a delegate whose
+gap its own inputs could close. Reopen affected cells after source changes or
+regeneration; complete only when their evidence matches the current output.
 
 ## Explanation and reading order
 
@@ -50,9 +56,12 @@ diagnostics where applicable. These are questions to apply to the model, not
 mandatory headings or an instruction to invent unsupported behavior.
 
 Evaluate examples and figures at the points where readers must make difficult
-decisions. Check technical accuracy and distribution; a large example count
-cannot compensate for a missing explanation at an interoperability boundary.
-Keep examples distinguishable from normative requirements.
+decisions. Check technical accuracy by executing each example the toolchain can
+run, or by validating it against the model or schema it illustrates; a failing
+example can expose a model defect that reading misses. Check distribution as
+well: a large example count cannot compensate for a missing explanation at an
+interoperability boundary. Keep examples distinguishable from normative
+requirements.
 
 ## Contract reconciliation
 
@@ -78,18 +87,25 @@ assumptions visible in the runtime-evidence category.
 Inspect every official figure in full, including labels, arrows, legend,
 caption, surrounding explanation and cross-references. Record each figure's
 source, rendered evidence, disposition and any unreadable region. Use the
-actual artwork rather than inferring it from a filename or nearby prose.
+actual artwork rather than inferring it from a filename or nearby prose. For
+browser captures, disable smooth scrolling and confirm the element's bounding
+box lies inside the viewport before recording the capture as evidence.
 
 Inspect complete HTML at wide and narrow widths, its navigation and anchors,
 and the light/dark styles the publication actually supports. Distinguish an
 embedded preview's overrides from the shipped theme. If a `file://` preview
 cannot load assets, verify through a task-owned loopback static server before
 reporting a layout defect. Bind locally, verify readiness and stop the specific
-task-owned process after inspection.
+task-owned process after inspection. A static link scan lists candidates:
+confirm each failure in a browser, because the publication's script rewrites
+some links when served over HTTP. A render from a dirty tree omits source-edit
+links; judge them from a clean committed publication, or record that limit.
 
 Inspect other shipped formats as agreed. DOCX XML field inspection can establish
-field or reference content, not visual pagination or Word sign-off. State which
-formats could not be opened or visually inspected and how that limits release
+field or reference content, not visual pagination or Word sign-off. Probe the
+host for a real renderer (Word automation, LibreOffice), paginate through it and
+count clipped tables and truncated figures per page. State which formats still
+could not be opened or visually inspected and how that limits release
 assessment. Never turn an inaccessible figure or format into an implicit pass.
 
 ## External dependencies and publication closure
@@ -103,7 +119,11 @@ requiring every local part to have been published independently.
 A merged change or GitHub release flag does not establish standards approval.
 An immutable draft pin preserves identity, not final status. Preserve draft
 labels and actual identifiers; record approval or availability blockers rather
-than manufacturing final identities.
+than manufacturing final identities. Ask for the release-state policy once, as
+one decision covering whether pinned drafts count as approved dependencies,
+which document status the release carries and which identifiers it uses. Record
+the exact answer, quote it when a later question touches it, and re-audit
+earlier edits when a later answer narrows it.
 
 Distinguish source-edit links and history chrome from normative dependencies
 on PRs, commit IDs or mutable branches. Check that edition-stable publication
