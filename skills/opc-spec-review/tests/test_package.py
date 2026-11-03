@@ -219,6 +219,43 @@ class PackageTests(unittest.TestCase):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Unsupported update radio action |", acceptance)
 
+    def test_customization_target_mismatch_requires_cancellation(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Before adding or applying a customization",
+            "customization target names the intended task-owned copy",
+            "Quick Access Toolbar > More Commands from a background Word window",
+            "If the target differs or cannot be verified, cancel without applying changes",
+            "report the intended copy and offered target as a UI limitation",
+            "Re-establish document identity before retrying",
+            "do not customize the other document",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Customization target mismatch |", acceptance)
+
+    def test_non_list_comparison_attributes_changed_field_results(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Compare non-list text before and after field updates",
+            "A `FILENAME` result can change from the template name",
+            "Identify each changed field by its instruction and location",
+            "record its before/after result",
+            "attribute a legitimate change to the copy's identity or evaluation environment",
+            "exclude all field results from comparison",
+            "unchanged when a field result changed",
+            "Keep unexplained differences open",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Changed non-list field result |", acceptance)
+
     def test_model_metadata_and_publication_gate_requirements_are_packaged(self):
         review = " ".join((ROOT / "references" / "review.md").read_text(
             encoding="utf-8").split())

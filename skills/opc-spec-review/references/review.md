@@ -171,6 +171,13 @@ parts that affect rendering, including fields, used styles and their
 inheritance, page settings, fonts, media, headers and footers. Account for
 fields whose updated results depend on the filename or environment. Record
 the renderer and its version, the differences and the pages actually inspected.
+Compare non-list text before and after field updates as well. A `FILENAME`
+result can change from the template name to the task-owned copy's name after
+`FieldsUpdate`. Identify each changed field by its instruction and location,
+record its before/after result and attribute a legitimate change to the copy's
+identity or evaluation environment. Do not treat every difference as an authored
+edit, exclude all field results from comparison or report all non-list text as
+unchanged when a field result changed. Keep unexplained differences open.
 If layout-affecting equivalence is not established, inspect the new artifact;
 matching body text alone does not establish equivalent pagination.
 
@@ -251,7 +258,16 @@ For a selected main-story field update, use a task-owned current DOCX copy
 whose update and save are authorized by the review contract. In Word Options >
 Quick Access Toolbar, set Choose commands from to All Commands and add the
 command named `Update` for this document only, not for all documents. Its UIA ID
-is `FieldsUpdate`. Use Home > Select > Select All and record the selected and
+is `FieldsUpdate`. Before adding or applying a customization, verify that the
+document-specific customization target names the intended task-owned copy.
+Opening Quick Access Toolbar > More Commands from a background Word window
+does not establish the active document: Word Options can offer another open
+copy as its target. If the target differs or cannot be verified, cancel without
+applying changes and report the intended copy and offered target as a UI
+limitation. Re-establish document identity before retrying; do not customize the
+other document or assume the targeted window determines the active document.
+
+Use Home > Select > Select All and record the selected and
 total word counts from the current state; do not assume selection from command
 completion alone. Invoke `FieldsUpdate` through its current accessibility node.
 
