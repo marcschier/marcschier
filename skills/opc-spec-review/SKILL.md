@@ -38,15 +38,19 @@ the composed publication, not just a source-file search.
 3. Freeze the source revision, branch, dirty state and relevant source hashes.
    Record rendered-artifact provenance and hashes, including tool versions and
    input revision. A stale rendering is evidence of that rendering, not of the
-   current source. Choose a fixed base for change and removal comparisons.
+   current source. Judge currency by a hash over the source, model and tool
+   files the render reads, not by commit ID: a later commit that leaves those
+   contents unchanged keeps the render current, and an uncommitted edit makes it
+   stale. Choose a fixed base for change and removal comparisons.
 4. Discover build, render and validation commands from this repository's actual
    instructions and workflows. Take the CI workflow's steps, in workflow order
    and including setup and restore steps, as the local gate. Record which
    commands rewrite tracked files.
    Use existing output for a read-only review. If output is missing, obtain
    authorization for an isolated render location and compare source status and
-   hashes before and after. Keep source and generated artifacts unchanged in
-   review, plan and removal-audit modes.
+   hashes before and after. Confirm with `git check-ignore` that version control
+   ignores that location, so render output cannot enter a commit. Keep source
+   and generated artifacts unchanged in review, plan and removal-audit modes.
 
 Proceed when every selected spec has a manifest-to-publication route and every
 missing artifact, permission or ambiguous boundary is explicit. When a question
@@ -79,8 +83,12 @@ over a stylistic preference.
 
 Read [references/review.md](references/review.md) in full for every review,
 including the review that establishes an implementation plan. It defines the
-coverage ledger, contract checks, visual inspection and release-dependency
-assessment. Resolve paths relative to this SKILL.md.
+coverage ledger, contract checks, figure and format inspection, and
+release-dependency assessment. Resolve paths relative to this SKILL.md.
+
+Dark-mode theming and PDF or print layout are outside this review. Review what
+each shipped format says, and keep its theme and page layout out of the
+findings unless the user expands the scope.
 
 Complete all four coverage levels for every in-scope clause and inspect every
 official figure. Mark inaccessible evidence as unreviewed, with its consequence
@@ -110,9 +118,11 @@ evidence limits a verdict; it is not itself proof of a runtime defect.
 Give a per-spec verdict and a coordinated-set verdict: ready for the stated
 scope, revisions required, or assessment incomplete. Include the revision,
 coverage counts, complete findings, inaccessible formats, unresolved decisions
-and runtime limits. Put long ledgers in an authorized report location rather
-than truncating findings in chat. CI success does not establish certification
-or standards approval.
+and runtime limits. Take every count you report, such as files changed,
+figures, tests or pages, from a tool result obtained after the last change, and
+correct an earlier wrong count explicitly. Put long ledgers in an authorized
+report location rather than truncating findings in chat. CI success does not
+establish certification or standards approval.
 
 For plan, approved-fix, removal-audit or PR-feedback mode, read
 [references/revisions.md](references/revisions.md) before proceeding. A report

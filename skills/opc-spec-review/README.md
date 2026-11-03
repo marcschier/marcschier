@@ -60,7 +60,9 @@ Audit removals since the agreed base without editing files.
 `Part-A` and `Part-B` are synthetic names, not repository defaults. If selection
 is ambiguous, the skill asks rather than guessing. It records coverage at four
 levels and gives per-spec and coordinated-set verdicts with evidence limits.
-It does not certify implementations or confer standards approval.
+It reviews what each shipped format says; dark-mode theming and PDF or print
+layout are outside its scope. It does not certify implementations or confer
+standards approval.
 
 The [skill](SKILL.md) contains the scope and reporting contract.
 [Review criteria](references/review.md) cover composed editions and release

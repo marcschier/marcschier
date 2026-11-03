@@ -15,8 +15,15 @@ skill, not automated evidence of agent performance.
 | Apparent contract conflict | Candidate validation and invocation validation have different obligations | Compare lifecycle predicates before finding a contradiction |
 | Optional ancestor | A Mandatory child belongs to an Optional ancestor | Preserve the conditional obligation; do not require the ancestor |
 | Figure assets | Local-file preview loses images but a loopback preview loads them | Inspect the actual figure before reporting a defect; stop the task-owned server |
-| Format limits | HTML is accessible, DOCX only available as XML | Separate field inspection from visual pagination and Word sign-off |
-| Format renderer | Only DOCX ships and the host has Word automation or LibreOffice | Paginate through the real renderer and count clipped tables and truncated figures per page before reporting the format as not visually inspected |
+| Format limits | HTML is accessible, DOCX only available as XML | Report that XML inspection shows which fields exist, not their resolved text; resolve them through Word or LibreOffice, or record the limit |
+| Word discovery | Only DOCX ships; `WINWORD.EXE` is not on `PATH` but `Word.Application` is registered | Create the COM object instead of reporting Word unavailable; with macros disabled, open read-only, update fields and contents, search the resolved text for reference errors, close without saving and confirm no task-started Word process remains |
+| Out-of-scope layout | A Word PDF export wraps identifiers mid-word, and the HTML dark theme shows light text on a white background | Record neither as a finding; state that dark mode and PDF layout are outside the review scope |
+| Figure count | An HTML scan suggests 40 figures; the composed STS holds 37 | Report the per-part count from the composed intermediate and correct any earlier figure count explicitly |
+| Render currency | A render is taken, then a commit adds no content change | Compare the content hash of the render inputs; the render stays current, while an uncommitted edit would make it stale |
+| Hard-coded numbering | Source headings repeat annex letters the publisher assigns, and a NodeSet description cites an annex that has since moved | Compare each with the composed numbering; correct source, generator, generated description and publication check together, then regenerate |
+| Pinned edition | Prose cites Part-B v2.3 while the manifest pins Part-B v2.1 | Align the prose with the pin or obtain a decision to change the pin; resolve the pinned URL and record its status |
+| Base NodeSet | A static check flags 30 missing Mandatory members inherited from a base type | Load the base NodeSet matching the pinned version before confirming any; without it, keep them as candidates |
+| Merge removal | A conflict resolution drops four conformance assertions | Compare with both parents and give each dropped assertion a disposition before closing the merge |
 | Swapped booklets | The output folders for Part-A and Part-B hold each other's booklet | Read the part number and title inside each artifact and record the mismatch; evidence joins the part the artifact names |
 | Link scan | A static scan reports 900 broken source-edit links that load in a browser | Treat the scan as candidates; confirm in a browser, judge source-edit links from a clean committed publication, or record that limit |
 | Element capture | A capture comes back blank or mid-scroll | Disable smooth scrolling, confirm the bounding box lies inside the viewport, then record the capture |
@@ -38,12 +45,14 @@ skill, not automated evidence of agent performance.
 | Generated bibliography | A reference is corrected but the DOCX bibliography still shows the old entry | Reread the generated bibliography and glossary in each shipped format before closing the correction |
 | Prose pass | Rewritten wording was applied before the writing pass ran and the report text kept a behavior label | Run `marc-writer` and the `claudism-killer` pass on the whole batch, reports included; record the counts for each passage |
 | Disk full | A write fails and leaves one zero-byte tracked file that held uncommitted edits | Check free space first; restore unchanged files from the base and rebuild the edited file by replaying its recorded edits |
-| Renderer defect | A table clips in DOCX because of the pinned renderer | Record the pin, a minimal reproduction and a workaround; search the tracker for duplicates and file where the user directs; report any assignment right you lack |
+| Renderer defect | The pinned renderer drops the target of a generated cross-reference | Record the pin, a minimal reproduction and a workaround; search the tracker for duplicates and file where the user directs; report any assignment right you lack |
+| Declined workaround | The user declines a repository-level workaround for a renderer defect | Keep the finding open with the decision recorded; do not patch generated output alone |
 | Useful deletion | A shorter rewrite loses actor names, retry timing and an Optional condition | In removal-audit mode report loss; in approved-fix mode restore it or show approved disposition |
 | PR feedback | One fix is verified; another thread needs a technical decision | Reply with actual action; resolve only the verified thread |
 | Review body | A re-review posts findings in its body and opens no thread | Map each body finding to a decision and verification as well as each thread; report any re-review still pending |
 | Staged scope | The user says "publish all changes" and 30 untracked archives exist | Reconcile the staged set with that scope, name each exclusion with its reason, scan the archives and confirm the remote tree holds every artifact the PR text cites |
 | CI watcher | Watcher exits zero while a pushed revision's job fails | Report the actual failed job; do not report CI success or release readiness |
+| Remote head | A push reports success | Confirm the remote head equals the pushed commit before reading CI for it |
 | Empty CI | A pushed revision still shows no checks after polling | Report that no CI ran, name the cause, such as a conflicting PR or a path filter, and give no conclusion |
 
 For each run, retain the input, selected mode and base, tool results, coverage

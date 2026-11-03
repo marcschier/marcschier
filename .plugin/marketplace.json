@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.7.2"
+    "version": "1.7.3"
   },
   "plugins": [
     {
@@ -121,7 +121,7 @@
       "name": "opc-spec-review",
       "source": "./skills/opc-spec-review",
       "description": "Review composed OPC Foundation specifications, plan revisions and verify approved fixes with explicit coverage and publication evidence.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"

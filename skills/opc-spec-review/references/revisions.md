@@ -46,7 +46,9 @@ owner's tracker. Reproduce it on the pinned version and record the version, a
 minimal reproduction and a workaround. Search the tracker for duplicates and
 file where the user directs. Report any assignment right you lack. When the
 renderer's source repository answers 404, assume missing access and reproduce
-from the pinned build.
+from the pinned build. When the user declines a repository-level workaround,
+keep the finding open with that decision recorded; do not apply the workaround
+to generated output alone.
 
 ## Information-preservation audit
 
@@ -66,6 +68,10 @@ mode, restore accidental loss before closing the change. Check small operational
 facts as well as major requirements, including actor names, timing, defaults,
 failure behavior and Optional qualifications. A shorter rewrite does not
 justify deletion.
+
+A merge or conflict resolution is also a removal source. After resolving
+conflicts, compare the result with both parents and give every requirement,
+assertion or example the resolution dropped one of the dispositions above.
 
 ## Regenerate and verify
 
@@ -89,7 +95,7 @@ write edits in the repository's line-ending policy. Preserve explicit failure
 output and address the cause rather than masking it with a successful fallback.
 
 Render and reread changed clauses, their neighboring explanation and cross-part
-references. Reinspect affected figures and layouts. Repeat uncovered or changed
+references. Reinspect affected figures. Repeat uncovered or changed
 passes until every in-scope clause and figure is accounted for, each defect is
 fixed or explicitly deferred, and the ledger refers to the current composed
 output. Recheck the information-preservation audit after the final rewrite.
@@ -107,8 +113,9 @@ files) with the authorized scope and name each exclusion with its reason. Scan
 added archives for integrity and credential content, and confirm that the
 remote tree holds every artifact the PR text cites.
 
-After an authorized push, poll the pushed revision until a CI conclusion exists
-and inspect it. A watcher exiting successfully is not evidence that CI passed.
+After an authorized push, confirm that the remote head equals the commit you
+pushed, then poll that revision until a CI conclusion exists and inspect it. A
+watcher exiting successfully is not evidence that CI passed.
 A check list that stays empty means no CI ran: name the cause, such as a
 conflicting PR that suppresses pull-request workflows or a path filter, and
 report no conclusion. Report failed, pending, skipped or unavailable checks
