@@ -85,6 +85,11 @@ steps, and confirm it by diffing the test files against those lists. Group
 approved edits into batches by dependency level and run one integrated
 regenerate, render and reread cycle per batch.
 
+A check present in the repository is not evidence that CI ran it. Confirm that
+the publication workflow invokes each applicable gate after rendering and before
+commit or upload, and inspect uploaded artifacts for the sidecars those gates
+create. Record local and CI results separately.
+
 Check generation determinism before running gates that regenerate files, so
 those gates cannot hide stale checked-in output. Rerun the determinism check and
 the full gate after any merge or rebase that brings in generator changes.

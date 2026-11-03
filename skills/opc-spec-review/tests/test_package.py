@@ -127,6 +127,30 @@ class PackageTests(unittest.TestCase):
                 self.assertIn("outside", normalized)
                 self.assertNotIn("unless the user expands the scope", normalized)
 
+    def test_model_metadata_and_publication_gate_requirements_are_packaged(self):
+        review = " ".join((ROOT / "references" / "review.md").read_text(
+            encoding="utf-8").split())
+        revisions = " ".join((ROOT / "references" / "revisions.md").read_text(
+            encoding="utf-8").split())
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for requirement in (
+            "Check primary and RequiredModel metadata separately",
+            "An XML schema namespace determines encoded QNames",
+            "Validate generated schemas against their dependencies",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        for requirement in (
+            "publication workflow invokes each applicable gate after rendering",
+            "inspect uploaded artifacts for the sidecars",
+            "Record local and CI results separately",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, revisions)
+        for scenario in ("Primary model metadata", "Generated schema", "Publication gate"):
+            with self.subTest(scenario=scenario):
+                self.assertIn(f"| {scenario} |", acceptance)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -93,6 +93,14 @@ runtime behavior.
 Keep unexecuted tests, unavailable implementations and unverified deployment
 assumptions visible in the runtime-evidence category.
 
+Check primary and RequiredModel metadata separately against the Part 6 edition
+the model uses. When that edition requires `XmlSchemaUri` or associated XML and
+binary schemas, reconcile their identities, annotations, imports and definitions
+with the NodeSet. An XML schema namespace determines encoded QNames; do not
+infer it from the NodeId namespace or assign one without an owner decision.
+Validate generated schemas against their dependencies: a generator's output or
+exit status alone does not establish that the schemas compile.
+
 ## Figures and shipped formats
 
 This review covers what each shipped format says. Dark-mode behavior and PDF
