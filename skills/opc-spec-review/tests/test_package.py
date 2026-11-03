@@ -136,14 +136,22 @@ class PackageTests(unittest.TestCase):
             "Confirm the capture still shows the intended page and region",
             "check whether the DOCX contains the referenced media",
             "both SVG and raster representations may be present",
-            "one empty capture does not prove that the publication omits artwork",
+            "One empty capture does not prove that the publication omits artwork",
             "only when the blank result is reproducible in a refreshed view",
             "Otherwise record the capture as transient or unresolved",
+            "If a figure becomes visible after a non-editing click",
+            "the initial blank capture is not a missing-figure finding",
+            "The cause remains unknown",
+            "does not establish full pagination coverage",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, review)
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Blank figure capture |", acceptance)
+        self.assertIn("| Part 31 update and transient figure |", acceptance)
+        self.assertIn("3,899 of 3,899 words selected", acceptance)
+        self.assertIn("separate contents, figures and tables dialogs", acceptance)
+        self.assertIn("the click does not establish full pagination coverage", acceptance)
 
     def test_contents_update_does_not_establish_all_field_or_visual_coverage(self):
         review = " ".join(

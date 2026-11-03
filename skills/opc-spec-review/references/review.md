@@ -314,14 +314,17 @@ If a figure appears blank in a capture, treat that capture as inconclusive.
 Refresh the view without editing the document: let Word finish rendering, reread
 the current page state, then use a non-editing click in the page or move to
 another page and return before capturing it again. Confirm the capture still
-shows the intended page and region. Where package inspection is available, check whether the DOCX
-contains the referenced media and whether image parts have non-empty content;
-both SVG and raster representations may be present. These checks do not prove
-that Word rendered the figure, and one empty capture does not prove that the
-publication omits artwork. Report a missing-figure defect only when the blank
-result is reproducible in a refreshed view and the artifact evidence supports
-the omission. Otherwise record the capture as transient or unresolved, with the
-page, artifact hash and checks performed.
+shows the intended page and region. Where package inspection is available,
+check whether the DOCX contains the referenced media and whether image parts
+have non-empty content; both SVG and raster representations may be present.
+These checks do not prove that Word rendered the figure. One empty capture does
+not prove that the publication omits artwork. Report a missing-figure defect
+only when the blank result is reproducible in a refreshed view and the artifact
+evidence supports the omission. Otherwise record the capture as transient or
+unresolved, with the page, artifact hash and checks performed. If a figure
+becomes visible after a non-editing click, the initial blank capture is not a
+missing-figure finding. The cause remains unknown, and the click does not
+establish full pagination coverage.
 
 If an action returns `interrupted`, reread that app with `get_window_state` and
 retry the same action; yield to active user input. When permission, foreground
