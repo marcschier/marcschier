@@ -247,10 +247,39 @@ task-owned copy as described above. Confirm the full path and artifact hash
 before recording evidence, and distinguish a saved field-updated copy from the
 Publisher original.
 
+For a selected main-story field update, use a task-owned current DOCX copy
+whose update and save are authorized by the review contract. In Word Options >
+Quick Access Toolbar, set Choose commands from to All Commands and add the
+command named `Update` for this document only, not for all documents. Its UIA ID
+is `FieldsUpdate`. Use Home > Select > Select All and record the selected and
+total word counts from the current state; do not assume selection from command
+completion alone. Invoke `FieldsUpdate` through its current accessibility node.
+
+Handle each resulting dialog separately, selecting Update entire table and
+confirming it before reading the next dialog. One observed sequence was Update
+Table of Contents followed by two Update Table of Figures dialogs, for the
+figures and tables fields. Record the actual sequence; do not assume every
+document produces exactly three prompts or that the shared dialog title
+identifies which list is being updated. If the accessible radio-button action
+fails with `UIA SelectionItem.Select member not found`, capture a fresh dialog
+screenshot and click the option at coordinates from that capture through
+Computer Use. Reinspect the dialog to confirm the selection before accepting
+it; do not repeat the unsupported action or use stale coordinates.
+
+After the last prompt, record the return to Word and any Undo Update Fields
+entry as evidence that the selected main-story update was invoked and the
+prompts were handled. Reread the contents, figures and tables lists and remaining
+field results independently; invocation evidence does not establish their
+correctness. Save only the authorized task-owned copy and record its new hash.
+Neither Select All word counts nor this update sequence verifies fields in
+headers, footers or other stories, or establishes visual pagination coverage.
+Keep those checks separate and retain the per-list Captions fallback above.
+
 Read TextPattern-backed values, Document text, Selected text and Caret text
 first. Address actions to the app/window and an `element_index` from the latest
 `get_window_state`. Use screenshots only for page geometry or artwork that the
-accessibility tree cannot establish, with coordinates taken from that capture.
+accessibility tree cannot establish, or for the unsupported dialog action
+described above, with coordinates taken from that capture.
 Inspect the agreed pages in Word's Print Layout view; record the page range and
 observations separately from text checks. Neither an accessibility text read nor
 a PDF export substitutes for that Word visual inspection. Review is read-only;

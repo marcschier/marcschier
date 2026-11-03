@@ -174,6 +174,51 @@ class PackageTests(unittest.TestCase):
                 self.assertIn("outside", normalized)
                 self.assertNotIn("unless the user expands the scope", normalized)
 
+    def test_main_story_update_fallback_limits_evidence_and_customization(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "task-owned current DOCX copy",
+            "Word Options > Quick Access Toolbar",
+            "Choose commands from to All Commands",
+            "command named `Update` for this document only, not for all documents",
+            "`FieldsUpdate`",
+            "Home > Select > Select All",
+            "record the selected and total word counts",
+            "Handle each resulting dialog separately",
+            "selecting Update entire table",
+            "Update Table of Contents followed by two Update Table of Figures dialogs",
+            "do not assume every document produces exactly three prompts",
+            "Undo Update Fields",
+            "invocation evidence does not establish their correctness",
+            "Save only the authorized task-owned copy and record its new hash",
+            "headers, footers or other stories",
+            "or establishes visual pagination coverage",
+            "retain the per-list Captions fallback above",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Main-story Update fallback |", acceptance)
+
+    def test_unsupported_update_radio_action_uses_fresh_dialog_evidence(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "`UIA SelectionItem.Select member not found`",
+            "capture a fresh dialog screenshot",
+            "coordinates from that capture through Computer Use",
+            "Reinspect the dialog to confirm the selection before accepting it",
+            "do not repeat the unsupported action or use stale coordinates",
+            "or for the unsupported dialog action described above",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Unsupported update radio action |", acceptance)
+
     def test_model_metadata_and_publication_gate_requirements_are_packaged(self):
         review = " ".join((ROOT / "references" / "review.md").read_text(
             encoding="utf-8").split())
