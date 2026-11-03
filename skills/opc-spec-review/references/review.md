@@ -191,15 +191,16 @@ does not establish that all fields were updated or that pagination was visually
 reviewed.
 
 If a focused `F9` dispatch fails through UI automation, place the caret inside
-the figures placeholder and use References > Captions > Update Table. The
-control's UIA ID is `TableOfFiguresUpdate`; find it in a fresh accessibility
-state and act through its current node index. This route has resolved a figures
-placeholder into entries when the focused key dispatch failed. It is distinct
-from References > Table of Contents > Update Table, which updates the contents
-list. Reread the selected field to verify the result; command completion alone
-is insufficient. Verify the tables list separately rather than assuming the
-figures action updated it. Keep contents, remaining fields and visual pagination
-coverage independent.
+the figures or tables placeholder and use References > Captions > Update Table.
+The control's UIA ID is `TableOfFiguresUpdate`; find it in a fresh accessibility
+state and act through its current node index. This route has resolved both
+figures and tables placeholders into entries through separate invocations,
+with the caret inside the respective field. It is distinct from References >
+Table of Contents > Update Table, which updates the contents list. Reread the
+selected field to verify the result; command completion alone is insufficient.
+Update and verify figures and tables separately; one invocation does not
+establish that both lists were updated. Keep contents, remaining fields and
+visual pagination coverage independent.
 
 Office installations normally leave `WINWORD.EXE` off `PATH`, so a failed
 command lookup proves nothing. On Windows, probe the `Word.Application` COM
