@@ -124,6 +124,27 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, normalized)
 
+    def test_blank_figure_capture_is_inconclusive_until_reproduced(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "If a figure appears blank in a capture, treat that capture as inconclusive",
+            "Refresh the view without editing the document",
+            "use a non-editing click in the page",
+            "move to another page and return",
+            "Confirm the capture still shows the intended page and region",
+            "check whether the DOCX contains the referenced media",
+            "both SVG and raster representations may be present",
+            "one empty capture does not prove that the publication omits artwork",
+            "only when the blank result is reproducible in a refreshed view",
+            "Otherwise record the capture as transient or unresolved",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Blank figure capture |", acceptance)
+
     def test_contents_update_does_not_establish_all_field_or_visual_coverage(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
