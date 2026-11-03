@@ -165,6 +165,15 @@ current: an older DOCX may show empty fields while the current isolated output
 has populated results. Withdraw that hypothesis when the current artifact
 disproves it.
 
+A changed DOCX hash requires comparison before earlier Word observations can
+be reused. Resolve relationship IDs to their targets and compare the package
+parts that affect rendering, including fields, used styles and their
+inheritance, page settings, fonts, media, headers and footers. Account for
+fields whose updated results depend on the filename or environment. Record
+the renderer and its version, the differences and the pages actually inspected.
+If layout-affecting equivalence is not established, inspect the new artifact;
+matching body text alone does not establish equivalent pagination.
+
 Separate content evidence from visual evidence in the ledger. DOCX XML can
 establish stored field-result text, including reference errors, but cannot
 establish Word's pagination or how a page looks. Record whether text came from

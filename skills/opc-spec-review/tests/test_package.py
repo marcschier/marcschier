@@ -84,6 +84,9 @@ class PackageTests(unittest.TestCase):
             "task-owned copy",
             "record its new hash",
             "Recheck identity after regeneration",
+            "Resolve relationship IDs to their targets",
+            "fields whose updated results depend on the filename or environment",
+            "matching body text alone does not establish equivalent pagination",
             "populated results in the DOCX XML",
             "Separate content evidence from visual evidence",
             "Record the stored results before updating all fields",
@@ -155,7 +158,12 @@ class PackageTests(unittest.TestCase):
             with self.subTest(scenario=scenario):
                 self.assertIn(f"| {scenario} |", acceptance)
 
-        for scenario in ("Saved Word evidence copy", "Delayed Word navigation", "Word grid and zoom"):
+        for scenario in (
+            "Saved Word evidence copy",
+            "Changed Word package",
+            "Delayed Word navigation",
+            "Word grid and zoom",
+        ):
             with self.subTest(scenario=scenario):
                 self.assertIn(f"| {scenario} |", acceptance)
 
