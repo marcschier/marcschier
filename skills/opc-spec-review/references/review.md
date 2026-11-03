@@ -182,6 +182,14 @@ with the composed headings and captions, and reread the generated bibliography.
 When results are missing, ambiguous or require Word evaluation, use Word to
 resolve them; do not mark unresolved fields as reviewed.
 
+Word's "Update Table of Contents" ribbon action can update only the contents
+while the separate lists of figures and tables remain placeholders, even in a
+current CI DOCX. Update and verify each list separately, then check the remaining
+fields, including cross-references and bibliography. Record which fields
+resolved and which remain placeholders or errors. A successful contents update
+does not establish that all fields were updated or that pagination was visually
+reviewed.
+
 Office installations normally leave `WINWORD.EXE` off `PATH`, so a failed
 command lookup proves nothing. On Windows, probe the `Word.Application` COM
 registration or the `App Paths\WINWORD.EXE` registry key. For content automation,

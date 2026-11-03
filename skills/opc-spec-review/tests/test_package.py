@@ -124,6 +124,23 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, normalized)
 
+    def test_contents_update_does_not_establish_all_field_or_visual_coverage(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            '"Update Table of Contents" ribbon action can update only the contents',
+            "lists of figures and tables remain placeholders",
+            "Update and verify each list separately",
+            "Record which fields resolved and which remain placeholders or errors",
+            "does not establish that all fields were updated or that pagination "
+            "was visually reviewed",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Contents-only update |", acceptance)
+
     def test_scope_excludes_dark_mode_and_pdf_rendering(self):
         for relative in ("SKILL.md", "README.md", "references/review.md"):
             text = (ROOT / relative).read_text(encoding="utf-8")
