@@ -81,6 +81,8 @@ class PackageTests(unittest.TestCase):
             "source/model/tool input revision or hashes",
             "verify its document's full path",
             "unsaved edits",
+            "task-owned copy",
+            "record its new hash",
             "Recheck identity after regeneration",
             "populated results in the DOCX XML",
             "Separate content evidence from visual evidence",
@@ -106,6 +108,8 @@ class PackageTests(unittest.TestCase):
             "TextPattern-backed",
             "`element_index` from the latest",
             "Print Layout",
+            "cell-level legibility separately",
+            "let the view settle and reread it",
             "`interrupted`",
             "retry the same action",
             "exact tool result",
@@ -150,6 +154,23 @@ class PackageTests(unittest.TestCase):
         for scenario in ("Primary model metadata", "Generated schema", "Publication gate"):
             with self.subTest(scenario=scenario):
                 self.assertIn(f"| {scenario} |", acceptance)
+
+        for scenario in ("Saved Word evidence copy", "Delayed Word navigation", "Word grid and zoom"):
+            with self.subTest(scenario=scenario):
+                self.assertIn(f"| {scenario} |", acceptance)
+
+    def test_first_edition_and_changed_render_evidence(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        review = " ".join((ROOT / "references" / "review.md").read_text(
+            encoding="utf-8").split())
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("Do not assume a first edition has an earlier contract", skill)
+        self.assertIn("assess that stated target", skill)
+        self.assertIn("A change to a render input makes it stale", skill)
+        self.assertIn("compare a fresh publication with the reviewed output", review)
+        self.assertIn("Carry forward coverage only for unchanged content and figures", review)
+        self.assertIn("| First-edition interoperability |", acceptance)
+        self.assertIn("| Changed model render |", acceptance)
 
 
 if __name__ == "__main__":

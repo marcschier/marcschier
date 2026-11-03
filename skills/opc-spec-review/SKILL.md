@@ -32,16 +32,18 @@ the composed publication, not just a source-file search.
    specification. A coordinated release set may be larger than the edit scope.
    Read out-of-scope dependencies only to answer cross-part questions; report
    required changes across that boundary instead of silently expanding edits.
-   Raise backward-compatibility, migration and legacy questions only for a
-   revision of a released edition; a first edition has no earlier contract to
-   preserve.
+   Do not assume a first edition has an earlier contract to preserve or require
+   a migration path from one. When the draft explicitly targets interoperability
+   with an existing implementation or dependency, assess that stated target
+   without inventing a compatibility commitment.
 3. Freeze the source revision, branch, dirty state and relevant source hashes.
    Record rendered-artifact provenance and hashes, including tool versions and
    input revision. A stale rendering is evidence of that rendering, not of the
    current source. Judge currency by a hash over the source, model and tool
    files the render reads, not by commit ID: a later commit that leaves those
-   contents unchanged keeps the render current, and an uncommitted edit makes it
-   stale. Choose a fixed base for change and removal comparisons.
+   contents unchanged keeps the render current. A change to a render input makes
+   it stale until a new render establishes which output is unchanged. Choose a
+   fixed base for change and removal comparisons.
 4. Discover build, render and validation commands from this repository's actual
    instructions and workflows. Take the CI workflow's steps, in workflow order
    and including setup and restore steps, as the local gate. Record which

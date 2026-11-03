@@ -40,6 +40,10 @@ Record the exact covered range and remaining gap after interrupted reading;
 require each delegate to return the same two facts, and reopen a delegate whose
 gap its own inputs could close. Reopen affected cells after source changes or
 regeneration; complete only when their evidence matches the current output.
+When a model or other render input changes, compare a fresh publication with
+the reviewed output before reusing earlier evidence. Record both revisions and
+hashes. Carry forward coverage only for unchanged content and figures; reopen
+the affected cells where the output differs.
 
 ## Explanation and reading order
 
@@ -152,10 +156,14 @@ open Word window, verify its document's full path and compare the file hash
 with that recorded output; a matching filename or window title is insufficient.
 If the open document has unsaved edits, its disk hash does not identify the
 displayed content. Do not save, close or replace the user's document; open the
-verified output separately, read-only. Recheck identity after regeneration.
-Word being installed does not make an already-open document current: an older
-DOCX may show empty fields while the current isolated output has populated
-results. Withdraw that hypothesis when the current artifact disproves it.
+verified output separately, read-only. If the review contract permits a saved,
+field-updated evidence copy, create a task-owned copy in the authorized review
+location. Verify its initial hash against the Publisher artifact, update and
+save only that copy, and record its new hash. Recheck identity after
+regeneration. Word being installed does not make an already-open document
+current: an older DOCX may show empty fields while the current isolated output
+has populated results. Withdraw that hypothesis when the current artifact
+disproves it.
 
 Separate content evidence from visual evidence in the ledger. DOCX XML can
 establish stored field-result text, including reference errors, but cannot
@@ -174,7 +182,8 @@ failed COM activation is an automation blocker, not proof that Word is absent.
 LibreOffice can resolve fields when Word is absent; record that its field
 engine differs from Word's and that it does not establish Word visual coverage.
 
-Run Word so that neither the artifact nor the host changes:
+For content-only field evaluation without a saved copy, keep the Publisher
+artifact unchanged:
 
 1. Point `TEMP` and `TMP` at the user's authorized temporary location before
    starting Word, because Word and its exports write temporary files there.
@@ -204,8 +213,10 @@ then use `list_apps` on Windows to select the Word app/window pair and
 `get_window_state` to read it. If Word is not running, discover its launch target
 with `list_apps(include_launchable=true)` and use `start_app`; do not launch or
 focus it through shell or window-manager workarounds during this UI workflow.
-Open the verified DOCX read-only through the UI and confirm its full path and
-artifact hash before recording evidence.
+Open the verified DOCX read-only through the UI, or use an authorized
+task-owned copy as described above. Confirm the full path and artifact hash
+before recording evidence, and distinguish a saved field-updated copy from the
+Publisher original.
 
 Read TextPattern-backed values, Document text, Selected text and Caret text
 first. Address actions to the app/window and an `element_index` from the latest
@@ -214,7 +225,16 @@ accessibility tree cannot establish, with coordinates taken from that capture.
 Inspect the agreed pages in Word's Print Layout view; record the page range and
 observations separately from text checks. Neither an accessibility text read nor
 a PDF export substitutes for that Word visual inspection. Review is read-only;
-do not edit the document to make it inspectable.
+do not edit the document to make it inspectable. Check page-edge placement and
+cell-level legibility separately; a zoom label alone does not establish that
+the visible content enlarged. Match printed page labels to Word's page
+identities rather than inferring physical numbers from a multipage grid.
+
+After navigation, compare the page or scroll position in the accessibility
+tree with the prior state. A completed background action can become visible
+after its first response, so let the view settle and reread it before issuing
+another navigation. Record only the pages and regions actually visible; an
+unchanged or truncated tree does not establish visual coverage.
 
 If an action returns `interrupted`, reread that app with `get_window_state` and
 retry the same action; yield to active user input. When permission, foreground
