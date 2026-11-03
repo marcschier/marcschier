@@ -60,9 +60,13 @@ Audit removals since the agreed base without editing files.
 `Part-A` and `Part-B` are synthetic names, not repository defaults. If selection
 is ambiguous, the skill asks rather than guessing. It records coverage at four
 levels and gives per-spec and coordinated-set verdicts with evidence limits.
-It reviews what each shipped format says; dark-mode theming and PDF or print
-layout are outside its scope. It does not certify implementations or confer
-standards approval.
+It reviews what each shipped format says; dark-mode behavior and PDF
+layout/rendering, including print exports, are outside its scope. DOCX review
+checks the artifact revision and hash before using stored field results or Word
+evidence. Word visual pagination review requires explicit scope agreement and
+the available Computer Use workflow; blocked UI access is a review limitation,
+not evidence of a publication defect. It does not certify implementations or
+confer standards approval.
 
 The [skill](SKILL.md) contains the scope and reporting contract.
 [Review criteria](references/review.md) cover composed editions and release

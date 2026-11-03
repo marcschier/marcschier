@@ -95,11 +95,12 @@ assumptions visible in the runtime-evidence category.
 
 ## Figures and shipped formats
 
-This review covers what each shipped format says, not how its pages look.
-Dark-mode theming and PDF or print layout, including pagination, page breaks,
-clipped tables and wrapped identifiers, are outside its scope. Do not inspect
-them or record them as findings unless the user expands the scope. Opening a
-renderer for a content check does not bring its layout into scope.
+This review covers what each shipped format says. Dark-mode behavior and PDF
+layout/rendering, including pagination, page breaks, clipped tables and wrapped
+identifiers in PDF or print exports, are outside this skill's scope. Do not
+inspect them or record them as findings. Word visual pagination review is a
+separate, explicitly agreed branch described below. Opening a renderer for a
+content check does not bring its layout into scope.
 
 Inspect every official figure in full, including labels, arrows, legend,
 caption, surrounding explanation and cross-references. Record each figure's
@@ -130,15 +131,40 @@ an implicit pass.
 ### Word documents
 
 A DOCX holds its cross-references, contents, lists of figures and tables and
-generated bibliography as fields. Word computes their text when it updates
-them, so DOCX XML inspection shows which fields exist, not what a reader sees.
-Review the resolved text through Word.
+generated bibliography as fields. Distinguish field instructions from stored
+field results: the current Publisher output may already contain populated
+results in the DOCX XML. Inspect those results before deciding that Word must
+compute them. Field instructions alone do not establish resolved text, and
+populated results do not prove that the fields are correct or current.
+
+Before using DOCX or Word evidence, record the absolute artifact path, SHA-256
+hash and source/model/tool input revision or hashes from the isolated Publisher
+run. Match the part number and title inside the document to the ledger. For an
+open Word window, verify its document's full path and compare the file hash
+with that recorded output; a matching filename or window title is insufficient.
+If the open document has unsaved edits, its disk hash does not identify the
+displayed content. Do not save, close or replace the user's document; open the
+verified output separately, read-only. Recheck identity after regeneration.
+Word being installed does not make an already-open document current: an older
+DOCX may show empty fields while the current isolated output has populated
+results. Withdraw that hypothesis when the current artifact disproves it.
+
+Separate content evidence from visual evidence in the ledger. DOCX XML can
+establish stored field-result text, including reference errors, but cannot
+establish Word's pagination or how a page looks. Record whether text came from
+stored results or a Word field update. Compare contents and figure-list entries
+with the composed headings and captions, and reread the generated bibliography.
+When results are missing, ambiguous or require Word evaluation, use Word to
+resolve them; do not mark unresolved fields as reviewed.
 
 Office installations normally leave `WINWORD.EXE` off `PATH`, so a failed
-command lookup proves nothing. On Windows, create the `Word.Application` COM object, or
-read the `App Paths\WINWORD.EXE` registry key. Report Word as unavailable only
-when both fail. LibreOffice can resolve fields when Word is absent; record that
-its field engine differs from Word's.
+command lookup proves nothing. On Windows, probe the `Word.Application` COM
+registration or the `App Paths\WINWORD.EXE` registry key. For content automation,
+try creating the COM object and record any activation error. Report Word as
+unavailable only when both discovery routes fail. A registered executable with
+failed COM activation is an automation blocker, not proof that Word is absent.
+LibreOffice can resolve fields when Word is absent; record that its field
+engine differs from Word's and that it does not establish Word visual coverage.
 
 Run Word so that neither the artifact nor the host changes:
 
@@ -146,7 +172,9 @@ Run Word so that neither the artifact nor the host changes:
    starting Word, because Word and its exports write temporary files there.
 2. Set `AutomationSecurity` to force-disable macros. Open each DOCX read-only,
    invisible and without adding it to the recent-file list.
-3. Update all fields, then every table of contents and table of figures.
+3. Record the stored results before updating all fields, then every table of
+   contents and table of figures. Keep the original artifact unchanged and
+   distinguish update-induced changes from the Publisher's stored results.
 4. Read the resolved text through Word, or export a PDF and extract its text.
    Search it for Word's error results, such as "Error! Reference source not
    found." and "Error! Bookmark not defined.", in Word's interface language.
@@ -154,9 +182,47 @@ Run Word so that neither the artifact nor the host changes:
    captions, and reread the generated bibliography.
 5. Close each document without saving and quit Word. Confirm that no Word
    process the task started remains, and stop a leftover only by its process ID.
+   Quit only a task-owned instance; never quit a pre-existing user instance.
 
 An exported PDF here is a vehicle for text extraction; its layout stays outside
-the review scope.
+the review scope. Record its origin and the DOCX hash rather than treating an
+export as independent evidence of the original field results.
+
+### Word visual inspection and UI blockers
+
+Use the available Computer Use accessibility workflow when Word visual
+inspection is explicitly in scope. Discover its tool schemas through the host,
+then use `list_apps` on Windows to select the Word app/window pair and
+`get_window_state` to read it. If Word is not running, discover its launch target
+with `list_apps(include_launchable=true)` and use `start_app`; do not launch or
+focus it through shell or window-manager workarounds during this UI workflow.
+Open the verified DOCX read-only through the UI and confirm its full path and
+artifact hash before recording evidence.
+
+Read TextPattern-backed values, Document text, Selected text and Caret text
+first. Address actions to the app/window and an `element_index` from the latest
+`get_window_state`. Use screenshots only for page geometry or artwork that the
+accessibility tree cannot establish, with coordinates taken from that capture.
+Inspect the agreed pages in Word's Print Layout view; record the page range and
+observations separately from text checks. Neither an accessibility text read nor
+a PDF export substitutes for that Word visual inspection. Review is read-only;
+do not edit the document to make it inspectable.
+
+If an action returns `interrupted`, reread that app with `get_window_state` and
+retry the same action; yield to active user input. When permission, foreground
+delivery or document access still prevents inspection, report the exact tool
+result, affected artifact hash, attempted action and pages left unreviewed.
+State the action needed to resume, such as granting the app permission or opening
+the verified DOCX. Do not bypass the host's UI controls with COM activation or
+shell focus commands; content-only COM inspection remains a separate evidence
+route and cannot close the visual coverage gap.
+
+An installed Word application, a COM automation failure and a blocked UI action
+are different observations. Record a genuine UI blocker as a review limitation,
+not a publication defect. Continue the accessible content checks and leave the
+affected visual cells blocked; use assessment incomplete when the missing
+evidence prevents the agreed verdict. Report a publication defect only when
+current artifact evidence demonstrates it.
 
 ## External dependencies and publication closure
 

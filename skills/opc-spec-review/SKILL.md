@@ -86,9 +86,11 @@ including the review that establishes an implementation plan. It defines the
 coverage ledger, contract checks, figure and format inspection, and
 release-dependency assessment. Resolve paths relative to this SKILL.md.
 
-Dark-mode theming and PDF or print layout are outside this review. Review what
-each shipped format says, and keep its theme and page layout out of the
-findings unless the user expands the scope.
+Dark-mode behavior and PDF layout/rendering, including print exports, are
+outside this skill's review scope. Review what each shipped format says.
+Word visual pagination review requires explicit scope agreement and the
+artifact-identity and Computer Use checks in the review reference; inspecting
+DOCX field results alone does not establish visual coverage.
 
 Complete all four coverage levels for every in-scope clause and inspect every
 official figure. Mark inaccessible evidence as unreviewed, with its consequence

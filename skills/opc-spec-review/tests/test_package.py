@@ -70,6 +70,63 @@ class PackageTests(unittest.TestCase):
             self.assertIn(f"copilot plugin install {name}@marcschier", readme)
         self.assertIn("distributed separately", readme)
 
+    def test_word_guidance_separates_artifact_identity_and_evidence(self):
+        review = (ROOT / "references" / "review.md").read_text(encoding="utf-8")
+        word = review.split("### Word documents\n", 1)[1].split(
+            "### Word visual inspection and UI blockers\n", 1
+        )[0]
+        normalized = " ".join(word.split())
+        for requirement in (
+            "absolute artifact path, SHA-256 hash",
+            "source/model/tool input revision or hashes",
+            "verify its document's full path",
+            "unsaved edits",
+            "Recheck identity after regeneration",
+            "populated results in the DOCX XML",
+            "Separate content evidence from visual evidence",
+            "Record the stored results before updating all fields",
+            "Quit only a task-owned instance",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, normalized)
+        self.assertNotIn("not what a reader sees", normalized)
+
+    def test_word_visual_workflow_preserves_ui_and_verdict_boundaries(self):
+        review = (ROOT / "references" / "review.md").read_text(encoding="utf-8")
+        visual = review.split("### Word visual inspection and UI blockers\n", 1)[
+            1
+        ].split("## External dependencies", 1)[0]
+        normalized = " ".join(visual.split())
+        for requirement in (
+            "explicitly in scope",
+            "Discover its tool schemas",
+            "`list_apps`",
+            "`get_window_state`",
+            "`start_app`",
+            "TextPattern-backed",
+            "`element_index` from the latest",
+            "Print Layout",
+            "`interrupted`",
+            "retry the same action",
+            "exact tool result",
+            "affected artifact hash",
+            "pages left unreviewed",
+            "not a publication defect",
+            "assessment incomplete",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, normalized)
+
+    def test_scope_excludes_dark_mode_and_pdf_rendering(self):
+        for relative in ("SKILL.md", "README.md", "references/review.md"):
+            text = (ROOT / relative).read_text(encoding="utf-8")
+            normalized = " ".join(text.split())
+            with self.subTest(file=relative):
+                self.assertIn("Dark-mode behavior".lower(), normalized.lower())
+                self.assertIn("PDF layout/rendering", normalized)
+                self.assertIn("outside", normalized)
+                self.assertNotIn("unless the user expands the scope", normalized)
+
 
 if __name__ == "__main__":
     unittest.main()
