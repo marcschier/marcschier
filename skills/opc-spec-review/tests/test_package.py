@@ -180,6 +180,20 @@ class PackageTests(unittest.TestCase):
         self.assertIn("| First-edition interoperability |", acceptance)
         self.assertIn("| Changed model render |", acceptance)
 
+    def test_command_probes_preserve_existing_output(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for requirement in (
+            "an unrecognized `--help` can execute the command",
+            "Do not probe an unfamiliar command against existing output directories",
+            "stop the task-owned process, record the affected paths and tell the user",
+            "Do not assume ignored output is disposable",
+            "restore it without a verified copy of its previous contents",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, skill)
+        self.assertIn("| Unsafe help probe |", acceptance)
+
 
 if __name__ == "__main__":
     unittest.main()

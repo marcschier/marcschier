@@ -47,12 +47,19 @@ the composed publication, not just a source-file search.
 4. Discover build, render and validation commands from this repository's actual
    instructions and workflows. Take the CI workflow's steps, in workflow order
    and including setup and restore steps, as the local gate. Record which
-   commands rewrite tracked files.
+   commands rewrite tracked files or generated output. Inspect documented
+   options and output paths before probing a tool: an unrecognized `--help`
+   can execute the command instead of displaying help. Do not probe an
+   unfamiliar command against existing output directories. If safe isolation
+   cannot be established, stop and record the missing information.
    Use existing output for a read-only review. If output is missing, obtain
    authorization for an isolated render location and compare source status and
    hashes before and after. Confirm with `git check-ignore` that version control
    ignores that location, so render output cannot enter a commit. Keep source
    and generated artifacts unchanged in review, plan and removal-audit modes.
+   If a command unexpectedly writes files, stop the task-owned process, record
+   the affected paths and tell the user. Do not assume ignored output is
+   disposable or restore it without a verified copy of its previous contents.
 
 Proceed when every selected spec has a manifest-to-publication route and every
 missing artifact, permission or ambiguous boundary is explicit. When a question

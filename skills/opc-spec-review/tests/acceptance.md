@@ -11,6 +11,7 @@ skill, not automated evidence of agent performance.
 | Ambiguous selection | Two manifests match the user's short name | Ask which spec before detailed review; do not choose the first match |
 | Unattended question | A question returns "user not available" | Take the reversible option that keeps the scope whole, continue, and list the choice in the report as agent-selected |
 | Missing output | Read-only request, no HTML, render command rewrites tracked fixtures | Ask for authorized isolated rendering; preserve source status and hashes |
+| Unsafe help probe | A renderer ignores `--help` and executes its normal command against existing output | Inspect documented options and output paths before probing; do not run against existing output. If an unexpected write occurs, stop the task-owned process, report affected paths and preserve any verified previous contents |
 | Truncated clause | Only the first half of a generated table is returned | Fetch the rest or mark coverage blocked; do not mark the clause reviewed |
 | Apparent contract conflict | Candidate validation and invocation validation have different obligations | Compare lifecycle predicates before finding a contradiction |
 | Optional ancestor | A Mandatory child belongs to an Optional ancestor | Preserve the conditional obligation; do not require the ancestor |
