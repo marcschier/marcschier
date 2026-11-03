@@ -141,6 +141,27 @@ class PackageTests(unittest.TestCase):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Contents-only update |", acceptance)
 
+    def test_figures_ribbon_fallback_preserves_independent_coverage(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "If a focused `F9` dispatch fails through UI automation",
+            "place the caret inside the figures placeholder",
+            "References > Captions > Update Table",
+            "`TableOfFiguresUpdate`",
+            "find it in a fresh accessibility state",
+            "act through its current node index",
+            "References > Table of Contents > Update Table",
+            "Reread the selected field to verify the result",
+            "Verify the tables list separately",
+            "Keep contents, remaining fields and visual pagination coverage independent",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        self.assertIn("| Figures ribbon fallback |", acceptance)
+
     def test_scope_excludes_dark_mode_and_pdf_rendering(self):
         for relative in ("SKILL.md", "README.md", "references/review.md"):
             text = (ROOT / relative).read_text(encoding="utf-8")
