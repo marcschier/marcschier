@@ -1,0 +1,26 @@
+{
+  "name": "microsoft-writing-style",
+  "version": "1.0.0",
+  "description": "Apply Microsoft Writing Style Guide wording rules to developer content, reference documentation, and specifications, as writing context or as an autopilot or interactive review.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/microsoft-writing-style",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "writing",
+    "style-guide",
+    "microsoft-style",
+    "technical-writing",
+    "specifications",
+    "api-reference",
+    "editing",
+    "review"
+  ],
+  "skills": [
+    "./"
+  ]
+}

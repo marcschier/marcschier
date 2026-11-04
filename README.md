@@ -19,6 +19,7 @@ This repository is also a Copilot CLI plugin marketplace.
 | Skill | Purpose |
 |---|---|
 | [copilot-sessions](skills/copilot-sessions) | Select, reopen, clean up, and transfer local Copilot CLI sessions on Windows |
+| [microsoft-writing-style](skills/microsoft-writing-style) | Apply Microsoft Writing Style Guide wording to developer content, reference documentation, and specifications |
 | [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
 | [OPC specification review](skills/opc-spec-review) | Review composed editions across selected specs, plan revisions and verify approved fixes |
 | [xregistry-writing](skills/xregistry-writing) | Write specifications and Primers in the style of upstream xregistry/spec |
@@ -28,6 +29,7 @@ Register the marketplace once, then install the plugins you want:
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install copilot-sessions@marcschier
+copilot plugin install microsoft-writing-style@marcschier
 copilot plugin install opcua-model-review@marcschier
 copilot plugin install opc-spec-review@marcschier
 copilot plugin install xregistry-writing@marcschier

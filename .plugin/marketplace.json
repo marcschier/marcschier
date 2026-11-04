@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.7.3"
+    "version": "1.8.0"
   },
   "plugins": [
     {
@@ -112,6 +112,33 @@
         "primers",
         "technical-writing",
         "documentation"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "microsoft-writing-style",
+      "source": "./skills/microsoft-writing-style",
+      "description": "Apply Microsoft Writing Style Guide wording rules to developer content, reference documentation, and specifications, as writing context or as an autopilot or interactive review.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/microsoft-writing-style",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "writing",
+        "style-guide",
+        "microsoft-style",
+        "technical-writing",
+        "specifications",
+        "api-reference",
+        "editing",
+        "review"
       ],
       "skills": [
         "./"
