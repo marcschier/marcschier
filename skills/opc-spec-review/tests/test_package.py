@@ -124,6 +124,44 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, normalized)
 
+    def test_word_open_waits_for_verified_document_window(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "wait for the actual document window",
+            "A split Open control can expand its menu",
+            "Return in the filename field can dismiss that menu",
+            "not a prescribed keystroke sequence",
+            "Before retrying an apparently unchanged dialog",
+            "enumerate Word windows again with `list_apps`",
+            "read the candidate with `get_window_state`",
+            "may have opened in a separate window",
+            "Re-verify its full path, artifact hash, part number and title",
+            "fresh state confirms the intended document is not open",
+            "the dialog still targets that artifact",
+            "If the Computer Use transport closes",
+            "last confirmed window state and exact transport failure",
+            "leave unperformed field and pagination checks unreviewed",
+            "resume with window discovery and identity verification",
+            "an open document alone does not establish inspection or a publication defect",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Delayed Word Open dialog |")
+        )
+        for requirement in (
+            "separate Word window",
+            "transport then closes before inspection",
+            "Wait and enumerate windows before retrying",
+            "leave field and pagination checks unreviewed",
+        ):
+            with self.subTest(acceptance=requirement):
+                self.assertIn(requirement, row)
+
     def test_blank_figure_capture_is_inconclusive_until_reproduced(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()

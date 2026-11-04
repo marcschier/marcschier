@@ -294,6 +294,22 @@ task-owned copy as described above. Confirm the full path and artifact hash
 before recording evidence, and distinguish a saved field-updated copy from the
 Publisher original.
 
+After an Open-dialog action, wait for the actual document window rather than
+equating command completion with a completed open. A split Open control can
+expand its menu; Return in the filename field can dismiss that menu, and a
+subsequent Return can report completion while the dialog is briefly still
+visible. These observations are not a prescribed keystroke sequence. Before
+retrying an apparently unchanged dialog, let the state settle, enumerate Word
+windows again with `list_apps` and read the candidate with `get_window_state`;
+the requested document may have opened in a separate window. Re-verify its
+full path, artifact hash, part number and title before continuing. Retry only
+after fresh state confirms the intended document is not open and the dialog
+still targets that artifact. If the Computer Use transport closes, record the
+last confirmed window state and exact transport failure, leave unperformed
+field and pagination checks unreviewed, and resume with window discovery and
+identity verification when the transport is available; an open document alone
+does not establish inspection or a publication defect.
+
 For a selected main-story field update, use a task-owned current DOCX copy
 whose update and save are authorized by the review contract. In Word Options >
 Quick Access Toolbar, set Choose commands from to All Commands and add the
