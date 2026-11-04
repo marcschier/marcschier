@@ -45,6 +45,14 @@ the reviewed output before reusing earlier evidence. Record both revisions and
 hashes. Carry forward coverage only for unchanged content and figures; reopen
 the affected cells where the output differs.
 
+Before a bulk ledger refinement, preflight the selected rows and their existing
+rule-specific reasons. Select by stable row identity and applicable rule, not
+by a generic subject alone: rows about the same subject can have different
+obligations or evidence. Preserve each existing reason unless the refinement
+explicitly accounts for its replacement. Check the proposed before/after rows
+before writing, and verify afterward that unrelated reasons remain unchanged;
+leave ambiguous matches untouched for investigation.
+
 ## Explanation and reading order
 
 Assess whether the publication teaches the mechanism around its precise
@@ -180,6 +188,23 @@ edit, exclude all field results from comparison or report all non-list text as
 unchanged when a field result changed. Keep unexplained differences open.
 If layout-affecting equivalence is not established, inspect the new artifact;
 matching body text alone does not establish equivalent pagination.
+
+Two pre-field-update DOCX ZIPs can differ only because image or hyperlink
+relationship IDs were regenerated. Record both package SHA-256 hashes, compare
+ZIP member sets and each member's uncompressed bytes, and enumerate every
+difference. For differing document XML, compare element structure, text and
+non-relationship attributes at corresponding locations. Resolve every changed
+relationship ID through its owning part's relationship file and require the
+same relationship type, target and target mode at that location; do not simply
+strip IDs. Compare relationship-attribute multisets within each relationship
+file with only `Id` excluded, preserving duplicate counts and all other
+attributes. A matching multiset
+alone cannot detect targets swapped between document locations.
+Require all other members to be byte-identical; unexplained differences,
+missing relationships or changed targets prevent an ID-only equivalence
+conclusion. This establishes only the compared pre-update package content,
+not field-update results or visual pagination. The copy filename, environment
+and later Word actions can affect those results; verify them separately.
 
 Compare non-list field results by instruction and document location across both
 DOCX representations: simple fields (`w:fldSimple` with `w:instr`) and complex

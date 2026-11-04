@@ -306,6 +306,62 @@ class PackageTests(unittest.TestCase):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Customization target mismatch |", acceptance)
 
+    def test_docx_relationship_id_equivalence_is_pre_update_only(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Record both package SHA-256 hashes",
+            "compare ZIP member sets and each member's uncompressed bytes",
+            "compare element structure, text and non-relationship attributes",
+            "Resolve every changed relationship ID through its owning part's relationship file",
+            "same relationship type, target and target mode at that location",
+            "do not simply strip IDs",
+            "Compare relationship-attribute multisets within each relationship file",
+            "with only `Id` excluded",
+            "preserving duplicate counts and all other attributes",
+            "A matching multiset alone cannot detect targets swapped",
+            "Require all other members to be byte-identical",
+            "missing relationships or changed targets prevent an ID-only equivalence",
+            "only the compared pre-update package content",
+            "not field-update results or visual pagination",
+            "The copy filename, environment and later Word actions",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for scenario in (
+            "Regenerated DOCX relationship IDs",
+            "Non-equivalent DOCX relationships",
+        ):
+            with self.subTest(scenario=scenario):
+                self.assertIn(f"| {scenario} |", acceptance)
+
+    def test_bulk_ledger_refinement_preserves_rule_specific_reasons(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "preflight the selected rows and their existing rule-specific reasons",
+            "Select by stable row identity and applicable rule",
+            "not by a generic subject alone",
+            "Preserve each existing reason",
+            "explicitly accounts for its replacement",
+            "Check the proposed before/after rows before writing",
+            "verify afterward that unrelated reasons remain unchanged",
+            "leave ambiguous matches untouched",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Bulk ledger reasons |")
+        )
+        self.assertIn("refine only R-A", row)
+        self.assertIn("preserve R-B's reason unchanged", row)
+        self.assertIn("before writing", row)
+
     def test_non_list_comparison_attributes_changed_field_results(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
