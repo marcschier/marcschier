@@ -181,6 +181,21 @@ unchanged when a field result changed. Keep unexplained differences open.
 If layout-affecting equivalence is not established, inspect the new artifact;
 matching body text alone does not establish equivalent pagination.
 
+Compare non-list field results by instruction and document location across both
+DOCX representations: simple fields (`w:fldSimple` with `w:instr`) and complex
+fields (`w:fldChar` begin/separate/end with `w:instrText`). Reconstruct split
+instructions and result runs within the correct field boundaries, respecting
+nested fields. Match corresponding fields across representations; an XML form
+change alone is not a text change, and an ambiguous match remains unresolved.
+A publisher-generated `REF` field for an internal table link can replace a
+custom display label with the table number when updated, changing technical
+text even though the link still resolves. Do not assume a field update
+preserved link labels. Record the original label and updated result with the
+instruction, target bookmark and location, then investigate unexpected changes
+against the source link and composed table. Distinguish the update-induced
+change from the Publisher's original stored result; a legitimate `FILENAME`
+change does not justify accepting unrelated `REF` changes.
+
 Separate content evidence from visual evidence in the ledger. DOCX XML can
 establish stored field-result text, including reference errors, but cannot
 establish Word's pagination or how a page looks. Record whether text came from

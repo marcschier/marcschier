@@ -279,11 +279,33 @@ class PackageTests(unittest.TestCase):
             "exclude all field results from comparison",
             "unchanged when a field result changed",
             "Keep unexplained differences open",
+            "Compare non-list field results by instruction and document location",
+            "simple fields (`w:fldSimple` with `w:instr`)",
+            "complex fields (`w:fldChar` begin/separate/end with `w:instrText`)",
+            "Reconstruct split instructions and result runs",
+            "respecting nested fields",
+            "Match corresponding fields across representations",
+            "an XML form change alone is not a text change",
+            "an ambiguous match remains unresolved",
+            "custom display label with the table number",
+            "Do not assume a field update preserved link labels",
+            "instruction, target bookmark and location",
+            "investigate unexpected changes against the source link and composed table",
+            "Distinguish the update-induced change from the Publisher's original stored result",
+            "does not justify accepting unrelated `REF` changes",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, review)
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Changed non-list field result |", acceptance)
+        for scenario in ("Updated REF custom label", "Simple and complex field comparison"):
+            with self.subTest(scenario=scenario):
+                row = next(
+                    line for line in acceptance.splitlines()
+                    if line.startswith(f"| {scenario} |")
+                )
+                self.assertIn("instruction and location", row)
+                self.assertIn("`AllowedModes` becoming `7`", row)
 
     def test_model_metadata_and_publication_gate_requirements_are_packaged(self):
         review = " ".join((ROOT / "references" / "review.md").read_text(
