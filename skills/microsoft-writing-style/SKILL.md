@@ -151,9 +151,10 @@ Before handing back any written or revised text, confirm:
 - No idioms, gendered generics, or biased or militaristic terms remain.
 - Numbers, dates, ranges, and units follow
   [punctuation-and-numbers.md](references/punctuation-and-numbers.md).
-- For reference documentation: every parameter has a type, default, and
-  behavior for edge values; every Boolean result states its condition; every
-  requirement is testable.
+- For reference documentation: equivalent entries use the same wording,
+  every Boolean result states its condition, every stated default, range, or
+  error condition is exact, and every requirement is testable.
 - For developer content: every procedure step is a complete imperative
-  sentence with one action, and every code example is introduced and shows its
-  result.
+  sentence with one action, and the sentence before each code example says
+  what the code does.
+- No change touched section order, headings, lists, tables, or other layout.

@@ -9,8 +9,10 @@ guide or template can own those without conflicting rules.
 
 The skill first asks who the audience is. Readers who learn or do something get
 the developer content route; readers who look something up get the reference
-documentation route, which adds rules for element descriptions, parameters,
-return values, errors, and testable normative text.
+documentation route, which adds rules for wording equivalent entries
+consistently, stating Boolean results, defaults, and error conditions exactly,
+and writing testable normative text. Which fields and sections an entry
+contains stays with the project's template.
 
 Read the [skill](SKILL.md) for the workflow. The rules live in
 [references](references/); the bundled term list and term collections cover the

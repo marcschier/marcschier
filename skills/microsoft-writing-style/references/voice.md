@@ -30,7 +30,6 @@ skip basic concepts, and spend the words on what's specific to the technology.
 - Prune every word that adds no meaning. If a sentence reads the same without a
   word, delete the word.
 - Prefer one short sentence per idea. Break a long sentence into two.
-- Prefer a list or table over a paragraph that enumerates parallel items.
 - Cut introductions that restate the heading or title.
 
 | Wordy | Concise |

@@ -9,8 +9,8 @@ native speaker reading the original.
 **Sentences.**
 
 - Keep sentences short and in subject-verb-object order.
-- If a sentence needs more than a few commas, rewrite it or convert it to a
-  list or table.
+- If a sentence needs more than a few commas, split it into shorter
+  sentences.
 - Link at most two clauses. Three is the absolute limit.
 - Keep a modifier next to the word it modifies.
 - Write complete sentences. Limit fragments to labels and headings.

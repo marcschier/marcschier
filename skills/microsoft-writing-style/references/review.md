@@ -11,14 +11,18 @@ later ones moot.
 
 | # | Category | Look for | Reference |
 |---|---|---|---|
-| 1 | Audience fit | Content too basic or too advanced for the chosen audience; undefined terms; missing prerequisites | [developer-content.md](developer-content.md), [reference-documentation.md](reference-documentation.md) |
-| 2 | Structure of content | Key point buried; missing outcome, result, error condition, default, or Boolean condition; required facts scattered or repeated | Route reference |
+| 1 | Audience fit | Content too basic or too advanced for the chosen audience; undefined terms; unstated prerequisites | [developer-content.md](developer-content.md), [reference-documentation.md](reference-documentation.md) |
+| 2 | Route wording | Developer content: procedure steps that aren't imperative or hold several actions, device-specific verbs, imprecise verbs for code. Reference: inconsistent wording of equivalent entries, descriptions that restate the name, Boolean results without a condition, vague defaults, ranges, or error conditions, untestable requirements | Route reference |
 | 3 | Concision | Wordy phrases, filler, *you can*, *there is/are*, restated headings, redundant sentences | [voice.md](voice.md) |
-| 4 | Voice and tone | Stiff, bossy, chummy, or marketing tone; tone wrong for the situation | [voice.md](voice.md) |
+| 4 | Voice and tone | Main point buried inside a sentence or paragraph; stiff, bossy, chummy, or marketing tone; tone wrong for the situation | [voice.md](voice.md) |
 | 5 | Grammar | Tense, mood, passive voice without reason, agreement, person, dangling or misplaced modifiers, ambiguous *-ing* and *-ed* words, *should*/*must* misuse | [grammar.md](grammar.md) |
 | 6 | Word choice | Complex words, jargon, inconsistent terms, nouns as verbs, coined words, Latin abbreviations, acronym handling | [word-choice.md](word-choice.md), [term-list.md](term-list.md), [term-collections.md](term-collections.md) |
 | 7 | Global and inclusive | Long or chained sentences, dropped *that* and articles, modifier stacks, idioms, biased, ableist, or militaristic terms, position-only cues | [global-and-inclusive.md](global-and-inclusive.md) |
 | 8 | Punctuation and numbers | Serial comma, hyphenation, dashes, numerals vs. words, ranges, dates, units | [punctuation-and-numbers.md](punctuation-and-numbers.md) |
+
+The check covers wording. It doesn't judge which sections or fields a document
+has, their order, or their layout. If a fact the reader needs seems to be
+missing, list it under questions for the author rather than as a finding.
 
 **Finding format.** Record each finding as:
 
@@ -44,8 +48,9 @@ representative locations.
 
 - Facts, behavior, numbers, identifiers, code, quoted UI or error text, and
   normative keywords. Flag them if they seem wrong; don't silently edit them.
-- Layout, headings, formatting, and structure that the project's own
-  conventions govern.
+- Layout, formatting, section order, heading levels, and the choice of
+  paragraph, list, or table. Other context governs those. Rewording the text
+  inside a heading, list item, or table cell is in scope.
 - The author's voice where an author style guide or paired voice skill applies
   and doesn't conflict with clarity or inclusivity.
 

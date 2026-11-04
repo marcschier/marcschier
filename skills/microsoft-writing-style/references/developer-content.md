@@ -3,7 +3,9 @@
 Use this route for tutorials, quickstarts, how-to guides, conceptual
 overviews, architecture explanations, samples, and any prose that teaches a
 technical reader to do something. The core references still apply. This file
-adds what changes for a developer audience.
+adds what changes in wording for a developer audience. Which sections an
+article has, their order, and how procedures and code are laid out come from
+other context.
 
 ## Audience assumptions
 
@@ -45,11 +47,10 @@ adds what changes for a developer audience.
 
 **What to show.**
 
-- Show real tasks, ordered from simple to complex.
+- Show real tasks.
 - Prioritize frequently used elements and those that are tricky to get right.
 - Don't show the obvious, and don't contrive an example just to demonstrate
   syntax.
-- Keep short examples scannable. Save long or complex samples for walkthroughs.
 - Show the expected output or result.
 
 **How to introduce it.**
@@ -82,10 +83,8 @@ adds what changes for a developer audience.
   3.*
 - Include the action that completes the step, such as *and then select OK* or
   *and then save the file*.
-- Start with an introductory sentence only when it adds information that the
-  title doesn't. Keep the procedure short; split long procedures into parts.
-- For a single-step procedure, write a paragraph or one bullet rather than a
-  numbered list.
+- Write an introductory sentence only when it adds information that the
+  title doesn't.
 - State the result of a step when the reader needs it to confirm success.
 - Put optional steps and conditions at the start of the step: *Optional: ...*
   or *If you use a proxy, ...*.
