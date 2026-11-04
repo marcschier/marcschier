@@ -419,6 +419,23 @@ cell-level legibility separately; a zoom label alone does not establish that
 the visible content enlarged. Match printed page labels to Word's page
 identities rather than inferring physical numbers from a multipage grid.
 
+Before treating screenshot-edge cropping as document clipping, compare the
+capture bounds and pixel dimensions with the window's DPI (dots per inch) and
+the actual visible page. On one Windows host, Word used 168 DPI; a DPI-unaware
+PowerShell capture received a virtualized 1267x1133 window rectangle and clipped
+the page. A per-monitor-aware thread obtained the physical 2217x1983 rectangle,
+and a capture using those bounds showed the entire inspected page. This
+established a capture-boundary error, not document clipping.
+Per-monitor-aware capture is one verified Windows option where the host permits
+that capture mechanism; it is not required on other hosts and does not authorize
+bypassing Computer Use controls. Use the host's supported capture route and
+verify that bounds and pixels use the same coordinate space. Recapture the
+intended page without editing it, and record the capture method, DPI and bounds
+where available. If the mismatch cannot be resolved, leave the cropped region
+unreviewed; report document clipping only when it persists in a correctly
+bounded view of the current artifact. Correct bounds for one page do not
+establish full pagination coverage.
+
 After navigation, compare the page or scroll position in the accessibility
 tree with the prior state. A completed background action can become visible
 after its first response, so let the view settle and reread it before issuing

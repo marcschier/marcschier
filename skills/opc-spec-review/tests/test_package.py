@@ -124,6 +124,45 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, normalized)
 
+    def test_word_capture_bounds_distinguish_dpi_cropping_from_document_clipping(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Before treating screenshot-edge cropping as document clipping",
+            "compare the capture bounds and pixel dimensions",
+            "actual visible page",
+            "Word used 168 DPI",
+            "virtualized 1267x1133 window rectangle",
+            "physical 2217x1983 rectangle",
+            "capture-boundary error, not document clipping",
+            "one verified Windows option",
+            "not required on other hosts",
+            "does not authorize bypassing Computer Use controls",
+            "bounds and pixels use the same coordinate space",
+            "Recapture the intended page without editing it",
+            "record the capture method, DPI and bounds",
+            "leave the cropped region unreviewed",
+            "persists in a correctly bounded view of the current artifact",
+            "Correct bounds for one page do not establish full pagination coverage",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Word DPI capture bounds |")
+        )
+        for requirement in (
+            "another host cannot resolve its capture mismatch",
+            "same coordinate space",
+            "not a cross-host requirement or Computer Use bypass",
+            "leave unresolved regions unreviewed",
+            "do not infer full pagination coverage",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, row)
+
     def test_word_process_ownership_does_not_establish_document_ownership(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
