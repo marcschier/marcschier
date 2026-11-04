@@ -258,6 +258,32 @@ failed COM activation is an automation blocker, not proof that Word is absent.
 LibreOffice can resolve fields when Word is absent; record that its field
 engine differs from Word's and that it does not establish Word visual coverage.
 
+A task-started Word process does not establish that every document in it is
+task-owned. In one observed launch, `WINWORD.EXE /n` with `TEMP` and `TMP` set
+to `D:\temp` and no filename passed showed at least three visible `OpusApp`
+windows with `_WwG` document-view children. Their document identities were not
+inspected; their contents and the cause remain unknown. Only the task-started
+PID was closed/stopped. Do not infer document ownership from the PID, window
+classes, launch arguments or temporary-directory settings.
+
+Before updating fields or quitting an instance, enumerate its documents and
+windows and verify each affected document's identity and task ownership.
+If unexpected documents appear or an identity cannot be verified, stop
+automation against them, report the uncertainty and leave them unchanged.
+Do not save or close an unidentified document, or quit an instance containing
+one. Distinguish a task-started PID from verified document ownership in cleanup
+records; stop only that specific PID when termination is authorized, never
+other Word processes.
+
+Consult Microsoft's [Office command-line-switch documentation](https://support.microsoft.com/en-us/office/lifecycle/command-line-switches-for-microsoft-office-products)
+before relying on a launch option. It describes `/n` as starting a new instance
+with no document open, and `/x` as responding to only one Dynamic Data Exchange
+(DDE) request, not as a separate-process guarantee. Starting Office with multiple
+switches is unsupported. Do not recommend `/x`, combined switches or `/n`
+as a guarantee that only task-owned documents are present; verify the actual
+document inventory. These observations do not authorize shell launch or focus
+workarounds in the Computer Use workflow below.
+
 For content-only field evaluation without a saved copy, keep the Publisher
 artifact unchanged:
 
@@ -273,8 +299,11 @@ artifact unchanged:
    found." and "Error! Bookmark not defined.", in Word's interface language.
    Compare contents and figure-list entries with the composed headings and
    captions, and reread the generated bibliography.
-5. Close each document without saving and quit Word. Confirm that no Word
-   process the task started remains, and stop a leftover only by its process ID.
+5. Close only verified task-owned documents without saving and quit Word only
+   after verifying that the instance contains no other documents. Confirm
+   whether a Word process the task started remains; report any ownership or
+   cleanup uncertainty instead of assuming it is safe to terminate. Stop an
+   authorized leftover only by its recorded process ID.
    Quit only a task-owned instance; never quit a pre-existing user instance.
 
 An exported PDF here is a vehicle for text extraction; its layout stays outside

@@ -124,6 +124,59 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, normalized)
 
+    def test_word_process_ownership_does_not_establish_document_ownership(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "A task-started Word process does not establish that every document",
+            "`WINWORD.EXE /n`",
+            "at least three visible `OpusApp` windows with `_WwG`",
+            "Their document identities were not inspected",
+            "their contents and the cause remain unknown",
+            "Only the task-started PID was closed/stopped",
+            "Before updating fields or quitting an instance",
+            "verify each affected document's identity and task ownership",
+            "Do not save or close an unidentified document",
+            "stop only that specific PID when termination is authorized",
+            "not as a separate-process guarantee",
+            "Starting Office with multiple switches is unsupported",
+            "verify the actual document inventory",
+            "do not authorize shell launch or focus workarounds",
+            "Close only verified task-owned documents without saving",
+            "instance contains no other documents",
+            "report any ownership or cleanup uncertainty",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        self.assertIn(
+            "https://support.microsoft.com/en-us/office/lifecycle/"
+            "command-line-switches-for-microsoft-office-products",
+            review,
+        )
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for scenario, requirements in (
+            ("Word process and document ownership", (
+                "document identities were not inspected",
+                "unknown contents and cause",
+                "leave unidentified documents unchanged",
+                "recorded task-started PID",
+                "unsupported combined switches",
+            )),
+            ("Verified Word cleanup", (
+                "Recheck the document inventory",
+                "confirm its PID exited",
+                "leave the other Word process and document unchanged",
+            )),
+        ):
+            row = next(
+                line for line in acceptance.splitlines()
+                if line.startswith(f"| {scenario} |")
+            )
+            for requirement in requirements:
+                with self.subTest(scenario=scenario, requirement=requirement):
+                    self.assertIn(requirement, row)
+
     def test_word_open_waits_for_verified_document_window(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
