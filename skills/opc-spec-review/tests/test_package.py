@@ -177,6 +177,39 @@ class PackageTests(unittest.TestCase):
                 with self.subTest(scenario=scenario, requirement=requirement):
                     self.assertIn(requirement, row)
 
+    def test_word_process_identity_uses_verified_window_handle(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "verified Word window's [`Window.Hwnd`]",
+            "https://learn.microsoft.com/en-us/office/vba/api/word.window.hwnd",
+            "resolve that handle to its process ID",
+            "compare it with the recorded task-started PID",
+            "on `Window`, not `Application.Hwnd`",
+            "Do not assume an empty application has a usable document window",
+            "If no verified window or handle is available",
+            "report process identity as unverified",
+            "rather than substituting another Word window",
+            "A handle-to-PID match does not establish ownership of every document",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Word window handle |")
+        )
+        for requirement in (
+            "another has no verified document window",
+            "verified window's `Window.Hwnd`",
+            "report process identity as unverified",
+            "do not substitute another Word window",
+            "matching PID does not establish ownership of every document",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, row)
+
     def test_word_open_waits_for_verified_document_window(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()

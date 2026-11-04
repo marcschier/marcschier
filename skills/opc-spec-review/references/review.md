@@ -275,6 +275,16 @@ one. Distinguish a task-started PID from verified document ownership in cleanup
 records; stop only that specific PID when termination is authorized, never
 other Word processes.
 
+For content-automation process identification, obtain the handle from a
+verified Word window's [`Window.Hwnd`](https://learn.microsoft.com/en-us/office/vba/api/word.window.hwnd),
+then resolve that handle to its process ID and compare it with the recorded
+task-started PID. Word exposes this property on `Window`, not
+`Application.Hwnd`; the attempted application property returned no handle.
+Do not assume an empty application has a usable document window. If no verified
+window or handle is available, report process identity as unverified rather
+than substituting another Word window. A handle-to-PID match does not establish
+ownership of every document in that process.
+
 Consult Microsoft's [Office command-line-switch documentation](https://support.microsoft.com/en-us/office/lifecycle/command-line-switches-for-microsoft-office-products)
 before relying on a launch option. It describes `/n` as starting a new instance
 with no document open, and `/x` as responding to only one Dynamic Data Exchange
