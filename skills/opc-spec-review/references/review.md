@@ -442,6 +442,26 @@ after its first response, so let the view settle and reread it before issuing
 another navigation. Record only the pages and regions actually visible; an
 unchanged or truncated tree does not establish visual coverage.
 
+Page-navigation ranges and page metafiles are separate evidence from the live
+Word view. In one verified task-owned 70-page copy, `GoTo(2)` returned the same
+zero-length range and physical page as page 1. `Pages.Item(2)` exposed zero
+rectangles and an enhanced metafile that rendered white between the cover and
+printed front matter, but the live view did not independently show page 2.
+Record these observations without concluding that the inaccessible page is
+blank; its visual coverage remains unreviewed until its identity and appearance
+can be confirmed through supported live navigation.
+
+Microsoft describes [`Page.EnhMetaFileBits`](https://learn.microsoft.com/en-us/office/vba/api/word.page.enhmetafilebits)
+as a picture representation. A GDI+ conversion of `Pages.Item(1).EnhMetaFileBits`
+clipped vertical cover lettering that was fully visible in the live Word
+screenshot. Record the conversion method and distinguish the converted
+metafile from Word-window visual evidence; they are not interchangeable, and
+the converted image is not proof of print output. Neither zero rectangles nor
+a white conversion establishes a blank page. Corroborate apparent clipping in
+the verified live view before attributing it to the document, and keep any
+conversion discrepancy unresolved when that check is unavailable. This does
+not extend coverage to uninspected pages or bring PDF layout/rendering into scope.
+
 If a figure appears blank in a capture, treat that capture as inconclusive.
 Refresh the view without editing the document: let Word finish rendering, reread
 the current page state, then use a non-editing click in the page or move to

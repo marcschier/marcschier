@@ -163,6 +163,45 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, row)
 
+    def test_word_page_metafiles_do_not_establish_live_or_print_coverage(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Page-navigation ranges and page metafiles are separate evidence",
+            "`GoTo(2)` returned the same zero-length range and physical page",
+            "`Pages.Item(2)` exposed zero rectangles",
+            "live view did not independently show page 2",
+            "without concluding that the inaccessible page is blank",
+            "visual coverage remains unreviewed",
+            "https://learn.microsoft.com/en-us/office/vba/api/word.page.enhmetafilebits",
+            "as a picture representation",
+            "GDI+ conversion of `Pages.Item(1).EnhMetaFileBits`",
+            "fully visible in the live Word screenshot",
+            "Record the conversion method",
+            "they are not interchangeable",
+            "converted image is not proof of print output",
+            "Neither zero rectangles nor a white conversion establishes a blank page",
+            "keep any conversion discrepancy unresolved",
+            "does not extend coverage to uninspected pages",
+            "bring PDF layout/rendering into scope",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Word page metafile limits |")
+        )
+        for requirement in (
+            "without independent live page-2 evidence",
+            "Keep page 2 visually unreviewed rather than declaring it blank",
+            "proof of print output",
+            "leave the discrepancy unresolved",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, row)
+
     def test_word_process_ownership_does_not_establish_document_ownership(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
