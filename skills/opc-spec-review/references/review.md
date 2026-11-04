@@ -284,7 +284,27 @@ other document or assume the targeted window determines the active document.
 
 Use Home > Select > Select All and record the selected and
 total word counts from the current state; do not assume selection from command
-completion alone. Invoke `FieldsUpdate` through its current accessibility node.
+completion alone.
+
+Dismiss context menus and other open menus before selecting the main story.
+If enabling Word Count through the status-bar context menu, close that menu
+first, then reselect all. Immediately before invoking `FieldsUpdate`, obtain a
+fresh accessibility state that verifies menus are dismissed and shows the
+selected and total word counts in the status bar; an earlier count is not
+sufficient. If selection is absent or uncertain, reselect and verify it before
+retrying. Invoke `FieldsUpdate` through its current accessibility node only
+after these checks.
+
+In one current CI DOCX copy, Select All showed 42,699 of 42,699 words, but the
+status-bar context menu remained open after enabling Word Count. Activating
+`FieldsUpdate` closed the menu; selection was no longer present, Word showed
+Repeat Update Fields and all three lists remained placeholders. After
+reselecting with the menu closed and verifying the same count in the status
+bar, invoking `FieldsUpdate` showed Undo Update Fields and eventually populated
+the contents, figures and tables lists. Record these observations without
+assuming the first activation updated the intended selection. Neither Repeat
+Update Fields nor Undo Update Fields proves list correctness or pagination
+coverage; inspect the actual results independently.
 
 Handle each resulting dialog separately, selecting Update entire table and
 confirming it before reading the next dialog. One observed sequence was Update

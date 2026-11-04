@@ -231,6 +231,46 @@ class PackageTests(unittest.TestCase):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Main-story Update fallback |", acceptance)
 
+    def test_main_story_update_requires_fresh_selection_with_menus_dismissed(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Dismiss context menus and other open menus before selecting the main story",
+            "close that menu first, then reselect all",
+            "Immediately before invoking `FieldsUpdate`",
+            "fresh accessibility state that verifies menus are dismissed",
+            "selected and total word counts in the status bar",
+            "an earlier count is not sufficient",
+            "If selection is absent or uncertain, reselect and verify it",
+            "42,699 of 42,699 words",
+            "selection was no longer present",
+            "Repeat Update Fields and all three lists remained placeholders",
+            "verifying the same count in the status bar",
+            "eventually populated the contents, figures and tables lists",
+            "without assuming the first activation updated the intended selection",
+            "Neither Repeat Update Fields nor Undo Update Fields proves list correctness",
+            "inspect the actual results independently",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        row = next(
+            line for line in acceptance.splitlines()
+            if line.startswith("| Open menu before field update |")
+        )
+        for requirement in (
+            "42,699 of 42,699",
+            "selection disappears",
+            "Repeat Update Fields",
+            "Undo Update Fields",
+            "fresh accessibility state",
+            "immediately before invoking",
+            "list correctness or pagination coverage",
+        ):
+            with self.subTest(acceptance=requirement):
+                self.assertIn(requirement, row)
+
     def test_unsupported_update_radio_action_uses_fresh_dialog_evidence(self):
         review = " ".join(
             (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
