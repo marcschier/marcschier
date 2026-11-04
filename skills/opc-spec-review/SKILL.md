@@ -36,6 +36,18 @@ the composed publication, not just a source-file search.
    a migration path from one. When the draft explicitly targets interoperability
    with an existing implementation or dependency, assess that stated target
    without inventing a compatibility commitment.
+   Ask whether to include PDF and Word inspection and fixes before entering
+   either format's review branch. For each format whose scope is not already
+   explicit, use `ask_user` to offer Exclude (default), Inspect only, or Inspect
+   and fix, one format at a time. Record the answer separately for PDF and Word;
+   the user can include either or both. Default to excluding both inspection
+   and fixes when no answer is available. A whole-repository request or general
+   approval to fix findings does not opt either format in. Inspect only leaves
+   files unchanged; Inspect and fix authorizes that format's corrections,
+   subject to the technical decisions and source-of-truth rules in
+   [references/revisions.md](references/revisions.md). Resolve any conflict
+   with an explicit read-only request before editing. Record excluded formats
+   as outside the agreed scope, not as blocked or implicitly reviewed.
 3. Freeze the source revision, branch, dirty state and relevant source hashes.
    Record rendered-artifact provenance and hashes, including tool versions and
    input revision. A stale rendering is evidence of that rendering, not of the
@@ -95,11 +107,13 @@ including the review that establishes an implementation plan. It defines the
 coverage ledger, contract checks, figure and format inspection, and
 release-dependency assessment. Resolve paths relative to this SKILL.md.
 
-Dark-mode behavior and PDF layout/rendering, including print exports, are
-outside this skill's review scope. Review what each shipped format says.
-Word visual pagination review requires explicit scope agreement and the
-artifact-identity and Computer Use checks in the review reference; inspecting
-DOCX field results alone does not establish visual coverage.
+Dark-mode behavior remains outside this skill's review scope. PDF and Word
+inspection and fixes are excluded by default; enter only the branches the user
+selected in the review contract. PDF layout/rendering, including print exports,
+is covered only when PDF inspection is included. Word inspection includes DOCX
+content and field checks; agree the pages for visual pagination review and use
+the artifact-identity and Computer Use checks in the review reference.
+Inspecting DOCX field results alone does not establish visual coverage.
 
 Complete all four coverage levels for every in-scope clause and inspect every
 official figure. Mark inaccessible evidence as unreviewed, with its consequence

@@ -28,7 +28,7 @@ mean:
    protocol detail.
 3. **Detail:** read every paragraph, table, snippet and annex in context,
    including generated content. Reread generated bibliography and glossary
-   entries in each shipped format after a contract correction. Follow
+   entries in each in-scope shipped format after a contract correction. Follow
    pagination and fetch omitted ranges; truncated reads do not count as
    coverage.
 4. **Words:** check terminology, qualifications, normative force and consistency
@@ -115,12 +115,22 @@ exit status alone does not establish that the schemas compile.
 
 ## Figures and shipped formats
 
-This review covers what each shipped format says. Dark-mode behavior and PDF
-layout/rendering, including pagination, page breaks, clipped tables and wrapped
-identifiers in PDF or print exports, are outside this skill's scope. Do not
-inspect them or record them as findings. Word visual pagination review is a
-separate, explicitly agreed branch described below. Opening a renderer for a
-content check does not bring its layout into scope.
+Review only the formats included in the review contract. Ask whether to include
+PDF and Word inspection and fixes, separately for each format, unless the user
+has already made that choice explicit. The choices are Exclude (default),
+Inspect only, or Inspect and fix. Without an answer, exclude both inspection
+and fixes. This gate includes PDF text extraction and DOCX XML/field-result
+inspection, not just opening a viewer. Do not inspect excluded formats or
+record their defects as findings; mark them outside the agreed scope rather
+than blocked. Dark-mode behavior remains outside this skill's scope.
+
+PDF layout/rendering, including pagination, page breaks, clipped tables and
+wrapped identifiers in PDF or print exports, enters scope only with PDF
+inspection. Word visual pagination review is a separately agreed page range
+within the Word branch below. Inspection does not authorize fixes: apply only
+the selected format's authorized corrections through the revision procedure.
+Shared source or generator changes may regenerate excluded formats; record
+that effect without treating it as permission to inspect or fix those formats.
 
 Inspect every official figure in full, including labels, arrows, legend,
 caption, surrounding explanation and cross-references. Record each figure's
@@ -149,6 +159,11 @@ limits the release assessment. Never turn an inaccessible figure or format into
 an implicit pass.
 
 ### Word documents
+
+Enter this branch only when the user has included Word inspection. This
+includes stored DOCX content checks, COM evaluation and the optional visual
+workflow; none runs by default. Keep all existing artifact and ownership
+safeguards when fixes are authorized.
 
 A DOCX holds its cross-references, contents, lists of figures and tables and
 generated bibliography as fields. Distinguish field instructions from stored
@@ -226,8 +241,10 @@ establish stored field-result text, including reference errors, but cannot
 establish Word's pagination or how a page looks. Record whether text came from
 stored results or a Word field update. Compare contents and figure-list entries
 with the composed headings and captions, and reread the generated bibliography.
-When results are missing, ambiguous or require Word evaluation, use Word to
-resolve them; do not mark unresolved fields as reviewed.
+When results are missing, ambiguous or require Word evaluation, obtain
+authorization before updating fields, including unsaved in-memory updates.
+Use Word to resolve them only with that authorization; otherwise report the
+unresolved results without changing them. Do not mark unresolved fields as reviewed.
 
 Word's "Update Table of Contents" ribbon action can update only the contents
 while the separate lists of figures and tables remain placeholders, even in a
@@ -294,8 +311,8 @@ as a guarantee that only task-owned documents are present; verify the actual
 document inventory. These observations do not authorize shell launch or focus
 workarounds in the Computer Use workflow below.
 
-For content-only field evaluation without a saved copy, keep the Publisher
-artifact unchanged:
+For authorized content-only field evaluation without a saved copy, keep the
+Publisher artifact unchanged. Inspect only does not authorize field updates:
 
 1. Point `TEMP` and `TMP` at the user's authorized temporary location before
    starting Word, because Word and its exports write temporary files there.
@@ -304,7 +321,8 @@ artifact unchanged:
 3. Record the stored results before updating all fields, then every table of
    contents and table of figures. Keep the original artifact unchanged and
    distinguish update-induced changes from the Publisher's stored results.
-4. Read the resolved text through Word, or export a PDF and extract its text.
+4. Read the resolved text through Word, or, only when PDF inspection is also
+   included, export a PDF and extract its text.
    Search it for Word's error results, such as "Error! Reference source not
    found." and "Error! Bookmark not defined.", in Word's interface language.
    Compare contents and figure-list entries with the composed headings and
@@ -316,9 +334,10 @@ artifact unchanged:
    authorized leftover only by its recorded process ID.
    Quit only a task-owned instance; never quit a pre-existing user instance.
 
-An exported PDF here is a vehicle for text extraction; its layout stays outside
-the review scope. Record its origin and the DOCX hash rather than treating an
-export as independent evidence of the original field results.
+An exported PDF here is a vehicle for text extraction, not evidence of its
+layout. Record its origin and the DOCX hash rather than treating an export as
+independent evidence of the original field results. Any agreed PDF layout
+inspection still requires the separate visual checks below.
 
 ### Word visual inspection and UI blockers
 
@@ -460,7 +479,8 @@ the converted image is not proof of print output. Neither zero rectangles nor
 a white conversion establishes a blank page. Corroborate apparent clipping in
 the verified live view before attributing it to the document, and keep any
 conversion discrepancy unresolved when that check is unavailable. This does
-not extend coverage to uninspected pages or bring PDF layout/rendering into scope.
+not extend coverage to uninspected pages or bring PDF layout/rendering into scope
+without the separate PDF opt-in.
 
 If a figure appears blank in a capture, treat that capture as inconclusive.
 Refresh the view without editing the document: let Word finish rendering, reread
@@ -493,6 +513,31 @@ not a publication defect. Continue the accessible content checks and leave the
 affected visual cells blocked; use assessment incomplete when the missing
 evidence prevents the agreed verdict. Report a publication defect only when
 current artifact evidence demonstrates it.
+
+### PDF inspection and authorized fixes
+
+Enter this branch only when the user has included PDF inspection. Record the
+absolute path, SHA-256 hash, source/model/tool revisions, internal part number
+and title, and viewer/version before using the PDF as evidence. Distinguish the
+shipped PDF from a later Word export and record each artifact's origin.
+
+Agree the page range and inspect it visually in a supported viewer, including
+page breaks, margins, table clipping, wrapped identifiers, figures and captions.
+Reconcile physical page indices with printed labels and check navigation and
+links. Record actual pages and regions inspected; text extraction alone cannot
+establish layout/rendering coverage. Check capture bounds and viewer state
+before attributing cropping or missing artwork to the publication. Leave
+inaccessible in-scope pages blocked with the exact limitation and resumption
+action. PDF observations do not establish Word pagination or printed output.
+
+For either PDF or Word, Inspect only leaves sources and generated artifacts
+unchanged. When Inspect and fix is authorized, trace each confirmed defect to
+its authored source, generator, template or field-evaluation step, apply the
+approved correction there, regenerate and reinspect affected pages and content.
+Keep normative decisions subject to approval. Do not patch generated files
+alone or modify a user's open document. Save field-updated evidence only in an
+authorized task-owned copy, with before/after hashes and result comparisons.
+Report unresolved renderer defects rather than silently editing around them.
 
 ## External dependencies and publication closure
 

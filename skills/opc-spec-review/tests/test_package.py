@@ -395,15 +395,69 @@ class PackageTests(unittest.TestCase):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         self.assertIn("| Captions ribbon fallback |", acceptance)
 
-    def test_scope_excludes_dark_mode_and_pdf_rendering(self):
+    def test_format_inspection_and_fixes_require_opt_in_with_exclusion_default(self):
         for relative in ("SKILL.md", "README.md", "references/review.md"):
             text = (ROOT / relative).read_text(encoding="utf-8")
             normalized = " ".join(text.split())
             with self.subTest(file=relative):
                 self.assertIn("Dark-mode behavior".lower(), normalized.lower())
-                self.assertIn("PDF layout/rendering", normalized)
+                self.assertIn("layout/rendering", normalized)
                 self.assertIn("outside", normalized)
-                self.assertNotIn("unless the user expands the scope", normalized)
+                self.assertIn("Exclude (default)", normalized)
+                self.assertIn("Inspect only", normalized)
+                self.assertIn("Inspect and fix", normalized)
+                self.assertIn("PDF and Word inspection and fixes", normalized)
+                self.assertNotIn(
+                    "Dark-mode behavior and PDF layout/rendering", normalized
+                )
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        for requirement in (
+            "use `ask_user`",
+            "one format at a time",
+            "Record the answer separately for PDF and Word",
+            "Default to excluding both inspection and fixes when no answer is available",
+            "general approval to fix findings does not opt either format in",
+            "Resolve any conflict with an explicit read-only request before editing",
+            "outside the agreed scope, not as blocked or implicitly reviewed",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, skill)
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "unless the user has already made that choice explicit",
+            "This gate includes PDF text extraction and DOCX XML/field-result inspection",
+            "Enter this branch only when the user has included Word inspection",
+            "Enter this branch only when the user has included PDF inspection",
+            "only when PDF inspection is also included, export a PDF",
+            "Inspect only does not authorize field updates",
+            "Agree the page range",
+            "text extraction alone cannot establish layout/rendering coverage",
+            "Shared source or generator changes may regenerate excluded formats",
+            "apply the approved correction there, regenerate and reinspect",
+            "Do not patch generated files alone",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text(encoding="utf-8").split()
+        )
+        self.assertIn("General fix approval does not opt them in", revisions)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for scenario, requirement in (
+            ("Format opt-in default", "exclude both inspection and fixes without an answer"),
+            ("Independent format choices", "do not inspect or fix Word"),
+            ("Inspection without fixes", "without changing sources, field results or generated output"),
+            ("Word fixes without PDF", "rather than exporting a PDF for inspection"),
+            ("Out-of-scope layout", "continuing dark-mode exclusion"),
+        ):
+            row = next(
+                line for line in acceptance.splitlines()
+                if line.startswith(f"| {scenario} |")
+            )
+            with self.subTest(scenario=scenario):
+                self.assertIn(requirement, row)
 
     def test_main_story_update_fallback_limits_evidence_and_customization(self):
         review = " ".join(

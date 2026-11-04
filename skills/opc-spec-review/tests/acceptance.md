@@ -4,12 +4,21 @@ Use synthetic repositories or supplied fixture descriptions, never private
 specification text. These are behavioral evaluations for a host running the
 skill, not automated evidence of agent performance.
 
+Format-specific scenarios below assume explicit inspection opt-in for the
+named PDF or Word format unless the scenario tests exclusion or missing consent.
+An update or save also requires the stated authorization; inspection alone
+does not permit fixes.
+
 | Scenario | Input | Required outcome |
 |---|---|---|
 | Whole repository | Manifests enumerate Part-A, Part-B and Part-C; user selects the whole repo | Inventory and coverage include all three; no source or generated-artifact edits |
 | Explicit subset | User selects Part-B; its contract references Part-A | Read Part-A only to resolve the dependency; report cross-boundary changes without editing Part-A |
 | Ambiguous selection | Two manifests match the user's short name | Ask which spec before detailed review; do not choose the first match |
 | Unattended question | A question returns "user not available" | Take the reversible option that keeps the scope whole, continue, and list the choice in the report as agent-selected |
+| Format opt-in default | A whole-repository review and general fix request names no formats; the PDF/Word scope questions are unanswered or return "user not available" | Ask separately for PDF and Word using Exclude (default), Inspect only, or Inspect and fix; exclude both inspection and fixes without an answer, including PDF text extraction and DOCX XML checks; record the exclusions as outside scope, not blocked or reviewed |
+| Independent format choices | The user chooses PDF Inspect and fix and Word Exclude | Inspect PDF content and layout/rendering and correct confirmed defects at the authorized source, regenerate and reinspect; do not inspect or fix Word, and do not ask again for an already explicit format choice |
+| Inspection without fixes | The user chooses Word Inspect only and PDF Inspect only; defects are found | Inspect the included artifacts and agreed page ranges, report findings without changing sources, field results or generated output; request fix authorization before corrections and retain the dark-mode exclusion |
+| Word fixes without PDF | The user chooses Word Inspect and fix and PDF Exclude | Inspect and correct Word within the agreed scope using task-owned copies and source-of-truth fixes; read resolved text through Word rather than exporting a PDF for inspection; do not infer PDF coverage from Word evidence |
 | Missing output | Read-only request, no HTML, render command rewrites tracked fixtures | Ask for authorized isolated rendering; preserve source status and hashes |
 | Unsafe help probe | A renderer ignores `--help` and executes its normal command against existing output | Inspect documented options and output paths before probing; do not run against existing output. If an unexpected write occurs, stop the task-owned process, report affected paths and preserve any verified previous contents |
 | Truncated clause | Only the first half of a generated table is returned | Fetch the rest or mark coverage blocked; do not mark the clause reviewed |
@@ -49,7 +58,7 @@ skill, not automated evidence of agent performance.
 | Blank figure capture | A task-owned DOCX figure appears blank in captures after scrolling at multiple zoom levels, while SVG and non-empty PNG media exist; a non-editing page click makes it visible | Treat blank captures as inconclusive; let rendering settle, reread the page state, click in the page without editing or move to another page and return, then capture the confirmed page again; record the media checks without treating them as proof of rendering, and report a publication defect only if the blank is reproducible and artifact evidence supports omission |
 | Word UI interruption | A Computer Use action returns `interrupted` | Reread the same app with `get_window_state`, retry the same action and yield to active user input; do not bypass the host's controls |
 | Word UI blocker | Word is registered but COM activation fails or a required UI permission is denied | Distinguish automation and UI failures from installation discovery; record the exact tool result, artifact hash, attempted action, unreviewed pages and resumption action; continue accessible content checks, leave visual coverage blocked and report no publication defect without artifact evidence |
-| Out-of-scope layout | A Word PDF export wraps identifiers mid-word, and the HTML dark theme shows light text on a white background | Record neither as a finding; state that dark mode and PDF layout are outside the review scope |
+| Out-of-scope layout | PDF inspection is excluded, and an incidental Word PDF export wraps identifiers mid-word while the HTML dark theme shows light text on a white background | Do not inspect or fix the PDF or record either issue as a finding; state the PDF exclusion and the continuing dark-mode exclusion |
 | Figure count | An HTML scan suggests 40 figures; the composed STS holds 37 | Report the per-part count from the composed intermediate and correct any earlier figure count explicitly |
 | Render currency | A render is taken, then a commit leaves all render inputs unchanged | Compare the render-input hashes; the render stays current regardless of the commit ID or unrelated uncommitted edits |
 | Changed model render | A model metadata edit changes a render input, but the new composed XML and figures are byte-identical to the reviewed artifacts | Compare the fresh artifacts and hashes, record both revisions, carry forward only the matching content and figure evidence, and reopen any affected output that differs |

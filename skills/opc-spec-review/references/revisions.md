@@ -21,6 +21,12 @@ authorized those specific fixes. Read-only review, plan and removal-audit modes
 leave sources and generated artifacts unchanged. Publishing and merging each
 require explicit authorization; approving local edits does not authorize either.
 
+Carry forward the separate PDF and Word choices from the review contract.
+Neither format permits inspection or fixes by default. General fix approval
+does not opt them in; Inspect only leaves files unchanged, and Inspect and fix
+permits corrections only for the selected format. Reconfirm scope before a
+proposed fix requires inspection or corrections in an excluded format.
+
 ## Implement at the source of truth
 
 Apply approved fixes to authored sources, shared generators and gates,
