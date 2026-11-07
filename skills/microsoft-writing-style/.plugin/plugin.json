@@ -1,6 +1,6 @@
 {
   "name": "microsoft-writing-style",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Apply Microsoft Writing Style Guide wording rules to developer content, reference documentation, and specifications, as writing context or as an autopilot or interactive review.",
   "author": {
     "name": "Marc Schier",

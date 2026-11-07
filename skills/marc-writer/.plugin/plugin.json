@@ -1,6 +1,6 @@
 {
   "name": "marc-writer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Write technical documents in Marc Schier's voice, with causal arguments, testable requirements, and a final claudism-killer editing pass.",
   "author": {
     "name": "Marc Schier",

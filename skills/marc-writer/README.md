@@ -4,29 +4,35 @@ Write technical documents in Marc Schier's voice: state the point early, explain
 the failure mechanism, and make the recommendation implementable.
 
 The skill uses the supplied [Writing Style Guide](STYLE.md), including its
-19 principles, document-type patterns, and acceptance questions. It then invokes
-[Claudism Killer](../claudism-killer) for a final edit against that guide.
-The cleanup preserves deliberate questions, causal arguments, technical density,
-and useful qualifications.
+19 principles, document-type patterns, and acceptance questions. Wording that
+the guide doesn't address follows
+[microsoft-writing-style](../microsoft-writing-style); where both address the
+same point, such as sentence length, *we*, or modal verbs, the guide wins. It
+then invokes [Claudism Killer](../claudism-killer) for a final edit against
+that guide. The cleanup preserves deliberate questions, causal arguments,
+technical density, and useful qualifications.
 
 ## Install
 
-Install both skills from the marketplace:
+Install all three skills from the marketplace:
 
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install claudism-killer@marcschier
+copilot plugin install microsoft-writing-style@marcschier
 copilot plugin install marc-writer@marcschier
 ```
 
-`claudism-killer` is an explicit dependency, not bundled or installed
-automatically by `marc-writer`. Version 1.0.1 adds the clean-output composition
-contract; update an older install with `copilot plugin update claudism-killer`.
+`claudism-killer` and `microsoft-writing-style` are explicit dependencies, not
+bundled or installed automatically by `marc-writer`. Version 1.0.1 of
+claudism-killer adds the clean-output composition contract; update an older
+install with `copilot plugin update claudism-killer`.
 
-Or register both skills from a local clone:
+Or register the skills from a local clone:
 
 ```powershell
 copilot skill add .\skills\claudism-killer
+copilot skill add .\skills\microsoft-writing-style
 copilot skill add .\skills\marc-writer
 ```
 

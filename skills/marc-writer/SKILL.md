@@ -9,8 +9,10 @@ description: >
   manuals, operational plans, requirements, and design proposals. Particularly
   relevant to xRegistry, OPC UA, Web of Things, semantic modeling, registry
   federation, industrial edge, and Azure IoT Operations. Also supports a
-  read-only style review. Requires the claudism-killer skill; does not impose
-  this voice on unrelated writing.
+  read-only style review. Applies the microsoft-writing-style skill for wording
+  wherever the bundled styleguide doesn't override it. Requires the
+  claudism-killer and microsoft-writing-style skills; does not impose this
+  voice on unrelated writing.
 ---
 
 # marc-writer
@@ -32,9 +34,16 @@ catalogue. Resolve it through the host's skill mechanism, or read its actual
 SKILL.md from an authorized repository or installed-skill location. Installation
 is documented in [README.md](README.md).
 
-Check that both references are accessible before proceeding. If claudism-killer
-is missing, state the dependency and its installation command; do not silently
-substitute a word list or claim to have completed its pass.
+Use the existing **microsoft-writing-style** skill as the wording baseline for
+voice, grammar, word choice, global and inclusive English, punctuation, and
+numbers. Resolve it the same way as claudism-killer. STYLE.md overrides it
+wherever the two address the same point; see
+[Precedence](#precedence-with-microsoft-writing-style).
+
+Check that all three references are accessible before proceeding. If
+claudism-killer or microsoft-writing-style is missing, state the dependency and
+its installation command; do not silently substitute a word list or claim to
+have applied its rules.
 
 ## Workflow
 
@@ -42,9 +51,13 @@ substitute a word list or claim to have completed its pass.
    or capability, target files or response format, factual sources, and edit
    scope. Use the supplied context; ask only for a missing input that materially
    affects the argument or required behavior. A style audit is read-only.
-2. **Read the guide and sources.** Read STYLE.md and the complete selected draft,
-   if any. Separate established facts and requirements from proposed decisions,
-   assumptions, and open issues. Keep existing citations and normative meaning.
+2. **Read the guides and sources.** Read STYLE.md and the complete selected
+   draft, if any. Load microsoft-writing-style in write mode, or critique mode
+   for a read-only audit. Choose its developer content or reference
+   documentation route from the audience in the brief; ask the user only when
+   the brief doesn't settle it. Separate established facts and requirements from
+   proposed decisions, assumptions, and open issues. Keep existing citations and
+   normative meaning.
 3. **Form the causal argument.** Identify current behavior, the actual failure
    mechanism, required capability, recommendation, and implementation
    consequences. Choose the document-type pattern in STYLE.md. Treat its
@@ -53,7 +66,8 @@ substitute a word list or claim to have completed its pass.
 4. **Compose or revise.** Put the point in the first paragraph. Use the guide's
    terminology, entity/operation descriptions, scope boundaries, and testable
    obligations. Include applicable failure, lifecycle, ownership, repeated-
-   operation, and reversal cases. Complete the argument before polishing it.
+   operation, and reversal cases. Complete the argument before polishing it,
+   then settle wording with microsoft-writing-style where STYLE.md is silent.
    For a read-only audit, inspect the existing argument and record proposed
    corrections instead of composing replacement text or applying changes.
 5. **Apply The Marc Test.** Inspect each section against every applicable
@@ -89,6 +103,25 @@ The author guide wins over a generic stylistic preference. That protection is
 contextual: an earned contrast stays; repeated empty antithesis does not.
 Likewise, architectural questions need answers in a published specification.
 This pass does not trigger marc-writer recursively.
+
+## Precedence with microsoft-writing-style
+
+STYLE.md decides structure, argument, and voice. microsoft-writing-style decides
+wording that STYLE.md doesn't address. Where both address the same point,
+STYLE.md wins. These conflicts come up most often:
+
+| Point | STYLE.md (wins) | microsoft-writing-style default |
+|---|---|---|
+| Sentence length | Moderately long, qualified sentences when the clauses form one causal argument | Short sentences, at most two linked clauses |
+| *we* | Shared direction, commitments, and engineering positions | Use sparingly |
+| Modal verbs | *may* for permission; MUST, SHOULD, and MAY per the specification's convention | *can* for permission, *might* for possibility |
+| Question headings | Kept when they expose and answer an assumption | Not addressed; keep them |
+| Document hierarchy | The document-type patterns in STYLE.md | Out of scope for that skill |
+
+Everything else follows microsoft-writing-style: contractions, present tense,
+plain word choice, the term list, acronym handling, global and inclusive
+English, punctuation, and numbers. Its review checklist doesn't flag a STYLE.md
+device as a finding.
 
 ## Factual and editing boundaries
 

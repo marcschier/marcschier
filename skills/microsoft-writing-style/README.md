@@ -22,7 +22,7 @@ A–Z word decisions.
 
 | Mode | Behavior |
 |---|---|
-| Write | Supplies wording rules while you or another skill drafts. With marc-writer, the author's voice drives structure and argument, and this skill settles wording. |
+| Write | Supplies wording rules while you or another skill drafts. With marc-writer, its style guide drives structure, argument, and voice and wins on any point it addresses; this skill settles the remaining wording. |
 | Review: autopilot | Runs the check and rewrites the document in one pass, then reports every change that could affect meaning. |
 | Review: interactive | Summarizes findings by category and severity and applies only the categories you select. |
 | Critique | Reports findings without editing the document. |

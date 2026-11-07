@@ -51,8 +51,8 @@ representative locations.
 - Layout, formatting, section order, heading levels, and the choice of
   paragraph, list, or table. Other context governs those. Rewording the text
   inside a heading, list item, or table cell is in scope.
-- The author's voice where an author style guide or paired voice skill applies
-  and doesn't conflict with clarity or inclusivity.
+- Wording that an author style guide or paired voice skill explicitly
+  prescribes, such as longer qualified sentences, *we*, or normative keywords.
 
 ## Autopilot: rewrite pass
 

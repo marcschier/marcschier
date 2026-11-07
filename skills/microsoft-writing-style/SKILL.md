@@ -37,9 +37,10 @@ rules, or templates:
 - Product names, trademarks, and vendor-specific conventions.
 
 When other context conflicts with this skill, other context wins for its own
-scope. When a paired voice skill (such as marc-writer) conflicts on wording,
-the author's voice wins unless it reduces clarity for the audience, breaks a
-global-English rule, or uses biased language.
+scope. When a paired voice skill (such as marc-writer) has its own style guide,
+that guide wins on every point it explicitly addresses, including sentence
+length, use of *we*, and modal verbs. This skill settles the remaining wording.
+Biased or offensive language stays out regardless.
 
 ## Step 1: Identify the audience
 
