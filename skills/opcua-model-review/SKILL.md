@@ -185,7 +185,10 @@ not merely no script hit. Account for every rule exactly once in the ledger;
 one rule may have many findings. Preserve permissions and justified exceptions.
 
 List missing dependencies, prior versions, unavailable figures, runtime evidence,
-source ambiguities, and parser limitations separately. Do not truncate findings
-to a "top ten"; put the complete result in a report if it is too large for chat.
-Never present "no confirmed findings" as "the model is compliant" when any
-applicable rule remains NOT_ASSESSED.
+source ambiguities, and parser limitations separately. Cite a standard clause as
+`OPC 10000-3 v1.05.06, 5.2.4`, without a section symbol. When a suggested edit
+refers to another clause in Publisher Markdown, use its anchor, for example
+`(see [](#sec-anchor))`, rather than a hard-coded clause number. Do not truncate
+findings to a "top ten"; put the complete result in a report if it is too large
+for chat. Never present "no confirmed findings" as "the model is compliant"
+when any applicable rule remains NOT_ASSESSED.
