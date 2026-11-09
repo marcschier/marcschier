@@ -37,6 +37,108 @@ class PackageTests(unittest.TestCase):
         self.assertNotIn("disable-model-invocation: true", frontmatter)
         self.assertIn("whole repository or named specifications", frontmatter)
 
+    def test_opcua_model_review_precedes_prose_and_preserves_contracts(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        model_review = skill.split("## Review OPC UA models before prose", 1)[1].split(
+            "## Review the composed edition", 1
+        )[0]
+        for requirement in (
+            "separate tasks",
+            "Validate the model against OPC 10000-3 and OPC 11030 before drafting",
+            "Use `opcua-model-review` for model and NodeSet conformance",
+            "Preserve each declaration's `ModellingRule`, including `Optional`",
+            "A `QualifiedName` contains a `NamespaceIndex` and a String `Name`",
+            "server's `NamespaceArray`",
+            "xRegistry String identifier",
+            "Write normative mappings as testable requirements",
+            "Conformance Test Tool (CTT) cases that cover the behavior",
+            "authoritative specification text or direct evidence",
+            "Keep private review comments and reviewer identity out",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, model_review)
+
+    def test_opc_references_and_affirmative_requirements(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        section = skill.split("## Write references and requirements in OPC style", 1)[1].split(
+            "## Review the composed edition", 1
+        )[0]
+        for requirement in (
+            "without a section symbol",
+            '"OPC 10000-20, 4.2"',
+            "`(see [](#sec-anchor))`",
+            "a hard-coded number goes stale",
+            "Conformance Unit and Profile descriptions",
+            "State requirements and permissions affirmatively",
+            "Keep a negative form only when the prohibition is itself the requirement",
+            "noun phrases in normal spelling",
+            "leave the ModellingRule column empty on a `HasInterface` row",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, section)
+
+    def test_companion_template_structure_and_authoring_guidance(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        section = skill.split("## Apply the Companion Specification template", 1)[1].split(
+            "## Review the composed edition", 1
+        )[0]
+        headings = (
+            "**Scope.**",
+            "**Normative references.**",
+            "**Terms, abbreviated terms, and conventions.**",
+            "**General information about the domain and OPC UA.**",
+            "**Use cases.**",
+            "**Information model overview.**",
+            "**Model definitions.**",
+            "**Profiles and Conformance Units.**",
+            "**Namespaces.**",
+            "**Normative Annex A.**",
+            "**Bibliography.**",
+        )
+        positions = [section.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
+        for requirement in (
+            "Do not link to the template itself",
+            "remove them and replace all template values",
+            "follow it from beginning to end without searching ahead to learn a term or concept",
+            "Introduce each term and the information needed to understand a statement before relying on it",
+            "A section may point forward to a later section for detail or a formal definition",
+            "establish enough context for the overview to make sense on its own",
+            "Terms should read naturally when substituted into their definition context",
+            "Italicize OPC UA terms and terms defined by the specification",
+            "Add revision highlights for later editions, not a first edition",
+            "Errata, Clarification, or Feature",
+            "Include at least one Profile or Facet",
+            "do not add HasSubtype references to type-definition tables",
+            "make the specification's NodeSet classification agree",
+            "Keep irrelevant type-class sections out",
+            "define actual NodeIds in normative Annex A",
+            "do not combine those two field conventions in one Structure definition",
+            "Use canonical document and clause references rather than hyperlinks",
+            "NamespaceMetadata, the NodeSet model table, namespace tables, and file names agree",
+            "use `EnumStrings` for zero-based sequential values and `EnumValues` otherwise",
+            "Define OptionSet values with their bit positions",
+            "For ReferenceTypes, document the inverse name, symmetry",
+            "Assign a unique short name to the companion specification",
+            "Use the applicable standard file naming patterns for NodeIds, NodeSet",
+            "publication date, subset status, and static NodeId policy",
+            "including the final slash in the `http` form",
+            "capitalize the first word and lowercase later words",
+            "Use uppercase for an acronym, camelCase otherwise",
+            "state whether it is an informative snapshot or the normative definition",
+            "Distinguish model-defined NodeIds from server-generated NodeIds",
+            "enclose placeholder BrowseNames and DisplayNames in angle brackets",
+            "NamespaceMetadata identifies the namespace URI, version, publication date",
+            "Include the issue-reporting route and project identifier",
+            "carry the template's public-domain notice into the finished specification",
+            "do not force empty type-specific chapters",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, section)
+        self.assertNotIn("DOCX", section)
+        self.assertNotIn("Word", section)
+        self.assertNotRegex(section, r"\]\([^)]*\.docx")
+
     def test_relative_markdown_references_resolve_for_both_plugins(self):
         for plugin in (ROOT, REPO / "skills" / "claudism-killer"):
             for path in plugin.rglob("*.md"):
