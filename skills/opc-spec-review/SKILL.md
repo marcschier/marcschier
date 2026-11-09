@@ -191,11 +191,22 @@ Use this document order:
 5. **Use cases.** Describe the use cases supported by the information model.
 6. **Information model overview.** Explain the model elements and their
    relationships before the formal definitions.
-7. **Model definitions.** Organize the applicable definitions by model content.
-   The template has patterns for ObjectTypes, EventTypes, VariableTypes,
-   DataTypes, ReferenceTypes, instances, and well-known BrowseNames. Keep
-   irrelevant type-class sections out; the model chapter structure can vary
-   with the information model.
+7. **Model definitions.** The template does not use a single chapter named
+   "Model definitions." Use its applicable chapter and subchapter headings,
+   replacing placeholders with names from the model:
+   - **OPC UA ObjectTypes:** `<some>Type definition`, with `Overview` and
+     `ObjectType definition` headings and, where needed, a method heading such
+     as `<some>Method`. Use named ObjectType subchapters where needed; the
+     template's example is `ExampleStateMachineType`.
+   - **OPC UA EventTypes:** `<some>EventType`.
+   - **OPC UA VariableTypes:** `<some>VariableType`.
+   - **OPC UA DataTypes:** `<someStructure>`, `<someUnion>`,
+     `<someEnumeration>`, and `<someOptionSet>`, as applicable.
+   - **OPC UA ReferenceTypes:** `<someReferenceType>`.
+   - **Instances:** `<someInstance>`.
+   - **Well-Known BrowseNames:** `Well-Known <Type> BrowseNames`.
+
+   Include only headings that apply to the model.
 8. **Profiles and Conformance Units.** Define testable functionality groups in
    the Profile Database. Include at least one Profile or Facet for each
    companion specification.
