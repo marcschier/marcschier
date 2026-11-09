@@ -78,97 +78,89 @@ class PackageTests(unittest.TestCase):
                 self.assertIn(requirement, section)
 
     def test_companion_template_structure_and_authoring_guidance(self):
-        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
-        section = skill.split("## Apply the Companion Specification template", 1)[1].split(
-            "## Review the composed edition", 1
-        )[0]
+        skill = " ".join(
+            (ROOT / "SKILL.md").read_text(encoding="utf-8").split()
+        )
+        section = " ".join(
+            (ROOT / "references" / "template.md").read_text(encoding="utf-8").split()
+        )
         headings = (
-            "**Scope.**",
-            "**Normative references.**",
-            "**Terms, abbreviated terms, and conventions.**",
-            "**General information about the domain and OPC UA.**",
-            "**Use cases.**",
-            "**Information model overview.**",
-            "**Profiles and Conformance Units.**",
-            "**Namespaces.**",
-            "**Normative Annex A.**",
-            "**Bibliography.**",
+            "## Publication information",
+            "## Scope",
+            "## Normative references",
+            "## Terms, definitions, and abbreviations",
+            "## General information",
+            "## Use cases",
+            "## Information Model overview",
+            "## Model definitions",
+            "### OPC UA ObjectTypes",
+            "### OPC UA EventTypes",
+            "### OPC UA VariableTypes",
+            "### OPC UA DataTypes",
+            "### OPC UA ReferenceTypes",
+            "### Instances",
+            "### Well-Known BrowseNames",
+            "## Profiles and Conformance Units",
+            "## Namespaces",
+            "## Normative Annex A",
+            "## Bibliography",
+            "## Reading order",
         )
         positions = [section.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
-        model_headings = (
-            "**OPC UA ObjectTypes:**",
-            "**OPC UA EventTypes:**",
-            "**OPC UA VariableTypes:**",
-            "**OPC UA DataTypes:**",
-            "**OPC UA ReferenceTypes:**",
-            "**Instances:**",
-            "**Well-Known BrowseNames:**",
-        )
-        model_positions = [section.index(heading) for heading in model_headings]
-        self.assertEqual(model_positions, sorted(model_positions))
         for requirement in (
-            "Do not link to the template itself",
-            "remove them and replace all template values",
-            'The template does not use a single chapter named "Model definitions."',
-            "**OPC UA ObjectTypes:**",
+            "not a replacement for the publisher repository's source contract",
+            "source contract",
+            "which content authors supply, which content is generated",
+            "document number, full title and part, version, date",
+            "Do not rewrite approved legal text",
+            "dated reference selects that edition",
+            "undated reference selects the latest edition",
+            "Italicize OPC UA terms and terms defined in the specification",
+            "do not use italics for emphasis",
+            "does not define a general bold convention for prose concepts",
+            "Use bold for the revision classifications",
+            "Do not add a generic conventions section",
+            "The published specification's model chapters use these names",
             "`<some>Type definition`",
-            "`Overview`",
-            "`ObjectType definition`",
+            "`Overview` and `ObjectType definition`",
             "`<some>Method`",
             "`ExampleStateMachineType`",
-            "**OPC UA EventTypes:**",
             "`<some>EventType`",
-            "**OPC UA VariableTypes:**",
             "`<some>VariableType`",
-            "**OPC UA DataTypes:**",
             "`<someStructure>`",
             "`<someUnion>`",
             "`<someEnumeration>`",
             "`<someOptionSet>`",
-            "**OPC UA ReferenceTypes:**",
             "`<someReferenceType>`",
-            "**Instances:**",
             "`<someInstance>`",
-            "**Well-Known BrowseNames:**",
             "`Well-Known <Type> BrowseNames`",
-            "Include only headings that apply to the model",
-            "follow it from beginning to end without searching ahead to learn a term or concept",
-            "Introduce each term and the information needed to understand a statement before relying on it",
-            "A section may point forward to a later section for detail or a formal definition",
-            "establish enough context for the overview to make sense on its own",
-            "Terms should read naturally when substituted into their definition context",
-            "Italicize OPC UA terms and terms defined by the specification",
-            "Add revision highlights for later editions, not a first edition",
-            "Errata, Clarification, or Feature",
-            "Include at least one Profile or Facet",
-            "do not add HasSubtype references to type-definition tables",
-            "make the specification's NodeSet classification agree",
-            "define actual NodeIds in normative Annex A",
-            "do not combine those two field conventions in one Structure definition",
-            "Use canonical document and clause references rather than hyperlinks",
-            "NamespaceMetadata, the NodeSet model table, namespace tables, and file names agree",
+            "include only model groups that apply",
+            "State inheritance as a \"Subtype of\" relationship",
+            "do not add a `HasSubtype` reference",
+            "keep the NodeSet classification consistent",
+            "Distinguish a BrowseName's `NamespaceIndex`, namespace URI, and String `Name`",
+            "For structures, distinguish optional fields from fields that allow subtypes",
             "use `EnumStrings` for zero-based sequential values and `EnumValues` otherwise",
-            "Define OptionSet values with their bit positions",
-            "For ReferenceTypes, document the inverse name, symmetry",
-            "Assign a unique short name to the companion specification",
-            "Use the applicable standard file naming patterns for NodeIds, NodeSet",
+            "Define OptionSet values by bit position",
+            "Include at least one Profile or Facet",
+            "informative snapshot or the normative definition",
+            "namespace metadata and the NodeSet agree",
             "publication date, subset status, and static NodeId policy",
-            "including the final slash in the `http` form",
-            "capitalize the first word and lowercase later words",
-            "Use uppercase for an acronym, camelCase otherwise",
-            "state whether it is an informative snapshot or the normative definition",
-            "Distinguish model-defined NodeIds from server-generated NodeIds",
-            "enclose placeholder BrowseNames and DisplayNames in angle brackets",
-            "NamespaceMetadata identifies the namespace URI, version, publication date",
-            "Include the issue-reporting route and project identifier",
-            "carry the template's public-domain notice into the finished specification",
-            "do not force empty type-specific chapters",
+            "a local clause anchor for an in-document reference",
+            "follow it from beginning to end without searching ahead to learn a term or concept",
+            "Forward references are appropriate for more detail",
+            "Presentation belongs to the template and publisher owners",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, section)
-        self.assertNotIn("DOCX", section)
-        self.assertNotIn("Word", section)
+        self.assertIn("(references/template.md)", skill)
+        self.assertIn("Do not prescribe or edit publisher-owned presentation", skill)
+        for excluded in ("table", "figure", "caption", "TOC", "term index"):
+            with self.subTest(excluded=excluded):
+                self.assertNotRegex(
+                    section.lower(), rf"\b{re.escape(excluded.lower())}\b"
+                )
         self.assertNotRegex(section, r"\]\([^)]*\.docx")
 
     def test_relative_markdown_references_resolve_for_both_plugins(self):

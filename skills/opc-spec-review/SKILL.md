@@ -156,12 +156,24 @@ ModellingRule there as a NodeSet validation error.
 
 ## Apply the Companion Specification template
 
-Use the OPC UA Companion Specification template as the structural and editorial
-baseline for every in-scope specification. Apply its conventions to the
-composed edition even when the source uses Markdown or another authoring format.
-Do not link to the template itself. Treat its editing notes and placeholder
-text as author guidance, not publication content; remove them and replace all
-template values before release.
+Use the content outline in
+[references/template.md](references/template.md) when reviewing a companion
+specification. The
+[OPCF-Members Markdown template repository](https://github.com/OPCF-Members/OPCUA-Specification-Template)
+is the source of truth for its Markdown authoring contract and which content the
+publisher generates. Read its current
+[AUTHORING.md](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/AUTHORING.md)
+and [companion-specification skill](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/skills/opcua-companion-spec/SKILL.md)
+before assessing a repository that uses it. The included outline captures
+content requirements; it does not replace publisher syntax or generated
+content.
+
+Review the authored Markdown and its source data so the publisher has the
+information needed to produce the required specification. Do not prescribe or
+edit publisher-owned presentation. If the Markdown authoring contract cannot
+express a required content element, or if the publisher output does not
+preserve it, record a dependency for the template or tooling owner rather than
+inventing syntax or changing their implementation.
 
 Check the title page for the document number, full title and part, version,
 date, contributing organization, and status. Retain the approved agreement,
@@ -180,11 +192,14 @@ Use this document order:
 2. **Normative references.** Include only documents needed to apply the
    specification. A dated reference selects that edition; an undated reference
    selects the latest edition, including its amendments and errata.
-3. **Terms, abbreviated terms, and conventions.** Define domain terms,
-   abbreviations used in the document, and conventions for node descriptions,
-   NodeIds, BrowseNames, common attributes, and structures. Terms should read
-   naturally when substituted into their definition context. Italicize OPC UA
-   terms and terms defined by the specification.
+3. **Terms, abbreviated terms, and conventions.** Ensure domain terms and
+   abbreviations are defined. Terms should read naturally when substituted
+   into their definition context. Italicize OPC UA terms and terms defined by
+   the specification; do not use italics for emphasis. Bold **Errata**,
+   **Clarification**, and **Feature** when classifying revision highlights.
+   Follow the current Markdown template for where terms, abbreviations, and
+   conventions are authored or generated; do not add a conventions section if
+   the source contract does not support one.
 4. **General information about the domain and OPC UA.** Introduce the
    organization or domain represented by the model. Refer readers to the OPC UA
    introduction publication instead of duplicating that general introduction.
@@ -226,40 +241,29 @@ example, an overview may introduce an information-model concept and direct
 readers to its later formal definition, but it should establish enough context
 for the overview to make sense on its own.
 
-For each model definition, give an overview before the formal table. Define
-attributes and references with the template's tables, including the target
-NodeClass, BrowseName, Variable DataType, Object or Variable TypeDefinition,
-and applicable characteristics. State inheritance as a "Subtype of" entry;
-do not add HasSubtype references to type-definition tables. Put primary
-Conformance Units at the end of the definition and make the specification's
-NodeSet classification agree with those entries. Use separate tables for
-additional references, nested subcomponents, and child-node attribute values;
-make each BrowsePath's origin, direction, and target unambiguous. Define common
-attributes by NodeClass and distinguish specification-defined values from
+For each model definition, explain what it represents before presenting its
+formal definition. State inheritance as a "Subtype of" relationship; do not
+add a `HasSubtype` reference to a type definition. Put primary Conformance
+Units at the end of the definition and keep the NodeSet classification
+consistent with them. Make the source model, prose, and published definition
+agree on members, NodeClasses, BrowseNames, data and type definitions,
+attributes, and ModellingRules. Distinguish specification-defined values from
 server-specific values rather than imposing defaults without evidence.
 
-Use symbolic NodeIds in the model descriptions, based on BrowseNames and
-parent-to-child paths for components, and define actual NodeIds in normative
-Annex A. Distinguish model-defined NodeIds from server-generated NodeIds.
-Prefix BrowseNames from other namespaces with the applicable NamespaceIndex,
-identify those namespace URIs in the namespace table, and enclose placeholder
-BrowseNames and DisplayNames in angle brackets. Keep `ValueRank`,
-`ArrayDimensions`, DataType, TypeDefinition, and ModellingRule consistent
-between the prose, tables, and NodeSet. For structured DataTypes, distinguish
-optional fields from fields that allow subtypes; do not combine those two field
-conventions in one Structure definition. For enumerations, use `EnumStrings`
-for zero-based sequential values and `EnumValues` otherwise. Define OptionSet
-values with their bit positions. For ReferenceTypes, document the inverse name, symmetry,
-abstract status, parent type, and source and target constraints as applicable.
-List well-known BrowseNames with their purpose. For Methods, give the signature
-and argument descriptions, document any defined result codes, and include the
-AddressSpace definition when the Method has properties beyond its argument
-properties.
-
-Caption and number figures and tables consistently, and verify that the
-composed edition's contents and lists match them. Use the specified heading
-capitalization for section, table, and figure headings: capitalize the first
-word and lowercase later words unless they are proper nouns or type names.
+Use symbolic NodeIds in model descriptions and define actual NodeIds in
+normative Annex A. Distinguish model-defined NodeIds from server-generated
+NodeIds. Distinguish a BrowseName's `NamespaceIndex`, namespace URI, and String
+`Name` from one another and from an xRegistry String identifier. Keep
+`ValueRank`, `ArrayDimensions`, DataType, TypeDefinition, and ModellingRule
+consistent across the prose, source model, and published definition. For
+structured DataTypes, distinguish optional fields from fields that allow
+subtypes. For enumerations, use `EnumStrings` for zero-based sequential values
+and `EnumValues` otherwise. Define OptionSet values by bit position. For
+ReferenceTypes, document the inverse name, symmetry, abstract status, parent
+type, and source and target constraints as applicable. Explain well-known
+BrowseNames. For Methods, describe signatures and arguments, document defined
+result codes, and identify additional AddressSpace elements when the Method
+defines properties beyond its argument properties.
 
 Use canonical document and clause references rather than hyperlinks to
 individual clauses in the online reference. In Publisher Markdown, use a local
@@ -285,9 +289,10 @@ During review, compare each specification with this order and checklist.
 Record an omitted or reordered element as a finding only when it conflicts with
 the template or makes the specification incomplete; do not force empty
 type-specific chapters into a model that does not use them. Check the final
-render for residual template instructions, placeholders, unresolved fields,
-stale table or figure numbering, and mismatches between the text, model, and
-published files.
+content for residual template instructions, placeholders, unresolved fields,
+and mismatches between the text, model, and published files. Route publisher
+presentation defects to the template or tooling owner; do not edit their
+implementation.
 
 ## Review the composed edition
 
