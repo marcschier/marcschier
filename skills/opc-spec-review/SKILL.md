@@ -100,6 +100,184 @@ or external-provider guidance from [README.md](README.md). Never copy companion
 internals or silently replace their review. Technical evidence takes precedence
 over a stylistic preference.
 
+## Review OPC UA models before prose
+
+Treat OPC UA information-model design and prose editing as separate tasks.
+Validate the model against OPC 10000-3 and OPC 11030 before drafting prose that
+describes it. Use `opcua-model-review` for model and NodeSet conformance, and
+record the evidence and its limits. A prose review or a tool result that does
+not cover the model is not model validation.
+
+Use OPC UA Interfaces when multiple types share a contract. Preserve each
+declaration's `ModellingRule`, including `Optional`, unless the specification
+explicitly requires a different rule. Sharing an interface does not by itself
+make an optional declaration mandatory.
+
+Distinguish a BrowseName's `QualifiedName` from an xRegistry String identifier.
+A `QualifiedName` contains a `NamespaceIndex` and a String `Name`. Resolve the
+index through the server's `NamespaceArray` to obtain the namespace URI. Do not
+treat the namespace URI, index, `Name`, and an xRegistry String identifier as
+interchangeable or infer one from another.
+
+Write normative mappings as testable requirements with an actor, conditions,
+and observable results. Verify each mapping against its source and target
+definitions and Conformance Test Tool (CTT) cases that cover the behavior.
+Report actual results and identify requirements that the available CTT cases do
+not test; a passing result does not establish broader coverage.
+
+Resolve reviewer feedback against authoritative specification text or direct
+evidence. Disagree only when that evidence supports a precise correction, and
+cite it with the correction's effect. Otherwise, incorporate the feedback or
+record the unresolved decision. Keep private review comments and reviewer
+identity out of reusable guidance and public examples.
+
+## Write references and requirements in OPC style
+
+OPC specifications cite a clause by its number, without a section symbol:
+"see 6.2" within the document and "OPC 10000-20, 4.2" for another one. In
+Publisher Markdown, write a local reference as `(see [](#sec-anchor))`. The
+Publisher renders the empty link as the current clause number, whereas a literal
+`§` stays in the output and a hard-coded number goes stale as soon as a clause
+is inserted before it. Apply the same rule to every rendered text, including
+Conformance Unit and Profile descriptions.
+
+State requirements and permissions affirmatively. A sentence such as "the
+Client need not build the structure" or "this folder is not required to be a
+notifier" tells the implementer nothing testable; replace it with the
+requirement or permission it implies, for example "a Server may also make this
+folder an event notifier". Keep a negative form only when the prohibition is
+itself the requirement, as OPC 10000-3, 5.2.4 does with "A BrowseName should
+never be used to display the name of a Node".
+
+Define glossary terms as noun phrases in normal spelling, not as CamelCase
+type or attribute names. In an ObjectType definition table, leave the
+ModellingRule column empty on a `HasInterface` row; the Publisher reports a
+ModellingRule there as a NodeSet validation error.
+
+## Apply the Companion Specification template
+
+Use the OPC UA Companion Specification template as the structural and editorial
+baseline for every in-scope specification. Apply its conventions to the
+composed edition even when the source uses Markdown or another authoring format.
+Do not link to the template itself. Treat its editing notes and placeholder
+text as author guidance, not publication content; remove them and replace all
+template values before release.
+
+Check the title page for the document number, full title and part, version,
+date, contributing organization, and status. Retain the approved agreement,
+copyright, patent, liability, compliance, and trademark material. Do not
+carry the template's public-domain notice into the finished specification.
+Use approved copyright and agreement text. For non-joint work, use the
+authorized alternative agreement; do not change the agreement for joint work
+without the required OPC Foundation review. Include the issue-reporting route
+and project identifier for the specification. Add revision highlights for
+later editions, not a first edition; classify changes as Errata, Clarification,
+or Feature and tie each reported change to its issue-tracker record.
+
+Use this document order:
+
+1. **Scope.** State what the specification covers.
+2. **Normative references.** Include only documents needed to apply the
+   specification. A dated reference selects that edition; an undated reference
+   selects the latest edition, including its amendments and errata.
+3. **Terms, abbreviated terms, and conventions.** Define domain terms,
+   abbreviations used in the document, and conventions for node descriptions,
+   NodeIds, BrowseNames, common attributes, and structures. Terms should read
+   naturally when substituted into their definition context. Italicize OPC UA
+   terms and terms defined by the specification.
+4. **General information about the domain and OPC UA.** Introduce the
+   organization or domain represented by the model. Refer readers to the OPC UA
+   introduction publication instead of duplicating that general introduction.
+5. **Use cases.** Describe the use cases supported by the information model.
+6. **Information model overview.** Explain the model elements and their
+   relationships before the formal definitions.
+7. **Model definitions.** Organize the applicable definitions by model content.
+   The template has patterns for ObjectTypes, EventTypes, VariableTypes,
+   DataTypes, ReferenceTypes, instances, and well-known BrowseNames. Keep
+   irrelevant type-class sections out; the model chapter structure can vary
+   with the information model.
+8. **Profiles and Conformance Units.** Define testable functionality groups in
+   the Profile Database. Include at least one Profile or Facet for each
+   companion specification.
+9. **Namespaces.** Define namespace metadata and explain the namespace
+   identifiers used for NodeIds and BrowseNames.
+10. **Normative Annex A.** Define the model namespace, NodeSet, and
+    supplementary-file mappings. Include a capability identifier only when the
+    specification needs one.
+11. **Bibliography.** List informative sources that are not normative
+    references.
+
+Write the prose so readers can follow it from beginning to end without
+searching ahead to learn a term or concept. Introduce each term and the
+information needed to understand a statement before relying on it. A section
+may point forward to a later section for detail or a formal definition. For
+example, an overview may introduce an information-model concept and direct
+readers to its later formal definition, but it should establish enough context
+for the overview to make sense on its own.
+
+For each model definition, give an overview before the formal table. Define
+attributes and references with the template's tables, including the target
+NodeClass, BrowseName, Variable DataType, Object or Variable TypeDefinition,
+and applicable characteristics. State inheritance as a "Subtype of" entry;
+do not add HasSubtype references to type-definition tables. Put primary
+Conformance Units at the end of the definition and make the specification's
+NodeSet classification agree with those entries. Use separate tables for
+additional references, nested subcomponents, and child-node attribute values;
+make each BrowsePath's origin, direction, and target unambiguous. Define common
+attributes by NodeClass and distinguish specification-defined values from
+server-specific values rather than imposing defaults without evidence.
+
+Use symbolic NodeIds in the model descriptions, based on BrowseNames and
+parent-to-child paths for components, and define actual NodeIds in normative
+Annex A. Distinguish model-defined NodeIds from server-generated NodeIds.
+Prefix BrowseNames from other namespaces with the applicable NamespaceIndex,
+identify those namespace URIs in the namespace table, and enclose placeholder
+BrowseNames and DisplayNames in angle brackets. Keep `ValueRank`,
+`ArrayDimensions`, DataType, TypeDefinition, and ModellingRule consistent
+between the prose, tables, and NodeSet. For structured DataTypes, distinguish
+optional fields from fields that allow subtypes; do not combine those two field
+conventions in one Structure definition. For enumerations, use `EnumStrings`
+for zero-based sequential values and `EnumValues` otherwise. Define OptionSet
+values with their bit positions. For ReferenceTypes, document the inverse name, symmetry,
+abstract status, parent type, and source and target constraints as applicable.
+List well-known BrowseNames with their purpose. For Methods, give the signature
+and argument descriptions, document any defined result codes, and include the
+AddressSpace definition when the Method has properties beyond its argument
+properties.
+
+Caption and number figures and tables consistently, and verify that the
+composed edition's contents and lists match them. Use the specified heading
+capitalization for section, table, and figure headings: capitalize the first
+word and lowercase later words unless they are proper nouns or type names.
+
+Use canonical document and clause references rather than hyperlinks to
+individual clauses in the online reference. In Publisher Markdown, use a local
+clause anchor for an in-document reference as described above. Assign a unique
+short name to the companion specification and use it consistently for
+Profiles, Conformance Units, and namespace and file identifiers. Use uppercase
+for an acronym, camelCase otherwise, and preserve a trademark's casing. If the
+specification includes Profile Database content, state whether it is an
+informative snapshot or the normative definition. Keep the namespace summary,
+NodeSet, and supplementary-file links
+in Annex A aligned with the namespace URI, namespace version, and published
+artifacts. Use the applicable standard file naming patterns for NodeIds,
+NodeSet, and any DataType schemas. Confirm that NamespaceMetadata, the NodeSet
+model table, namespace tables, and file names agree. For an information model,
+check that NamespaceMetadata identifies the namespace URI, version,
+publication date, subset status, and static NodeId policy. Confirm that those
+values match the UANodeSet metadata. Use the approved namespace URI form and
+preserve its required syntax, including the final slash in the `http` form. A
+namespace URI is an identifier, not a promise that it can be used as a network
+URL.
+
+During review, compare each specification with this order and checklist.
+Record an omitted or reordered element as a finding only when it conflicts with
+the template or makes the specification incomplete; do not force empty
+type-specific chapters into a model that does not use them. Check the final
+render for residual template instructions, placeholders, unresolved fields,
+stale table or figure numbering, and mismatches between the text, model, and
+published files.
+
 ## Review the composed edition
 
 Read [references/review.md](references/review.md) in full for every review,
