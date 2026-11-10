@@ -165,15 +165,17 @@ publisher generates. Read its current
 [AUTHORING.md](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/AUTHORING.md)
 and [companion-specification skill](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/skills/opcua-companion-spec/SKILL.md)
 before assessing a repository that uses it. The included outline captures
-content requirements; it does not replace publisher syntax or generated
-content.
+content and model-table structures; it does not replace publisher syntax or
+generated content.
 
 Review the authored Markdown and its source data so the publisher has the
-information needed to produce the required specification. Do not prescribe or
-edit publisher-owned presentation. If the Markdown authoring contract cannot
-express a required content element, or if the publisher output does not
-preserve it, record a dependency for the template or tooling owner rather than
-inventing syntax or changing their implementation.
+information needed to produce the required specification. Check the source
+structure of model tables and inspect their rendered HTML for lost headers,
+cells, values, grouping, or links. Do not prescribe or edit publisher-owned
+presentation. If the Markdown authoring contract cannot express a required
+content element, or if the publisher output does not preserve it, record a
+dependency for the template or tooling owner rather than inventing syntax or
+changing their implementation.
 
 Check the title page for the document number, full title and part, version,
 date, contributing organization, and status. Retain the approved agreement,

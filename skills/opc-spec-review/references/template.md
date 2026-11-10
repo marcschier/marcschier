@@ -9,7 +9,8 @@ defines the current source contract. Its
 and [companion-specification skill](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/skills/opcua-companion-spec/SKILL.md)
 identify which content authors supply, which content is generated, and how the
 publisher consumes it. Follow those sources for Markdown mechanics. This
-outline covers the content and semantic markup that the source must carry.
+outline covers the content, model-table structure, and semantic markup that
+the source must carry.
 
 The published specification remains expected to contain the required
 information in the approved order. Review the Markdown and its manifest,
@@ -143,6 +144,107 @@ consistent across the prose, source model, and published definition.
 For Methods, describe the signature and arguments, document defined result
 codes, and identify additional AddressSpace elements when the Method defines
 properties beyond its argument properties.
+
+## Authoring checks (not publication clauses)
+
+### Tables in Markdown and rendered HTML
+
+The Companion Specification template defines the information and column
+meanings for model tables. The current Markdown template defines how authors
+encode those tables and how the publisher converts them. Read its current
+authoring guide and companion-specification skill; do not add HTML or CSS
+layout instructions to the Markdown source.
+
+Use the Markdown table syntax supported by the pinned publisher. In this
+template, a table has a header row, a separator row, and data rows with the
+same number of cells as the header. Use the specified column names and keep
+one value per cell. If a table cell needs a list, use the publisher-supported
+`<br>`-separated list form, with each item beginning `- ` or `1. `. Do not put
+a nested Markdown table inside a cell; represent each related item as a row in
+the corresponding flat table. Repeat a BrowsePath on each row unless the
+current authoring contract defines a continuation convention.
+
+Put one Markdown caption and anchor before each logical table group. For
+example:
+
+```markdown
+*Table - <Type> Definition* {#t1 defines=<Type>}
+```
+
+Let the publisher derive the table number and conventional anchor from the
+caption. Cite the table with an empty link label such as `[](#t1)`; do not type
+a table number into a caption or cross-reference. In the current template,
+`compose` normalizes anchors and updates citations. Consecutive tables that
+form one type definition share its caption and number, with a blank line
+between table blocks. Do not add a separate caption for each block.
+
+The main type-definition group contains an Attribute/Value block, a References
+block, and a Conformance Units block, in that order. Keep the six-column
+References grid intact:
+
+```markdown
+*Table - <Type> Definition* {#t1 defines=<Type>}
+
+| **Attribute** | **Value** |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| BrowseName | <Type> |  |  |  |  |
+| IsAbstract | False |  |  |  |  |
+
+| **References** | **Node Class** | **BrowseName** | **DataType** | **TypeDefinition** | **Other** |
+| --- | --- | --- | --- | --- | --- |
+| 0:HasComponent | Variable | <someVariable> | 0:Double | 0:BaseDataVariableType | O |
+
+| **Conformance Units** |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| <ConformanceUnit name> |  |  |  |  |  |
+```
+
+The trailing empty cells preserve the template's column spans. In the
+References block, include DataType only for Variables and TypeDefinition only
+for Objects and Variables. Use Other for applicable characteristics, such as
+ModellingRules and AccessLevel. Use the symbolic BrowseName, DataType, and
+TypeDefinition names, with a NamespaceIndex prefix when required. An optional
+Attribute that is not set uses `--`. Put one primary Conformance Unit on each
+row at the end of the definition group, consistent with `profiles.json` and
+the NodeSet. Do not put a `HasSubtype` reference in a type-definition table.
+
+Use the prescribed columns for related model tables:
+
+| Table | Columns |
+|---|---|
+| Additional References | `SourceBrowsePath`, `Reference Type`, `Is Forward`, `TargetBrowsePath` |
+| Additional Subcomponents | `BrowsePath`, `References`, `NodeClass`, `BrowseName`, `DataType`, `TypeDefinition`, `Others` |
+| Additional Attribute values for child Nodes | `BrowsePath`, followed by one `<Attribute name> Attribute` column for each attribute |
+
+Give each relation or subcomponent its own row. A SourceBrowsePath is relative
+to the TypeDefinition. A TargetBrowsePath may be relative or absolute as the
+model requires. Attribute values use the template's reversible OPC 10000-6
+JSON-text convention. Add columns only for the attributes being specified.
+Bind each authored table that documents a type with `defines=<Type>` in its
+caption, including its Additional References, Additional Subcomponents, and
+Attribute values tables.
+
+For Structure field tables, use `Name`, `Type`, and `Description`, with an
+`Optional` column only when fields can be optional or an `AllowSubtypes`
+column when fields can allow subtypes. Do not combine both columns in one
+Structure table. For a DataType field table that the publisher generates from
+the NodeSet, use `datatype=<DataType>` in its caption instead of duplicating
+the field rows in Markdown. Follow the current authoring contract if it changes
+which tables are authored, generated, or bound.
+
+Inspect the publisher's rendered HTML for each changed table group. Confirm
+that each caption identifies the intended group; headers, cell spans, every
+row, and every value survive conversion; links resolve to the generated table;
+and grouped definition blocks remain one logical table group. Compare the HTML
+with both the Markdown source and the model. Check the rendered column layout
+against the current authoring guide: column headings and the first column
+normally stay on one line, but long text and width constraints may require
+wrapping. The publisher controls automatic sizing; do not add manual widths
+or styles. Use the repository's
+documented HTML render command when available. A correct Markdown source or a
+GitHub preview alone does not establish that the publisher rendered the table
+correctly. Report missing or altered table structure or layout to the template
+or publisher owner; do not patch generated HTML or prescribe its styling.
 
 ## Profiles and Conformance Units
 

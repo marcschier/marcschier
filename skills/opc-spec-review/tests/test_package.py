@@ -81,9 +81,8 @@ class PackageTests(unittest.TestCase):
         skill = " ".join(
             (ROOT / "SKILL.md").read_text(encoding="utf-8").split()
         )
-        section = " ".join(
-            (ROOT / "references" / "template.md").read_text(encoding="utf-8").split()
-        )
+        template = (ROOT / "references" / "template.md").read_text(encoding="utf-8")
+        section = " ".join(template.split())
         headings = (
             "## Publication information",
             "## Scope",
@@ -93,13 +92,8 @@ class PackageTests(unittest.TestCase):
             "## Use cases",
             "## Information Model overview",
             "## Model definitions",
-            "### OPC UA ObjectTypes",
-            "### OPC UA EventTypes",
-            "### OPC UA VariableTypes",
-            "### OPC UA DataTypes",
-            "### OPC UA ReferenceTypes",
-            "### Instances",
-            "### Well-Known BrowseNames",
+            "## Authoring checks (not publication clauses)",
+            "### Tables in Markdown and rendered HTML",
             "## Profiles and Conformance Units",
             "## Namespaces",
             "## Normative Annex A",
@@ -108,6 +102,17 @@ class PackageTests(unittest.TestCase):
         )
         positions = [section.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
+        model_headings = (
+            "### OPC UA ObjectTypes",
+            "### OPC UA EventTypes",
+            "### OPC UA VariableTypes",
+            "### OPC UA DataTypes",
+            "### OPC UA ReferenceTypes",
+            "### Instances",
+            "### Well-Known BrowseNames",
+        )
+        model_positions = [section.index(heading) for heading in model_headings]
+        self.assertEqual(model_positions, sorted(model_positions))
         for requirement in (
             "not a replacement for the publisher repository's source contract",
             "source contract",
@@ -136,6 +141,19 @@ class PackageTests(unittest.TestCase):
             "`<someInstance>`",
             "`Well-Known <Type> BrowseNames`",
             "include only model groups that apply",
+            "a table has a header row, a separator row, and data rows",
+            "each item beginning `- ` or `1. `",
+            "Put one Markdown caption and anchor before each logical table group",
+            "The main type-definition group contains an Attribute/Value block",
+            "Keep the six-column References grid intact",
+            "Additional References",
+            "`SourceBrowsePath`, `Reference Type`, `Is Forward`, `TargetBrowsePath`",
+            "`Optional` column only when fields can be optional",
+            "`datatype=<DataType>`",
+            "Inspect the publisher's rendered HTML for each changed table group",
+            "A correct Markdown source or a GitHub preview alone does not establish",
+            "long text and width constraints may require wrapping",
+            "do not add manual widths or styles",
             "State inheritance as a \"Subtype of\" relationship",
             "do not add a `HasSubtype` reference",
             "keep the NodeSet classification consistent",
@@ -156,12 +174,31 @@ class PackageTests(unittest.TestCase):
                 self.assertIn(requirement, section)
         self.assertIn("(references/template.md)", skill)
         self.assertIn("Do not prescribe or edit publisher-owned presentation", skill)
-        for excluded in ("table", "figure", "caption", "TOC", "term index"):
+        self.assertIn(
+            "inspect their rendered HTML for lost headers, cells, values, grouping, or links",
+            skill,
+        )
+        examples = re.findall(r"```markdown\n(.*?)\n```", template, re.DOTALL)
+        table_examples = [example for example in examples if "| **Attribute** |" in example]
+        self.assertEqual(len(table_examples), 1)
+        table_example = table_examples[0]
+        blocks = [
+            block for block in table_example.split("\n\n") if block.startswith("|")
+        ]
+        self.assertEqual(len(blocks), 3)
+        for block in blocks:
+            self.assertEqual(block.splitlines()[1], "| --- | --- | --- | --- | --- | --- |")
+        for line in table_example.splitlines():
+            if line.startswith("|"):
+                with self.subTest(table_row=line):
+                    self.assertEqual(line.count("|") - 1, 6)
+        for excluded in ("figure", "TOC", "term index", "table borders", "font size"):
             with self.subTest(excluded=excluded):
                 self.assertNotRegex(
                     section.lower(), rf"\b{re.escape(excluded.lower())}\b"
                 )
         self.assertNotRegex(section, r"\]\([^)]*\.docx")
+        self.assertNotIn("Word template", template)
 
     def test_relative_markdown_references_resolve_for_both_plugins(self):
         for plugin in (ROOT, REPO / "skills" / "claudism-killer"):
