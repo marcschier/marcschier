@@ -117,6 +117,7 @@ STYLE.md wins. These conflicts come up most often:
 | Modal verbs | *may* for permission; MUST, SHOULD, and MAY per the specification's convention | *can* for permission, *might* for possibility |
 | Question headings | Kept when they expose and answer an assumption | Not addressed; keep them |
 | Document hierarchy | The document-type patterns in STYLE.md | Out of scope for that skill |
+| Shortened technical labels | Replace labels such as "model-source" with a full sentence, an established term, or a quoted phrase without hyphens; keep conventional compounds and allow "non-" | General compound-modifier and prefix spelling rules |
 
 Everything else follows microsoft-writing-style: contractions, present tense,
 plain word choice, the term list, acronym handling, global and inclusive

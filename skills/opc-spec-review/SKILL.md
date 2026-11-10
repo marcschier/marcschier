@@ -133,6 +133,24 @@ identity out of reusable guidance and public examples.
 
 ## Write references and requirements in OPC style
 
+Replace shortened technical labels such as "document-write target" and
+"model-source" in authored prose. Prefer a full sentence explaining the
+relationship, or use the exact applicable OPC UA term or information model name.
+When an explanation is needed, put words without hyphens in parentheses after
+the term or name. For example, if the model defines *DocumentFile* as the file
+that receives the document, write *DocumentFile* (the file that receives the
+document). Do not require an explanation on every occurrence or select a term
+without evidence from the specification or model. Retain the specification's
+semantic emphasis conventions and do not rename model elements.
+
+When a descriptive phrase is sufficient instead, write it without hyphens in
+quotation marks, such as "model source"; explain its meaning before relying on
+it. Do not merely remove the hyphens from an unexplained label. Keep conventional
+compounds such as "read-only" and "server-specific"; the "non-" prefix is also
+allowed. Preserve exact identifiers, official names, code, commands, paths,
+URLs, and quotations from sources. Preserve technical meaning and normative
+force; flag unclear meaning rather than inventing a replacement.
+
 OPC specifications cite a clause by its number, without a section symbol:
 "see 6.2" within the document and "OPC 10000-20, 4.2" for another one. In
 Publisher Markdown, write a local reference as `(see [](#sec-anchor))`. The

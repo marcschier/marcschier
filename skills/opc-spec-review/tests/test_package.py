@@ -77,6 +77,61 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, section)
 
+    def test_marc_writer_replaces_shortened_labels_without_banning_compounds(self):
+        writer = REPO / "skills" / "marc-writer"
+        style = " ".join((writer / "STYLE.md").read_text(encoding="utf-8").split())
+        section = style.split("## 6. Use Technical Density Deliberately", 1)[1].split(
+            "## 7. Prefer Mechanisms over Adjectives", 1
+        )[0]
+        for requirement in (
+            'Do not coin or retain shortened technical labels such as "document-write target" or "model-source"',
+            "Prefer a full sentence that explains the entity, operation, and relationship",
+            "Use the established technical term",
+            'write it without hyphens and put it in quotation marks, such as "model source"',
+            "The client writes the document to this file.",
+            "This file supplies the model.",
+            "Do not merely remove the hyphens from an unexplained label",
+            'Keep conventional compounds such as "read-only" and "server-specific"',
+            'the "non-" prefix is also allowed',
+            "Preserve exact identifiers, official names, code, commands, paths, URLs, and quotations from sources",
+            "Preserve technical meaning and normative force",
+            "When the intended meaning is unclear, flag it rather than inventing a replacement",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, section)
+        skill = (writer / "SKILL.md").read_text(encoding="utf-8")
+        precedence = skill.split("## Precedence with microsoft-writing-style", 1)[
+            1
+        ].split("## Factual and editing boundaries", 1)[0]
+        self.assertIn('| Shortened technical labels | Replace labels such as "model-source"', precedence)
+        self.assertIn('keep conventional compounds and allow "non-"', precedence)
+
+    def test_opc_shortened_labels_use_evidenced_terms_and_optional_explanations(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        section = skill.split("## Write references and requirements in OPC style", 1)[
+            1
+        ].split("## Apply the Companion Specification template", 1)[0]
+        for requirement in (
+            'Replace shortened technical labels such as "document-write target" and "model-source"',
+            "Prefer a full sentence explaining the relationship",
+            "use the exact applicable OPC UA term or information model name",
+            "When an explanation is needed, put words without hyphens in parentheses after the term or name",
+            "*DocumentFile* (the file that receives the document)",
+            "Do not require an explanation on every occurrence",
+            "without evidence from the specification or model",
+            "Retain the specification's semantic emphasis conventions and do not rename model elements",
+            'write it without hyphens in quotation marks, such as "model source"',
+            "explain its meaning before relying on it",
+            "Do not merely remove the hyphens from an unexplained label",
+            'Keep conventional compounds such as "read-only" and "server-specific"',
+            'the "non-" prefix is also allowed',
+            "Preserve exact identifiers, official names, code, commands, paths, URLs, and quotations from sources",
+            "Preserve technical meaning and normative force",
+            "flag unclear meaning rather than inventing a replacement",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, section)
+
     def test_companion_template_structure_and_authoring_guidance(self):
         skill = " ".join(
             (ROOT / "SKILL.md").read_text(encoding="utf-8").split()

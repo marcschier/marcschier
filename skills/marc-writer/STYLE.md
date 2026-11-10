@@ -174,6 +174,25 @@ However:
 - Put customer or system consequences before deep implementation detail when
   the audience is mixed.
 
+Do not coin or retain shortened technical labels such as "document-write target"
+or "model-source" in authored prose. Prefer a full sentence that explains the
+entity, operation, and relationship. Use the established technical term when it
+names the concept precisely. If a short descriptive phrase is sufficient, write
+it without hyphens and put it in quotation marks, such as "model source".
+Quotation marks do not make an unclear relationship clear.
+
+For example, when the source establishes that a client writes a document to a
+file, replace "document-write target" with "The client writes the document to
+this file." If the source establishes that a file supplies the model, replace
+"model-source" with "This file supplies the model." Do not merely remove the
+hyphens from an unexplained label.
+
+Keep conventional compounds such as "read-only" and "server-specific"; the
+"non-" prefix is also allowed. Preserve exact identifiers, official names, code,
+commands, paths, URLs, and quotations from sources. Preserve technical meaning
+and normative force. When the intended meaning is unclear, flag it rather than
+inventing a replacement.
+
 ## 7. Prefer Mechanisms over Adjectives
 
 Avoid claims that sound positive but do not explain the engineering behavior.
