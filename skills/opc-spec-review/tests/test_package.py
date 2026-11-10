@@ -64,6 +64,12 @@ class PackageTests(unittest.TestCase):
             "## Review the composed edition", 1
         )[0]
         for requirement in (
+            "Write Markdown heading text as plain text",
+            "without formatting characters such as backticks, asterisks, or underscores",
+            "Do not apply inline code, bold, or italics in headings",
+            "Keep the Markdown heading markers and supported clause anchors",
+            "Apply semantic emphasis in body prose, not headings",
+            "give the unchanged identifier in the body",
             "without a section symbol",
             '"OPC 10000-20, 4.2"',
             "`(see [](#sec-anchor))`",
@@ -177,6 +183,12 @@ class PackageTests(unittest.TestCase):
             "dated reference selects that edition",
             "undated reference selects the latest edition",
             "Italicize OPC UA terms and terms defined in the specification",
+            "Write Markdown heading text as plain text",
+            "without formatting characters such as backticks, asterisks, or underscores",
+            "Do not apply inline code, bold, or italics in headings",
+            "Keep the Markdown heading markers and supported clause anchors",
+            "Apply semantic emphasis in body prose, not headings",
+            "give the unchanged identifier in the body",
             "do not use italics for emphasis",
             "does not define a general bold convention for prose concepts",
             "Use bold for the revision classifications",

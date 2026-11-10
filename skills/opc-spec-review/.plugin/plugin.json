@@ -1,6 +1,6 @@
 {
   "name": "opc-spec-review",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Review composed OPC Foundation specifications, plan revisions and verify approved fixes with explicit coverage and publication evidence.",
   "author": {
     "name": "Marc Schier",

@@ -133,6 +133,14 @@ identity out of reusable guidance and public examples.
 
 ## Write references and requirements in OPC style
 
+Write Markdown heading text as plain text, without formatting characters such
+as backticks, asterisks, or underscores. Do not apply inline code, bold, or
+italics in headings, even for OPC UA terms or model names. Keep the Markdown
+heading markers and supported clause anchors; they are structural syntax, not
+heading text. Apply semantic emphasis in body prose, not headings. If an exact
+identifier contains one of these characters, use a plain descriptive heading
+and give the unchanged identifier in the body.
+
 Replace shortened technical labels such as "document-write target" and
 "model-source" in authored prose. Prefer a full sentence explaining the
 relationship, or use the exact applicable OPC UA term or information model name.

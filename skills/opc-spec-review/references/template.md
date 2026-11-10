@@ -57,6 +57,14 @@ for emphasis. The template does not define a general bold convention for prose
 concepts. Use bold for the revision classifications **Errata**,
 **Clarification**, and **Feature** in revision highlights.
 
+Write Markdown heading text as plain text, without formatting characters such
+as backticks, asterisks, or underscores. Do not apply inline code, bold, or
+italics in headings, even for OPC UA terms or model names. Keep the Markdown
+heading markers and supported clause anchors; they are structural syntax, not
+heading text. Apply semantic emphasis in body prose, not headings. If an exact
+identifier contains one of these characters, use a plain descriptive heading
+and give the unchanged identifier in the body.
+
 The current Markdown template generates terms and abbreviations from its
 designated source data. Use the repository's current authoring guide for those
 fields. Do not add a generic conventions section when the current template

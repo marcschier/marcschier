@@ -148,7 +148,7 @@
       "name": "opc-spec-review",
       "source": "./skills/opc-spec-review",
       "description": "Review composed OPC Foundation specifications, plan revisions and verify approved fixes with explicit coverage and publication evidence.",
-      "version": "1.2.3",
+      "version": "1.2.4",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"
