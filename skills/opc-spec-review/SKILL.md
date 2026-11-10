@@ -182,17 +182,22 @@ ModellingRule there as a NodeSet validation error.
 
 ## Apply the Companion Specification template
 
-Use the content outline in
-[references/template.md](references/template.md) when reviewing a companion
-specification. The
-[OPCF-Members Markdown template repository](https://github.com/OPCF-Members/OPCUA-Specification-Template)
-is the source of truth for its Markdown authoring contract and which content the
-publisher generates. Read its current
+Use the current
+[official Sample `spec.md`](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/source/Sample/spec.md)
+as the source of truth for section structure. Inspect the complete
+[Sample directory](https://github.com/OPCF-Members/OPCUA-Specification-Template/tree/main/source/Sample),
+including `manifest.json`, `profiles.json`, and `figures/`, as well as the
+repository's current
 [AUTHORING.md](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/AUTHORING.md)
-and [companion-specification skill](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/skills/opcua-companion-spec/SKILL.md)
-before assessing a repository that uses it. The included outline captures
-content and model-table structures; it does not replace publisher syntax or
-generated content.
+and
+[companion-specification skill](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/skills/opcua-companion-spec/SKILL.md).
+The upstream Sample determines the current headings, clauses, and directives;
+the authoring guide and skill define the current Markdown and publisher
+contract. The packaged
+[reference](references/template.md) is supplemental only. It is not a
+replacement for the upstream files or a fallback if they cannot be accessed.
+If the upstream source is unavailable, stop the structural assessment and
+report the access blocker rather than relying on an older local outline.
 
 Review the authored Markdown and its source data so the publisher has the
 information needed to produce the required specification. Check the source
@@ -203,124 +208,35 @@ content element, or if the publisher output does not preserve it, record a
 dependency for the template or tooling owner rather than inventing syntax or
 changing their implementation.
 
-Check the title page for the document number, full title and part, version,
-date, contributing organization, and status. Retain the approved agreement,
-copyright, patent, liability, compliance, and trademark material. Do not
-carry the template's public-domain notice into the finished specification.
-Use approved copyright and agreement text. For non-joint work, use the
-authorized alternative agreement; do not change the agreement for joint work
-without the required OPC Foundation review. Include the issue-reporting route
-and project identifier for the specification. Add revision highlights for
-later editions, not a first edition; classify changes as Errata, Clarification,
-or Feature and tie each reported change to its issue-tracker record.
+For every Structure field, check that its Description is adequate and accurate.
+Use the NodeSet Description when present; when absent, use an authored
+Markdown field Description if the current publisher contract supports it.
+Reconcile both sources when both contain a Description. A
+`datatype=<DataType>` directive does not waive this check. After updating and
+rendering, verify every field Description survives in the published output.
+If the publisher drops a supported authored Description, report a template or
+tooling dependency.
 
-Use this document order:
+Check the final publication for the document number, full title and part,
+version, date, contributing organization, and status. Retain approved
+agreement, copyright, patent, liability, compliance, and trademark material;
+use approved text and the authorized agreement for the work. For non-joint
+work, use the authorized alternative agreement; do not change the agreement
+for joint work without the required OPC Foundation review. Do not carry a
+public-domain notice from a template into the finished specification. Include
+the issue-reporting route and project identifier. For later editions, include
+revision highlights classified as Errata, Clarification, or Feature and tie
+each reported change to its issue-tracker record; do not add revision
+highlights to a first edition.
 
-1. **Scope.** State what the specification covers.
-2. **Normative references.** Include only documents needed to apply the
-   specification. A dated reference selects that edition; an undated reference
-   selects the latest edition, including its amendments and errata.
-3. **Terms, abbreviated terms, and conventions.** Ensure domain terms and
-   abbreviations are defined. Terms should read naturally when substituted
-   into their definition context. Italicize OPC UA terms and terms defined by
-   the specification; do not use italics for emphasis. Bold **Errata**,
-   **Clarification**, and **Feature** when classifying revision highlights.
-   Follow the current Markdown template for where terms, abbreviations, and
-   conventions are authored or generated; do not add a conventions section if
-   the source contract does not support one.
-4. **General information about the domain and OPC UA.** Introduce the
-   organization or domain represented by the model. Refer readers to the OPC UA
-   introduction publication instead of duplicating that general introduction.
-5. **Use cases.** Describe the use cases supported by the information model.
-6. **Information model overview.** Explain the model elements and their
-   relationships before the formal definitions.
-7. **Model definitions.** The template does not use a single chapter named
-   "Model definitions." Use its applicable chapter and subchapter headings,
-   replacing placeholders with names from the model:
-   - **OPC UA ObjectTypes:** `<some>Type definition`, with `Overview` and
-     `ObjectType definition` headings and, where needed, a method heading such
-     as `<some>Method`. Use named ObjectType subchapters where needed; the
-     template's example is `ExampleStateMachineType`.
-   - **OPC UA EventTypes:** `<some>EventType`.
-   - **OPC UA VariableTypes:** `<some>VariableType`.
-   - **OPC UA DataTypes:** `<someStructure>`, `<someUnion>`,
-     `<someEnumeration>`, and `<someOptionSet>`, as applicable.
-   - **OPC UA ReferenceTypes:** `<someReferenceType>`.
-   - **Instances:** `<someInstance>`.
-   - **Well-Known BrowseNames:** `Well-Known <Type> BrowseNames`.
-
-   Include only headings that apply to the model.
-8. **Profiles and Conformance Units.** Define testable functionality groups in
-   the Profile Database. Include at least one Profile or Facet for each
-   companion specification.
-9. **Namespaces.** Define namespace metadata and explain the namespace
-   identifiers used for NodeIds and BrowseNames.
-10. **Normative Annex A.** Define the model namespace, NodeSet, and
-    supplementary-file mappings. Include a capability identifier only when the
-    specification needs one.
-11. **Bibliography.** List informative sources that are not normative
-    references.
-
-Write the prose so readers can follow it from beginning to end without
-searching ahead to learn a term or concept. Introduce each term and the
-information needed to understand a statement before relying on it. A section
-may point forward to a later section for detail or a formal definition. For
-example, an overview may introduce an information-model concept and direct
-readers to its later formal definition, but it should establish enough context
-for the overview to make sense on its own.
-
-For each model definition, explain what it represents before presenting its
-formal definition. State inheritance as a "Subtype of" relationship; do not
-add a `HasSubtype` reference to a type definition. Put primary Conformance
-Units at the end of the definition and keep the NodeSet classification
-consistent with them. Make the source model, prose, and published definition
-agree on members, NodeClasses, BrowseNames, data and type definitions,
-attributes, and ModellingRules. Distinguish specification-defined values from
-server-specific values rather than imposing defaults without evidence.
-
-Use symbolic NodeIds in model descriptions and define actual NodeIds in
-normative Annex A. Distinguish model-defined NodeIds from server-generated
-NodeIds. Distinguish a BrowseName's `NamespaceIndex`, namespace URI, and String
-`Name` from one another and from an xRegistry String identifier. Keep
-`ValueRank`, `ArrayDimensions`, DataType, TypeDefinition, and ModellingRule
-consistent across the prose, source model, and published definition. For
-structured DataTypes, distinguish optional fields from fields that allow
-subtypes. For enumerations, use `EnumStrings` for zero-based sequential values
-and `EnumValues` otherwise. Define OptionSet values by bit position. For
-ReferenceTypes, document the inverse name, symmetry, abstract status, parent
-type, and source and target constraints as applicable. Explain well-known
-BrowseNames. For Methods, describe signatures and arguments, document defined
-result codes, and identify additional AddressSpace elements when the Method
-defines properties beyond its argument properties.
-
-Use canonical document and clause references rather than hyperlinks to
-individual clauses in the online reference. In Publisher Markdown, use a local
-clause anchor for an in-document reference as described above. Assign a unique
-short name to the companion specification and use it consistently for
-Profiles, Conformance Units, and namespace and file identifiers. Use uppercase
-for an acronym, camelCase otherwise, and preserve a trademark's casing. If the
-specification includes Profile Database content, state whether it is an
-informative snapshot or the normative definition. Keep the namespace summary,
-NodeSet, and supplementary-file links
-in Annex A aligned with the namespace URI, namespace version, and published
-artifacts. Use the applicable standard file naming patterns for NodeIds,
-NodeSet, and any DataType schemas. Confirm that NamespaceMetadata, the NodeSet
-model table, namespace tables, and file names agree. For an information model,
-check that NamespaceMetadata identifies the namespace URI, version,
-publication date, subset status, and static NodeId policy. Confirm that those
-values match the UANodeSet metadata. Use the approved namespace URI form and
-preserve its required syntax, including the final slash in the `http` form. A
-namespace URI is an identifier, not a promise that it can be used as a network
-URL.
-
-During review, compare each specification with this order and checklist.
-Record an omitted or reordered element as a finding only when it conflicts with
-the template or makes the specification incomplete; do not force empty
-type-specific chapters into a model that does not use them. Check the final
-content for residual template instructions, placeholders, unresolved fields,
-and mismatches between the text, model, and published files. Route publisher
-presentation defects to the template or tooling owner; do not edit their
-implementation.
+Use the upstream Sample's clause order and type-specific headings. The
+supplemental reference captures only additional checks, including prose
+readability, model-definition alignment, namespace and identifier consistency,
+publication checks, and Structure field Descriptions. Compare the edition with
+the official Sample; report omissions only when they conflict with that source
+or make the specification incomplete. Check for residual editing instructions,
+placeholders, unresolved fields, and mismatches among authored text, source
+data, model, and rendered publication.
 
 ## Review the composed edition
 

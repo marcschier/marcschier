@@ -139,133 +139,95 @@ class PackageTests(unittest.TestCase):
                 self.assertIn(requirement, section)
 
     def test_companion_template_structure_and_authoring_guidance(self):
-        skill = " ".join(
-            (ROOT / "SKILL.md").read_text(encoding="utf-8").split()
-        )
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
         template = (ROOT / "references" / "template.md").read_text(encoding="utf-8")
         section = " ".join(template.split())
-        headings = (
-            "## Publication information",
-            "## Scope",
-            "## Normative references",
-            "## Terms, definitions, and abbreviations",
-            "## General information",
-            "## Use cases",
-            "## Information Model overview",
-            "## Model definitions",
-            "## Authoring checks (not publication clauses)",
-            "### Tables in Markdown and rendered HTML",
-            "## Profiles and Conformance Units",
-            "## Namespaces",
-            "## Normative Annex A",
-            "## Bibliography",
-            "## Reading order",
+        official_spec = (
+            "https://github.com/OPCF-Members/OPCUA-Specification-Template/"
+            "blob/main/source/Sample/spec.md"
         )
-        positions = [section.index(heading) for heading in headings]
-        self.assertEqual(positions, sorted(positions))
-        model_headings = (
+        skill_section = skill.split(
+            "## Apply the Companion Specification template", 1
+        )[1].split("## Review the composed edition", 1)[0]
+        for requirement in (
+            official_spec,
+            "source of truth for section structure",
+            "including `manifest.json`, `profiles.json`, and `figures/`",
+            "authoring guide and skill define the current Markdown and publisher contract",
+            "supplemental only",
+            "not a replacement for the upstream files or a fallback",
+            "If the upstream source is unavailable, stop the structural assessment",
+            "rather than relying on an older local outline",
+            "inspect their rendered HTML for lost headers, cells, values, grouping, or links",
+            "Do not prescribe or edit publisher-owned presentation",
+        ):
+            with self.subTest(skill_requirement=requirement):
+                self.assertIn(requirement, skill_section)
+        self.assertIn(
+            "verify every field Description survives in the published output",
+            skill,
+        )
+
+        headings = (
+            "## Source of truth",
+            "## Official Sample structure",
+            "## Supplemental checks by section",
+            "### Scope",
+            "### Normative references",
+            "### Terms and abbreviated terms",
+            "### General information",
+            "### Use cases",
+            "### Information Model overview",
             "### OPC UA ObjectTypes",
-            "### OPC UA EventTypes",
             "### OPC UA VariableTypes",
             "### OPC UA DataTypes",
             "### OPC UA ReferenceTypes",
-            "### Instances",
-            "### Well-Known BrowseNames",
+            "### Generated Profiles, namespaces, and Normative Annex A",
+            "### Cross-cutting publication checks",
         )
-        model_positions = [section.index(heading) for heading in model_headings]
-        self.assertEqual(model_positions, sorted(model_positions))
+        positions = [section.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
         for requirement in (
-            "not a replacement for the publisher repository's source contract",
-            "source contract",
-            "which content authors supply, which content is generated",
-            "document number, full title and part, version, date",
-            "Do not rewrite approved legal text",
-            "dated reference selects that edition",
-            "undated reference selects the latest edition",
-            "Italicize OPC UA terms and terms defined in the specification",
-            "Write Markdown heading text as plain text",
-            "without formatting characters such as backticks, asterisks, or underscores",
-            "Do not apply inline code, bold, or italics in headings",
-            "Keep the Markdown heading markers and supported clause anchors",
-            "Apply semantic emphasis in body prose, not headings",
-            "give the unchanged identifier in the body",
-            "do not use italics for emphasis",
-            "does not define a general bold convention for prose concepts",
-            "Use bold for the revision classifications",
-            "Do not add a generic conventions section",
-            "The published specification's model chapters use these names",
-            "`<some>Type definition`",
-            "`Overview` and `ObjectType definition`",
-            "`<some>Method`",
-            "`ExampleStateMachineType`",
-            "`<some>EventType`",
-            "`<some>VariableType`",
-            "`<someStructure>`",
-            "`<someUnion>`",
-            "`<someEnumeration>`",
-            "`<someOptionSet>`",
-            "`<someReferenceType>`",
-            "`<someInstance>`",
-            "`Well-Known <Type> BrowseNames`",
-            "include only model groups that apply",
-            "a table has a header row, a separator row, and data rows",
-            "each item beginning `- ` or `1. `",
-            "Put one Markdown caption and anchor before each logical table group",
-            "The main type-definition group contains an Attribute/Value block",
-            "Keep the six-column References grid intact",
-            "Additional References",
-            "`SourceBrowsePath`, `Reference Type`, `Is Forward`, `TargetBrowsePath`",
-            "`Optional` column only when fields can be optional",
+            "The Sample separates authored prose from data and publisher output",
+            "`manifest.json` supplies specification identity",
+            "`profiles.json` supplies Profile and Conformance Unit content",
+            "Treat it as instructions to an author, not as a published clause",
+            "authored section order is Scope, Editing Guidelines, General information",
+            "Its Editing Guidelines section is marked for deletion before publication",
+            "including normative references, terms, Profiles and Conformance Units",
+            "Do not add duplicate authored headings or content",
+            "do not restore the prior local outline's separate top-level chapters",
+            "Do not add a standalone Bibliography or conventions section",
+            "searching ahead to learn a term or concept",
+            "Italicize OPC UA terms and terms defined by the specification",
+            "Do not use bold for general prose emphasis",
+            "Check each Structure field for an adequate, accurate Description",
+            "The NodeSet is authoritative for model facts",
+            "when the current publisher contract supports it",
+            "reconcile the two when both sources contain a Description",
             "`datatype=<DataType>`",
-            "Inspect the publisher's rendered HTML for each changed table group",
-            "A correct Markdown source or a GitHub preview alone does not establish",
-            "long text and width constraints may require wrapping",
-            "do not add manual widths or styles",
-            "State inheritance as a \"Subtype of\" relationship",
-            "do not add a `HasSubtype` reference",
-            "keep the NodeSet classification consistent",
-            "Distinguish a BrowseName's `NamespaceIndex`, namespace URI, and String `Name`",
-            "For structures, distinguish optional fields from fields that allow subtypes",
-            "use `EnumStrings` for zero-based sequential values and `EnumValues` otherwise",
+            "does not waive checking every field or supply an absent Description",
+            "verify every field Description survives in the published output",
+            "report a template or tooling dependency",
+            "For enumerations, use `EnumStrings`",
             "Define OptionSet values by bit position",
-            "Include at least one Profile or Facet",
-            "informative snapshot or the normative definition",
+            "State inheritance as a \"Subtype of\" relationship",
+            "do not add a `HasSubtype` reference to a type definition",
+            "Use symbolic NodeIds in model descriptions",
             "namespace metadata and the NodeSet agree",
-            "publication date, subset status, and static NodeId policy",
+            "static NodeId policy",
+            "Use the approved namespace URI form",
+            "Assign a unique short name to the companion specification",
+            "Include a capability identifier only when the specification needs one",
+            "Keep Markdown heading text plain",
+            "do not patch generated HTML or prescribe styling",
             "a local clause anchor for an in-document reference",
-            "follow it from beginning to end without searching ahead to learn a term or concept",
-            "Forward references are appropriate for more detail",
-            "Presentation belongs to the template and publisher owners",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, section)
-        self.assertIn("(references/template.md)", skill)
-        self.assertIn("Do not prescribe or edit publisher-owned presentation", skill)
-        self.assertIn(
-            "inspect their rendered HTML for lost headers, cells, values, grouping, or links",
-            skill,
-        )
-        examples = re.findall(r"```markdown\n(.*?)\n```", template, re.DOTALL)
-        table_examples = [example for example in examples if "| **Attribute** |" in example]
-        self.assertEqual(len(table_examples), 1)
-        table_example = table_examples[0]
-        blocks = [
-            block for block in table_example.split("\n\n") if block.startswith("|")
-        ]
-        self.assertEqual(len(blocks), 3)
-        for block in blocks:
-            self.assertEqual(block.splitlines()[1], "| --- | --- | --- | --- | --- | --- |")
-        for line in table_example.splitlines():
-            if line.startswith("|"):
-                with self.subTest(table_row=line):
-                    self.assertEqual(line.count("|") - 1, 6)
-        for excluded in ("figure", "TOC", "term index", "table borders", "font size"):
-            with self.subTest(excluded=excluded):
-                self.assertNotRegex(
-                    section.lower(), rf"\b{re.escape(excluded.lower())}\b"
-                )
-        self.assertNotRegex(section, r"\]\([^)]*\.docx")
-        self.assertNotIn("Word template", template)
+        self.assertNotIn("## Model definitions", template)
+        self.assertNotIn("### OPC UA EventTypes", template)
+        self.assertNotIn("### Instances", template)
 
     def test_relative_markdown_references_resolve_for_both_plugins(self):
         for plugin in (ROOT, REPO / "skills" / "claudism-killer"):
