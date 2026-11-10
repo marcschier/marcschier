@@ -229,6 +229,89 @@ class PackageTests(unittest.TestCase):
         self.assertNotIn("### OPC UA EventTypes", template)
         self.assertNotIn("### Instances", template)
 
+    def test_model_definition_review_flags_missing_bindings_without_blanket_conversion(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        self.assertIn(
+            "Flag model definition tables that should use `defines=<Type>` but lack the binding",
+            skill,
+        )
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        ).split("## Model table bindings and composition", 1)[1].split(
+            "## Figures and shipped formats", 1
+        )[0]
+        for requirement in (
+            "map each to its source model type",
+            "missing or incorrect binding as an authoring/publication finding",
+            "source location, intended type, proposed caption",
+            "not treat the absence of a binding alone as a normative OPC UA model violation",
+            "examples, explanatory tables, and content deliberately left unbound",
+            "Determine why a table is unbound before recommending conversion",
+            "record a justified exception rather than binding every table",
+            "report the ambiguity instead of guessing a binding",
+            "DataType field tables use `datatype=<DataType>`",
+            "separate type definition tables use `defines=<Type>`",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+
+    def test_composition_guidance_uses_pinned_rewrites_and_preserves_review_boundaries(self):
+        review = " ".join(
+            (ROOT / "references" / "review.md").read_text(encoding="utf-8").split()
+        ).split("## Model table bindings and composition", 1)[1].split(
+            "## Figures and shipped formats", 1
+        )[0]
+        for requirement in (
+            "rather than manual synchronization of model facts",
+            "they are not merely checked",
+            "Verify the selected repository's pinned version",
+            "report the tooling dependency",
+            "without running the writing `compose` command or changing sources",
+            "A supported `compose --check` checks drift without writing",
+            "does not establish that descriptions, explanatory prose, or normative model semantics are correct",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, review)
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text(encoding="utf-8").split()
+        ).split("## Compose approved model tables", 1)[1].split(
+            "## Information-preservation audit", 1
+        )[0]
+        for requirement in (
+            "When bindings and regeneration are authorized",
+            "rather than silently upgrading it or inventing syntax",
+            "a table fix does not authorize unrelated rewrites",
+            "do not regenerate a known model error into the document",
+            "Record authored descriptions and other editorial content before composition",
+            "Inspect the complete diff",
+            "descriptions, normative prose, table grouping, references, and Conformance Units",
+            "authored field Descriptions survive when the NodeSet lacks them",
+            "Stop and report unexpected writes or lost content",
+            "Run the documented `compose --check`, then render and validate",
+            "Inspect affected HTML tables and citations",
+            "Read-only, plan, and removal-audit modes",
+            "do not execute the writing command",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, revisions)
+
+    def test_composition_guidance_delegates_anchor_and_citation_updates(self):
+        template = " ".join(
+            (ROOT / "references" / "template.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "AUTHORING.md#you-need-not-type-a-tables-or-figures-anchor",
+            "`compose` normalizes supported table and figure anchors",
+            "updates citations",
+            "`{#t1}`, cited as `[](#t1)`",
+            "Use the supported `anchor=keep` exception",
+            "Inspect changed anchors and all affected citations in the diff and rendered output",
+            "do not hard-code table or figure numbers",
+            "Composition does not generate or validate the section's explanatory prose",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, template)
+
     def test_relative_markdown_references_resolve_for_both_plugins(self):
         for plugin in (ROOT, REPO / "skills" / "claudism-killer"):
             for path in plugin.rglob("*.md"):

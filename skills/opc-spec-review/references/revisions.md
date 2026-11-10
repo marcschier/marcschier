@@ -56,6 +56,41 @@ from the pinned build. When the user declines a repository-level workaround,
 keep the finding open with that decision recorded; do not apply the workaround
 to generated output alone.
 
+## Compose approved model tables
+
+When bindings and regeneration are authorized, use the repository's documented
+Publisher command and pinned tool version. Verify support for the intended
+table forms; when the pin cannot perform the required rewrite, report the
+tooling dependency rather than silently upgrading it or inventing syntax.
+`compose` writes source Markdown and can update anchors, citations, namespace
+entries, and figure outputs. Account for all affected paths in the approved
+scope before running it; a table fix does not authorize unrelated rewrites.
+
+1. Establish the correct model facts and resolve each table's type. Correct an
+   erroneous NodeSet only when that model correction is authorized; do not
+   regenerate a known model error into the document.
+2. Add or correct `defines=<Type>` on eligible definition captions and use
+   `datatype=<DataType>` for field tables. Preserve justified unbound tables.
+   Record authored descriptions and other editorial content before composition.
+3. Run the documented `compose` invocation instead of manually maintaining
+   supported model-derived tables. Let it normalize supported anchors and
+   citations, honoring approved `anchor=keep` exceptions.
+4. Inspect the complete diff, including changes outside the selected table.
+   Confirm that descriptions, normative prose, table grouping, references, and
+   Conformance Units are retained and agree with the model. In particular,
+   verify that authored field Descriptions survive when the NodeSet lacks
+   them. Stop and report unexpected writes or lost content; do not hide them
+   with a generated-output patch.
+5. Run the documented `compose --check`, then render and validate through the
+   repository's established publication commands. Inspect affected HTML tables
+   and citations, reopen changed coverage cells, and review prose and model
+   semantics separately. Use the check after composition to verify that the
+   source no longer drifts from the model, not as proof of publication quality.
+
+Read-only, plan, and removal-audit modes recommend these steps but do not
+execute the writing command. Preserve the format choices and approval
+boundaries established above.
+
 ## Information-preservation audit
 
 Compare against the fixed base selected in the review contract, not a moving

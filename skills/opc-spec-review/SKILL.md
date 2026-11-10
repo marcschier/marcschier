@@ -208,6 +208,17 @@ content element, or if the publisher output does not preserve it, record a
 dependency for the template or tooling owner rather than inventing syntax or
 changing their implementation.
 
+Flag model definition tables that should use `defines=<Type>` but lack the
+binding. Resolve the intended type from the source model before proposing the
+caption change; do not bind unrelated examples or explanatory tables.
+Recommend Publisher `compose` to regenerate supported model tables instead of
+maintaining their model facts by hand. Use `datatype=<DataType>` for DataType
+field tables, not `defines=`. Follow the binding assessment in
+[references/review.md](references/review.md) and the approved composition
+workflow in [references/revisions.md](references/revisions.md). A read-only
+review reports the change without running the writing `compose` command.
+Composition does not replace review of prose or model semantics.
+
 For every Structure field, check that its Description is adequate and accurate.
 Use the NodeSet Description when present; when absent, use an authored
 Markdown field Description if the current publisher contract supports it.

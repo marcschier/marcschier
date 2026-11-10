@@ -119,6 +119,25 @@ publisher supports multiple authored definition blocks for one type, check
 that they remain one logical definition and that each relation is represented
 without losing its BrowsePath or target.
 
+For model definition tables supported by the publisher, put `defines=<Type>`
+on the caption and let `compose` regenerate the model facts. Report eligible
+tables lacking that binding as described in
+[review.md](review.md#model-table-bindings-and-composition). Do not reproduce
+the outdated instruction that a bound definition table is only checked and
+never rewritten; confirm the selected repository's pinned Publisher behavior.
+Keep `datatype=<DataType>` for field tables distinct from the binding on their
+type definition tables.
+
+Follow the upstream
+[anchor guidance](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/AUTHORING.md#you-need-not-type-a-tables-or-figures-anchor):
+`compose` normalizes supported table and figure anchors from their captions
+and updates citations. A temporary anchor such as `{#t1}`, cited as `[](#t1)`,
+does not need manual renaming before composition. Use the supported
+`anchor=keep` exception when an existing anchor must be retained. Inspect
+changed anchors and all affected citations in the diff and rendered output;
+do not hard-code table or figure numbers. Composition does not generate or
+validate the section's explanatory prose.
+
 ### Cross-type model consistency
 
 State inheritance as a "Subtype of" relationship; do not add a `HasSubtype`

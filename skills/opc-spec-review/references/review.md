@@ -113,6 +113,40 @@ infer it from the NodeId namespace or assign one without an owner decision.
 Validate generated schemas against their dependencies: a generator's output or
 exit status alone does not establish that the schemas compile.
 
+## Model table bindings and composition
+
+Inventory the captions of model definition tables and map each to its source
+model type. Check whether each eligible table uses `defines=<Type>` with the
+correct type name under the current authoring contract. Flag a missing or
+incorrect binding as an authoring/publication finding, with the source
+location, intended type, proposed caption, and affected publication checks.
+Do not treat the absence of a binding alone as a normative OPC UA model
+violation.
+
+Distinguish definition tables from examples, explanatory tables, and content
+deliberately left unbound. Determine why a table is unbound before recommending
+conversion; record a justified exception rather than binding every table.
+If the type cannot be resolved uniquely, report the ambiguity instead of
+guessing a binding. DataType field tables use `datatype=<DataType>`; their
+separate type definition tables use `defines=<Type>`.
+
+Recommend the repository's documented Publisher `compose` workflow for
+supported model tables, rather than manual synchronization of model facts.
+Bound tables are rewritten from the model by current Publisher composition;
+they are not merely checked. Verify the selected repository's pinned version
+and supported table forms before proposing regeneration. If guidance and
+observed behavior disagree, retain both pieces of evidence and report the
+tooling dependency; do not assume an older pin has current behavior.
+
+In read-only, plan, and removal-audit modes, record the proposed bindings and
+composition steps without running the writing `compose` command or changing
+sources. A supported `compose --check` checks drift without writing; establish
+its behavior and use the repository's documented invocation before running it.
+For approved fixes, follow the composition workflow in
+[revisions.md](revisions.md#compose-approved-model-tables). A passing check
+does not establish that descriptions, explanatory prose, or normative model
+semantics are correct.
+
 ## Figures and shipped formats
 
 Review only the formats included in the review contract. Ask whether to include
