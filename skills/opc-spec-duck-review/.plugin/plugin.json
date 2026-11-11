@@ -1,0 +1,23 @@
+{
+  "name": "opc-spec-duck-review",
+  "version": "1.0.0",
+  "description": "Review OPC UA specification comprehension through independent forward-reading and expert editing agents, with fresh-reader passes and explicit coverage.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opc-spec-duck-review",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "development",
+  "keywords": [
+    "opc-ua",
+    "specification-review",
+    "rubber-duck",
+    "comprehension",
+    "technical-editing"
+  ],
+  "skills": [
+    "./"
+  ]
+}

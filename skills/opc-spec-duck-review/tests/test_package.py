@@ -1,0 +1,167 @@
+from pathlib import Path, PurePosixPath
+import json
+import re
+import unittest
+from urllib.parse import unquote
+
+
+ROOT = Path(__file__).resolve().parents[1]
+REPO = ROOT.parents[1]
+
+
+def prose(path):
+    return " ".join((ROOT / path).read_text(encoding="utf-8").split())
+
+
+class PackageTests(unittest.TestCase):
+    def test_marketplace_entry_and_discoverable_skill(self):
+        catalog = json.loads(
+            (REPO / ".plugin" / "marketplace.json").read_text(encoding="utf-8")
+        )
+        entries = [
+            item for item in catalog["plugins"]
+            if item["name"] == "opc-spec-duck-review"
+        ]
+        self.assertEqual(1, len(entries))
+        entry = entries[0]
+        self.assertEqual(ROOT, REPO.joinpath(*PurePosixPath(entry["source"]).parts))
+        manifest = json.loads(
+            (ROOT / ".plugin" / "plugin.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest, {k: v for k, v in entry.items() if k != "source"})
+        self.assertEqual(["./"], manifest["skills"])
+        self.assertRegex(manifest["version"], r"^\d+\.\d+\.\d+$")
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertTrue(text.startswith("---\n"))
+        frontmatter = text.split("---", 2)[1]
+        self.assertRegex(frontmatter, r"(?m)^name: opc-spec-duck-review$")
+        self.assertIn("rubber-duck dialogue", frontmatter)
+        self.assertNotIn("disable-model-invocation: true", frontmatter)
+
+    def test_scope_and_write_permissions_are_separate(self):
+        text = prose("SKILL.md").split("## 1. Agree the scope", 1)[1].split(
+            "## 2.", 1
+        )[0]
+        for rule in (
+            "ask the user which specifications to review",
+            "only each specification's source folder or also its Publisher-rendered HTML",
+            "Ask one question at a time",
+            "A request for review alone authorizes no edits",
+            "Keep other specifications outside the edit scope",
+            "including manifest terms and profile descriptions",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, text)
+
+    def test_agents_and_domain_knowledge_are_isolated(self):
+        skill = prose("SKILL.md")
+        reader = prose("references/roles.md").split("## Reader", 1)[1].split(
+            "## Editor", 1
+        )[0]
+        for rule in (
+            "one dedicated editor agent and retain it",
+            "a separate reader agent for each full pass",
+            "without inherited conversation",
+            "Separate agents are mandatory",
+            "honor host model defaults",
+            "Both agents must use the OPC UA knowledge-base MCP tools",
+            "https://reference.opcfoundation.org/",
+            "Never upload private drafts or models",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, skill)
+        for rule in (
+            "dependent OPC UA specifications, including preceding parts",
+            "Start without knowledge",
+            "do not use that recognition to fill a gap",
+            "Non-OPC UA references, even normative ones",
+            "rather than silently researching that domain",
+            "cannot edit sources or generated publications",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, reader)
+
+    def test_forward_reading_has_exhaustive_located_judgments(self):
+        reader = prose("references/roles.md").split("## Reader", 1)[1].split(
+            "## Editor", 1
+        )[0]
+        for rule in (
+            "sentence by sentence, without skipping",
+            "complete separate forward read of the published edition",
+            "Source knowledge must not conceal",
+            "accepted, concern, or unresolved judgment",
+            "short specific reason",
+            "read the entire containing paragraph and re-judge",
+            "Preserve the initial obstacle",
+            "headings, table cells and field descriptions",
+            "examples, and figures",
+            "last completed unit and the next unread unit",
+            "still cannot explain",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, reader)
+
+    def test_editor_companions_and_first_pass_obligations(self):
+        editor = prose("references/roles.md").split("## Editor", 1)[1]
+        skill = prose("SKILL.md")
+        for rule in (
+            "Load `microsoft-writing-style`",
+            "reference-documentation route",
+            "Invoke `claudism-killer` on each rewrite batch",
+            "Only you may make source fixes",
+            "Preserve normative force",
+            "first full pass, keep rewriting when the reader is not satisfied",
+            "provide a faithful alternative",
+            "Rebuild selected HTML with the pinned Publisher",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, editor)
+        self.assertIn("Only the editor may change specification sources", skill)
+        self.assertIn("without filtering out requests", skill)
+        self.assertIn("recommendations, not unapplied changes", skill)
+
+    def test_fresh_pass_challenges_and_closure(self):
+        text = prose("SKILL.md").split("## 5. Repeat with a fresh reader", 1)[1]
+        for rule in (
+            "new reader agent",
+            "withhold that history from the new reader",
+            "Reset learned domain knowledge between full passes",
+            "second full pass onward, the editor may challenge",
+            "exact sentence, the reader's interpretation",
+            "An editor rejection alone does not close",
+            "Bring a persistent disagreement to the user",
+            "user-imposed resource limit",
+            "Every change requires another fresh full pass",
+            "no new or unresolved issues",
+            "no coverage gaps",
+            "Otherwise report the precise incomplete state",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, text)
+
+    def test_relative_document_links_resolve_and_scenarios_cover_failures(self):
+        for path in ROOT.rglob("*.md"):
+            for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", path.read_text("utf-8")):
+                if "://" in target or target.startswith("#"):
+                    continue
+                relative = unquote(target.split("#", 1)[0])
+                with self.subTest(path=path, target=target):
+                    self.assertTrue((path.parent / relative).exists())
+        scenarios = prose("tests/acceptance.md")
+        for scenario in (
+            "Non-OPC prerequisite",
+            "Prior OPC UA part",
+            "Coverage gap",
+            "First pass dissatisfaction",
+            "Unsafe requested rewrite",
+            "Later challenge",
+            "Fresh pass isolation",
+            "Missing tools or agents",
+            "Successful closure",
+        ):
+            with self.subTest(scenario=scenario):
+                self.assertIn(scenario, scenarios)
+
+
+if __name__ == "__main__":
+    unittest.main()
