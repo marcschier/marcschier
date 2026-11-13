@@ -10,6 +10,12 @@ Repository instructions supply the build and validation commands. The skill
 does not assume that every repository uses the same tool version or gates.
 Review alone leaves sources and generated artifacts unchanged.
 
+Every draft, rewrite or proposed revision ends with a mandatory final
+information-preservation audit before completion. Compare the fixed baseline
+inventory with the final text and current in-scope publication, record retained
+homes or approved removals, and leave unresolved loss or missing evidence open.
+Passing checks do not replace this audit.
+
 ## Install
 
 Register the marketplace and install the review skill:

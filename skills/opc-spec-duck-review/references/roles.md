@@ -114,4 +114,8 @@ Rebuild selected HTML with the pinned Publisher after relevant source changes
 and inspect the diff for unexpected loss. Preserve previous pass history even
 when a new reader begins without it. Accept the final edition only when the
 fresh reader has covered it completely and you have reconciled all findings,
-technical evidence, edits, and user decisions.
+technical evidence, edits, and user decisions. Before completion, perform the
+main skill's mandatory final information-preservation audit with the
+coordinator. Fresh-reader acceptance does not prove no information was lost.
+Keep baseline and audit history out of fresh-reader prompts; corrections need
+a fresh full pass and another final audit.

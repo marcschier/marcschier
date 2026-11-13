@@ -6,6 +6,10 @@ scenarios; this list alone is not evidence that they passed.
 
 | Scenario | Expected behavior |
 |---|---|
+| Final audit after agreement | Fresh reader and editor agree and validation passes, but the baseline contains an omitted mapping exception; editor and coordinator audit against the complete fixed inventory and withhold acceptance until it is accounted for |
+| Final audit isolation and correction | Editor and coordinator keep baseline and audit history from the fresh reader; an authorized restoration triggers applicable validation, a new fresh full pass and another final audit |
+| Missing final audit evidence | The resolved review package lacks the final audit section or baseline evidence is unavailable; report the dependency or audit gap and withhold completion rather than substituting reader acceptance |
+| Findings-only final audit | Proposed wording drops an error condition; compare the proposal against its baseline, record the loss and intended home without edits or writing regeneration, and do not claim publication evidence |
 | Shared authority and fresh reader | Both roles independently read all three target-repository style files and the resolved review package's shared safeguards; record repository revision and paths, and give the fresh reader no prior findings or editor history or domain knowledge from examples |
 | Missing authority or safeguards | The target repository's style directory or any required file, or the resolved review package is unavailable to either role; stop before style review, proposal or writing, report the missing path and do not substitute another style skill |
 | Conflicting example | An example strengthens descriptive text into a requirement or contradicts terminology formatting rules; rules and temporary safeguards take precedence and the editor requests a technical decision |

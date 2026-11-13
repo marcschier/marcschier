@@ -143,7 +143,40 @@ Render and reread changed clauses, their neighboring explanation and cross-part
 references. Reinspect affected figures. Repeat uncovered or changed
 passes until every in-scope clause and figure is accounted for, each defect is
 fixed or explicitly deferred, and the ledger refers to the current composed
-output. Recheck the information-preservation audit after the final rewrite.
+output.
+
+## Final information-preservation audit
+
+This is a mandatory final review step after drafting or rewriting and after
+the last authorized regeneration, before reporting completion. Apply it to
+proposed text in plan or findings-only mode as well as to applied changes.
+Read-only work compares evidence without editing or running writing commands.
+
+Compare the fixed pre-change baseline and its information inventory with the
+final text and current in-scope publication, not just the last rewrite batch.
+For new drafting, use the agreed source inputs and requirements as the
+baseline; if baseline evidence is unavailable, report the audit incomplete
+rather than claiming nothing was lost. Reconcile every useful fact, definition,
+distinction, mapping entry, table fact, example and requirement, including
+negative contracts, conditions, normative strength and release disclosures.
+Check retained meaning and scope as well as presence. Follow the
+information-preservation dispositions above and the temporary safeguards.
+
+Record each baseline item, its final accessible rendered home or exact
+applicable normative reference, or its approved removal disposition, with
+located evidence in an authorized review artifact. For proposals, record the
+intended home separately from verified publication evidence; do not claim
+unapplied text was published. Account for cross-part references and generator
+ownership. A guide, chat explanation, passing build or reader acceptance does
+not replace retained specification content or prove semantic completeness.
+
+Report unresolved loss or missing evidence and withhold completion or acceptance.
+In approved-fix mode, restore accidental loss within scope; otherwise report it
+and seek the needed authorization or technical decision. Any correction
+requires affected validation and reading again, then another final audit.
+Record the baseline and final revisions or hashes, dispositions and audit
+outcome in the final report. A completed audit can account for approved
+removals; do not describe them as unchanged information.
 
 ## PR feedback and authorized publication
 

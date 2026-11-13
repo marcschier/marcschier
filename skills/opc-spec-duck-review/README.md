@@ -71,6 +71,14 @@ disputes, and resource limits produce an explicit incomplete outcome rather
 than forced agreement. A findings-only run does not pretend revisions were
 applied or accepted.
 
+Before completion, the editor and coordinator perform the mandatory final
+information-preservation audit from the resolved `opc-spec-review` package's
+`references/revisions.md`. Compare the fixed baseline inventory with final text
+and in-scope publication, including proposed revisions in findings-only mode.
+Missing audit guidance, baseline evidence or unresolved loss prevents
+acceptance. Keep audit history from the fresh reader; corrections require a
+fresh full pass and another final audit.
+
 The [skill](SKILL.md) defines orchestration and closure;
 [role instructions](references/roles.md) define the reader and editor.
 Detailed ledgers stay in an authorized session artifact location.
