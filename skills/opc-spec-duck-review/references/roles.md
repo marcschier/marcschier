@@ -14,10 +14,11 @@ knowledge of this specification's technology or context outside those
 prerequisites. Your underlying model may recognize the domain; do not use that
 recognition to fill a gap the document has not explained.
 
-Use the OPC UA knowledge-base MCP and reference.opcfoundation.org to check OPC
-UA meanings and compare relevant companion-specification prose. Record which
-examples establish the expected register; avoid treating one incidental style
-choice as a universal requirement. Non-OPC UA references, even normative ones,
+Read `SKILL.md`, `rules.md` and `examples.md` from the target repository's
+`skills/opcua-spec-style/`, and the shared temporary safeguards provided under
+the main skill's resolution contract. Apply their precedence without importing target-domain knowledge
+from their examples. Use the OPC UA knowledge-base MCP and
+reference.opcfoundation.org to check OPC UA meanings. Non-OPC UA references, even normative ones,
 do not make their subject matter prior reader knowledge. Assess whether the
 document introduces what the intended OPC UA reader needs and clearly
 identifies any further external reading. Flag missing explanation rather than
@@ -34,18 +35,13 @@ were first introduced, and unresolved questions.
 For each sentence, record its location and judge all of these questions:
 
 - Does it make sense at this point, and can you explain its meaning?
-- Is its prose natural and consistent with sound OPC UA companion-specification
-  writing rather than shortened labels or stock AI phrasing?
+- Does its prose follow the resolved style authority and safeguards?
 - Are terms stable, defined before needed, and distinct from similar concepts?
 - Is it useful new information, or does it repeat an explanation without a
   reader need? Distinguish necessary requirements from redundant teaching.
 - What prerequisite, condition, relationship, or example is missing?
 - Would an example or diagram clarify the concept, or do existing examples and
   diagrams repeat, distract, or introduce unexplained detail?
-- Does it coin a technical compound such as "same-application"? Prefer a full
-  explanation or an established term. Preserve standard compounds such as
-  "read-only", the "non-" prefix, and exact identifiers, commands, URLs, and
-  source quotations.
 
 Give each sentence an accepted, concern, or unresolved judgment with a short
 specific reason; a checklist of generic yes answers is not a judgment. For a
@@ -81,20 +77,17 @@ authoritative non-OPC references to establish domain facts where needed.
 Verify uncertain facts rather than inventing expertise or requirements.
 
 Use the OPC UA knowledge-base MCP and reference.opcfoundation.org for OPC UA
-evidence. Load `microsoft-writing-style`, choose its reference-documentation
-route, and complete its applicable reference reading before rewriting.
-Invoke `claudism-killer` on each rewrite batch with the selected scope and OPC
-terminology protections; carry out its detection, judgment, measurement, and
-final verification procedure. Keep editorial process reports out of the
-specification. Companion skills do not authorize technical changes.
+evidence. Read `SKILL.md`, `rules.md` and `examples.md` from the target
+repository's `skills/opcua-spec-style/`, and the shared temporary safeguards under the main skill's
+resolution contract before reviewing or rewriting. Apply their precedence.
+Keep editorial process reports out of the specification. Style guidance does
+not authorize technical changes.
 
 Only you may make source fixes, and only within the agreed permission and
 scope. Preserve normative force, model names, ModellingRules, namespace
 identities, conditions, references, examples, and useful information.
 Explain a concept before relying on it; use OPC UA terms and domain names
-consistently. Replace unexplained coined compounds with full sentences or
-established terms rather than simply deleting hyphens. Keep headings plain and
-respect the repository's authoring and semantic-emphasis conventions.
+consistently. Respect the repository's authoring contract.
 
 For each reader finding, retain the original text, the reader's reasoning,
 source and rendered locations, your action and rationale, evidence, changed

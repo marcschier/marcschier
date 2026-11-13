@@ -12,13 +12,11 @@ Review alone leaves sources and generated artifacts unchanged.
 
 ## Install
 
-Register the marketplace and install the review and prose skills:
+Register the marketplace and install the review skill:
 
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install opc-spec-review@marcschier
-copilot plugin install marc-writer@marcschier
-copilot plugin install claudism-killer@marcschier
 ```
 
 For model or NodeSet conformance questions, also install:
@@ -38,7 +36,25 @@ From a local clone, register the bare skill with:
 copilot skill add .\skills\opc-spec-review
 ```
 
-Install the companions separately even when using a bare skill.
+Install branch-specific companions separately even when using a bare skill.
+
+### Specification style authority
+
+For every specification style review, proposal or rewrite, read `SKILL.md`,
+`rules.md` and `examples.md` from
+`<repository root>/skills/opcua-spec-style/` in the repository being reviewed.
+Record that repository's revision and the paths read, with file hashes or dirty
+state when they differ from that revision. If the directory or any file is
+missing or unreadable, report the path and stop before the affected work;
+there is no host-resolved or remote fallback.
+
+The [temporary safeguards](references/style-overrides.md) take precedence
+over conflicting guidance and remain until independently retired with evidence.
+The style skill owns specification prose, applicable normative sources own
+technical facts, and the repository's authoring contract and pinned Publisher
+own syntax and composition. Missing files block the affected branch. Optional
+`marc-writer` and its companions may assist with reports or plans, not
+specification prose.
 
 ## Use
 
@@ -91,7 +107,6 @@ Refresh the catalog and installed plugins with:
 ```powershell
 copilot plugin marketplace update marcschier
 copilot plugin update opc-spec-review@marcschier
-copilot plugin update claudism-killer@marcschier
 ```
 
 In a running CLI session, use `/skills reload` and

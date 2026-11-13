@@ -14,8 +14,7 @@ validation or certification.
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install opc-spec-duck-review@marcschier
-copilot plugin install microsoft-writing-style@marcschier
-copilot plugin install claudism-killer@marcschier
+copilot plugin install opc-spec-review@marcschier
 ```
 
 The host must support independent agents and provide both the OPC UA
@@ -23,6 +22,19 @@ knowledge-base MCP tools and access to https://reference.opcfoundation.org/.
 These services are not bundled or installed automatically. Both agents must
 have access; a live OPC UA server connection is not the knowledge base.
 Missing dependencies are reported before the affected work proceeds.
+
+Both reader and editor must read `SKILL.md`, `rules.md` and `examples.md`
+from `<repository root>/skills/opcua-spec-style/` in the repository being
+reviewed, plus the temporary safeguards packaged with the resolved
+`opc-spec-review` skill. Record the target repository revision and paths read,
+with file hashes or dirty state when they differ from that revision. Resolve
+the review package through the host, not an assumed sibling directory.
+If any required directory or file is unavailable, report the path and stop
+before style review, proposal or writing; do not use a fallback style skill.
+The safeguards override conflicting upstream guidance, and the upstream rules
+outrank contradictory examples. They do not give the reader prior target-domain
+knowledge. Technical normative sources and the repository's authoring and
+Publisher contract retain their respective authority.
 
 For local development, register the bare skill:
 

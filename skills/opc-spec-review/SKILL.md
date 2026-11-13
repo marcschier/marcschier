@@ -84,13 +84,30 @@ public examples and reusable instructions must be synthetic or generalized.
 
 ## Resolve companion skills
 
-Use the host's skill mechanism to resolve companions, rather than assuming
-sibling directories exist in an installed plugin. The prose and model skills
-below belong to this marketplace; `drawio-skill` is distributed separately.
+Before any specification style review, proposal or writing, read the complete
+`SKILL.md`, `rules.md` and `examples.md` from the repository being reviewed at
+`<repository root>/skills/opcua-spec-style/`, and read the temporary
+[safeguards](references/style-overrides.md). Record the target repository
+revision and the paths read; include file hashes or dirty state when they
+differ from that revision. If the directory or any required file is missing or
+unreadable, stop before style review, proposal or writing, and report each
+missing or unreadable path. Do not use a host-resolved or remote fallback,
+another style skill or a local summary.
+
+The safeguards override conflicting upstream guidance until individually
+retired. The upstream rules outrank contradictory examples. The style skill
+governs specification prose; applicable standards, models and approved
+technical decisions govern normative facts. The repository's authoring
+contract and pinned Publisher govern supported syntax and composition.
+Generic report-writing helpers may be used for non-specification deliverables
+only; they must not compete with specification style.
+
+Use the host's skill mechanism to resolve other companions rather than assuming
+sibling directories exist in an installed plugin.
 
 | Branch | Required companion |
 |---|---|
-| Authored reports, plans or revised prose | `marc-writer`, its `STYLE.md`, and its `claudism-killer` composition pass |
+| Reports or plans, if using `marc-writer` | `marc-writer` and its required companions; not for specification prose |
 | Information-model or NodeSet conformance questions | `opcua-model-review`, with its rule and evidence ledger |
 | Creating or changing editable figures | `drawio-skill` |
 
@@ -131,55 +148,6 @@ cite it with the correction's effect. Otherwise, incorporate the feedback or
 record the unresolved decision. Keep private review comments and reviewer
 identity out of reusable guidance and public examples.
 
-## Write references and requirements in OPC style
-
-Write Markdown heading text as plain text, without formatting characters such
-as backticks, asterisks, or underscores. Do not apply inline code, bold, or
-italics in headings, even for OPC UA terms or model names. Keep the Markdown
-heading markers and supported clause anchors; they are structural syntax, not
-heading text. Apply semantic emphasis in body prose, not headings. If an exact
-identifier contains one of these characters, use a plain descriptive heading
-and give the unchanged identifier in the body.
-
-Replace shortened technical labels such as "document-write target" and
-"model-source" in authored prose. Prefer a full sentence explaining the
-relationship, or use the exact applicable OPC UA term or information model name.
-When an explanation is needed, put words without hyphens in parentheses after
-the term or name. For example, if the model defines *DocumentFile* as the file
-that receives the document, write *DocumentFile* (the file that receives the
-document). Do not require an explanation on every occurrence or select a term
-without evidence from the specification or model. Retain the specification's
-semantic emphasis conventions and do not rename model elements.
-
-When a descriptive phrase is sufficient instead, write it without hyphens in
-quotation marks, such as "model source"; explain its meaning before relying on
-it. Do not merely remove the hyphens from an unexplained label. Keep conventional
-compounds such as "read-only" and "server-specific"; the "non-" prefix is also
-allowed. Preserve exact identifiers, official names, code, commands, paths,
-URLs, and quotations from sources. Preserve technical meaning and normative
-force; flag unclear meaning rather than inventing a replacement.
-
-OPC specifications cite a clause by its number, without a section symbol:
-"see 6.2" within the document and "OPC 10000-20, 4.2" for another one. In
-Publisher Markdown, write a local reference as `(see [](#sec-anchor))`. The
-Publisher renders the empty link as the current clause number, whereas a literal
-`§` stays in the output and a hard-coded number goes stale as soon as a clause
-is inserted before it. Apply the same rule to every rendered text, including
-Conformance Unit and Profile descriptions.
-
-State requirements and permissions affirmatively. A sentence such as "the
-Client need not build the structure" or "this folder is not required to be a
-notifier" tells the implementer nothing testable; replace it with the
-requirement or permission it implies, for example "a Server may also make this
-folder an event notifier". Keep a negative form only when the prohibition is
-itself the requirement, as OPC 10000-3, 5.2.4 does with "A BrowseName should
-never be used to display the name of a Node".
-
-Define glossary terms as noun phrases in normal spelling, not as CamelCase
-type or attribute names. In an ObjectType definition table, leave the
-ModellingRule column empty on a `HasInterface` row; the Publisher reports a
-ModellingRule there as a NodeSet validation error.
-
 ## Apply the Companion Specification template
 
 Use the current
@@ -211,8 +179,9 @@ changing their implementation.
 Flag model definition tables that should use `defines=<Type>` but lack the
 binding. Resolve the intended type from the source model before proposing the
 caption change; do not bind unrelated examples or explanatory tables.
-Recommend Publisher `compose` to regenerate supported model tables instead of
-maintaining their model facts by hand. Use `datatype=<DataType>` for DataType
+Recommend Publisher `compose` for supported model tables only after assessing
+ownership, persistence and information preservation under the safeguards.
+Use `datatype=<DataType>` for DataType
 field tables, not `defines=`. Follow the binding assessment in
 [references/review.md](references/review.md) and the approved composition
 workflow in [references/revisions.md](references/revisions.md). A read-only

@@ -35,12 +35,11 @@ patch is not a fix. Preserve published identifiers, anchors, normative force,
 permissions and exception conditions unless an approved technical change
 explicitly accounts for compatibility.
 
-Run `marc-writer` with its guide and the `claudism-killer` pass on each batch of
-revised prose, authored reports included, before counting the wording as
-applied, and record the counts for each edited passage. Use `drawio-skill` for
-editable figure work and `opcua-model-review` for model conformance. Recheck
-that editorial substitutions preserve the actual actor, action and evidence
-level.
+Apply `opcua-spec-style` and the temporary safeguards required by the main
+skill to each specification rewrite. Generic report-writing helpers apply only
+to non-specification deliverables. Use `drawio-skill` for editable figure work
+and `opcua-model-review` for model conformance. Recheck that editorial
+substitutions preserve the actual actor, action and evidence level.
 
 Check free space before a large write or generation. After a failed write, list
 zero-byte and partial tracked files; restore an unchanged file from the base and
@@ -72,9 +71,9 @@ scope before running it; a table fix does not authorize unrelated rewrites.
 2. Add or correct `defines=<Type>` on eligible definition captions and use
    `datatype=<DataType>` for field tables. Preserve justified unbound tables.
    Record authored descriptions and other editorial content before composition.
-3. Run the documented `compose` invocation instead of manually maintaining
-   supported model-derived tables. Let it normalize supported anchors and
-   citations, honoring approved `anchor=keep` exceptions.
+3. After the safeguards establish ownership and persistence, run the documented
+   `compose` invocation for supported model-derived tables. Inspect anchor and
+   citation changes, honoring approved `anchor=keep` exceptions.
 4. Inspect the complete diff, including changes outside the selected table.
    Confirm that descriptions, normative prose, table grouping, references, and
    Conformance Units are retained and agree with the model. In particular,

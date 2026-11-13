@@ -55,11 +55,11 @@ leave ambiguous matches untouched for investigation.
 
 ## Explanation and reading order
 
-Assess whether the publication teaches the mechanism around its precise
-contracts. Prefer causal explanatory prose where the reader must understand
-why a rule exists. Retain signatures, enumerations, option sets, actual
-algorithms and profile matrices. Bullet count alone is not a quality measure.
-Preserve strong chapters and revise proportionately.
+Assess whether the publication provides the context needed to understand its
+contracts, applying the resolved style authority and safeguards. Retain
+signatures, enumerations, option sets, actual algorithms and profile matrices.
+Bullet count alone is not a quality measure. Preserve strong chapters and
+revise proportionately.
 
 At difficult boundaries, trace a concrete successful interaction and a relevant
 failure. Check identity and authority, inputs and outputs, omitted or default
@@ -94,8 +94,9 @@ it composes the edition. A source heading that repeats the annex letter doubles
 it, and a reference written as a fixed letter goes stale when annexes move.
 Search authored sources, generators, generated model descriptions such as
 NodeSet `Description` text, and publication checks for hard-coded numbers, and
-compare each with the composed numbering. Correct the generator and the check
-with the source, then regenerate.
+compare each with the composed numbering. In read-only review report impacts;
+with approval correct only allowed sources, generators and checks, then
+regenerate, and flag out-of-scope dependencies.
 
 For model questions, use `opcua-model-review` and reconcile its complete ledger
 with the publication findings. Load the base NodeSet whose version matches the
@@ -131,7 +132,9 @@ guessing a binding. DataType field tables use `datatype=<DataType>`; their
 separate type definition tables use `defines=<Type>`.
 
 Recommend the repository's documented Publisher `compose` workflow for
-supported model tables, rather than manual synchronization of model facts.
+supported model tables only after applying the ownership and preservation
+safeguards; avoid manual synchronization of model facts where safe composition
+is supported.
 Bound tables are rewritten from the model by current Publisher composition;
 they are not merely checked. Verify the selected repository's pinned version
 and supported table forms before proposing regeneration. If guidance and
