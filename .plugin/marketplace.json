@@ -148,7 +148,7 @@
       "name": "opc-spec-review",
       "source": "./skills/opc-spec-review",
       "description": "Review composed OPC Foundation specifications, plan revisions and verify approved fixes with explicit coverage and publication evidence.",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"
@@ -173,7 +173,7 @@
       "name": "opc-spec-duck-review",
       "source": "./skills/opc-spec-duck-review",
       "description": "Review OPC UA specification comprehension through independent forward-reading and expert editing agents, with fresh-reader passes and explicit coverage.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"

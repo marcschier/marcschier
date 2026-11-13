@@ -318,6 +318,41 @@ class PackageTests(unittest.TestCase):
                 with self.subTest(file=path, obsolete=obsolete):
                     self.assertNotIn(obsolete, text)
 
+    def test_final_information_preservation_audit_gates_completion(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        revisions = (ROOT / "references" / "revisions.md").read_text(encoding="utf-8")
+        audit = " ".join(revisions.split(
+            "## Final information-preservation audit", 1
+        )[1].split("## PR feedback", 1)[0].split())
+        self.assertIn(
+            "(references/revisions.md#final-information-preservation-audit)", skill
+        )
+        self.assertLess(skill.index("mandatory [final information-preservation audit]"),
+                        skill.index("Give a per-spec verdict"))
+        for requirement in (
+            "mandatory final review step after drafting or rewriting",
+            "after the last authorized regeneration, before reporting completion",
+            "proposed text in plan or findings-only mode",
+            "Read-only work compares evidence without editing or running writing commands",
+            "fixed pre-change baseline", "not just the last rewrite batch",
+            "For new drafting, use the agreed source inputs and requirements",
+            "baseline evidence is unavailable, report the audit incomplete",
+            "Check retained meaning and scope as well as presence",
+            "intended home separately from verified publication evidence",
+            "reader acceptance does not replace retained specification content",
+            "withhold completion or acceptance",
+            "another final audit",
+            "baseline and final revisions or hashes",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, audit)
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for scenario in (
+            "Final preservation audit", "Draft and proposal baseline",
+            "Final audit evidence gap", "Approved final removal",
+        ):
+            self.assertIn(f"| {scenario} |", acceptance)
+
     def test_synthetic_scenarios_cover_style_safeguard_failures(self):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         for scenario in (

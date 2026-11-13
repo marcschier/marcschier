@@ -167,6 +167,42 @@ class PackageTests(unittest.TestCase):
             with self.subTest(rule=rule):
                 self.assertIn(rule, text)
 
+    def test_final_audit_uses_shared_guidance_without_leaking_reader_history(self):
+        skill = prose("SKILL.md")
+        audit = skill.split("## 6. Final information-preservation audit", 1)[1].split(
+            "## 7. Deliver the result", 1
+        )[0]
+        for requirement in (
+            "the editor and coordinator must read and apply",
+            "`references/revisions.md` section \"Final information-preservation audit\"",
+            "host-resolved `opc-spec-review` package",
+            "not an assumed sibling directory",
+            "lacks that section", "withhold completion",
+            "after the final draft or rewrite and last authorized regeneration",
+            "fixed pre-change baseline and complete information inventory",
+            "For new drafting use agreed source inputs and requirements",
+            "in findings-only mode audit proposed text without editing",
+            "Missing baseline evidence or unresolved loss prevents acceptance",
+            "not the fresh reader",
+            "another fresh full reading pass and another final audit",
+            "read-only mode reports loss without writing commands or edits",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, audit)
+        shared = (REPO / "skills" / "opc-spec-review" / "references" /
+                  "revisions.md").read_text(encoding="utf-8")
+        self.assertIn("## Final information-preservation audit", shared)
+        editor = prose("references/roles.md").split("## Editor", 1)[1]
+        self.assertIn("mandatory final information-preservation audit", editor)
+        self.assertIn("Keep baseline and audit history out of fresh-reader prompts", editor)
+        self.assertIn("| Preservation | Baseline and final revisions or hashes", skill)
+        scenarios = prose("tests/acceptance.md")
+        for scenario in (
+            "Final audit after agreement", "Final audit isolation and correction",
+            "Missing final audit evidence", "Findings-only final audit",
+        ):
+            self.assertIn(f"| {scenario} |", scenarios)
+
     def test_relative_document_links_resolve_and_scenarios_cover_failures(self):
         for path in ROOT.rglob("*.md"):
             for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", path.read_text("utf-8")):

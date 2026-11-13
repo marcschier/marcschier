@@ -206,10 +206,33 @@ Previously rejected findings need explicit reader agreement or a recorded user
 decision; hide neither from the final report.
 
 **Done:** a complete unchanged final edition has fresh-reader and editor
-acceptance, no coverage gaps, and no outstanding decisions. Otherwise report
-the precise incomplete state.
+acceptance, no coverage gaps, and no outstanding decisions, subject to the
+mandatory final information-preservation audit below. Otherwise report the
+precise incomplete state.
 
-## 6. Deliver the result
+## 6. Final information-preservation audit
+
+Before reporting completion, the editor and coordinator must read and apply
+`references/revisions.md` section "Final information-preservation audit" from
+the host-resolved `opc-spec-review` package. Resolve that reference through the
+host, not an assumed sibling directory. If the reference is unavailable or
+lacks that section, report the missing dependency and withhold completion.
+
+Perform this audit after the final draft or rewrite and last authorized
+regeneration. Compare the fixed pre-change baseline and complete information
+inventory against the final text and current in-scope publication. For new
+drafting use agreed source inputs and requirements; in findings-only mode
+audit proposed text without editing or claiming it was published. Missing
+baseline evidence or unresolved loss prevents acceptance, even when the fresh
+reader and editor agree or checks pass.
+
+Keep the baseline, previous findings and audit history with the editor and
+coordinator, not the fresh reader. Record located retention or approved removal
+dispositions and the audit outcome in an authorized artifact. Any correction
+requires validation as applicable, another fresh full reading pass and another
+final audit; read-only mode reports loss without writing commands or edits.
+
+## 7. Deliver the result
 
 Keep the detailed ledger and editor history in an authorized session artifact
 location, outside stageable specification content unless requested. For each
@@ -221,6 +244,7 @@ spec and pass record:
 | Coverage | Ordered unit IDs, file/line or HTML anchor, sentence text or unambiguous span, judgment, reason, paragraph reassessment, gaps |
 | Findings | Reading obstacle, first occurrence, proposed correction, editor action, local re-review and final disposition |
 | Decisions | Evidence citations, challenges, rejected suggestions, user decisions |
+| Preservation | Baseline and final revisions or hashes, located retention or approved removal dispositions, final audit outcome and gaps |
 | Result | Reader explanation of learned concepts, editor acceptance, changed files, validation and remaining limitations |
 
 Report per-spec outcomes as accepted for comprehension, findings delivered

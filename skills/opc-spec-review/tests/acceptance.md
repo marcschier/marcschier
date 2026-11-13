@@ -11,6 +11,10 @@ does not permit fixes.
 
 | Scenario | Input | Required outcome |
 |---|---|---|
+| Final preservation audit | The last rewrite and regeneration pass all checks, but a role distinction and negative error contract disappeared in an earlier batch | Compare the fixed baseline inventory with final text and in-scope publication before completion; report both losses with locations, restore only with permission and repeat validation, reading and audit |
+| Draft and proposal baseline | New drafting relies on agreed source requirements; a findings-only rewrite omits a mapping exception | Audit both against their source inventories without claiming proposed text is published; record intended homes separately and leave omissions open without editing |
+| Final audit evidence gap | The pre-change baseline is unavailable, or the destination publication cannot be inspected | Report the audit incomplete, preserve format opt-ins and read-only permissions, and do not claim that nothing was lost |
+| Approved final removal | A removed fact has an approved disposition and an exact equivalent normative reference remains accessible | Record evidence, baseline and final revisions or hashes and disposition; do not demand duplicate prose or describe approved removal as unchanged information |
 | Style authority unavailable | The target repository lacks the style directory or any one of its three required files, or the shared safeguards cannot be read | Stop before style review, proposal or writing; report each missing path and do not fall back to a host or remote style skill |
 | Repository style authority | The target repository contains all three required style files, including uncommitted changes | Read all files from its `skills/opcua-spec-style/`, record the target revision, paths and dirty state or hashes, and apply the safeguards |
 | Conflicting examples | An example promotes descriptive behavior to shall and uses a bare child name and code formatting against the rules | Follow rules and safeguards, keep normative intent unresolved, and do not copy the contradictory example |

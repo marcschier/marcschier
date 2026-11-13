@@ -1,6 +1,6 @@
 {
   "name": "opc-spec-duck-review",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Review OPC UA specification comprehension through independent forward-reading and expert editing agents, with fresh-reader passes and explicit coverage.",
   "author": {
     "name": "Marc Schier",

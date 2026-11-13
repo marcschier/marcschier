@@ -241,6 +241,13 @@ output and the ledger agree.
 
 ## Report and choose the next action
 
+Before reporting completion, perform the mandatory
+[final information-preservation audit](references/revisions.md#final-information-preservation-audit)
+after drafting or rewriting and the last authorized regeneration, including
+proposed text in plan or findings-only mode. Unresolved loss or missing
+baseline evidence prevents completion; reader acceptance or passing checks do
+not waive this step. Preserve read-only permissions and agreed format scope.
+
 Consolidate findings into editorial, normative/technical, publication,
 external-dependency and runtime-evidence categories. Deduplicate shared findings
 without losing affected specs. Downgrade or withdraw disproven hypotheses and
@@ -261,7 +268,8 @@ evidence limits a verdict; it is not itself proof of a runtime defect.
 Give a per-spec verdict and a coordinated-set verdict: ready for the stated
 scope, revisions required, or assessment incomplete. Include the revision,
 coverage counts, complete findings, inaccessible formats, unresolved decisions
-and runtime limits. Take every count you report, such as files changed,
+and runtime limits, plus the final preservation audit outcome and dispositions.
+Take every count you report, such as files changed,
 figures, tests or pages, from a tool result obtained after the last change, and
 correct an earlier wrong count explicitly. Put long ledgers in an authorized
 report location rather than truncating findings in chat. CI success does not
