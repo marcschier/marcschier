@@ -58,86 +58,6 @@ class PackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, model_review)
 
-    def test_opc_references_and_affirmative_requirements(self):
-        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
-        section = skill.split("## Write references and requirements in OPC style", 1)[1].split(
-            "## Review the composed edition", 1
-        )[0]
-        for requirement in (
-            "Write Markdown heading text as plain text",
-            "without formatting characters such as backticks, asterisks, or underscores",
-            "Do not apply inline code, bold, or italics in headings",
-            "Keep the Markdown heading markers and supported clause anchors",
-            "Apply semantic emphasis in body prose, not headings",
-            "give the unchanged identifier in the body",
-            "without a section symbol",
-            '"OPC 10000-20, 4.2"',
-            "`(see [](#sec-anchor))`",
-            "a hard-coded number goes stale",
-            "Conformance Unit and Profile descriptions",
-            "State requirements and permissions affirmatively",
-            "Keep a negative form only when the prohibition is itself the requirement",
-            "noun phrases in normal spelling",
-            "leave the ModellingRule column empty on a `HasInterface` row",
-        ):
-            with self.subTest(requirement=requirement):
-                self.assertIn(requirement, section)
-
-    def test_marc_writer_replaces_shortened_labels_without_banning_compounds(self):
-        writer = REPO / "skills" / "marc-writer"
-        style = " ".join((writer / "STYLE.md").read_text(encoding="utf-8").split())
-        section = style.split("## 6. Use Technical Density Deliberately", 1)[1].split(
-            "## 7. Prefer Mechanisms over Adjectives", 1
-        )[0]
-        for requirement in (
-            'Do not coin or retain shortened technical labels such as "document-write target" or "model-source"',
-            "Prefer a full sentence that explains the entity, operation, and relationship",
-            "Use the established technical term",
-            'write it without hyphens and put it in quotation marks, such as "model source"',
-            "The client writes the document to this file.",
-            "This file supplies the model.",
-            "Do not merely remove the hyphens from an unexplained label",
-            'Keep conventional compounds such as "read-only" and "server-specific"',
-            'the "non-" prefix is also allowed',
-            "Preserve exact identifiers, official names, code, commands, paths, URLs, and quotations from sources",
-            "Preserve technical meaning and normative force",
-            "When the intended meaning is unclear, flag it rather than inventing a replacement",
-        ):
-            with self.subTest(requirement=requirement):
-                self.assertIn(requirement, section)
-        skill = (writer / "SKILL.md").read_text(encoding="utf-8")
-        precedence = skill.split("## Precedence with microsoft-writing-style", 1)[
-            1
-        ].split("## Factual and editing boundaries", 1)[0]
-        self.assertIn('| Shortened technical labels | Replace labels such as "model-source"', precedence)
-        self.assertIn('keep conventional compounds and allow "non-"', precedence)
-
-    def test_opc_shortened_labels_use_evidenced_terms_and_optional_explanations(self):
-        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
-        section = skill.split("## Write references and requirements in OPC style", 1)[
-            1
-        ].split("## Apply the Companion Specification template", 1)[0]
-        for requirement in (
-            'Replace shortened technical labels such as "document-write target" and "model-source"',
-            "Prefer a full sentence explaining the relationship",
-            "use the exact applicable OPC UA term or information model name",
-            "When an explanation is needed, put words without hyphens in parentheses after the term or name",
-            "*DocumentFile* (the file that receives the document)",
-            "Do not require an explanation on every occurrence",
-            "without evidence from the specification or model",
-            "Retain the specification's semantic emphasis conventions and do not rename model elements",
-            'write it without hyphens in quotation marks, such as "model source"',
-            "explain its meaning before relying on it",
-            "Do not merely remove the hyphens from an unexplained label",
-            'Keep conventional compounds such as "read-only" and "server-specific"',
-            'the "non-" prefix is also allowed',
-            "Preserve exact identifiers, official names, code, commands, paths, URLs, and quotations from sources",
-            "Preserve technical meaning and normative force",
-            "flag unclear meaning rather than inventing a replacement",
-        ):
-            with self.subTest(requirement=requirement):
-                self.assertIn(requirement, section)
-
     def test_companion_template_structure_and_authoring_guidance(self):
         skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
         template = (ROOT / "references" / "template.md").read_text(encoding="utf-8")
@@ -199,8 +119,6 @@ class PackageTests(unittest.TestCase):
             "do not restore the prior local outline's separate top-level chapters",
             "Do not add a standalone Bibliography or conventions section",
             "searching ahead to learn a term or concept",
-            "Italicize OPC UA terms and terms defined by the specification",
-            "Do not use bold for general prose emphasis",
             "Check each Structure field for an adequate, accurate Description",
             "The NodeSet is authoritative for model facts",
             "when the current publisher contract supports it",
@@ -219,7 +137,6 @@ class PackageTests(unittest.TestCase):
             "Use the approved namespace URI form",
             "Assign a unique short name to the companion specification",
             "Include a capability identifier only when the specification needs one",
-            "Keep Markdown heading text plain",
             "do not patch generated HTML or prescribe styling",
             "a local clause anchor for an in-document reference",
         ):
@@ -262,7 +179,6 @@ class PackageTests(unittest.TestCase):
             "## Figures and shipped formats", 1
         )[0]
         for requirement in (
-            "rather than manual synchronization of model facts",
             "they are not merely checked",
             "Verify the selected repository's pinned version",
             "report the tooling dependency",
@@ -341,9 +257,83 @@ class PackageTests(unittest.TestCase):
         names = {entry["name"] for entry in marketplace["plugins"]}
         self.assertTrue({"marc-writer", "claudism-killer", "opcua-model-review"} <= names)
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        for name in ("opc-spec-review", "marc-writer", "claudism-killer", "opcua-model-review"):
+        for name in ("opc-spec-review", "opcua-model-review"):
             self.assertIn(f"copilot plugin install {name}@marcschier", readme)
         self.assertIn("distributed separately", readme)
+
+    def test_style_authority_and_shared_safeguard_contract(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        readme = " ".join((ROOT / "README.md").read_text(encoding="utf-8").split())
+        safeguards = " ".join(
+            (ROOT / "references" / "style-overrides.md").read_text(encoding="utf-8").split()
+        )
+        for requirement in (
+            "Before any specification style review, proposal or writing",
+            "`SKILL.md`, `rules.md` and `examples.md`",
+            "`<repository root>/skills/opcua-spec-style/`",
+            "Record the target repository revision and the paths read",
+            "file hashes or dirty state",
+            "stop before style review, proposal or writing",
+            "report each missing or unreadable path",
+            "Do not use a host-resolved or remote fallback",
+            "upstream rules outrank contradictory examples",
+            "not compete with specification style",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, skill)
+        self.assertIn("`<repository root>/skills/opcua-spec-style/`", readme)
+        self.assertIn("record that repository's revision", readme.lower())
+        self.assertIn("no host-resolved or remote fallback", readme)
+        for requirement in (
+            "BEGIN GENERATED MODEL REFERENCE", "END GENERATED MODEL REFERENCE",
+            "`table=keep` protects against compose, not an outer generator",
+            "Read-only reviews run no writing commands",
+            '"Already in the NodeSet" is not sufficient',
+            "exact applicable normative reference", "without forcing duplicate",
+            "every definition and every term used in normative text",
+            "distinguishing properties", "no-state-change on error",
+            "must not narrow its scope", "registration and release-status disclosures",
+            "every external member or key", "omitted or not-mapped case",
+            "separate from normative specification text", "Dropped, Moved and Flags",
+            "CTT expectations", "repository-wide inbound references",
+            "hard-coded clause numbers", "ReferenceType InverseName and Symmetric",
+            "Structure encoding references", "reserved-bit semantics",
+            "AUTHORING contract", "agreed release set",
+            "validate restore and validator compatibility", "Do not impose the version floor",
+            "independently removable", "corrected upstream revision",
+            "synthetic regression behavior",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, safeguards)
+
+    def test_no_competing_specification_style_guidance(self):
+        paths = [ROOT / "SKILL.md", *(ROOT / "references").glob("*.md")]
+        for path in paths:
+            text = path.read_text(encoding="utf-8")
+            for obsolete in (
+                "noun phrases in normal spelling", "Keep Markdown heading text plain",
+                "State requirements and permissions affirmatively",
+                "Run `marc-writer` with its guide",
+            ):
+                with self.subTest(file=path, obsolete=obsolete):
+                    self.assertNotIn(obsolete, text)
+
+    def test_synthetic_scenarios_cover_style_safeguard_failures(self):
+        acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
+        for scenario in (
+            "Style authority unavailable", "Repository style authority",
+            "Conflicting examples", "Generated ownership",
+            "Semantic removal", "Terminology and mapping", "Scope and disclosures",
+            "Proposal isolation", "Cross-part reachability", "Table fact loss",
+            "Layout and version conflict", "Safeguard retirement",
+        ):
+            with self.subTest(scenario=scenario):
+                self.assertIn(f"| {scenario} |", acceptance)
+        for path in ROOT.rglob("*.md"):
+            text = path.read_text(encoding="utf-8")
+            text = re.sub(r"```.*?```|`[^`\n]*`", "", text, flags=re.DOTALL)
+            with self.subTest(file=path):
+                self.assertNotRegex(text, r"\]\(#(?:sec-anchor|t1|[^)]*…)\)")
 
     def test_word_guidance_separates_artifact_identity_and_evidence(self):
         review = (ROOT / "references" / "review.md").read_text(encoding="utf-8")

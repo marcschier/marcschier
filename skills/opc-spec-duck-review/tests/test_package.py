@@ -105,9 +105,9 @@ class PackageTests(unittest.TestCase):
         editor = prose("references/roles.md").split("## Editor", 1)[1]
         skill = prose("SKILL.md")
         for rule in (
-            "Load `microsoft-writing-style`",
-            "reference-documentation route",
-            "Invoke `claudism-killer` on each rewrite batch",
+            "Read `SKILL.md`, `rules.md` and `examples.md`",
+            "repository's `skills/opcua-spec-style/`",
+            "shared temporary safeguards",
             "Only you may make source fixes",
             "Preserve normative force",
             "first full pass, keep rewriting when the reader is not satisfied",
@@ -119,6 +119,34 @@ class PackageTests(unittest.TestCase):
         self.assertIn("Only the editor may change specification sources", skill)
         self.assertIn("without filtering out requests", skill)
         self.assertIn("recommendations, not unapplied changes", skill)
+
+    def test_style_authority_is_required_for_both_isolated_roles(self):
+        skill = prose("SKILL.md")
+        roles = prose("references/roles.md")
+        for rule in (
+            "Resolve `opc-spec-review` through the host's skill mechanism",
+            "do not assume installed sibling directories",
+            "`<repository root>/skills/opcua-spec-style/`",
+            "Record the target repository revision and paths read",
+            "file hashes or dirty state",
+            "Both agents independently read all three target-repository files and the shared safeguards",
+            "stop before style review, proposal or writing",
+            "report each missing or unreadable path",
+            "Do not fall back to a host-resolved or remote style skill",
+            "upstream rules outrank contradictory examples",
+            "does not grant the reader domain knowledge, previous findings or editor history",
+            "Generic report-writing helpers may be used for non-specification deliverables only",
+        ):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, skill)
+        reader, editor = roles.split("## Reader", 1)[1].split("## Editor", 1)
+        for role in (reader, editor):
+            for requirement in ("`skills/opcua-spec-style/`", "`SKILL.md`", "`rules.md`", "`examples.md`",
+                                "shared temporary safeguards"):
+                with self.subTest(requirement=requirement):
+                    self.assertIn(requirement, role)
+            self.assertNotIn("microsoft-writing-style", role)
+            self.assertNotIn("claudism-killer", role)
 
     def test_fresh_pass_challenges_and_closure(self):
         text = prose("SKILL.md").split("## 5. Repeat with a fresh reader", 1)[1]
@@ -158,6 +186,13 @@ class PackageTests(unittest.TestCase):
             "Fresh pass isolation",
             "Missing tools or agents",
             "Successful closure",
+            "Shared authority and fresh reader",
+            "Missing authority or safeguards",
+            "Conflicting example",
+            "Generated region",
+            "Semantic preservation",
+            "Cross-part and tables",
+            "Proposals and retirement",
         ):
             with self.subTest(scenario=scenario):
                 self.assertIn(scenario, scenarios)

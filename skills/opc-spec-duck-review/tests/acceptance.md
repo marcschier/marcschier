@@ -6,12 +6,19 @@ scenarios; this list alone is not evidence that they passed.
 
 | Scenario | Expected behavior |
 |---|---|
+| Shared authority and fresh reader | Both roles independently read all three target-repository style files and the resolved review package's shared safeguards; record repository revision and paths, and give the fresh reader no prior findings or editor history or domain knowledge from examples |
+| Missing authority or safeguards | The target repository's style directory or any required file, or the resolved review package is unavailable to either role; stop before style review, proposal or writing, report the missing path and do not substitute another style skill |
+| Conflicting example | An example strengthens descriptive text into a requirement or contradicts terminology formatting rules; rules and temporary safeguards take precedence and the editor requests a technical decision |
+| Generated region | A reader requests relocating a requirement to a kept table inside an outer generated region; the editor proposes a persistent authored home and performs no writing regeneration without authorization |
+| Semantic preservation | A rewrite would lose a role distinction, negative error contract, mapping omission or provisional release disclosure; both roles flag the loss and require equivalent published treatment |
+| Cross-part and tables | A moved table has inbound references from a sibling spec and contains ReferenceType attributes and encoding facts; inventory references and all table facts, report out-of-scope dependencies and never treat a green build as semantic proof |
+| Proposals and retirement | An unnamed result code is proposed and one upstream safeguard is later corrected; keep the proposal outside normative text, persist its flag and require a matching regression before retiring only that safeguard |
 | Ambiguous selection | Discover two manifests, ask which specs and then source-only or source plus HTML; obtain edit permission independently |
 | Non-OPC prerequisite | A first sentence relies on an unexplained non-OPC domain concept; the reader flags it rather than researching the domain to fill the gap |
 | Prior OPC UA part | Part 2 relies on the agreed Part 1 definition; the reader uses that prerequisite without demanding a duplicate introduction |
 | Knowledge learned later | A later paragraph explains an earlier unexplained operation; the ledger retains the earlier obstacle and the editor considers moving the explanation |
 | Full paragraph resolves sentence | An initially unclear sentence becomes clear in its paragraph; record both judgments and avoid a spurious rewrite |
-| Natural prose and stable terms | A paragraph switches names for one concept and coins "same-application"; request consistent terms and a full explanation while retaining "read-only" and exact identifiers |
+| Stable terms | A paragraph switches names for one concept; request a correction that preserves meaning and follows the resolved style authority |
 | Redundant teaching | Repeated explanations add no condition or audience benefit; propose consolidation while preserving distinct normative obligations |
 | Example or diagram | One concept needs an example, another has a distracting figure; record specific reader needs rather than demanding more figures everywhere |
 | Coverage gap | A tool truncates a page or a figure cannot be opened; resume unread ranges or report incomplete coverage, never approve the whole batch |

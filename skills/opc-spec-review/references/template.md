@@ -76,13 +76,9 @@ reference.
 
 ### Terms and abbreviated terms
 
-Define domain terms and abbreviations before relying on them. Terms should be
-noun phrases in normal spelling and read naturally when substituted into their
-definition context; do not use CamelCase model names as glossary terms.
-Italicize OPC UA terms and terms defined by the specification, but do not use
-italics merely for emphasis. Do not use bold for general prose emphasis; use
-bold only for the revision classifications stated in the publication guidance.
-Do not add a conventions section unless the authoring contract supports it.
+Check that domain terms and abbreviations are defined before they are needed
+and that their scope and distinctions are preserved. Apply the style
+authority and safeguards identified in the main skill.
 
 ### General information
 
@@ -119,14 +115,18 @@ publisher supports multiple authored definition blocks for one type, check
 that they remain one logical definition and that each relation is represented
 without losing its BrowsePath or target.
 
-For model definition tables supported by the publisher, put `defines=<Type>`
-on the caption and let `compose` regenerate the model facts. Report eligible
-tables lacking that binding as described in
+For model definition tables supported by the publisher, assess `defines=<Type>`
+and composition against the ownership and preservation safeguards. Report
+eligible tables lacking that binding as described in
 [review.md](review.md#model-table-bindings-and-composition). Do not reproduce
 the outdated instruction that a bound definition table is only checked and
 never rewritten; confirm the selected repository's pinned Publisher behavior.
 Keep `datatype=<DataType>` for field tables distinct from the binding on their
 type definition tables.
+
+Check `HasInterface` rows against the pinned Publisher's validation contract;
+where it requires an empty ModellingRule cell, report a populated cell as a
+publication validation issue rather than changing the interface's model rule.
 
 Follow the upstream
 [anchor guidance](https://github.com/OPCF-Members/OPCUA-Specification-Template/blob/main/AUTHORING.md#you-need-not-type-a-tables-or-figures-anchor):
@@ -211,8 +211,6 @@ Compare the rendered result with the authored source and model. Report lost
 content or publisher presentation defects to the template or tooling owner;
 do not patch generated HTML or prescribe styling.
 
-Keep Markdown heading text plain: no inline code, bold, italics, or other
-formatting characters in headings. Apply semantic emphasis in body prose.
 Retain approved agreement, copyright, patent, liability, compliance, and
 trademark material in the publication, using the authorized text and agreement.
 For non-joint work, use the authorized alternative agreement; do not change
