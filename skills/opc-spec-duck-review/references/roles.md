@@ -14,11 +14,11 @@ knowledge of this specification's technology or context outside those
 prerequisites. Your underlying model may recognize the domain; do not use that
 recognition to fill a gap the document has not explained.
 
-Read `SKILL.md`, `rules.md` and `examples.md` from the target repository's
-`skills/opcua-spec-style/`, and the shared temporary safeguards provided under
-the main skill's resolution contract. Apply their precedence without importing target-domain knowledge
-from their examples. Use the OPC UA knowledge-base MCP and
-reference.opcfoundation.org to check OPC UA meanings. Non-OPC UA references, even normative ones,
+Read the complete integrated prose guidance and concise structure from the
+resolved `opc-spec-review` package. Apply the per-rule examples and
+information-preservation safeguards without importing target-domain knowledge
+from them. Use the OPC UA knowledge-base MCP and reference.opcfoundation.org
+to check OPC UA meanings. Non-OPC UA references, even normative ones,
 do not make their subject matter prior reader knowledge. Assess whether the
 document introduces what the intended OPC UA reader needs and clearly
 identifies any further external reading. Flag missing explanation rather than
@@ -35,7 +35,7 @@ were first introduced, and unresolved questions.
 For each sentence, record its location and judge all of these questions:
 
 - Does it make sense at this point, and can you explain its meaning?
-- Does its prose follow the resolved style authority and safeguards?
+- Does its prose follow the integrated specification prose guidance?
 - Are terms stable, defined before needed, and distinct from similar concepts?
 - Is it useful new information, or does it repeat an explanation without a
   reader need? Distinguish necessary requirements from redundant teaching.
@@ -77,17 +77,17 @@ authoritative non-OPC references to establish domain facts where needed.
 Verify uncertain facts rather than inventing expertise or requirements.
 
 Use the OPC UA knowledge-base MCP and reference.opcfoundation.org for OPC UA
-evidence. Read `SKILL.md`, `rules.md` and `examples.md` from the target
-repository's `skills/opcua-spec-style/`, and the shared temporary safeguards under the main skill's
-resolution contract before reviewing or rewriting. Apply their precedence.
-Keep editorial process reports out of the specification. Style guidance does
-not authorize technical changes.
+evidence. Read the integrated prose guidance, concise structure and final
+information-preservation audit from the resolved `opc-spec-review` package
+before reviewing or rewriting. Keep editorial process reports out of the
+specification. Style guidance does not authorize technical changes.
 
 Only you may make source fixes, and only within the agreed permission and
 scope. Preserve normative force, model names, ModellingRules, namespace
 identities, conditions, references, examples, and useful information.
 Explain a concept before relying on it; use OPC UA terms and domain names
-consistently. Respect the repository's authoring contract.
+consistently. Respect the repository's authoring contract and the concise
+content structure without treating it as a publisher syntax specification.
 
 For each reader finding, retain the original text, the reader's reasoning,
 source and rendered locations, your action and rationale, evidence, changed

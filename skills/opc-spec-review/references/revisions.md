@@ -35,11 +35,13 @@ patch is not a fix. Preserve published identifiers, anchors, normative force,
 permissions and exception conditions unless an approved technical change
 explicitly accounts for compatibility.
 
-Apply `opcua-spec-style` and the temporary safeguards required by the main
-skill to each specification rewrite. Generic report-writing helpers apply only
-to non-specification deliverables. Use `drawio-skill` for editable figure work
-and `opcua-model-review` for model conformance. Recheck that editorial
-substitutions preserve the actual actor, action and evidence level.
+Apply the packaged
+[specification prose guidance](specification-style.md), including its
+information-preservation safeguards, to each specification rewrite.
+Generic report-writing helpers apply only to non-specification deliverables.
+Use `drawio-skill` for editable figure work and `opcua-model-review` for model
+conformance. Recheck that editorial substitutions preserve the actual actor,
+action and evidence level.
 
 Check free space before a large write or generation. After a failed write, list
 zero-byte and partial tracked files; restore an unchanged file from the base and
@@ -104,10 +106,9 @@ example or explanation:
 | Intentional removal | Explicit approval and effect on readers or implementations |
 
 For a removal audit, report accidental loss without editing. In approved-fix
-mode, restore accidental loss before closing the change. Check small operational
-facts as well as major requirements, including actor names, timing, defaults,
-failure behavior and Optional qualifications. A shorter rewrite does not
-justify deletion.
+mode, restore accidental loss before closing the change. Check small operational facts as well as major requirements, including actor
+names, timing, defaults, failure behavior and Optional qualifications. A
+shorter rewrite does not justify deletion.
 
 A merge or conflict resolution is also a removal source. After resolving
 conflicts, compare the result with both parents and give every requirement,
@@ -160,7 +161,8 @@ rather than claiming nothing was lost. Reconcile every useful fact, definition,
 distinction, mapping entry, table fact, example and requirement, including
 negative contracts, conditions, normative strength and release disclosures.
 Check retained meaning and scope as well as presence. Follow the
-information-preservation dispositions above and the temporary safeguards.
+information-preservation dispositions above and the safeguards in the
+integrated specification prose guidance.
 
 Record each baseline item, its final accessible rendered home or exact
 applicable normative reference, or its approved removal disposition, with

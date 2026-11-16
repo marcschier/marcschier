@@ -261,50 +261,75 @@ class PackageTests(unittest.TestCase):
             self.assertIn(f"copilot plugin install {name}@marcschier", readme)
         self.assertIn("distributed separately", readme)
 
-    def test_style_authority_and_shared_safeguard_contract(self):
+    def test_integrated_style_authority_examples_and_safeguards(self):
         skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
         readme = " ".join((ROOT / "README.md").read_text(encoding="utf-8").split())
-        safeguards = " ".join(
-            (ROOT / "references" / "style-overrides.md").read_text(encoding="utf-8").split()
-        )
+        guidance_path = ROOT / "references" / "specification-style.md"
+        guidance = " ".join(guidance_path.read_text(encoding="utf-8").split())
         for requirement in (
             "Before any specification style review, proposal or writing",
-            "`SKILL.md`, `rules.md` and `examples.md`",
-            "`<repository root>/skills/opcua-spec-style/`",
-            "Record the target repository revision and the paths read",
-            "file hashes or dirty state",
-            "stop before style review, proposal or writing",
-            "report each missing or unreadable path",
-            "Do not use a host-resolved or remote fallback",
-            "upstream rules outrank contradictory examples",
-            "not compete with specification style",
+            "[prose guidance](references/specification-style.md)",
+            "The guidance is packaged with this skill",
+            "must not compete with specification prose guidance",
+            "[content structure](references/templates.md)",
+            "no separate style skill or target-repository style directory is required",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, skill)
-        self.assertIn("`<repository root>/skills/opcua-spec-style/`", readme)
-        self.assertIn("record that repository's revision", readme.lower())
-        self.assertIn("no host-resolved or remote fallback", readme)
+        self.assertIn("references/specification-style.md", readme)
+        self.assertIn("references/templates.md", readme)
+        self.assertNotIn("opcua-spec-style", readme + skill + guidance)
+        raw_guidance = guidance_path.read_text(encoding="utf-8")
+        rule_matches = list(re.finditer(r"(?m)^### ([A-D]\d+)\b", raw_guidance))
+        expected_rules = {
+            *(f"A{number}" for number in range(1, 8)),
+            *(f"B{number}" for number in range(1, 13)),
+            *(f"C{number}" for number in range(1, 6)),
+            *(f"D{number}" for number in range(1, 12)),
+        }
+        self.assertEqual(expected_rules, {match.group(1) for match in rule_matches})
+        for index, match in enumerate(rule_matches):
+            end = (
+                rule_matches[index + 1].start()
+                if index + 1 < len(rule_matches)
+                else len(raw_guidance)
+            )
+            with self.subTest(rule=match.group(1)):
+                self.assertIn("**Example:**", raw_guidance[match.start():end])
         for requirement in (
             "BEGIN GENERATED MODEL REFERENCE", "END GENERATED MODEL REFERENCE",
-            "`table=keep` protects against compose, not an outer generator",
-            "Read-only reviews run no writing commands",
+            "`table=keep` may protect from compose but not from an outer generator",
+            "Read-only work runs no writing commands",
             '"Already in the NodeSet" is not sufficient',
-            "exact applicable normative reference", "without forcing duplicate",
-            "every definition and every term used in normative text",
-            "distinguishing properties", "no-state-change on error",
-            "must not narrow its scope", "registration and release-status disclosures",
-            "every external member or key", "omitted or not-mapped case",
-            "separate from normative specification text", "Dropped, Moved and Flags",
-            "CTT expectations", "repository-wide inbound references",
+            "an exact applicable normative reference", "without forcing duplicate prose",
+            "Inventory definitions and every term used normatively",
+            "distinctions between similar roles", "no-state-change-on-error guarantees",
+            "relocation must not narrow its scope",
+            "provisional identifier, registration and release-status disclosures",
+            "every external member or key, row, field and value, encoding, omitted or not-mapped case",
+            "outside normative text until a technical decision is secured",
+            "Persist Dropped, Moved and Flags in authorized review artifacts",
+            "correlate affected CTT expectations", "repository-wide inbound references",
             "hard-coded clause numbers", "ReferenceType InverseName and Symmetric",
             "Structure encoding references", "reserved-bit semantics",
-            "AUTHORING contract", "agreed release set",
-            "validate restore and validator compatibility", "Do not impose the version floor",
-            "independently removable", "corrected upstream revision",
-            "synthetic regression behavior",
+            "target AUTHORING contract, validators and generator ownership",
+            "within the agreed release set", "validate restore and validator compatibility",
+            "Do not impose a version floor", "Retire a safeguard individually",
+            "reviewing the corrected behavior", "matching synthetic regression scenario",
         ):
             with self.subTest(requirement=requirement):
-                self.assertIn(requirement, safeguards)
+                self.assertIn(requirement, guidance)
+        template = (ROOT / "references" / "templates.md").read_text(encoding="utf-8")
+        for section in (
+            "## Main `spec.md` order", "## Per-element content",
+            "## Source data and generated material", "## Review per specification",
+            "Scope", "Editing Guidelines", "General information", "Use cases",
+            "Information Model overview",
+            "OPC UA ObjectTypes", "OPC UA VariableTypes", "OPC UA DataTypes",
+            "OPC UA ReferenceTypes",
+        ):
+            with self.subTest(template_section=section):
+                self.assertIn(section, template)
 
     def test_no_competing_specification_style_guidance(self):
         paths = [ROOT / "SKILL.md", *(ROOT / "references").glob("*.md")]
@@ -356,7 +381,7 @@ class PackageTests(unittest.TestCase):
     def test_synthetic_scenarios_cover_style_safeguard_failures(self):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         for scenario in (
-            "Style authority unavailable", "Repository style authority",
+            "Integrated guidance unavailable", "Packaged prose guidance",
             "Conflicting examples", "Generated ownership",
             "Semantic removal", "Terminology and mapping", "Scope and disclosures",
             "Proposal isolation", "Cross-part reachability", "Table fact loss",

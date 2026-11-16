@@ -44,23 +44,19 @@ copilot skill add .\skills\opc-spec-review
 
 Install branch-specific companions separately even when using a bare skill.
 
-### Specification style authority
+### Specification prose and structure
 
-For every specification style review, proposal or rewrite, read `SKILL.md`,
-`rules.md` and `examples.md` from
-`<repository root>/skills/opcua-spec-style/` in the repository being reviewed.
-Record that repository's revision and the paths read, with file hashes or dirty
-state when they differ from that revision. If the directory or any file is
-missing or unreadable, report the path and stop before the affected work;
-there is no host-resolved or remote fallback.
+The packaged [prose guidance](references/specification-style.md) is the
+specification-writing authority for this skill. It incorporates numbered
+prose rules, an example for every rule, and the information-preservation
+safeguards. It does not replace technical authorities or the target
+repository's authoring contract and pinned Publisher.
 
-The [temporary safeguards](references/style-overrides.md) take precedence
-over conflicting guidance and remain until independently retired with evidence.
-The style skill owns specification prose, applicable normative sources own
-technical facts, and the repository's authoring contract and pinned Publisher
-own syntax and composition. Missing files block the affected branch. Optional
-`marc-writer` and its companions may assist with reports or plans, not
-specification prose.
+Use the concise [content structure](references/templates.md) for a section
+outline. It is supplemental; the official Sample remains authoritative for
+headings, directives and publisher behavior. The adjacent
+[template review reference](references/template.md) contains publication
+checks.
 
 ## Use
 
