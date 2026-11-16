@@ -35,11 +35,15 @@ patch is not a fix. Preserve published identifiers, anchors, normative force,
 permissions and exception conditions unless an approved technical change
 explicitly accounts for compatibility.
 
-Apply `opcua-spec-style` and the temporary safeguards required by the main
-skill to each specification rewrite. Generic report-writing helpers apply only
-to non-specification deliverables. Use `drawio-skill` for editable figure work
-and `opcua-model-review` for model conformance. Recheck that editorial
-substitutions preserve the actual actor, action and evidence level.
+Apply the packaged
+[specification prose guidance](specification-style.md), including its
+information-preservation safeguards, to each specification rewrite.
+For companion guide work, apply the
+[implementer guide workflow](implementer-guide.md); its writing companions
+apply only to that document, not specification prose or review reports.
+Use `drawio-skill` for editable figure work and `opcua-model-review` for model
+conformance. Recheck that editorial substitutions preserve the actual actor,
+action and evidence level.
 
 Check free space before a large write or generation. After a failed write, list
 zero-byte and partial tracked files; restore an unchanged file from the base and
@@ -103,11 +107,19 @@ example or explanation:
 | Superseded | Approved reason and replacement contract or explanation |
 | Intentional removal | Explicit approval and effect on readers or implementations |
 
+Classify informative implementation explanations separately from normative
+contract facts using the [implementer guide workflow](implementer-guide.md).
+Before removing connecting context, apply the user's
+[informative-context decision](specification-style.md#informative-context).
+Track context retained in specification subsections separately from
+developer-guide teaching, and preserve the original while a choice is pending.
+Preserve useful removed explanations in the adjacent guide and record their
+exact destinations; a guide-only destination cannot close a normative loss.
+
 For a removal audit, report accidental loss without editing. In approved-fix
-mode, restore accidental loss before closing the change. Check small operational
-facts as well as major requirements, including actor names, timing, defaults,
-failure behavior and Optional qualifications. A shorter rewrite does not
-justify deletion.
+mode, restore accidental loss before closing the change. Check small operational facts as well as major requirements, including actor
+names, timing, defaults, failure behavior and Optional qualifications. A
+shorter rewrite does not justify deletion.
 
 A merge or conflict resolution is also a removal source. After resolving
 conflicts, compare the result with both parents and give every requirement,
@@ -160,7 +172,8 @@ rather than claiming nothing was lost. Reconcile every useful fact, definition,
 distinction, mapping entry, table fact, example and requirement, including
 negative contracts, conditions, normative strength and release disclosures.
 Check retained meaning and scope as well as presence. Follow the
-information-preservation dispositions above and the temporary safeguards.
+information-preservation dispositions above and the safeguards in the
+integrated specification prose guidance.
 
 Record each baseline item, its final accessible rendered home or exact
 applicable normative reference, or its approved removal disposition, with
@@ -169,6 +182,17 @@ intended home separately from verified publication evidence; do not claim
 unapplied text was published. Account for cross-part references and generator
 ownership. A guide, chat explanation, passing build or reader acceptance does
 not replace retained specification content or prove semantic completeness.
+Separately reconcile useful informative material with its verified
+`implementer-guide.md` destination and developer-reader outcome under the
+[guide workflow](implementer-guide.md). Missing guides, stale examples or
+unreviewed informative destinations leave that guide work incomplete, even
+when the normative inventory is intact. Keep guide acceptance separate from
+specification acceptance.
+For user-selected informative subsections, record the retention decision and
+check the current publication's explanation, examples, diagrams and transitions
+by reading the specification forward without the guide. Missing context for
+the unchanged specification audience is a comprehension gap even when every
+normative statement survives. Informative labels must not downgrade obligations.
 
 Report unresolved loss or missing evidence and withhold completion or acceptance.
 In approved-fix mode, restore accidental loss within scope; otherwise report it

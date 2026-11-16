@@ -56,7 +56,8 @@ leave ambiguous matches untouched for investigation.
 ## Explanation and reading order
 
 Assess whether the publication provides the context needed to understand its
-contracts, applying the resolved style authority and safeguards. Retain
+contracts, applying the packaged
+[specification prose guidance](specification-style.md). Retain
 signatures, enumerations, option sets, actual algorithms and profile matrices.
 Bullet count alone is not a quality measure. Preserve strong chapters and
 revise proportionately.

@@ -255,56 +255,189 @@ class PackageTests(unittest.TestCase):
             (REPO / ".plugin" / "marketplace.json").read_text(encoding="utf-8")
         )
         names = {entry["name"] for entry in marketplace["plugins"]}
-        self.assertTrue({"marc-writer", "claudism-killer", "opcua-model-review"} <= names)
+        companions = {
+            "marc-writer", "claudism-killer",
+            "microsoft-writing-style", "opcua-model-review",
+        }
+        self.assertTrue(companions <= names)
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        for name in ("opc-spec-review", "opcua-model-review"):
+        for name in companions | {"opc-spec-review"}:
             self.assertIn(f"copilot plugin install {name}@marcschier", readme)
         self.assertIn("distributed separately", readme)
 
-    def test_style_authority_and_shared_safeguard_contract(self):
+    def test_integrated_style_authority_examples_and_safeguards(self):
         skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
         readme = " ".join((ROOT / "README.md").read_text(encoding="utf-8").split())
-        safeguards = " ".join(
-            (ROOT / "references" / "style-overrides.md").read_text(encoding="utf-8").split()
-        )
+        guidance_path = ROOT / "references" / "specification-style.md"
+        guidance = " ".join(guidance_path.read_text(encoding="utf-8").split())
         for requirement in (
             "Before any specification style review, proposal or writing",
-            "`SKILL.md`, `rules.md` and `examples.md`",
-            "`<repository root>/skills/opcua-spec-style/`",
-            "Record the target repository revision and the paths read",
-            "file hashes or dirty state",
-            "stop before style review, proposal or writing",
-            "report each missing or unreadable path",
-            "Do not use a host-resolved or remote fallback",
-            "upstream rules outrank contradictory examples",
-            "not compete with specification style",
+            "[prose guidance](references/specification-style.md)",
+            "The guidance is packaged with this skill",
+            "must not compete with specification prose guidance",
+            "[content structure](references/templates.md)",
+            "no separate style skill or target-repository style directory is required",
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, skill)
-        self.assertIn("`<repository root>/skills/opcua-spec-style/`", readme)
-        self.assertIn("record that repository's revision", readme.lower())
-        self.assertIn("no host-resolved or remote fallback", readme)
+        self.assertIn("references/specification-style.md", readme)
+        self.assertIn("references/templates.md", readme)
+        self.assertNotIn("opcua-spec-style", readme + skill + guidance)
+        raw_guidance = guidance_path.read_text(encoding="utf-8")
+        rule_matches = list(re.finditer(r"(?m)^### ([A-D]\d+)\b", raw_guidance))
+        expected_rules = {
+            *(f"A{number}" for number in range(1, 8)),
+            *(f"B{number}" for number in range(1, 13)),
+            *(f"C{number}" for number in range(1, 6)),
+            *(f"D{number}" for number in range(1, 12)),
+        }
+        self.assertEqual(expected_rules, {match.group(1) for match in rule_matches})
+        for index, match in enumerate(rule_matches):
+            end = (
+                rule_matches[index + 1].start()
+                if index + 1 < len(rule_matches)
+                else len(raw_guidance)
+            )
+            with self.subTest(rule=match.group(1)):
+                self.assertIn("**Example:**", raw_guidance[match.start():end])
         for requirement in (
             "BEGIN GENERATED MODEL REFERENCE", "END GENERATED MODEL REFERENCE",
-            "`table=keep` protects against compose, not an outer generator",
-            "Read-only reviews run no writing commands",
+            "`table=keep` may protect from compose but not from an outer generator",
+            "Read-only work runs no writing commands",
             '"Already in the NodeSet" is not sufficient',
-            "exact applicable normative reference", "without forcing duplicate",
-            "every definition and every term used in normative text",
-            "distinguishing properties", "no-state-change on error",
-            "must not narrow its scope", "registration and release-status disclosures",
-            "every external member or key", "omitted or not-mapped case",
-            "separate from normative specification text", "Dropped, Moved and Flags",
-            "CTT expectations", "repository-wide inbound references",
+            "an exact applicable normative reference", "without forcing duplicate prose",
+            "Inventory definitions and every term used normatively",
+            "distinctions between similar roles", "no-state-change-on-error guarantees",
+            "relocation must not narrow its scope",
+            "provisional identifier, registration and release-status disclosures",
+            "every external member or key, row, field and value, encoding, omitted or not-mapped case",
+            "outside normative text until a technical decision is secured",
+            "Persist Dropped, Moved and Flags in authorized review artifacts",
+            "correlate affected CTT expectations", "repository-wide inbound references",
             "hard-coded clause numbers", "ReferenceType InverseName and Symmetric",
             "Structure encoding references", "reserved-bit semantics",
-            "AUTHORING contract", "agreed release set",
-            "validate restore and validator compatibility", "Do not impose the version floor",
-            "independently removable", "corrected upstream revision",
-            "synthetic regression behavior",
+            "target AUTHORING contract, validators and generator ownership",
+            "within the agreed release set", "validate restore and validator compatibility",
+            "Do not impose a version floor", "Retire a safeguard individually",
+            "reviewing the corrected behavior", "matching synthetic regression scenario",
         ):
             with self.subTest(requirement=requirement):
-                self.assertIn(requirement, safeguards)
+                self.assertIn(requirement, guidance)
+        template = (ROOT / "references" / "templates.md").read_text(encoding="utf-8")
+        for section in (
+            "## Main `spec.md` order", "## Per-element content",
+            "## Source data and generated material", "## Review per specification",
+            "Scope", "Editing Guidelines", "General information", "Use cases",
+            "Information Model overview",
+            "OPC UA ObjectTypes", "OPC UA VariableTypes", "OPC UA DataTypes",
+            "OPC UA ReferenceTypes",
+        ):
+            with self.subTest(template_section=section):
+                self.assertIn(section, template)
+
+    def test_implementer_guide_retention_and_distinct_writing_contract(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        self.assertIn("(references/implementer-guide.md)", skill)
+        for requirement in (
+            "`implementer-guide.md` beside its `spec.md`",
+            "maintain an existing one during authorized revisions",
+            "even if the latest edit removes no prose",
+            "Preserve unrelated authored guide content",
+            "read-only, plan or removal-audit mode",
+            "include its guide in the agreed scope or request that permission",
+            "A guide-only home does not satisfy that retention obligation",
+            "retain its contract facts normatively",
+            "Move useful material only after its guide destination is present and checked",
+            "`marc-writer`, `microsoft-writing-style` and `claudism-killer`",
+            "Microsoft's developer/implementer content route",
+            "stop guide writing or style acceptance",
+            "only to the implementer guide, never to specification prose or review reports",
+            "booklet/book form", "explanatory rather than imperative wording",
+            "Titles and headings are not sentences or instructions",
+            "rich worked examples and diagrams",
+            "same folder's `spec.md` and its actual clause anchors",
+            "ordinary GitHub-rendered Markdown",
+            "fenced `mermaid` blocks", "GitHub-viewable SVG or PNG export",
+            "outside Publisher inputs",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, guide)
+
+    def test_implementer_guide_has_separate_reader_and_final_retention_gate(self):
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text("utf-8").split()
+        )
+        for requirement in (
+            "separate fresh developer reader",
+            "not prior findings, deleted passages or editor explanations",
+            "separate from the specification's fresh reader",
+            "fresh complete reading of the final unchanged guide",
+            "guide review incomplete rather than simulating acceptance",
+            "Before the final information-preservation audit",
+            "exact guide destinations for informative material separately from normative homes",
+            "Specification acceptance and guide acceptance are separate",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, guide)
+        self.assertIn("guide-only destination cannot close a normative loss", revisions)
+        self.assertIn("`implementer-guide.md` destination and developer-reader outcome", revisions)
+        scenarios = (ROOT / "tests" / "acceptance.md").read_text("utf-8")
+        for name in (
+            "Guide retention", "Guide permissions", "Guide dependencies",
+            "Guide audience", "Guide presentation", "Guide independence",
+        ):
+            self.assertIn(f"| {name} |", scenarios)
+
+    def test_informative_context_choice_overrides_concision_without_changing_audience(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text("utf-8").split())
+        style = " ".join(
+            (ROOT / "references" / "specification-style.md").read_text("utf-8").split()
+        )
+        decision = style.split("## Informative context", 1)[1].split(
+            "## A. Terms and typography", 1
+        )[0]
+        for requirement in (
+            "explicit retention choice through the host's question tool",
+            "located before/after excerpts",
+            "retain the connecting material in an informative subsection",
+            "when the specification remains understandable without it",
+            "apply an already approved policy without asking again",
+            "leave it unchanged and record the pending choice",
+            "keeps the specification's existing audience",
+            "does not adopt the developer-booklet audience or writing companions",
+            "supporting examples and diagrams",
+            "before or alongside the first dependent concept",
+            "repository's supported authoring convention",
+            "report the conflict and seek a decision",
+            "labelling a subsection informative must not downgrade them",
+            "precedence over concision, placement and example-removal rules",
+            "without the implementer guide",
+            "publication evidence and any reading gap in the preservation audit",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, decision)
+        self.assertIn("Keep material unchanged while that choice is pending", skill)
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        self.assertIn("does not justify removing context that audience still needs", guide)
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text("utf-8").split()
+        )
+        self.assertIn("a comprehension gap even when every normative statement survives", revisions)
+        scenarios = (ROOT / "tests" / "acceptance.md").read_text("utf-8")
+        for name in (
+            "Informative context choice", "Informative choice pending",
+            "Informative reading flow", "Informative mixed passage",
+            "Informative markup conflict",
+        ):
+            self.assertIn(f"| {name} |", scenarios)
 
     def test_no_competing_specification_style_guidance(self):
         paths = [ROOT / "SKILL.md", *(ROOT / "references").glob("*.md")]
@@ -356,7 +489,7 @@ class PackageTests(unittest.TestCase):
     def test_synthetic_scenarios_cover_style_safeguard_failures(self):
         acceptance = (ROOT / "tests" / "acceptance.md").read_text(encoding="utf-8")
         for scenario in (
-            "Style authority unavailable", "Repository style authority",
+            "Integrated guidance unavailable", "Packaged prose guidance",
             "Conflicting examples", "Generated ownership",
             "Semantic removal", "Terminology and mapping", "Scope and disclosures",
             "Proposal isolation", "Cross-part reachability", "Table fact loss",

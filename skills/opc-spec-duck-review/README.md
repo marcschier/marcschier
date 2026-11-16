@@ -23,18 +23,34 @@ These services are not bundled or installed automatically. Both agents must
 have access; a live OPC UA server connection is not the knowledge base.
 Missing dependencies are reported before the affected work proceeds.
 
-Both reader and editor must read `SKILL.md`, `rules.md` and `examples.md`
-from `<repository root>/skills/opcua-spec-style/` in the repository being
-reviewed, plus the temporary safeguards packaged with the resolved
-`opc-spec-review` skill. Record the target repository revision and paths read,
-with file hashes or dirty state when they differ from that revision. Resolve
-the review package through the host, not an assumed sibling directory.
-If any required directory or file is unavailable, report the path and stop
-before style review, proposal or writing; do not use a fallback style skill.
-The safeguards override conflicting upstream guidance, and the upstream rules
-outrank contradictory examples. They do not give the reader prior target-domain
-knowledge. Technical normative sources and the repository's authoring and
-Publisher contract retain their respective authority.
+Both reader and editor must read the integrated prose guidance, its per-rule
+examples and information-preservation safeguards, and the concise content
+structure packaged with `opc-spec-review`. Resolve that package through the
+host, not an assumed sibling directory. If any required reference is
+unavailable, report the path and stop before style review, proposal or writing.
+The safeguards govern preservation, the examples do not override the guidance,
+and none gives the reader prior target-domain knowledge. Technical normative
+sources and the repository's authoring and Publisher contract retain their
+respective authority.
+
+Each spec also has an informative `implementer-guide.md` beside `spec.md`.
+Before moving connecting context out of the specification, the editor offers
+the user an informative-subsection option under the shared prose guidance.
+Those explanations, examples and diagrams keep the specification's existing
+audience and forward reading flow; the specification reader reviews them
+without the guide. Pending choices preserve the original, and informative
+labelling cannot downgrade requirements.
+The coordinator and editor read the shared `references/implementer-guide.md`
+from the resolved review package to preserve useful removed explanations and
+maintain a distinct developer booklet. Guide writing alone uses `marc-writer`,
+`microsoft-writing-style` and `claudism-killer`; install those marketplace
+companions as documented by `opc-spec-review`. Missing dependencies block guide
+writing, not independent review work. A separate fresh developer reader
+rubber-ducks the final guide, examples and GitHub-rendered diagrams.
+The specification reader never receives the guide or guide-review history.
+Guide-only retention does not replace normative specification content.
+Read-only work reports missing or stale guides and proposes changes; guide
+creation or maintenance requires explicit file scope and edit permission.
 
 For local development, register the bare skill:
 
