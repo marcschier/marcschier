@@ -131,7 +131,7 @@ class PackageTests(unittest.TestCase):
             "report the missing path",
             "Do not fall back to a separate style skill or a copied summary",
             "does not grant the reader domain knowledge, previous findings or editor history",
-            "Generic report-writing helpers may be used for non-specification deliverables only",
+            "guide's writing companions never compete with specification guidance",
         ):
             with self.subTest(rule=rule):
                 self.assertIn(rule, skill)
@@ -149,11 +149,65 @@ class PackageTests(unittest.TestCase):
             self.assertNotIn("microsoft-writing-style", role)
             self.assertNotIn("claudism-killer", role)
         review_package = REPO / "skills" / "opc-spec-review"
-        for reference in ("specification-style.md", "templates.md", "revisions.md"):
+        for reference in (
+            "specification-style.md", "templates.md", "revisions.md",
+            "implementer-guide.md",
+        ):
             with self.subTest(reference=reference):
                 self.assertTrue((review_package / "references" / reference).is_file())
         self.assertNotIn("opcua-spec-style", skill + roles)
         self.assertNotIn("style-overrides", skill + roles)
+
+    def test_guide_workflow_preserves_specification_reader_isolation(self):
+        skill = prose("SKILL.md")
+        roles = prose("references/roles.md")
+        reader, editor = roles.split("## Reader", 1)[1].split("## Editor", 1)
+        for requirement in (
+            "`references/implementer-guide.md`",
+            "host-resolved `opc-spec-review` package",
+            "Exclude it from the specification reader's inputs and coverage",
+            "Read-only mode reports missing guides and proposed destinations without edits",
+            "independent developer rubber-duck review before this audit",
+            "never give the specification reader the guide or its review history",
+            "guide-only content cannot repair missing specification facts",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, skill)
+        self.assertIn("guide and its review history are not inputs", reader)
+        self.assertIn("`references/implementer-guide.md`", editor)
+        self.assertIn("keep normative contract facts in normative homes", editor)
+        for name in (
+            "Companion guide", "Guide reader isolation",
+            "Guide branch blocked", "Guide final audit",
+        ):
+            self.assertIn(f"| {name} |", prose("tests/acceptance.md"))
+
+    def test_informative_context_choice_preserves_reader_flow_and_normative_force(self):
+        skill = prose("SKILL.md")
+        reader, editor = prose("references/roles.md").split(
+            "## Reader", 1
+        )[1].split("## Editor", 1)
+        for requirement in (
+            'shared prose guidance\'s "Informative context" decision',
+            "offer the user an informative subsection",
+            "retain the original while a choice is pending",
+            "Keep normative obligations normative",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, skill)
+        for requirement in (
+            "informative subsections, examples and diagrams",
+            "unchanged intended audience",
+            "do not require a developer guide",
+        ):
+            self.assertIn(requirement, reader)
+        self.assertIn("Give the user the informative-subsection option", editor)
+        self.assertIn("Keep normative facts in normative homes", editor)
+        for name in (
+            "Informative subsection decision", "Informative reader flow",
+            "Informative publisher conflict",
+        ):
+            self.assertIn(f"| {name} |", prose("tests/acceptance.md"))
 
     def test_fresh_pass_challenges_and_closure(self):
         text = prose("SKILL.md").split("## 5. Repeat with a fresh reader", 1)[1]

@@ -94,8 +94,8 @@ directory is required.
 The guidance governs specification prose. Applicable standards, models and
 approved technical decisions govern normative facts. The target repository's
 authoring contract and pinned Publisher govern supported syntax and
-composition. Generic report-writing helpers may be used for non-specification
-deliverables only; they must not compete with specification prose guidance.
+composition. Other writing helpers must not compete with specification prose
+guidance.
 
 Use the concise [content structure](references/templates.md) as an aid when
 reviewing or drafting each specification. It supplements, but does not replace,
@@ -106,7 +106,7 @@ sibling directories exist in an installed plugin.
 
 | Branch | Required companion |
 |---|---|
-| Reports or plans, if using `marc-writer` | `marc-writer` and its required companions; not for specification prose |
+| Implementer-guide writing only | `marc-writer`, `microsoft-writing-style` and `claudism-killer`, focused on developers |
 | Information-model or NodeSet conformance questions | `opcua-model-review`, with its rule and evidence ledger |
 | Creating or changing editable figures | `drawio-skill` |
 
@@ -115,6 +115,27 @@ the missing dependency when resolution fails; provide the marketplace command
 or external-provider guidance from [README.md](README.md). Never copy companion
 internals or silently replace their review. Technical evidence takes precedence
 over a stylistic preference.
+
+## Maintain the implementer guide
+
+For every selected specification, read and apply the
+[implementer guide workflow](references/implementer-guide.md). Each spec has an
+informative `implementer-guide.md` beside `spec.md`, created or maintained only
+with edit permission. Before removing connecting explanation, apply the
+[informative-context decision](references/specification-style.md#informative-context):
+offer the user retention in an informative subsection, including examples and
+diagrams, preserving forward reading and the specification's existing audience.
+Keep material unchanged while that choice is pending. Retain useful
+developer-specific explanations removed from specification prose in the guide,
+with exact destinations in the preservation ledger.
+Required normative facts remain in the specification or exact applicable
+normative references; the guide is not a replacement.
+
+The guide uses a distinct developer-booklet voice, its own writing companions,
+GitHub-rendered examples and diagrams, and a final independent developer
+rubber-duck review. Keep it out of the specification reader's evidence so it
+cannot conceal gaps in the specification. Report missing guides and proposed
+retention destinations without writing in read-only mode.
 
 ## Review OPC UA models before prose
 

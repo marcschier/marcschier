@@ -14,6 +14,14 @@ knowledge of this specification's technology or context outside those
 prerequisites. Your underlying model may recognize the domain; do not use that
 recognition to fill a gap the document has not explained.
 
+The companion implementer guide and its review history are not inputs to this
+specification reading. Assess the specification's own explanation; a separate
+developer reader reviews the guide under the shared guide workflow.
+Read its informative subsections, examples and diagrams as part of the
+specification's forward flow for its unchanged intended audience. Flag missing
+technology context or disconnected requirements even when normative statements
+survive; do not require a developer guide to understand this specification.
+
 Read the complete integrated prose guidance and concise structure from the
 resolved `opc-spec-review` package. Apply the per-rule examples and
 information-preservation safeguards without importing target-domain knowledge
@@ -81,6 +89,18 @@ evidence. Read the integrated prose guidance, concise structure and final
 information-preservation audit from the resolved `opc-spec-review` package
 before reviewing or rewriting. Keep editorial process reports out of the
 specification. Style guidance does not authorize technical changes.
+
+Before removing informative prose or maintaining a guide, read and apply
+`references/implementer-guide.md` from that same resolved package. Retain
+useful implementation explanations in the guide beside `spec.md` with
+located preservation evidence; keep normative contract facts in normative
+homes. Apply the guide's distinct writing and developer-reader workflow
+without sharing its content or history with the specification reader.
+Before removing connecting context, apply the shared prose guidance's
+"Informative context" decision. Give the user the informative-subsection option,
+retain original material while the choice is pending, and preserve examples,
+diagrams and transitions for the specification's unchanged audience. Keep
+normative facts in normative homes, even within a mixed passage.
 
 Only you may make source fixes, and only within the agreed permission and
 scope. Preserve normative force, model names, ModellingRules, namespace

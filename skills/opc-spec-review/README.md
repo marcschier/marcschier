@@ -31,6 +31,14 @@ For model or NodeSet conformance questions, also install:
 copilot plugin install opcua-model-review@marcschier
 ```
 
+For implementer-guide writing, also install all three writing companions:
+
+```powershell
+copilot plugin install marc-writer@marcschier
+copilot plugin install microsoft-writing-style@marcschier
+copilot plugin install claudism-killer@marcschier
+```
+
 Creating or editing figures requires `drawio-skill`, distributed separately;
 use its provider's installation instructions. These companions are explicit
 dependencies, not bundled or installed automatically. The review skill checks
@@ -57,6 +65,31 @@ outline. It is supplemental; the official Sample remains authoritative for
 headings, directives and publisher behavior. The adjacent
 [template review reference](references/template.md) contains publication
 checks.
+
+### Implementer guides
+
+Before removing explanation that connects the normative clauses or introduces
+the modelled technology, the review offers the user retention in informative
+subsections, including supporting examples and diagrams. This keeps the
+specification's audience and forward reading flow unchanged. The original
+stays while a choice is pending; informative labels never downgrade normative
+facts. The choice follows the packaged
+[informative-context guidance](references/specification-style.md#informative-context).
+
+Each selected spec has an informative `implementer-guide.md` beside `spec.md`.
+The shared [guide workflow](references/implementer-guide.md) retains useful
+explanations, rationale and examples removed during review, while normative
+facts remain in the specification or exact applicable normative references.
+Existing guides are maintained, not overwritten with a deletion log.
+
+Only guide writing uses `marc-writer`, `microsoft-writing-style` and
+`claudism-killer` in these review workflows. The guide is a developer booklet:
+natural explanatory prose from overview to detail, short concept headings,
+worked examples and GitHub-rendered diagrams, with references to `spec.md`
+instead of duplicated requirements. An independent developer rubber-duck
+review checks the final guide separately from specification acceptance.
+Guide writes need agreed file scope and permission; read-only reviews report
+missing guides and proposed retention destinations without creating files.
 
 ## Use
 

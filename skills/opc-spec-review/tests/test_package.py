@@ -255,9 +255,13 @@ class PackageTests(unittest.TestCase):
             (REPO / ".plugin" / "marketplace.json").read_text(encoding="utf-8")
         )
         names = {entry["name"] for entry in marketplace["plugins"]}
-        self.assertTrue({"marc-writer", "claudism-killer", "opcua-model-review"} <= names)
+        companions = {
+            "marc-writer", "claudism-killer",
+            "microsoft-writing-style", "opcua-model-review",
+        }
+        self.assertTrue(companions <= names)
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        for name in ("opc-spec-review", "opcua-model-review"):
+        for name in companions | {"opc-spec-review"}:
             self.assertIn(f"copilot plugin install {name}@marcschier", readme)
         self.assertIn("distributed separately", readme)
 
@@ -330,6 +334,110 @@ class PackageTests(unittest.TestCase):
         ):
             with self.subTest(template_section=section):
                 self.assertIn(section, template)
+
+    def test_implementer_guide_retention_and_distinct_writing_contract(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text(encoding="utf-8").split())
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        self.assertIn("(references/implementer-guide.md)", skill)
+        for requirement in (
+            "`implementer-guide.md` beside its `spec.md`",
+            "maintain an existing one during authorized revisions",
+            "even if the latest edit removes no prose",
+            "Preserve unrelated authored guide content",
+            "read-only, plan or removal-audit mode",
+            "include its guide in the agreed scope or request that permission",
+            "A guide-only home does not satisfy that retention obligation",
+            "retain its contract facts normatively",
+            "Move useful material only after its guide destination is present and checked",
+            "`marc-writer`, `microsoft-writing-style` and `claudism-killer`",
+            "Microsoft's developer/implementer content route",
+            "stop guide writing or style acceptance",
+            "only to the implementer guide, never to specification prose or review reports",
+            "booklet/book form", "explanatory rather than imperative wording",
+            "Titles and headings are not sentences or instructions",
+            "rich worked examples and diagrams",
+            "same folder's `spec.md` and its actual clause anchors",
+            "ordinary GitHub-rendered Markdown",
+            "fenced `mermaid` blocks", "GitHub-viewable SVG or PNG export",
+            "outside Publisher inputs",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, guide)
+
+    def test_implementer_guide_has_separate_reader_and_final_retention_gate(self):
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text("utf-8").split()
+        )
+        for requirement in (
+            "separate fresh developer reader",
+            "not prior findings, deleted passages or editor explanations",
+            "separate from the specification's fresh reader",
+            "fresh complete reading of the final unchanged guide",
+            "guide review incomplete rather than simulating acceptance",
+            "Before the final information-preservation audit",
+            "exact guide destinations for informative material separately from normative homes",
+            "Specification acceptance and guide acceptance are separate",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, guide)
+        self.assertIn("guide-only destination cannot close a normative loss", revisions)
+        self.assertIn("`implementer-guide.md` destination and developer-reader outcome", revisions)
+        scenarios = (ROOT / "tests" / "acceptance.md").read_text("utf-8")
+        for name in (
+            "Guide retention", "Guide permissions", "Guide dependencies",
+            "Guide audience", "Guide presentation", "Guide independence",
+        ):
+            self.assertIn(f"| {name} |", scenarios)
+
+    def test_informative_context_choice_overrides_concision_without_changing_audience(self):
+        skill = " ".join((ROOT / "SKILL.md").read_text("utf-8").split())
+        style = " ".join(
+            (ROOT / "references" / "specification-style.md").read_text("utf-8").split()
+        )
+        decision = style.split("## Informative context", 1)[1].split(
+            "## A. Terms and typography", 1
+        )[0]
+        for requirement in (
+            "explicit retention choice through the host's question tool",
+            "located before/after excerpts",
+            "retain the connecting material in an informative subsection",
+            "when the specification remains understandable without it",
+            "apply an already approved policy without asking again",
+            "leave it unchanged and record the pending choice",
+            "keeps the specification's existing audience",
+            "does not adopt the developer-booklet audience or writing companions",
+            "supporting examples and diagrams",
+            "before or alongside the first dependent concept",
+            "repository's supported authoring convention",
+            "report the conflict and seek a decision",
+            "labelling a subsection informative must not downgrade them",
+            "precedence over concision, placement and example-removal rules",
+            "without the implementer guide",
+            "publication evidence and any reading gap in the preservation audit",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, decision)
+        self.assertIn("Keep material unchanged while that choice is pending", skill)
+        guide = " ".join(
+            (ROOT / "references" / "implementer-guide.md").read_text("utf-8").split()
+        )
+        self.assertIn("does not justify removing context that audience still needs", guide)
+        revisions = " ".join(
+            (ROOT / "references" / "revisions.md").read_text("utf-8").split()
+        )
+        self.assertIn("a comprehension gap even when every normative statement survives", revisions)
+        scenarios = (ROOT / "tests" / "acceptance.md").read_text("utf-8")
+        for name in (
+            "Informative context choice", "Informative choice pending",
+            "Informative reading flow", "Informative mixed passage",
+            "Informative markup conflict",
+        ):
+            self.assertIn(f"| {name} |", scenarios)
 
     def test_no_competing_specification_style_guidance(self):
         paths = [ROOT / "SKILL.md", *(ROOT / "references").glob("*.md")]

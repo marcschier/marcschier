@@ -6,6 +6,13 @@ scenarios; this list alone is not evidence that they passed.
 
 | Scenario | Expected behavior |
 |---|---|
+| Informative subsection decision | Connecting technology context would be removed by concision rules; the editor offers the user an informative subsection with examples and diagrams, preserves the original pending the choice, and keeps normative facts normative |
+| Informative reader flow | An approved informative subsection supplies context for a later requirement; the specification reader reads it forward for the unchanged specification audience without guide knowledge, flags missing transitions and checks examples and diagrams |
+| Informative publisher conflict | The supported authoring contract cannot mark the selected subsection informative; report the conflict and seek a decision rather than deleting the explanation or inventing markup |
+| Companion guide | Useful implementation rationale is removed during revision; the editor reads the shared guide workflow and retains it in implementer-guide.md beside spec.md with exact ledger destinations, while normative facts remain in normative homes |
+| Guide reader isolation | A guide explains something absent from the specification; the specification reader does not receive it, while a separate fresh developer reader reviews the guide, examples, diagrams and referenced clauses without earlier findings |
+| Guide branch blocked | Guide writing permission, the shared guide reference, or a guide writing companion is missing; report the blocked branch and proposed retention destinations without edits or claiming guide acceptance, and continue only independent work |
+| Guide final audit | Normative content is intact but a useful removed example has only a proposed guide destination; leave guide retention incomplete until the final guide contains it and a fresh complete developer reading accepts the unchanged edition |
 | Final audit after agreement | Fresh reader and editor agree and validation passes, but the baseline contains an omitted mapping exception; editor and coordinator audit against the complete fixed inventory and withhold acceptance until it is accounted for |
 | Final audit isolation and correction | Editor and coordinator keep baseline and audit history from the fresh reader; an authorized restoration triggers applicable validation, a new fresh full pass and another final audit |
 | Missing final audit evidence | The resolved review package lacks the final audit section or baseline evidence is unavailable; report the dependency or audit gap and withhold completion rather than substituting reader acceptance |

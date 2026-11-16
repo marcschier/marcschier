@@ -44,6 +44,9 @@ missing; otherwise leave that coverage incomplete.
 Source review includes all prose in the selected
 source folders, including manifest terms and profile descriptions, not just
 `spec.md`. Read models or external domain sources only as editor evidence.
+Treat the adjacent `implementer-guide.md` as a separate informative developer
+deliverable, not specification prose. Exclude it from the specification
+reader's inputs and coverage even though it shares the source folder.
 Exclude PDF and Word from this workflow.
 
 **Ready:** every selected spec, format, prerequisite, and edit permission is
@@ -63,8 +66,26 @@ separate style skill or a copied summary.
 The integrated guidance governs specification prose; applicable normative
 sources and approved technical decisions govern technical facts; the target
 repository's authoring contract and pinned Publisher govern syntax and
-composition. Generic report-writing helpers may be used for
-non-specification deliverables only, never as competing specification guidance.
+composition. The guide's writing companions never compete with specification
+guidance.
+
+The coordinator and editor must also read `references/implementer-guide.md`
+from the host-resolved `opc-spec-review` package before removing informative
+material or creating or maintaining a companion guide. Apply that complete
+workflow to each selected spec: retain useful implementation explanations in
+`implementer-guide.md` beside `spec.md`, preserve normative facts in their
+normative homes, and use the guide-only writing companions. If the reference
+is missing, stop that branch and report the dependency. Read-only mode
+reports missing guides and proposed destinations without edits.
+
+Before the editor removes connecting explanation, apply the shared prose
+guidance's "Informative context" decision: offer the user an informative
+subsection in the specification, including useful examples and diagrams.
+Keep the specification's audience unchanged and its reading flow intact;
+retain the original while a choice is pending. The specification reader must
+read those subsections as part of the current edition without using the
+developer guide. Keep normative obligations normative, not reclassified as
+informative by an editorial move.
 
 Read [the role instructions](references/roles.md) before dispatching agents.
 Send the reader its role instructions, agreed scope, current source and HTML
@@ -208,6 +229,13 @@ mandatory final information-preservation audit below. Otherwise report the
 precise incomplete state.
 
 ## 6. Final information-preservation audit
+
+Complete the shared implementer-guide workflow's independent developer
+rubber-duck review before this audit. Give the developer reader its own fresh
+context and the current guide and referenced specification; never give the
+specification reader the guide or its review history. Audit informative guide
+destinations separately from normative homes and report both acceptance
+outcomes; guide-only content cannot repair missing specification facts.
 
 Before reporting completion, the editor and coordinator must read and apply
 `references/revisions.md` section "Final information-preservation audit" from

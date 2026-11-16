@@ -51,8 +51,12 @@ checklist:
 - **Use case:** name the actor, goal and model behavior that supports it.
 
 These are content prompts, not instructions to add a paragraph or table when
-the current authoring contract does not support it. Keep examples short and
-non-normative; use them only when they resolve a real ambiguity.
+the current authoring contract does not support it. Apply the
+[informative-context decision](specification-style.md#informative-context)
+before removing connecting explanations, examples or diagrams. User-approved
+informative subsections preserve the existing audience and reading flow using
+supported markup; they are not new top-level chapters or developer booklets.
+Examples may explain the modelled technology as well as clarify a requirement.
 
 ## Source data and generated material
 

@@ -33,6 +33,25 @@ and none gives the reader prior target-domain knowledge. Technical normative
 sources and the repository's authoring and Publisher contract retain their
 respective authority.
 
+Each spec also has an informative `implementer-guide.md` beside `spec.md`.
+Before moving connecting context out of the specification, the editor offers
+the user an informative-subsection option under the shared prose guidance.
+Those explanations, examples and diagrams keep the specification's existing
+audience and forward reading flow; the specification reader reviews them
+without the guide. Pending choices preserve the original, and informative
+labelling cannot downgrade requirements.
+The coordinator and editor read the shared `references/implementer-guide.md`
+from the resolved review package to preserve useful removed explanations and
+maintain a distinct developer booklet. Guide writing alone uses `marc-writer`,
+`microsoft-writing-style` and `claudism-killer`; install those marketplace
+companions as documented by `opc-spec-review`. Missing dependencies block guide
+writing, not independent review work. A separate fresh developer reader
+rubber-ducks the final guide, examples and GitHub-rendered diagrams.
+The specification reader never receives the guide or guide-review history.
+Guide-only retention does not replace normative specification content.
+Read-only work reports missing or stale guides and proposes changes; guide
+creation or maintenance requires explicit file scope and edit permission.
+
 For local development, register the bare skill:
 
 ```powershell

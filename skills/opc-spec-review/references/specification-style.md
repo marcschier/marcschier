@@ -21,14 +21,16 @@ For each sentence in a normative clause, identify its purpose:
 - A testable requirement, permission or recommendation, placed with the Node,
   Method or EventType it constrains.
 - A definition of a type, child, field or argument.
-- The minimum context needed to understand one of those items, usually a
-  reference.
+- Context needed by the specification's intended reader to understand those
+  items, including an explanation of the technology being modelled.
 
 Question sentences that only repeat a source, explain rationale, walk through a
 standard service, preview another clause or restate a table. Remove or
 condense them only after the preservation audit establishes that their useful
 facts remain accessible and their scope is unchanged. Dense, testable rules
 are not verbosity merely because they are long.
+Apply the informative-context decision below before removing connecting
+explanations, examples or diagrams; concision does not mean normative-only prose.
 
 Place optionality in ModellingRules, Conformance Units and Profiles, not prose
 labels. Put shared requirements in a canonical location with references; keep
@@ -59,6 +61,48 @@ and Profile content belongs to the repository's supported generated clauses.
 These shapes guide organization; they do not justify moving generated or
 authored content into a location where it is lost, inaccessible or narrower in
 meaning.
+
+## Informative context
+
+Before removing material that connects normative clauses or explains the
+modelled technology, give the user an explicit retention choice through the
+host's question tool. Show located before/after excerpts, the reading gap the
+removal would create, and proposed subsection placement. Ask one decision at a
+time: retain the connecting material in an informative subsection of the
+specification, or move suitable implementation teaching to the companion guide
+when the specification remains understandable without it. Record the chosen
+policy and its scope; apply an already approved policy without asking again
+unless a materially different case falls outside it. Silence, unavailable
+input or general rewrite approval is not consent to remove the material:
+leave it unchanged and record the pending choice.
+
+An informative subsection keeps the specification's existing audience.
+It explains concepts, relationships and the modelled technology at the depth
+that reader needs; it does not adopt the developer-booklet audience or writing
+companions used for `implementer-guide.md`. Include supporting examples and
+diagrams when they bridge understanding, not only when a requirement is
+ambiguous. Keep these connected to the surrounding normative clauses rather
+than collecting them in a distant appendix or relying on the guide.
+
+Place the explanation before or alongside the first dependent concept, with
+clear transitions back to the contract. Mark the subsection informative using
+the repository's supported authoring convention and preserve example/diagram
+captions, links and reading order. If the template or pinned Publisher cannot
+express that distinction, report the conflict and seek a decision; do not
+invent markup or delete the explanation to satisfy a layout rule.
+
+Separate explanation from obligations in mixed passages. Required definitions,
+conditions, exceptions, negative guarantees and other normative facts retain
+their normative force and accessible normative homes; labelling a subsection
+informative must not downgrade them. The informative-context decision takes
+precedence over concision, placement and example-removal rules below, including
+D1-D7, but never over technical authority or edit permission.
+
+Reread the resulting specification forward, including each informative
+subsection, example and diagram, without the implementer guide. Verify that
+the intended reader can follow the normative contract and that no transition,
+needed premise or normative fact was lost. Record the decision, exact retained
+homes, publication evidence and any reading gap in the preservation audit.
 
 ## A. Terms and typography
 
@@ -309,6 +353,8 @@ in their proper clauses.
 
 Use the overview to introduce the model and its main relationships. Keep
 requirements and detailed behavior with the relevant types and Methods.
+Retain user-approved connecting explanation in informative subsections under
+the informative-context decision rather than stripping the overview to names.
 
 **Example:** Show the relation between a Controller and its Channels in the
 overview; put the Channel's timeout requirement in the Channel clause.
@@ -318,24 +364,30 @@ overview; put the Channel's timeout requirement in the Channel clause.
 Refer to the applicable standard when the behavior is already defined there.
 Retain the additional behavior this specification defines, including any
 observable lifecycle or failure contract.
+An external citation alone may not supply the modelled-technology context
+needed by this specification's audience; apply the informative-context decision.
 
 **Example:** Cite the standard file-reading operation instead of listing every
 call; retain the unique rule that binds an open handle to a selected revision.
 
 ### D4. Use examples to resolve real ambiguity
 
-Add a short example only when it clarifies a rule that is otherwise ambiguous.
-Keep examples distinguishable from normative text and avoid turning them into
-multi-step tutorials.
+Use examples that clarify rules or connect the modelled technology to the
+normative contract. Keep examples distinguishable from normative text and
+proportionate to the specification audience. Apply the informative-context
+decision before removing a useful example or diagram.
 
 **Example:** Show one boundary value to clarify whether a range endpoint is
 inclusive; omit an example that merely repeats an obvious table value.
 
 ### D5. Separate rationale from implementer contracts
 
-Put design rationale in an authorized working-group document or informative
-location when requested. Do not delete factual consequences or requirements
-merely because their explanation includes rationale.
+Offer the informative-context choice for rationale that connects the model
+to its normative contract. Retain developer-specific rationale in the companion
+guide under the [guide workflow](implementer-guide.md) when it is not needed
+for the specification's reading flow. Working-group-only deliberation belongs
+in an authorized review artifact. Do not delete factual consequences or
+requirements merely because their explanation includes rationale.
 
 **Example:** Move a comparison of rejected architectures out of a normative
 clause, but retain the resulting supported transport requirement.
@@ -344,6 +396,8 @@ clause, but retain the resulting supported transport requirement.
 
 Do not spend normative-clause space narrating the chapter structure or
 repeating the clause's contents.
+Distinguish empty previews from transitions that connect concepts; retain
+needed connective explanation under the informative-context decision.
 
 **Example:** Replace “This clause first describes the Controller and then
 lists its operations” with the actual explanation needed to understand the
@@ -417,7 +471,8 @@ contract.
 1. Inventory all requirements, permissions, recommendations, definitions,
    mappings, examples and other useful implementer facts with source locations.
 2. Identify the proper persistent home for each item. Move or merge only when
-   the destination is equivalent in meaning and scope.
+   the destination is equivalent in meaning and scope. Obtain the user's
+   informative-context choice for connecting material before removing it.
 3. Remove only material that is genuinely redundant or approved for removal.
 4. Compare the inventory with the proposed text and publication. Record each
    retained, moved, merged, superseded or intentionally removed item; no useful
@@ -433,6 +488,12 @@ contract.
 When result codes, normative strength or technical behavior are unresolved,
 keep proposals in the review record, not normative text. Preserve renderer,
 generator and release dependencies as explicit findings.
+
+Keep user-selected connecting context in the specification's informative
+subsections. For useful implementation teaching not needed there, apply the
+[implementer guide workflow](implementer-guide.md) and retain it in the adjacent
+guide. Normative contract facts still require a normative published home;
+guide-only retention cannot authorize their removal.
 
 ## Review record
 
