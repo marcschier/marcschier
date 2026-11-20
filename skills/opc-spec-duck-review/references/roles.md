@@ -90,6 +90,11 @@ information-preservation audit from the resolved `opc-spec-review` package
 before reviewing or rewriting. Keep editorial process reports out of the
 specification. Style guidance does not authorize technical changes.
 
+For authorized specification prose edits, apply `opc-ua-writing-style` only
+when the coordinator passes the user's explicit opt-in. Follow the shared
+"Optional editing companion" guidance; do not ask again on later passes.
+Keep the integrated prose guidance in force.
+
 Before removing informative prose or maintaining a guide, read and apply
 `references/implementer-guide.md` from that same resolved package. Retain
 useful implementation explanations in the guide beside `spec.md` with

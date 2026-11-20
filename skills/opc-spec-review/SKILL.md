@@ -97,6 +97,10 @@ authoring contract and pinned Publisher govern supported syntax and
 composition. Other writing helpers must not compete with specification prose
 guidance.
 
+Before making authorized specification prose edits, follow the
+[optional editing companion decision](references/specification-style.md#optional-editing-companion).
+Keep the user's choice across edit batches.
+
 Use the concise [content structure](references/templates.md) as an aid when
 reviewing or drafting each specification. It supplements, but does not replace,
 the official Sample and the target repository's current authoring contract.

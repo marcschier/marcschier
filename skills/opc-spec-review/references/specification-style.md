@@ -1,8 +1,8 @@
 # OPC UA specification prose guidance
 
 This reference is the prose-style authority for `opc-spec-review` and its
-comprehension-review companion. It is part of this package; do not resolve or
-install another style skill. It governs specification prose, not technical
+comprehension-review companion. It is part of this package; a separate style
+skill cannot replace it. It governs specification prose, not technical
 decisions, Markdown dialect, table-renderer behavior or publisher-owned
 presentation. Applicable normative sources and approved working-group
 decisions govern technical facts. The target repository's authoring contract
@@ -13,6 +13,26 @@ they do not authorize a technical change. The numbered rules are concise
 operational checks. Preserve the safeguards in the final section when applying
 them: style review must not silently lose information, narrow a contract, or
 make an unapproved normative decision.
+
+## Optional editing companion
+
+Before the first authorized specification prose edit, if the user has not
+already made this choice, use `ask_user` once for the agreed edit scope: offer
+**Use `opc-ua-writing-style`** or **Keep the existing editing workflow
+(default)**. In comprehension review the coordinator asks and records the
+choice for the editor. Skip the question in findings-only, planning and
+removal-audit modes, and continue without the companion if the user declines
+or no answer is available. The choice does not grant edit permission or
+broaden the scope.
+
+On explicit opt-in, resolve `opc-ua-writing-style` through the host's skill
+mechanism for the agent making the edits. If it is unavailable, report that
+the optional pass was skipped and continue with this guidance rather than
+installing it automatically. Use it for voice, paragraph breaks and
+punctuation in approved specification edits.
+Keep an existing `claudism-killer` pass as a separate cleanup step; do not add
+one just because the user opts in. This guidance and its preservation audit
+still apply, and the implementer guide keeps its separate writing workflow.
 
 ## Sentence purpose and placement
 

@@ -169,6 +169,12 @@ coordinator dislikes. Only the editor may change specification sources.
 The editor applies the integrated prose guidance to every specification
 rewrite; missing guidance blocks that branch.
 
+Before the first authorized specification prose edit, follow the "Optional
+editing companion" section of the resolved prose guidance. If an older
+review package lacks that section, continue with the integrated guidance
+and report that the optional pass requires an updated `opc-spec-review`.
+Record the user's choice once and pass it only to the editor, not to readers.
+
 In the first full pass, the editor accepts the reader's requests for clearer
 wording and continues revising when the reader remains dissatisfied. It must
 not reject a request merely because it considers its own explanation adequate.

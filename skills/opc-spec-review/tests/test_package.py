@@ -16,7 +16,7 @@ class PackageTests(unittest.TestCase):
         )
         names = [entry["name"] for entry in marketplace["plugins"]]
         self.assertEqual(len(names), len(set(names)))
-        for name in ("opc-spec-review", "claudism-killer"):
+        for name in ("opc-spec-review", "claudism-killer", "opc-ua-writing-style"):
             entry = next(row for row in marketplace["plugins"] if row["name"] == name)
             source = REPO.joinpath(*PurePosixPath(entry["source"]).parts)
             manifest = json.loads(

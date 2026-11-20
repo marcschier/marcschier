@@ -60,6 +60,15 @@ prose rules, an example for every rule, and the information-preservation
 safeguards. It does not replace technical authorities or the target
 repository's authoring contract and pinned Publisher.
 
+For authorized edits, the review can offer an optional companion-spec prose
+pass with `opc-ua-writing-style`. It supplements the packaged guidance
+without changing any existing `claudism-killer` pass. Install it separately
+if you want to use it:
+
+```powershell
+copilot plugin install opc-ua-writing-style@marcschier
+```
+
 Use the concise [content structure](references/templates.md) for a section
 outline. It is supplemental; the official Sample remains authoritative for
 headings, directives and publisher behavior. The adjacent
@@ -82,8 +91,8 @@ explanations, rationale and examples removed during review, while normative
 facts remain in the specification or exact applicable normative references.
 Existing guides are maintained, not overwritten with a deletion log.
 
-Only guide writing uses `marc-writer`, `microsoft-writing-style` and
-`claudism-killer` in these review workflows. The guide is a developer booklet:
+Guide writing requires `marc-writer`, `microsoft-writing-style` and
+`claudism-killer`. The guide is a developer booklet:
 natural explanatory prose from overview to detail, short concept headings,
 worked examples and GitHub-rendered diagrams, with references to `spec.md`
 instead of duplicated requirements. An independent developer rubber-duck

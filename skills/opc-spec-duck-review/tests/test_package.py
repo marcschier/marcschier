@@ -119,6 +119,20 @@ class PackageTests(unittest.TestCase):
         self.assertIn("without filtering out requests", skill)
         self.assertIn("recommendations, not unapplied changes", skill)
 
+    def test_optional_style_routes_only_to_editor(self):
+        skill = prose("SKILL.md")
+        reader, editor = prose("references/roles.md").split("## Reader", 1)[1].split(
+            "## Editor", 1
+        )
+        self.assertIn("pass it only to the editor, not to readers", skill)
+        self.assertNotIn("opc-ua-writing-style", reader)
+        self.assertIn("opc-ua-writing-style", editor)
+        self.assertIn("the user's explicit opt-in", editor)
+        policy = (
+            REPO / "skills" / "opc-spec-review" / "references" / "specification-style.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("## Optional editing companion", policy)
+
     def test_integrated_style_authority_is_required_for_both_isolated_roles(self):
         skill = prose("SKILL.md")
         roles = prose("references/roles.md")

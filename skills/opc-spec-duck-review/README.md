@@ -33,6 +33,12 @@ and none gives the reader prior target-domain knowledge. Technical normative
 sources and the repository's authoring and Publisher contract retain their
 respective authority.
 
+For authorized prose edits, the coordinator can ask whether to add the
+optional `opc-ua-writing-style` pass. The choice applies only to the editor
+and keeps any existing `claudism-killer` pass. To use it, install
+`opc-ua-writing-style@marcschier` separately and use an up-to-date
+`opc-spec-review` package.
+
 Each spec also has an informative `implementer-guide.md` beside `spec.md`.
 Before moving connecting context out of the specification, the editor offers
 the user an informative-subsection option under the shared prose guidance.
@@ -42,7 +48,7 @@ without the guide. Pending choices preserve the original, and informative
 labelling cannot downgrade requirements.
 The coordinator and editor read the shared `references/implementer-guide.md`
 from the resolved review package to preserve useful removed explanations and
-maintain a distinct developer booklet. Guide writing alone uses `marc-writer`,
+maintain a distinct developer booklet. Guide writing requires `marc-writer`,
 `microsoft-writing-style` and `claudism-killer`; install those marketplace
 companions as documented by `opc-spec-review`. Missing dependencies block guide
 writing, not independent review work. A separate fresh developer reader
