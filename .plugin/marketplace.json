@@ -118,6 +118,30 @@
       ]
     },
     {
+      "name": "opc-ua-writing-style",
+      "source": "./skills/opc-ua-writing-style",
+      "description": "Draft or edit OPC UA specification prose in the voice of published companion specifications, with idiomatic English and preserved technical meaning.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opc-ua-writing-style",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "opc-ua",
+        "companion-specifications",
+        "technical-writing",
+        "prose",
+        "editing"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
       "name": "microsoft-writing-style",
       "source": "./skills/microsoft-writing-style",
       "description": "Apply Microsoft Writing Style Guide wording rules to developer content, reference documentation, and specifications, as writing context or as an autopilot or interactive review.",

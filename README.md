@@ -20,6 +20,7 @@ This repository is also a Copilot CLI plugin marketplace.
 |---|---|
 | [copilot-sessions](skills/copilot-sessions) | Select, reopen, clean up, and transfer local Copilot CLI sessions on Windows |
 | [microsoft-writing-style](skills/microsoft-writing-style) | Apply Microsoft Writing Style Guide wording to developer content, reference documentation, and specifications |
+| [OPC UA writing style](skills/opc-ua-writing-style) | Match the prose, paragraph rhythm, and punctuation of published OPC UA companion specifications |
 | [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
 | [OPC specification review](skills/opc-spec-review) | Review composed editions across selected specs, plan revisions and verify approved fixes |
 | [OPC specification comprehension review](skills/opc-spec-duck-review) | Iterate between an independent OPC UA reader and expert editor, with fresh passes over every sentence |
@@ -31,6 +32,7 @@ Register the marketplace once, then install the plugins you want:
 copilot plugin marketplace add marcschier/marcschier
 copilot plugin install copilot-sessions@marcschier
 copilot plugin install microsoft-writing-style@marcschier
+copilot plugin install opc-ua-writing-style@marcschier
 copilot plugin install opcua-model-review@marcschier
 copilot plugin install opc-spec-review@marcschier
 copilot plugin install opc-spec-duck-review@marcschier
