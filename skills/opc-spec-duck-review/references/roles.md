@@ -7,18 +7,18 @@ package.
 
 ## Reader
 
-You are an OPC UA expert reading this specification for the first time.
-Know the OPC UA canon and the explicitly agreed dependent OPC UA
-specifications, including preceding parts where applicable. Start without
-knowledge of this specification's technology or context outside those
-prerequisites. Your underlying model may recognize the domain; do not use that
-recognition to fill a gap the document has not explained.
+You are an independent first-time reader of this specification, not a
+first-time reader of OPC UA. Know the OPC UA canon and the explicitly agreed
+dependent OPC UA specifications, including preceding parts where applicable.
+Start without knowledge of the target specification beyond those prerequisites.
+Your underlying model may recognize the domain; do not use that recognition to
+fill a gap the document has not explained.
 
 The companion implementer guide and its review history are not inputs to this
 specification reading. Assess the specification's own explanation; a separate
 developer reader reviews the guide under the shared guide workflow.
-Read its informative subsections, examples and diagrams as part of the
-specification's forward flow for its unchanged intended audience. Flag missing
+Read the specification's informative subsections, examples and diagrams in
+reading order for its unchanged intended audience. Flag missing
 technology context or disconnected requirements even when normative statements
 survive; do not require a developer guide to understand this specification.
 
@@ -34,19 +34,61 @@ silently researching that domain to make a confusing sentence understandable.
 
 Read every selected specification forward, sentence by sentence, without
 skipping. Read the selected source completely; when HTML is included, perform
-a complete separate forward read of the published edition. Preserve what you
-learn within a pass, but distinguish knowledge gained from source from what
-HTML itself explains. Source knowledge must not conceal a missing explanation
-or lost content in HTML. Keep a running glossary of definitions, where they
-were first introduced, and unresolved questions.
+a complete separate forward read of the published edition. Keep a separate
+running glossary for each representation, with introduction locations and
+unresolved questions. Carry it across consecutive batches of that
+representation. For the initial judgment of each unit, use only the agreed
+prerequisites and what the current representation introduced by that point
+in its reading order. Do not fill gaps with knowledge from the other
+representation (source or HTML), later units in this or another batch,
+specialist familiarity, editor explanations, the implementer guide, or
+prior-pass history.
+
+Apply the **first dependent use** test. Before the first requirement or other
+statement that relies on a project-specific term, identifier, or named
+Object, be able to say what it is, where it belongs, and why it matters to
+that statement. An earlier definition or immediate orienting prose suffices
+if it supplies those premises before the dependency. An acronym expansion, a
+valid link to a later definition, or an exact definition reached by reading
+ahead is not enough on its own. Later references can supply details once the
+reader has enough context. Do not demand introductions for incidental
+mentions or standard OPC UA terminology covered by the agreed prerequisites.
+
+Run a separate mandatory **invented compounds** check. When prose coins a
+compound to stand in for a relationship or action, flag it even if its parts
+or the surrounding text make the meaning guessable. Do not silently expand
+it and accept the wording. Record the exact phrase and location and state
+what relationship or action the prose needs to express in plain words. Ask
+for that wording, not a glossary entry for avoidable shorthand. If the
+intended meaning is uncertain, ask for clarification rather than guessing.
+Keep established technical compounds such as `read-only` and preserve exact
+identifiers and quotations. A hyphen alone is not a finding.
+
+Run a separate mandatory **redundancy** check. Look for repeated facts or
+rules within the specification, including paraphrases and prose that
+duplicates a table, and for restatements of facts or rules from applicable
+external specifications, including OPC UA. Compare meaning, scope, conditions,
+exceptions, and normative force, not just wording. Flag only the duplicate
+portion; keep binding-specific additions and useful first-use context,
+examples, or summaries.
+
+For each confirmed redundancy, record the repeated passage and its location,
+the exact clause or table that already covers it, and the smallest safe
+change: usually delete the duplicate or replace it with a precise reference.
+For external authority, record the specification and applicable edition as
+well as the clause or table. If the authority is inaccessible or outside the
+agreed reader prerequisites, record a candidate for the editor to verify,
+say what you could not verify, and do not assume equivalence. When you
+encounter a later duplicate, compare it with the earlier text without using
+it to clear an earlier reading obstacle. Report findings; the editor decides
+whether to change the text under the preservation safeguards.
 
 For each sentence, record its location and judge all of these questions:
 
 - Does it make sense at this point, and can you explain its meaning?
 - Does its prose follow the integrated specification prose guidance?
-- Are terms stable, defined before needed, and distinct from similar concepts?
-- Is it useful new information, or does it repeat an explanation without a
-  reader need? Distinguish necessary requirements from redundant teaching.
+- Are terms stable and distinct from similar concepts? Does each dependent use
+  have enough orientation at this point?
 - What prerequisite, condition, relationship, or example is missing?
 - Would an example or diagram clarify the concept, or do existing examples and
   diagrams repeat, distract, or introduce unexplained detail?
@@ -56,13 +98,16 @@ specific reason; a checklist of generic yes answers is not a judgment. For a
 concern, read the entire containing paragraph and re-judge. Preserve the
 initial obstacle and state whether the paragraph resolves it. You may consult
 the paragraph for that reassessment, but record definitions learned later at
-their actual positions. Cross-references can be intentional: explain when a
-forward reference is usable and when essential context arrives too late.
+their actual positions. If a premise is missing at first dependent use, log
+a finding with the exact location, the missing premise, and whether and
+where later context resolved it. Update that later-resolution field when
+you reach the explanation; do not change the initial judgment to accepted.
 
 Include unsentenced units: headings, table cells and field descriptions, list
-fragments, captions, examples, and figures. Inspect diagrams, their labels and
-adjacent prose rather than assuming an image filename explains them. Leave
-unavailable units unreviewed and identify the consequence.
+fragments, captions, examples, and figures, including generated units in
+scope. Apply the same checks to these units. Inspect diagrams, their labels
+and adjacent prose rather than assuming an image filename explains them.
+Leave unavailable units unreviewed and identify the consequence.
 
 At each batch boundary return the last completed unit and the next unread
 unit, glossary additions, questions, findings, and per-unit judgments. Continue
@@ -71,10 +116,11 @@ purpose, key concepts, relationships, operations, scope, and examples using
 what it taught you; identify anything you still cannot explain.
 
 You can request and assess revisions but cannot edit sources or generated
-publications. Re-review the editor's revised sentences in context; explaining
-the intent in a message does not repair unclear text. In later passes, answer
-editor challenges with located reasoning and evidence, accept a valid rebuttal,
-or identify the precise unresolved disagreement for the user.
+publications. Re-review revised units in context using the revised text, not
+the editor's explanation. Record this as a local judgment, never independent
+first-time acceptance. In later passes, answer editor challenges with
+located reasoning and evidence, accept a valid rebuttal, or identify the
+precise unresolved disagreement for the user.
 
 ## Editor
 
@@ -116,11 +162,21 @@ content structure without treating it as a publisher syntax specification.
 
 For each reader finding, retain the original text, the reader's reasoning,
 source and rendered locations, your action and rationale, evidence, changed
-units, and re-review result. Recover needed context where the reader needs
-it, without copying external standards wholesale or adding a tutorial that
-overwhelms the requirement. Propose diagrams/examples only when they help.
+units, and re-review result. For a first-use finding, retain the exact
+dependent-use location, missing premise, and whether and where later context
+clarified it. Supply the missing orientation at or before that use in the
+affected representation, without duplicating later details or changing the
+requirement. A later definition or an explanation to the reader is not a
+fix. For invented shorthand, state the relationship or action in plain
+words without changing technical meaning, identifiers or quoted text.
+Propose diagrams/examples only when they help.
 Creating figures requires the relevant authoring tools and explicit edit scope;
 otherwise record the proposal.
+
+For redundancy findings, verify the cited authority and applicability,
+including any candidate the reader could not confirm. Before deleting or
+replacing text, show where the same information and normative force remain
+available, and retain any distinct local obligation or useful context.
 
 During the first full pass, keep rewriting when the reader is not satisfied;
 do not veto a clarity request on the ground that your wording is already good

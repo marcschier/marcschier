@@ -29,10 +29,17 @@ scenarios; this list alone is not evidence that they passed.
 | Ambiguous selection | Discover two manifests, ask which specs and then source-only or source plus HTML; obtain edit permission independently |
 | Non-OPC prerequisite | A first sentence relies on an unexplained non-OPC domain concept; the reader flags it rather than researching the domain to fill the gap |
 | Prior OPC UA part | Part 2 relies on the agreed Part 1 definition; the reader uses that prerequisite without demanding a duplicate introduction |
+| First dependent use | Run the paired synthetic fixture below in fresh contexts; report the missing premises in the link-only edition and accept the same requirement with the orientation in place |
+| Invented compounds | Establish the module, slot, and browse path first. In prose, flag `module-to-slot path` even when the preceding text makes it unambiguous. Record the exact phrase and location and request `the browse path from the module to the slot`, not a glossary entry. In the revised edition, accept the explicit wording and the established term `read-only`. Preserve an exact identifier such as `ModuleToSlot` and leave any direct quotation unchanged |
+| First use outside prose | Move the fixture requirement to a table cell or an example tied to a figure label, and repeat in generated HTML; judge each in its actual reading order and locate the first dependent-use obstacle even if source or another representation explains it |
+| Ordered batches | Split the link-only fixture before its exact definition; the reader logs the obstacle in the first batch and later records where it was clarified without erasing it. In the passing version, split just after the introduction; the same reader carries that introduction into the next batch without relearning it |
 | Knowledge learned later | A later paragraph explains an earlier unexplained operation; the ledger retains the earlier obstacle and the editor considers moving the explanation |
-| Full paragraph resolves sentence | An initially unclear sentence becomes clear in its paragraph; record both judgments and avoid a spurious rewrite |
+| Full paragraph resolves sentence | An initially unclear sentence becomes clear in its paragraph; record both judgments and avoid a spurious rewrite for ordinary sentence-level ambiguity, but a later sentence still cannot supply a premise at first dependent use |
 | Stable terms | A paragraph switches names for one concept; request a correction that preserves meaning and follows the integrated prose guidance |
-| Redundant teaching | Repeated explanations add no condition or audience benefit; propose consolidation while preserving distinct normative obligations |
+| Internal repetition | Local Table 2 says an unsuccessful reset leaves the counter unchanged; later prose says a failed reset does not alter the counter, with identical scope. Flag the paraphrase, locate both passages, cite Table 2, and propose removing only the later duplicate |
+| External repetition | The applicable, agreed synthetic Base Transport specification, edition 2, clause 4.3 requires the server to reject an empty frame. The binding repeats the rule with the same scope, conditions, exceptions, and force. Cite Base Transport, edition 2, clause 4.3 and propose a precise reference instead of the restatement |
+| Distinct local addition | The same binding also requires the server to increment its diagnostic counter when it rejects an empty frame, and explains early why empty frames occur. Keep the binding-specific obligation and useful first-use context. Flag only text that adds neither information nor reader value |
+| Unverified authority | The binding appears to restate a rule from an inaccessible or non-prerequisite specification. Record the passage as a candidate and route it to the editor for verification; do not assume it is equivalent or use outside knowledge to clear a first-use obstacle |
 | Example or diagram | One concept needs an example, another has a distracting figure; record specific reader needs rather than demanding more figures everywhere |
 | Coverage gap | A tool truncates a page or a figure cannot be opened; resume unread ranges or report incomplete coverage, never approve the whole batch |
 | HTML loses content | Source is clear but generated HTML omits a field description; reader reports the HTML gap even after learning the concept from source |
@@ -40,9 +47,42 @@ scenarios; this list alone is not evidence that they passed.
 | Unsafe requested rewrite | Reader suggests replacing Optional with Mandatory; editor offers a faithful explanation or asks for a decision instead of changing the model requirement |
 | Later challenge | A fresh reader demands an unnecessary repetition; editor requests located reasoning and can reject with evidence, but closes only with reader agreement or a user decision |
 | Persistent dispute | Both roles maintain incompatible interpretations; user receives the wording, both arguments, evidence, and concrete choices for a tie-break |
-| Fresh pass isolation | New reader gets current source and prerequisites only; editor alone retains old findings and rationale |
-| Final revision | A local re-review accepts the last edit; coordinator still requires a complete fresh pass of the unchanged current edition |
+| Fresh pass isolation | Every full pass starts with a new first-time reader that receives the agreed inputs, never prior findings or private explanations; the editor retains the finding history across passes |
+| Final revision | A local re-review accepts the last edit; log it as local, not independent first-time acceptance, and require a complete fresh pass of the unchanged current edition |
 | Read-only request | Editor returns recommendations without edits, composition, or a claim that unapplied fixes passed re-review |
 | Missing tools or agents | Knowledge-base access, reference-site access, a writing companion, or independent contexts are unavailable; affected work stops with an explicit dependency |
 | Limits or repeated cycle | Resource limit or repeated disagreement interrupts convergence; report incomplete work and ask for continuation or decision |
 | Successful closure | Every current unit is covered, no unresolved issue remains, and both roles accept the same hashes; report comprehension acceptance only, not conformance certification |
+
+## Synthetic fixture: first dependent use
+
+The fixture uses `RunStamp`, a name outside the agreed prerequisites. Its
+first mention in the contents list is incidental. At the first requirement,
+show this version to the reader:
+
+> The server shall set `RunStamp` when it starts a measurement run. See
+> [RunStamp definition](#runstamp-definition).
+
+**Expected:** Flag the requirement, not the contents entry. The requirement
+does not establish that `RunStamp` is a timestamp field in the run record or
+explain that clients use the recorded start time to align readings.
+Even though the link works, record the missing premises at the requirement.
+When the reader reaches the definition, record that location and that it
+resolved the questions, without erasing the original obstacle.
+
+In a fresh context, insert this immediately before the requirement or in an
+earlier introduction. Leave the requirement and its link unchanged:
+
+> Each measurement run has a run record. Its `RunStamp` field records the
+> start time so clients can align readings to the start of the run.
+
+**Expected:** Pass the first-use test. The reader can explain the field, its
+place in the record, and its purpose before needing the detailed definition.
+
+### RunStamp definition
+
+Place this after the requirement in both editions:
+
+> `RunStamp` is a field in the run record. It contains the UTC start time of
+> the measurement run so clients can align readings to that time. The value
+> has the OPC UA `DateTime` data type.

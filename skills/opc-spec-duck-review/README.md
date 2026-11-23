@@ -1,9 +1,8 @@
 # OPC specification comprehension review
 
-`opc-spec-duck-review` pairs an independent OPC UA reader with an expert
-technical editor. It checks whether an OPC UA expert can learn the domain
-from the specification, sentence by sentence, rather than supplying missing
-context from prior domain knowledge.
+`opc-spec-duck-review` pairs an independent first-time reader with an expert
+technical editor. The reader knows OPC UA and the agreed prerequisites, but
+learns the target specification in reading order.
 
 Use `opc-spec-review` for correctness, style, and publication audits. This
 skill provides a separate comprehension dialogue, not a substitute for model
@@ -76,17 +75,37 @@ Use opc-spec-duck-review for source-only findings without edits.
 ```
 
 The skill first asks for the selected specifications and source-only versus
-source-plus-HTML coverage, then establishes edit permission. The reader knows
-OPC UA and the agreed dependent OPC UA specifications, but not the target
-domain. The editor can research that domain.
+source-plus-HTML coverage, then establishes edit permission and confirms
+prerequisites, including any preceding parts. The editor can research the
+target domain.
 
 Separate agents are required; distinct models can be selected when supported
-and requested. The editor retains history while every new full pass gets a
-fresh reader. The first pass prioritizes satisfying the reader's clarity
-requests; later passes permit evidence-based challenges and user tie-breaks.
-Technical meaning and edit permissions remain protected in every pass.
+and requested. The editor retains history; every full pass starts with a
+fresh first-time reader who carries forward only what each representation has
+taught across consecutive batches. Targeted revision re-reads do not count
+as independent acceptance. The first pass prioritizes satisfying the reader's
+clarity requests; later passes permit evidence-based challenges and user
+tie-breaks. Technical meaning and edit permissions remain protected in every
+pass.
 
 Coverage includes every sentence and additional content units, not a sample.
+At the first use that depends on a project-specific name, the reader must
+already know what it is, where it belongs, and why it matters there. This
+applies in prose, tables, figures, examples, and generated content. Later
+definitions and links can add detail, but they cannot substitute for that
+orientation or erase a recorded obstacle.
+
+Separately, the reader flags invented compounds that hide a relationship or
+action, even when the meaning is guessable. The reader asks for plain
+wording while leaving established terms, exact identifiers, and quotations
+intact.
+
+The reader also flags information repeated within the specification or
+restated from an applicable specification. Each confirmed finding cites
+the authoritative clause or table and proposes the smallest safe change.
+The editor verifies candidates and preserves distinct requirements and
+useful reader context.
+
 A final unchanged edition needs a complete fresh pass with no outstanding
 issues and editor agreement. Permission gaps, unavailable evidence, repeated
 disputes, and resource limits produce an explicit incomplete outcome rather
