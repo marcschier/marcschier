@@ -1,0 +1,22 @@
+{
+  "name": "spec-duck-review",
+  "version": "1.0.0",
+  "description": "Review non-OPC UA specifications with independent forward-reading and expert editing agents, using user-defined audience prerequisites and explicit coverage.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/spec-duck-review",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "development",
+  "keywords": [
+    "specification-review",
+    "rubber-duck",
+    "comprehension",
+    "technical-editing"
+  ],
+  "skills": [
+    "./"
+  ]
+}

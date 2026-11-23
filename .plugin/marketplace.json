@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.10.0"
+    "version": "1.11.0"
   },
   "plugins": [
     {
@@ -208,6 +208,29 @@
       "category": "development",
       "keywords": [
         "opc-ua",
+        "specification-review",
+        "rubber-duck",
+        "comprehension",
+        "technical-editing"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "spec-duck-review",
+      "source": "./skills/spec-duck-review",
+      "description": "Review non-OPC UA specifications with independent forward-reading and expert editing agents, using user-defined audience prerequisites and explicit coverage.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/spec-duck-review",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
         "specification-review",
         "rubber-duck",
         "comprehension",
