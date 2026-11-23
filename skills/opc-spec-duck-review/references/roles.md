@@ -54,14 +54,41 @@ ahead is not enough on its own. Later references can supply details once the
 reader has enough context. Do not demand introductions for incidental
 mentions or standard OPC UA terminology covered by the agreed prerequisites.
 
+Run a separate mandatory **invented compounds** check. When prose coins a
+compound to stand in for a relationship or action, flag it even if its parts
+or the surrounding text make the meaning guessable. Do not silently expand
+it and accept the wording. Record the exact phrase and location and state
+what relationship or action the prose needs to express in plain words. Ask
+for that wording, not a glossary entry for avoidable shorthand. If the
+intended meaning is uncertain, ask for clarification rather than guessing.
+Keep established technical compounds such as `read-only` and preserve exact
+identifiers and quotations. A hyphen alone is not a finding.
+
+Run a separate mandatory **redundancy** check. Look for repeated facts or
+rules within the specification, including paraphrases and prose that
+duplicates a table, and for restatements of facts or rules from applicable
+external specifications, including OPC UA. Compare meaning, scope, conditions,
+exceptions, and normative force, not just wording. Flag only the duplicate
+portion; keep binding-specific additions and useful first-use context,
+examples, or summaries.
+
+For each confirmed redundancy, record the repeated passage and its location,
+the exact clause or table that already covers it, and the smallest safe
+change: usually delete the duplicate or replace it with a precise reference.
+For external authority, record the specification and applicable edition as
+well as the clause or table. If the authority is inaccessible or outside the
+agreed reader prerequisites, record a candidate for the editor to verify,
+say what you could not verify, and do not assume equivalence. When you
+encounter a later duplicate, compare it with the earlier text without using
+it to clear an earlier reading obstacle. Report findings; the editor decides
+whether to change the text under the preservation safeguards.
+
 For each sentence, record its location and judge all of these questions:
 
 - Does it make sense at this point, and can you explain its meaning?
 - Does its prose follow the integrated specification prose guidance?
 - Are terms stable and distinct from similar concepts? Does each dependent use
   have enough orientation at this point?
-- Is it useful new information, or does it repeat an explanation without a
-  reader need? Distinguish necessary requirements from redundant teaching.
 - What prerequisite, condition, relationship, or example is missing?
 - Would an example or diagram clarify the concept, or do existing examples and
   diagrams repeat, distract, or introduce unexplained detail?
@@ -78,9 +105,9 @@ you reach the explanation; do not change the initial judgment to accepted.
 
 Include unsentenced units: headings, table cells and field descriptions, list
 fragments, captions, examples, and figures, including generated units in
-scope. Apply the same first dependent use test to them. Inspect diagrams,
-their labels and adjacent prose rather than assuming an image filename
-explains them. Leave unavailable units unreviewed and identify the consequence.
+scope. Apply the same checks to these units. Inspect diagrams, their labels
+and adjacent prose rather than assuming an image filename explains them.
+Leave unavailable units unreviewed and identify the consequence.
 
 At each batch boundary return the last completed unit and the next unread
 unit, glossary additions, questions, findings, and per-unit judgments. Continue
@@ -140,9 +167,16 @@ dependent-use location, missing premise, and whether and where later context
 clarified it. Supply the missing orientation at or before that use in the
 affected representation, without duplicating later details or changing the
 requirement. A later definition or an explanation to the reader is not a
-fix. Propose diagrams/examples only when they help.
+fix. For invented shorthand, state the relationship or action in plain
+words without changing technical meaning, identifiers or quoted text.
+Propose diagrams/examples only when they help.
 Creating figures requires the relevant authoring tools and explicit edit scope;
 otherwise record the proposal.
+
+For redundancy findings, verify the cited authority and applicability,
+including any candidate the reader could not confirm. Before deleting or
+replacing text, show where the same information and normative force remain
+available, and retain any distinct local obligation or useful context.
 
 During the first full pass, keep rewriting when the reader is not satisfied;
 do not veto a clarity request on the ground that your wording is already good

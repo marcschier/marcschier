@@ -156,6 +156,17 @@ reading ahead cannot supply a missing premise. A reference can point to
 details once that orientation is in place. Incidental mentions and standard
 OPC UA terms within the agreed prerequisites do not need an introduction.
 
+Run the reader role's **invented compounds** check separately from first
+dependent use. Record the location, exact phrase, and plain wording needed
+when prose compresses a relationship or action into invented shorthand,
+even if the meaning is guessable. Check wording in every in-scope unit.
+
+Run the reader role's **redundancy** check for internal repetition and
+restatements from applicable specifications. Record each confirmed duplicate
+with its authoritative home and proposed minimal change. Record unverified
+candidates separately for editor verification; keep the first-use judgment
+independent of this comparison.
+
 The reader records a judgment and concise reason for each sentence, including
 sentences it accepts, and for each additional content unit. Judge each
 dependent use using only the agreed prerequisites and the material introduced
@@ -290,7 +301,8 @@ spec and pass record:
 |---|---|
 | Edition | Source/HTML hashes, tool versions, prerequisites, reader and editor IDs |
 | Coverage | Ordered unit IDs, file/line or HTML anchor, sentence text or unambiguous span, judgment, reason, paragraph reassessment, gaps |
-| Findings | Reading obstacle, exact first dependent-use location, missing premise, whether and where later context resolved it, proposed correction, editor action, local re-review and final disposition |
+| Findings | Reading obstacle, exact location, missing premise and any later clarification for first dependent use, exact phrase and plain wording needed for an invented compound, proposed correction, editor action, local re-review and final disposition |
+| Redundancy | Repeated passage and location, confirmed or candidate, authoritative clause or table (with specification and edition for an external authority), smallest safe change or reason verification is pending |
 | Decisions | Evidence citations, challenges, rejected suggestions, user decisions |
 | Preservation | Baseline and final revisions or hashes, located retention or approved removal dispositions, final audit outcome and gaps |
 | Result | Reader explanation of learned concepts, editor acceptance, changed files, validation and remaining limitations |

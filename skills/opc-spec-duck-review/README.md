@@ -95,6 +95,17 @@ applies in prose, tables, figures, examples, and generated content. Later
 definitions and links can add detail, but they cannot substitute for that
 orientation or erase a recorded obstacle.
 
+Separately, the reader flags invented compounds that hide a relationship or
+action, even when the meaning is guessable. The reader asks for plain
+wording while leaving established terms, exact identifiers, and quotations
+intact.
+
+The reader also flags information repeated within the specification or
+restated from an applicable specification. Each confirmed finding cites
+the authoritative clause or table and proposes the smallest safe change.
+The editor verifies candidates and preserves distinct requirements and
+useful reader context.
+
 A final unchanged edition needs a complete fresh pass with no outstanding
 issues and editor agreement. Permission gaps, unavailable evidence, repeated
 disputes, and resource limits produce an explicit incomplete outcome rather
