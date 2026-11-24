@@ -1,0 +1,22 @@
+{
+  "name": "sloptrim-large",
+  "version": "1.0.0",
+  "description": "Review or edit large Markdown and text files with Sloptrim, tracking coverage through the last section.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/sloptrim-large",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "productivity",
+  "keywords": [
+    "sloptrim",
+    "markdown",
+    "editing",
+    "review"
+  ],
+  "skills": [
+    "./"
+  ]
+}

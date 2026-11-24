@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.11.0"
+    "version": "1.12.0"
   },
   "plugins": [
     {
@@ -60,6 +60,29 @@
         "ai-isms",
         "styleguide",
         "voice"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "sloptrim-large",
+      "source": "./skills/sloptrim-large",
+      "description": "Review or edit large Markdown and text files with Sloptrim, tracking coverage through the last section.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/sloptrim-large",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "sloptrim",
+        "markdown",
+        "editing",
+        "review"
       ],
       "skills": [
         "./"

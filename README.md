@@ -27,10 +27,13 @@ This repository is also a Copilot CLI plugin marketplace.
 | [Specification comprehension review](skills/spec-duck-review) | Review non-OPC UA specifications sentence by sentence with a fresh reader, an editor, and user-defined prerequisites |
 | [xregistry-writing](skills/xregistry-writing) | Write specifications and Primers in the style of upstream xregistry/spec |
 
+Use [Sloptrim for large files](skills/sloptrim-large) for a section-by-section Markdown or plain-text review, with a choice of normal or strict scoring and review-only or in-place fixes. It requires the separately installed [Sloptrim](https://github.com/seyedehsanhadi/sloptrim) plugin and Python 3.
+
 Register the marketplace once, then install the plugins you want:
 
 ```powershell
 copilot plugin marketplace add marcschier/marcschier
+copilot plugin install sloptrim-large@marcschier
 copilot plugin install copilot-sessions@marcschier
 copilot plugin install microsoft-writing-style@marcschier
 copilot plugin install opc-ua-writing-style@marcschier
