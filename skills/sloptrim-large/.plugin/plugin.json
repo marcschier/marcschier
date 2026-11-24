@@ -1,6 +1,6 @@
 {
   "name": "sloptrim-large",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Review or edit large Markdown and text files with Sloptrim, tracking coverage through the last section.",
   "author": {
     "name": "Marc Schier",

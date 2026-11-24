@@ -1,10 +1,15 @@
 ---
 name: sloptrim-large
-description: Run Sloptrim on large Markdown or plain-text files, with section-by-section coverage and a choice of review or in-place edits.
-disable-model-invocation: true
+description: >
+  Run Sloptrim on large Markdown or plain-text files with section-by-section
+  coverage. Invoke only when the user explicitly requests sloptrim-large
+  or opts in through claudism-killer.
 ---
 
 # Sloptrim for large files
+
+Require an explicit user request or a recorded Claudism Killer opt-in before
+running. A generic request to edit prose does not opt in.
 
 1. **Confirm scope and mode.** Resolve the requested paths or globs to a list of files. Ask for any unset choices in one prompt: **Normal** (default, flag scores above 40) or **Strict** (flag scores above 20 and scrutinize character artifacts); **Review only** (default, no source changes) or **Editorial fixes** (edit selected files in place). An unanswered action never authorizes edits. Limit input to UTF-8 Markdown and plain text.
 2. **Load Sloptrim.** Invoke the installed `sloptrim` skill once unless its context is already loaded. Resolve `scripts/detect.py` from that skill's installed directory, not the current repository. If either is unavailable, report the missing prerequisite and stop. Use its style, preservation, and self-audit rules; the selected action and coverage report are the outer workflow. Do not change global Sloptrim settings.

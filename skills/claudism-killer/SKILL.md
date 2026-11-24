@@ -52,6 +52,22 @@ Preserve Markdown structure, tables, lists, and links. If a heading edit changes
 an anchor, account for affected references before applying it. Check the final
 diff for unintended technical or structural changes.
 
+## Optional Sloptrim pass
+
+When the scope includes whole UTF-8 Markdown or plain-text files, use
+`ask_user` once before the detection pass to offer **Also run Sloptrim**
+or **Claudism Killer only (default)**. Honor an explicit choice already made
+for this run. Skip the offer for pasted prose or selected excerpts only.
+Without an explicit opt-in, continue with Claudism Killer alone.
+
+On opt-in, invoke `sloptrim-large` through the host's skill mechanism for
+the selected whole files. Run it in **Review only** mode, using **Normal**
+scoring unless the user requested **Strict**. Use its findings as candidates
+in the existing workflow; Claudism Killer retains ownership of edits and
+the author's styleguide takes precedence. If the companion or its detector
+is unavailable, report that the optional pass could not run and continue
+without installing anything automatically.
+
 ## Workflow
 
 1. **Read the styleguide first.** Look for the author's guide in the selected

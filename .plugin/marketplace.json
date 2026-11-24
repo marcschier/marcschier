@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.12.0"
+    "version": "1.13.0"
   },
   "plugins": [
     {
@@ -43,7 +43,7 @@
       "name": "claudism-killer",
       "source": "./skills/claudism-killer",
       "description": "Edit Markdown and other prose to remove stock AI phrasing while preserving the author's voice, facts, and document structure.",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"
@@ -69,7 +69,7 @@
       "name": "sloptrim-large",
       "source": "./skills/sloptrim-large",
       "description": "Review or edit large Markdown and text files with Sloptrim, tracking coverage through the last section.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Marc Schier",
         "url": "https://github.com/marcschier"

@@ -51,6 +51,16 @@ An edit pass reports the findings and replacements, applies edits to the selecte
 files (or returns revised pasted text), and gives measured before/after counts.
 It also identifies protected phrasing and claims that need verification.
 
+For whole UTF-8 Markdown or plain-text files, Claudism Killer offers an
+optional `sloptrim-large` review pass before editing. Its findings supplement
+Claudism Killer; it does not edit files or change a read-only request.
+To use it, install `sloptrim-large` and its separate Sloptrim prerequisite:
+
+```powershell
+copilot plugin install sloptrim-large@marcschier
+copilot plugin install seyedehsanhadi/sloptrim
+```
+
 Writing skills such as [marc-writer](../marc-writer) can invoke the same editing
 workflow with an author styleguide and explicitly request clean output. In that
 mode, the findings and measurements remain working evidence; the delivered
