@@ -1,8 +1,11 @@
 ---
 name: opc-spec-style-signoff
 license: MIT
-description: Run a frozen-edition OPC specification audit, resolve findings with the editor, and verify sign-off against the repository's own style rubric.
-disable-model-invocation: true
+description: >
+  Run an explicitly requested OPC specification style sign-off against the
+  repository's own rubric. Use for a frozen-edition sign-off audit, for applying
+  or verifying findings from that audit, or when assigned this workflow in a
+  delegated session. An audit request alone does not authorize edits.
 ---
 
 # OPC specification style sign-off
