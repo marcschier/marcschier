@@ -1,0 +1,23 @@
+{
+  "name": "opc-spec-style-signoff",
+  "version": "1.0.0",
+  "description": "Audit frozen OPC specification editions against their repository-local rubric, resolve findings with the editor, and independently verify sign-off.",
+  "author": {
+    "name": "Marc Schier",
+    "url": "https://github.com/marcschier"
+  },
+  "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opc-spec-style-signoff",
+  "repository": "https://github.com/marcschier/marcschier",
+  "license": "MIT",
+  "category": "development",
+  "keywords": [
+    "opc-ua",
+    "specification-review",
+    "style-audit",
+    "publication",
+    "sign-off"
+  ],
+  "skills": [
+    "./"
+  ]
+}

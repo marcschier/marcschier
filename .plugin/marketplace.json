@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marc Schier's agent plugins for the GitHub Copilot CLI.",
-    "version": "1.13.0"
+    "version": "1.14.0"
   },
   "plugins": [
     {
@@ -211,6 +211,30 @@
         "editorial-review",
         "conformance",
         "revision-planning"
+      ],
+      "skills": [
+        "./"
+      ]
+    },
+    {
+      "name": "opc-spec-style-signoff",
+      "source": "./skills/opc-spec-style-signoff",
+      "description": "Audit frozen OPC specification editions against their repository-local rubric, resolve findings with the editor, and independently verify sign-off.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Marc Schier",
+        "url": "https://github.com/marcschier"
+      },
+      "homepage": "https://github.com/marcschier/marcschier/tree/main/skills/opc-spec-style-signoff",
+      "repository": "https://github.com/marcschier/marcschier",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "opc-ua",
+        "specification-review",
+        "style-audit",
+        "publication",
+        "sign-off"
       ],
       "skills": [
         "./"

@@ -23,6 +23,7 @@ This repository is also a Copilot CLI plugin marketplace.
 | [OPC UA writing style](skills/opc-ua-writing-style) | Match the prose, paragraph rhythm, and punctuation of published OPC UA companion specifications |
 | [OPC UA Model Review](skills/opcua-model-review) | Audit companion NodeSets and documents against numbered Part 3 rules and modelling best practices |
 | [OPC specification review](skills/opc-spec-review) | Review composed editions across selected specs, plan revisions and verify approved fixes |
+| [OPC specification style sign-off](skills/opc-spec-style-signoff) | Audit a frozen edition against the local rubric and independently verify approved fixes in fresh renders |
 | [OPC specification comprehension review](skills/opc-spec-duck-review) | Iterate between an independent OPC UA reader and expert editor, with fresh passes over every sentence |
 | [Specification comprehension review](skills/spec-duck-review) | Review non-OPC UA specifications sentence by sentence with a fresh reader, an editor, and user-defined prerequisites |
 | [xregistry-writing](skills/xregistry-writing) | Write specifications and Primers in the style of upstream xregistry/spec |
@@ -39,6 +40,7 @@ copilot plugin install microsoft-writing-style@marcschier
 copilot plugin install opc-ua-writing-style@marcschier
 copilot plugin install opcua-model-review@marcschier
 copilot plugin install opc-spec-review@marcschier
+copilot plugin install opc-spec-style-signoff@marcschier
 copilot plugin install opc-spec-duck-review@marcschier
 copilot plugin install spec-duck-review@marcschier
 copilot plugin install xregistry-writing@marcschier
