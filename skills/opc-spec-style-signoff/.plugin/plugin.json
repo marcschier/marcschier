@@ -1,6 +1,6 @@
 {
   "name": "opc-spec-style-signoff",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Audit frozen OPC specification editions against their repository-local rubric, resolve findings with the editor, and independently verify sign-off.",
   "author": {
     "name": "Marc Schier",
