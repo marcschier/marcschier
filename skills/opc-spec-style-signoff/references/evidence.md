@@ -10,11 +10,25 @@
 
 ## Source ownership and contract checks
 
-- Trace each contract change across clause text, authored and bound tables, glossary or Profile metadata, generators and models, tests, guides and external part references. Check numbered citations as well as named anchors when headings move; a resolving link can still lead to the wrong requirement. Keep the rule at its owner and point dependencies to it.
+- Trace each contract change across clause text, authored and bound tables, glossary or Profile metadata, generators and models, tests, guides and external part references. Keep the rule at its owner and point dependencies to it. Use the preservation ledger for moved clauses and changed published targets.
 - For a bound table, inspect the actual generator and model. A populated model description commonly overrides authored text; a fallback description may belong to the manuscript. Edit the responsible input with authorization, regenerate in isolation, and compare composed and published text. Preserve type/member identities and existing wire and browse behavior. For any approved model change use the repository's compatibility checks and the smallest exact change; do not rewrite a frozen comparison baseline.
 - When a generator or one of its inputs changes, enumerate downstream generated files and embedded copies. Before freezing the edited snapshot, run the complete generation chain in dependency order and verify that a second complete pass produces no changes, or use the repository's equivalent determinism check. Include embedded payloads in the comparison. Individual schema or model checks do not prove the outputs have converged. If they keep changing, identify the drifting output and the step that rewrites it; leave publication evidence open rather than approving the last output by default.
 - Compare the edited baseline with the approved ledger. Check definitions, identifiers, mappings, encodings, optionality, status layer and error precedence, failure atomicity, and other preserved guarantees where applicable. Update CTT fixtures and expected results to exercise the distinguishing condition. A case that happens to pass without exercising that condition is not evidence. Distinguish cases that do not apply from cases that could apply but lack a usable fixture.
 - Run the affected local validation and publication checks. Record exact commands and outcomes in the evidence when required by the repository or requested by the user. State what an offline contract test does not prove.
+
+## Information preservation ledger
+
+Base this ledger on the original frozen edition, not on the most recent rewrite. Before editing, split each planned removal, move, consolidation, or substantive rewrite into distinct claims. Include conditions, exclusions, permissions, optionality, timing, types and units, mappings, diagnostics, test inputs and outcomes, and informative limits or rationale. For renamed or renumbered content, inventory references to the original target.
+
+| Original location and claim or target | Affected surfaces | Disposition and destination | Verification or exact user decision |
+|---|---|---|---|
+| Old identifier description permits non-URI values | Type clause, generated description, conformance case | Preserve that permission in the same authority when clarifying the allowed string values | Compare old and new meanings and verify source, renders and test expectations |
+| Tutorial repeats a guarantee but adds a deployment alternative | Normative clause, guide, Profile or CU | Remove the repeated sentence only after recording the equivalent normative owner; retain the distinct alternative where the reader can find it | Check both destinations; ask if the alternative is to be dropped or narrowed |
+| An old generated table fragment identifies a specific table | Old and new renders, external references | Preserve the target's meaning or propose an explicit compatibility disposition | Test the old fragment against the new edition; a successful link to a different table is not preservation |
+
+- A duplicate must preserve **every** claim at the same authority and applicability, including negative statements. A similar topic, unchanged NodeId or Profile membership, or a surviving test ID does not prove semantic equivalence. Wording-only changes with no displaced facts need no separate decision.
+- If an edit would lose information or equivalence is uncertain, show the user the original claim or target, proposed wording or deletion, and what readers, implementations, tests or existing links would experience. Offer retain/restore, relocate if equivalent, or explicitly approve the exact change. Record the answer and scope. If there is no answer, preserve the original meaning; if that is not possible, keep the item open.
+- After editing, scan the complete baseline-to-candidate diff for **actual** deletions and replacements, even those not planned or on the finding list. Reconcile each distinct claim with its retained or relocated source and its rendered or delivered counterpart. Compare relevant old anchors and bookmarks with the same semantic targets in the new output, not just links generated from the candidate. Give the independent reader both editions and the complete delta so they can spot unlisted losses. Recheck restorations in the next frozen edition.
 
 ## Rule coverage ledger
 
@@ -52,6 +66,7 @@ Use session state or a user-approved local artifact; the ledger does not need to
 | Coverage | Rule and surface rows, edition, exact evidence, status, finding IDs or next action |
 | Finding | Stable ID, class, exact quote and location, rule, consequence, smallest correction, authoritative owner, affected surfaces |
 | Disposition | User decision where needed, fix/move/merge/removal/exception/deferral, preserved guarantee and destination, scope or rationale |
+| Preservation | Original claim or target, approved disposition or equivalent destination, candidate source and publication evidence |
 | Closure | Reader, snapshot, location-by-location source and render evidence, remaining issue or closed |
 
-Give an independent reader the selected inputs and hashes, original findings, affected surfaces, approved decisions and exact exceptions. On a recheck, enumerate the delta and report only remaining findings or new evidenced findings in changed dependencies. Any case that still lets two conforming readings yield different observable outcomes needs an explicit disposition.
+Give an independent reader the selected inputs and hashes, original findings, full preservation delta, affected surfaces, approved decisions and exact exceptions. On a recheck, enumerate the delta and report only remaining findings or new evidenced findings in changed dependencies. Any case that still lets two conforming readings yield different observable outcomes needs an explicit disposition.
