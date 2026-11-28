@@ -17,3 +17,5 @@ Invoke `/opc-spec-style-signoff` in a session for the target repository. For exa
 - "Address the accepted findings, ask me about each remaining policy choice one at a time, then have an independent reader verify the fixes."
 
 The result is one verdict with the exact edition, rule coverage, prior finding dispositions, approved exceptions and any remaining blockers. The skill does not authorize posting, publishing or changing source during a read-only review.
+
+In fix mode, the skill offers an optional [Claudism Killer pass](references/editorial-pass.md) after the review edits. If you opt in, it reads every edited file under `source/` and the entire primary NodeSet for each selected part, including untouched lines. This pass requires the separately installed `claudism-killer` skill and does not replace the repository rubric or preservation checks.
